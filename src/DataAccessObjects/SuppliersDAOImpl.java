@@ -29,6 +29,8 @@ public class SuppliersDAOImpl implements SuppliersDAO {
                         resultSet.getInt("SupplierId"),
                         resultSet.getString("SupName")
                 ));
+
+                conn.close();
             }
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
@@ -57,6 +59,8 @@ public class SuppliersDAOImpl implements SuppliersDAO {
                 resultSet.getString("SupName")
             );
 
+            conn.close();
+
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
@@ -65,12 +69,35 @@ public class SuppliersDAOImpl implements SuppliersDAO {
     }
 
     @Override
-    public boolean updateSupplier(Supplier supplier) {
+    public boolean updateSupplier(Supplier oldSupplier, Supplier newSupplier) {
+        boolean updated = true;
 
+        try {
+            // Get db connection
+            Connection conn = DbConnection.getConnection();
+            // Create query string
+            String query = "UPDATE suppliers SET SupName=? WHERE SupplierId=? " +
+                    "AND SupName=?";
+            // Create prepare statement
+            PreparedStatement stmt = conn.prepareStatement(query);
+            // Assign parameter
+            stmt.setString(1,newSupplier.getSupName());
+            stmt.setInt(2,newSupplier.getSupplierId());
+            stmt.setString(3, oldSupplier.getSupName());
+            // Execute query
+            int numRows = stmt.executeUpdate();
+            if (numRows == 0) {
+                updated = false;
+            }
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        return updated;
     }
 
-    @Override
-    public boolean deleteSupplier(Supplier supplier) {
-
-    }
+//    @Override
+//    public boolean deleteSupplier(Supplier supplier) {
+//
+//    }
 }
