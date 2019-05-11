@@ -1,3 +1,10 @@
+/*
+Purpose: Domain entity to manage hold agent data
+Author:  Stuart Peters
+Date: May, 2019
+ */
+
+
 package DomainEntities;
 
 import javafx.beans.property.SimpleIntegerProperty;
@@ -14,7 +21,6 @@ public class Agent {
     private SimpleStringProperty agtPosition;
     private SimpleStringProperty agtUserName;
     private SimpleStringProperty agtPassword;
-
     private SimpleIntegerProperty agencyId;
 
 
@@ -34,85 +40,35 @@ public class Agent {
 
 
     //properties
-    public int getAgentId() {
-        return agentId.getValue();
-    }
+    public int getAgentId() { return agentId.getValue();}
+    public void setAgentId(int agentId) { this.agentId.set(agentId); }
 
-    public void setAgentId(int agentId) {
-        this.agentId.set(agentId);
-    }
+    public String getAgtFirstName() { return agtFirstName.getValue(); }
+    public void setAgtFirstName(String agtFirstName) { this.agtFirstName.set(agtFirstName); }
 
-    public String getAgtFirstName() {
-        return agtFirstName.getValue();
-    }
+    public String getAgtMiddleInitial() { return agtMiddleInitial.getValue(); }
+    public void setAgtMiddleInitial(String agtMiddleInitial) { this.agtMiddleInitial.set(agtMiddleInitial); }
 
-    public void setAgtFirstName(String agtFirstName) {
-        this.agtFirstName.set(agtFirstName);
-    }
+    public String getAgtLastName() { return agtLastName.getValue(); }
+    public void setAgtLastName(String agtLastName) { this.agtLastName.set(agtLastName); }
 
-    public String getAgtMiddleInitial() {
-        return agtMiddleInitial.getValue();
-    }
+    public String getAgtBusPhone() { return agtBusPhone.getValue(); }
+    public void setAgtBusPhone(String agtBusPhone) { this.agtBusPhone.set(agtBusPhone); }
 
-    public void setAgtMiddleInitial(String agtMiddleInitial) {
-        this.agtMiddleInitial.set(agtMiddleInitial);
-    }
+    public String getAgtEmail() { return agtEmail.getValue(); }
+    public void setAgtEmail(String agtEmail) { this.agtEmail.set(agtEmail); }
 
-    public String getAgtLastName() {
-        return agtLastName.getValue();
-    }
+    public String getAgtPosition() { return agtPosition.getValue(); }
+    public void setAgtPosition(String agtPosition) { this.agtPosition.set(agtPosition); }
 
-    public void setAgtLastName(String agtLastName) {
-        this.agtLastName.set(agtLastName);
-    }
+    public String getAgtUserName() { return agtUserName.getValue(); }
+    public void setAgtUserName(String agtUserName) { this.agtUserName.set(agtUserName); }
 
-    public String getAgtBusPhone() {
-        return agtBusPhone.getValue();
-    }
+    public String getAgtPassword() { return agtPassword.getValue(); }
+    public void setAgtPassword(String agtPassword) { this.agtPassword.set(agtPassword); }
 
-    public void setAgtBusPhone(String agtBusPhone) {
-        this.agtBusPhone.set(agtBusPhone);
-    }
-
-    public String getAgtEmail() {
-        return agtEmail.getValue();
-    }
-
-    public void setAgtEmail(String agtEmail) {
-        this.agtEmail.set(agtEmail);
-    }
-
-    public String getAgtPosition() {
-        return agtPosition.getValue();
-    }
-
-    public void setAgtPosition(String agtPosition) {
-        this.agtPosition.set(agtPosition);
-    }
-
-   public String getAgtUserName() {
-        return agtUserName.getValue();
-    }
-
-    public void setAgtUserName(String agtUserName) {
-        this.agtUserName.set(agtUserName);
-    }
-
-   public String getAgtPassword() {
-        return agtPassword.getValue();
-    }
-
-    public void setAgtPassword(String agtPassword) {
-        this.agtPassword.set(agtPassword);
-    }
-
-    public int getAgencyId() {
-        return agencyId.getValue();
-    }
-
-    public void setAgencyId(int agencyId) {
-        this.agencyId.set(agencyId);
-    }
+    public int getAgencyId() { return agencyId.getValue(); }
+    public void setAgencyId(int agencyId) { this.agencyId.set(agencyId); }
 
     //methods
     @Override
