@@ -1,0 +1,8 @@
+-- add username and password columns to 'customers' table, make username unique
+ALTER TABLE `customers` ADD `CustUserName` VARCHAR(30) NULL AFTER `CustEmail`, ADD `CustPassword` VARCHAR(255) NULL AFTER `CustUserName`, ADD UNIQUE `uniq_cust_username` (`CustUserName`);
+-- add username and password columns to 'agents' table, make username unique
+ALTER TABLE `agents` ADD `AgtUserName` VARCHAR(30) NULL AFTER `AgtPosition`, ADD `AgtPassword` VARCHAR(255) NULL AFTER `AgtUserName`, ADD UNIQUE `uniq_agt_username` (`AgtUserName`);
+-- add active column to tables 'packages', 'products', 'suppliers', default value is '1', aka active
+ALTER TABLE `packages` ADD `Active` BOOLEAN NOT NULL DEFAULT TRUE AFTER `PkgAgencyCommission`;
+ALTER TABLE `products` ADD `Active` BOOLEAN NOT NULL DEFAULT TRUE AFTER `ProdName`;
+ALTER TABLE `suppliers` ADD `Active` BOOLEAN NOT NULL DEFAULT TRUE AFTER `SupName`;
