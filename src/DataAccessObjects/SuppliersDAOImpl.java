@@ -3,10 +3,7 @@ package DataAccessObjects;
 import DataAccess.DbConnection;
 import DomainEntities.Supplier;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 
 public class SuppliersDAOImpl implements SuppliersDAO {
@@ -53,11 +50,13 @@ public class SuppliersDAOImpl implements SuppliersDAO {
             stmt.setInt(1,supplierId);
             // Execute statement
             ResultSet resultSet = stmt.executeQuery();
-
-            supplier = new Supplier(
-                resultSet.getInt("SupplierId"),
-                resultSet.getString("SupName")
-            );
+            // Get first row of data
+            if (resultSet.next()) {
+                supplier = new Supplier(
+                    resultSet.getInt("SupplierId"),
+                    resultSet.getString("SupName")
+                );
+            }
 
             conn.close();
 
@@ -69,9 +68,7 @@ public class SuppliersDAOImpl implements SuppliersDAO {
     }
 
     @Override
-    public boolean updateSupplier(Supplier oldSupplier, Supplier newSupplier) {
-        boolean updated = true;
-
+    public void updateSupplier(Supplier oldSupplier, Supplier newSupplier) {
         try {
             // Get db connection
             Connection conn = DbConnection.getConnection();
@@ -87,13 +84,48 @@ public class SuppliersDAOImpl implements SuppliersDAO {
             // Execute query
             int numRows = stmt.executeUpdate();
             if (numRows == 0) {
-                updated = false;
+                throw new Exception("Failed to update to suppliers table");
             }
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public Supplier addSupplier(Supplier supplier) {
+        try {
+            // Get db connection
+            Connection conn = DbConnection.getConnection();
+            // Create query string
+            String query = "INSERT INTO suppliers (SupName) " +
+                    "VALUES(?)";
+            // Create prepare statement
+            PreparedStatement stmt = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
+            // Assign parameters
+            stmt.setString(1, supplier.getSupName());
+            // Execute query
+            int numRows = stmt.executeUpdate();
+            if (numRows == 0) {
+                throw new Exception("Failed to add to suppliers table");
+            } else {
+                // Get the Id back from new insert
+                try (ResultSet resultSet = stmt.getGeneratedKeys()) {
+                    if (resultSet.next()) {
+                        supplier.setSupplierId(resultSet.getInt("SupplierId"));
+                    }
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
 
-        return updated;
+        return supplier;
     }
 
 //    @Override
