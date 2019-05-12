@@ -5,6 +5,9 @@ import DomainEntities.ProductSupplier;
 import java.util.ArrayList;
 
 public interface ProductsSuppliersDAO {
-    public ArrayList<ProductSupplier> getAllProductsSuppliers();
+    ArrayList<ProductSupplier> getAllProductsSuppliers();
+    ProductSupplier getProductSupplierById(int productSupplierId);
+    void updateProductSupplier(ProductSupplier oldProductSupplier, ProductSupplier newProductSupplier);
+    ProductSupplier addProductSupplier(ProductSupplier productSupplier);
 
 }

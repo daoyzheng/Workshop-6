@@ -1,59 +1,61 @@
 package DataAccessObjects;
 
 import DataAccess.DbConnection;
-import DomainEntities.Product;
+import DomainEntities.ProductSupplier;
 
 import java.sql.*;
 import java.util.ArrayList;
 
-public class ProductsDAOImpl implements ProductsDAO {
+public class ProductsSuppliersDAOImpl implements ProductsSuppliersDAO {
 
     @Override
-    public ArrayList<Product> getAllProducts() {
-        ArrayList<Product> productArrayList = new ArrayList<>();
+    public ArrayList<ProductSupplier> getAllProductsSuppliers() {
+        ArrayList<ProductSupplier> productSupplierArrayList = new ArrayList<>();
         try {
-            // Get database connection
+            // Get db connection
             Connection conn = DbConnection.getConnection();
             // Create query string
-            String query = "SELECT * FROM products";
+            String query = "SELECT * FROM products_suppliers";
             // Create prepare statement
             PreparedStatement stmt = conn.prepareStatement(query);
-            // Execute Statement
+            // Execute query
             ResultSet resultSet = stmt.executeQuery();
-            // Populate supplier array list
             while (resultSet.next()) {
-                productArrayList.add(new Product(
+                productSupplierArrayList.add(new ProductSupplier(
+                        resultSet.getInt("ProductSupplierId"),
                         resultSet.getInt("ProductId"),
-                        resultSet.getString("ProdName")
+                        resultSet.getInt("SupplierId")
                 ));
-
-                conn.close();
             }
+
+            conn.close();
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
-        return productArrayList;
+
+        return productSupplierArrayList;
     }
 
     @Override
-    public Product getProductById(int productId) {
-        Product product = null;
+    public ProductSupplier getProductSupplierById(int productSupplierId) {
+        ProductSupplier productSupplier = null;
         try {
-            // Get database connection
+            // Get Db connection
             Connection conn = DbConnection.getConnection();
             // Create query string
-            String query = "SELECT * FROM products WHERE ProductId=?";
+            String query = "SELECT * FROM products_suppliers WHERE ProductSupplierId=?";
             // Create prepare statement
             PreparedStatement stmt = conn.prepareStatement(query);
-            // Assign parameter
-            stmt.setInt(1, productId);
+            // Set parameters
+            stmt.setInt(1,productSupplierId);
             // Execute query
             ResultSet resultSet = stmt.executeQuery();
             // Get first row of data
             if (resultSet.next()) {
-                product = new Product(
-                    resultSet.getInt("ProductId"),
-                    resultSet.getString("ProdName")
+                productSupplier = new ProductSupplier(
+                        resultSet.getInt("ProductSupplierId"),
+                        resultSet.getInt("ProductId"),
+                        resultSet.getInt("SupplierId")
                 );
             }
 
@@ -62,27 +64,30 @@ public class ProductsDAOImpl implements ProductsDAO {
             e.printStackTrace();
         }
 
-        return product;
+        return productSupplier;
     }
 
     @Override
-    public void updateProduct (Product oldProduct, Product newProduct) {
+    public void updateProductSupplier(ProductSupplier oldProductSupplier, ProductSupplier newProductSupplier) {
         try {
-            // Get database connection
+            // Get db connection
             Connection conn = DbConnection.getConnection();
             // Create query string
-            String query = "UPDATE products SET ProdName=? " +
-                    "WHERE ProductId=? AND ProdName=?";
+            String query = "UPDATE products_suppliers SET ProductId=?, SupplierId=? " +
+                    "WHERE ProductSupplierId=? AND " +
+                    "ProductId=? AND SupplierId=?";
             // Create prepare statement
             PreparedStatement stmt = conn.prepareStatement(query);
             // Set parameters
-            stmt.setString(1,newProduct.getProdName());
-            stmt.setInt(2, newProduct.getProductId());
-            stmt.setString(3,oldProduct.getProdName());
+            stmt.setInt(1,newProductSupplier.getProductId());
+            stmt.setInt(2,newProductSupplier.getSupplierId());
+            stmt.setInt(3,oldProductSupplier.getProductSupplierId());
+            stmt.setInt(4,oldProductSupplier.getProductId());
+            stmt.setInt(5,oldProductSupplier.getSupplierId());
             // Execute query
             int numRows = stmt.executeUpdate();
             if (numRows == 0) {
-                throw new Exception("Failed to update products table");
+                throw new Exception("Failed to update to ProductSupplier table");
             }
             conn.close();
         } catch (SQLException | ClassNotFoundException e) {
@@ -93,39 +98,39 @@ public class ProductsDAOImpl implements ProductsDAO {
     }
 
     @Override
-    public Product addProduct(Product product) {
+    public ProductSupplier addProductSupplier(ProductSupplier productSupplier) {
         try {
             // Get database connection
             Connection conn = DbConnection.getConnection();
             // Create query string
-            String query = "INSERT INTO products (ProdName) " +
-                    "VALUES(?)";
+            String query = "INSERT INTO products_suppliers (ProductId, SupplierId) " +
+                    "VALUES(?,?)";
             // Create prepare statement
             PreparedStatement stmt = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
             // Set parameters
-            stmt.setString(1, product.getProdName());
+            stmt.setInt(1,productSupplier.getProductId());
+            stmt.setInt(2,productSupplier.getSupplierId());
             // Execute query
             int numRows = stmt.executeUpdate();
             if (numRows == 0) {
-                throw new Exception("Failed to add to products table");
+                throw new Exception("Failed to add to ProductSupplier table");
             } else {
-                // Get Id from inserted row
+                // Get id from inserted row
                 try (ResultSet resultSet = stmt.getGeneratedKeys()) {
                     if (resultSet.next()) {
-                        product.setProductId(resultSet.getInt("ProductId"));
+                        productSupplier.setProductSupplierId(resultSet.getInt("ProductSupplierId"));
                     }
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
             }
+
             conn.close();
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-        return product;
+        return productSupplier;
     }
-
 }
