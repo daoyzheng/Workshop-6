@@ -5,9 +5,9 @@ import DomainEntities.Product;
 import java.util.ArrayList;
 
 public interface ProductsDAO {
-    public ArrayList<Product> getAllProducts();
-    public Product getProductById(int productId);
-    public void updateProduct(Product oldProduct, Product newProduct);
-    public Product addProduct(Product product);
-    // public boolean deleteProduct(Product product);
+    ArrayList<Product> getAllProducts();
+    Product getProductById(int productId);
+    void updateProduct(Product oldProduct, Product newProduct);
+    Product addProduct(Product product);
+    //  boolean deleteProduct(Product product);
 }
