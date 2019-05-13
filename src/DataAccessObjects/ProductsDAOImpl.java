@@ -1,3 +1,9 @@
+/*
+Purpose: Data Access Class for products
+Author:  Dao Zheng
+Date: May, 2019
+ */
+
 package DataAccessObjects;
 
 import DataAccess.DbConnection;

@@ -1,3 +1,9 @@
+/*
+Purpose: Interface for supplier data access object
+Author:  Dao Zheng
+Date: May, 2019
+ */
+
 package DataAccessObjects;
 
 import DomainEntities.Supplier;

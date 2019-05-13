@@ -1,3 +1,9 @@
+/*
+Purpose: Get database connection
+Author:  Dao Zheng
+Date: May, 2019
+ */
+
 package DataAccess;
 
 import java.sql.Connection;

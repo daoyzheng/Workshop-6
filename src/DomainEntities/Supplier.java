@@ -1,3 +1,8 @@
+/*
+Purpose: Domain entity for supplier
+Author:  Dao Zheng
+Date: May, 2019
+ */
 package DomainEntities;
 
 import javafx.beans.property.SimpleIntegerProperty;
