@@ -25,6 +25,9 @@ public class Agent {
 
 
     //constructor
+
+    public Agent() {}
+
     public Agent(int agentId, String agtFirstName, String agtMiddleInitial, String agtLastName, String agtBusPhone, String agtEmail, String agtPosition, String agtUserName, String agtPassword, int agencyId) {
         this.agentId = new SimpleIntegerProperty(agentId);
         this.agtFirstName = new SimpleStringProperty(agtFirstName);
