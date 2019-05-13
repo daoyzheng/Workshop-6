@@ -28,7 +28,6 @@ public class Customer {
     private SimpleStringProperty custUserName;
     private SimpleStringProperty custPassword;
     private SimpleIntegerProperty agentId;
-    private SimpleIntegerProperty packageId;  //note - this member may be removed
 
 
     //constructors
@@ -50,7 +49,6 @@ public class Customer {
         this.custUserName = new SimpleStringProperty(custUserName);
         this.custPassword = new SimpleStringProperty(custPassword);
         this.agentId = new SimpleIntegerProperty(agentId);
-        this.packageId = new SimpleIntegerProperty(packageId);
     }
 
     //properties
@@ -95,9 +93,6 @@ public class Customer {
 
     public int getAgentId() { return agentId.getValue(); }
     public void setAgentId(int agentId) { this.agentId.set(agentId); }
-
-    public int getPackageId() { return packageId.getValue(); }
-    public void setPackageId(int packageId) { this.packageId.set(packageId); }
 
 
     //methods
