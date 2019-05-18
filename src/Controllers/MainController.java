@@ -39,7 +39,7 @@ public class MainController {
     @FXML
     void initialize() {
         // setup ObservableList for navigation options
-        String[] navItems = {"Agent", "Customer", "Package", "Product", "Booking"};
+        String[] navItems = {"Agent", "Customer", "Package", "ProductSupplier", "Booking"};
         ObservableList<String> navs = FXCollections.observableList(Arrays.asList(navItems));
         // setup ArrayList<Pane> centerPanes with loaded panes
         for (String nav: navs) {
