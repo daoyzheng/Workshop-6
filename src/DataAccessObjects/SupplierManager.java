@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 public class SupplierManager {
 
-    public ArrayList<Supplier> getAllSuppliers() {
+    public static ArrayList<Supplier> getAllSuppliers() {
         ArrayList<Supplier> supplierArrayList = new ArrayList<>();
         try {
             // Get database connection
@@ -40,7 +40,7 @@ public class SupplierManager {
         return supplierArrayList;
     }
 
-    public Supplier getSupplierById(int supplierId) {
+    public static Supplier getSupplierById(int supplierId) {
         Supplier supplier = null;
 
         try {
@@ -71,7 +71,7 @@ public class SupplierManager {
         return supplier;
     }
 
-    public void updateSupplier(Supplier oldSupplier, Supplier newSupplier) {
+    public static void updateSupplier(Supplier oldSupplier, Supplier newSupplier) {
         try {
             // Get db connection
             Connection conn = DbConnection.getConnection();
@@ -96,7 +96,7 @@ public class SupplierManager {
         }
     }
 
-    public Supplier addSupplier(Supplier supplier) {
+    public static Supplier addSupplier(Supplier supplier) {
         try {
             // Get db connection
             Connection conn = DbConnection.getConnection();

@@ -8,13 +8,15 @@ package DataAccessObjects;
 
 import DataAccess.DbConnection;
 import DomainEntities.ProductSupplier;
+import DomainEntities.Supplier;
 
 import java.sql.*;
 import java.util.ArrayList;
 
 public class ProductSupplierManager {
 
-    public ArrayList<ProductSupplier> getAllProductsSuppliers() {
+    // READ
+    public static ArrayList<ProductSupplier> getAllProductsSuppliers() {
         ArrayList<ProductSupplier> productSupplierArrayList = new ArrayList<>();
         try {
             // Get db connection
@@ -41,7 +43,12 @@ public class ProductSupplierManager {
         return productSupplierArrayList;
     }
 
-    public ProductSupplier getProductSupplierById(int productSupplierId) {
+    /**
+     *
+     * @param productSupplierId
+     * @return null reference if unable to read from database
+     */
+    public static ProductSupplier getProductSupplierById(int productSupplierId) {
         ProductSupplier productSupplier = null;
         try {
             // Get Db connection
@@ -71,7 +78,37 @@ public class ProductSupplierManager {
         return productSupplier;
     }
 
-    public void updateProductSupplier(ProductSupplier oldProductSupplier, ProductSupplier newProductSupplier) {
+    public static ArrayList<Integer> getSupplierIdsByProductId(int productId) {
+        ArrayList<Integer> supplierIdArrayList = new ArrayList<>();
+        try {
+            // Get db connection
+            Connection conn = DbConnection.getConnection();
+            // Create query string
+            String query = "SELECT SupplierId FROM products_suppliers WHERE ProductId=?";
+            // Create prepare statement
+            PreparedStatement stmt = conn.prepareStatement(query);
+            // Set prepared Statement parameters
+            stmt.setInt(1, productId);
+            // Execute query
+            ResultSet resultSet = stmt.executeQuery();
+            while (resultSet.next()) {
+                supplierIdArrayList.add(
+                        resultSet.getInt("SupplierId")
+                );
+            }
+            conn.close();
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return supplierIdArrayList;
+    }
+
+    /**
+     * Updates ProductSupplier table
+     * @param oldProductSupplier
+     * @param newProductSupplier
+     */
+    public static void updateProductSupplier(ProductSupplier oldProductSupplier, ProductSupplier newProductSupplier) {
         try {
             // Get db connection
             Connection conn = DbConnection.getConnection();
@@ -100,7 +137,12 @@ public class ProductSupplierManager {
         }
     }
 
-    public ProductSupplier addProductSupplier(ProductSupplier productSupplier) {
+    /**
+     * Add a new product supplier to the database
+     * @param productSupplier
+     * @return the newly inserted ProductSupplier object
+     */
+    public static ProductSupplier addProductSupplier(ProductSupplier productSupplier) {
         try {
             // Get database connection
             Connection conn = DbConnection.getConnection();

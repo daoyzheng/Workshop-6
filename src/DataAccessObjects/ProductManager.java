@@ -14,7 +14,7 @@ import java.util.ArrayList;
 
 public class ProductManager {
 
-    public ArrayList<Product> getAllProducts() {
+    public static ArrayList<Product> getAllProducts() {
         ArrayList<Product> productArrayList = new ArrayList<>();
         try {
             // Get database connection
@@ -31,16 +31,15 @@ public class ProductManager {
                         resultSet.getInt("ProductId"),
                         resultSet.getString("ProdName")
                 ));
-
-                conn.close();
             }
+            conn.close();
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
         return productArrayList;
     }
 
-    public Product getProductById(int productId) {
+    public static Product getProductById(int productId) {
         Product product = null;
         try {
             // Get database connection
@@ -69,7 +68,7 @@ public class ProductManager {
         return product;
     }
 
-    public void updateProduct (Product oldProduct, Product newProduct) {
+    public static void updateProduct (Product oldProduct, Product newProduct) {
         try {
             // Get database connection
             Connection conn = DbConnection.getConnection();
@@ -95,7 +94,7 @@ public class ProductManager {
         }
     }
 
-    public Product addProduct(Product product) {
+    public static Product addProduct(Product product) {
         try {
             // Get database connection
             Connection conn = DbConnection.getConnection();
