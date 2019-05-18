@@ -12,9 +12,8 @@ import DomainEntities.ProductSupplier;
 import java.sql.*;
 import java.util.ArrayList;
 
-public class ProductsSuppliersDAOImpl implements ProductsSuppliersDAO {
+public class ProductSupplierManager {
 
-    @Override
     public ArrayList<ProductSupplier> getAllProductsSuppliers() {
         ArrayList<ProductSupplier> productSupplierArrayList = new ArrayList<>();
         try {
@@ -42,7 +41,6 @@ public class ProductsSuppliersDAOImpl implements ProductsSuppliersDAO {
         return productSupplierArrayList;
     }
 
-    @Override
     public ProductSupplier getProductSupplierById(int productSupplierId) {
         ProductSupplier productSupplier = null;
         try {
@@ -73,7 +71,6 @@ public class ProductsSuppliersDAOImpl implements ProductsSuppliersDAO {
         return productSupplier;
     }
 
-    @Override
     public void updateProductSupplier(ProductSupplier oldProductSupplier, ProductSupplier newProductSupplier) {
         try {
             // Get db connection
@@ -103,7 +100,6 @@ public class ProductsSuppliersDAOImpl implements ProductsSuppliersDAO {
         }
     }
 
-    @Override
     public ProductSupplier addProductSupplier(ProductSupplier productSupplier) {
         try {
             // Get database connection
