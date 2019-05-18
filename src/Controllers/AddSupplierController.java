@@ -1,15 +1,20 @@
 package Controllers;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.ResourceBundle;
 
+import DataAccessObjects.ProductSupplierManager;
 import DataAccessObjects.SupplierManager;
+import DomainEntities.Product;
+import DomainEntities.ProductSupplier;
 import DomainEntities.Supplier;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
@@ -37,6 +42,52 @@ public class AddSupplierController {
     private ComboBox<Supplier> cbSupplier;
 
     @FXML
+    private Button btnAddSupplier;
+
+    public Product selectedProduct;
+
+    public void setSelectedProduct(Product selectedProduct) {
+        this.selectedProduct = selectedProduct;
+    }
+
+    public ObservableList<Supplier> selectedSuppliers;
+
+    public void setSelectedSuppliers(ObservableList<Supplier> selectedSuppliers) {
+        this.selectedSuppliers = selectedSuppliers;
+    }
+
+    private boolean validInsert = true;
+
+    @FXML
+    void btnAddSupplierOnAction(ActionEvent event) {
+        if (isExisting) {
+            // If user is choosing from existing suppliers
+            // Get chosen supplier object
+            Supplier selectedSupplier = cbSupplier.getSelectionModel().getSelectedItem();
+            // Add the combination of supplier and product to product supplier table
+            // Need to validate if combination already exist in the database
+            for (Supplier supplier: selectedSuppliers) {
+                if (selectedSupplier.getSupplierId() == supplier.getSupplierId()) {
+                    Alert alert = new Alert(Alert.AlertType.WARNING, "Supplier already exists");
+                    alert.showAndWait();
+                    validInsert = false;
+                } else {
+                    validInsert = true;
+                }
+            }
+
+            if(validInsert) {
+                // If no duplicates exist, then we can safely add to the product supplier table
+                ProductSupplierManager.addProductSupplier(new ProductSupplier(
+                        selectedProduct.getProductId(),
+                        selectedSupplier.getSupplierId()
+                ));
+            }
+        }
+    }
+
+    private boolean isExisting = false;
+    @FXML
     void initialize() {
         // Populate existing supplier combo box, but set it to disable by default
         ObservableList<Supplier> supplierObservableList = FXCollections.observableArrayList();
@@ -53,9 +104,11 @@ public class AddSupplierController {
                 if (selectedRadioButton.getId().equals("radioExistingSupplier")) {
                     cbSupplier.setDisable(false);
                     tfNewSupplier.setDisable(true);
+                    isExisting = true;
                 } else {
                     cbSupplier.setDisable(true);
                     tfNewSupplier.setDisable(false);
+                    isExisting = false;
                 }
             }
         });

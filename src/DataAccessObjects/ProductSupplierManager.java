@@ -162,7 +162,7 @@ public class ProductSupplierManager {
                 // Get id from inserted row
                 try (ResultSet resultSet = stmt.getGeneratedKeys()) {
                     if (resultSet.next()) {
-                        productSupplier.setProductSupplierId(resultSet.getInt("ProductSupplierId"));
+                        productSupplier.setProductSupplierId(resultSet.getInt(1));
                     }
                 } catch (SQLException e) {
                     e.printStackTrace();

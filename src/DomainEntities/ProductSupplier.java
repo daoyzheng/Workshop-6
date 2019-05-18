@@ -19,6 +19,11 @@ public class ProductSupplier {
         this.supplierId = new SimpleIntegerProperty(supplierId);
     }
 
+    public ProductSupplier(int productId, int supplierId) {
+        this.productId = new SimpleIntegerProperty(productId);
+        this.supplierId = new SimpleIntegerProperty(supplierId);
+    }
+
     public int getProductSupplierId() {
         return productSupplierId.getValue();
     }
