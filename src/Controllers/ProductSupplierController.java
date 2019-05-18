@@ -1,5 +1,6 @@
 package Controllers;
 
+import java.io.IOException;
 import java.net.URL;
 import java.nio.charset.IllegalCharsetNameException;
 import java.util.ArrayList;
@@ -17,9 +18,15 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
 public class ProductSupplierController {
 
@@ -30,10 +37,27 @@ public class ProductSupplierController {
     private URL location;
 
     @FXML
+    private Button btnAddSupplier;
+
+    @FXML
+    private Button btnUpdateSupplier;
+
+    @FXML
     private ComboBox<Product> cbProduct;
 
     @FXML
     private ListView<Supplier> lvSupplier;
+
+
+    @FXML
+    void btnAddSupplierOnAction(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../Views/addSupplier.fxml"));
+        Parent addSupplier = fxmlLoader.load();
+        Stage stage = new Stage();
+        stage.setTitle("Add Supplier");
+        stage.setScene(new Scene(addSupplier));
+        stage.show();
+    }
 
     // ObservableList of Products
     ObservableList<Product> prodObservableList = FXCollections.observableArrayList();

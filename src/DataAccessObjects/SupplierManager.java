@@ -31,9 +31,8 @@ public class SupplierManager {
                         resultSet.getInt("SupplierId"),
                         resultSet.getString("SupName")
                 ));
-
-                conn.close();
             }
+            conn.close();
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
