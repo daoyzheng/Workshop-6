@@ -41,7 +41,7 @@ public class ProductSupplierController {
     private Button btnUpdateSupplier;
 
     @FXML
-    private ComboBox<Product> cbProduct;
+    private ListView<Product> lvProduct;
 
     @FXML
     private ListView<Supplier> lvSupplier;
@@ -56,11 +56,11 @@ public class ProductSupplierController {
         stage.show();
 
         // Get AddSupplierController
-        AddSupplierController controller = fxmlLoader.getController();
+        //AddSupplierController controller = fxmlLoader.getController();
         // Pass selected product Object to addSupplierController
-        controller.setSelectedProduct(cbProduct.getSelectionModel().getSelectedItem());
+        //controller.setSelectedProduct(cbProduct.getSelectionModel().getSelectedItem());
         // Pass current list view array to addSupplierController
-        controller.setSelectedSuppliers(lvSupplier.getItems());
+        //controller.setSelectedSuppliers(lvSupplier.getItems());
     }
 
     // ObservableList of Products
@@ -69,14 +69,15 @@ public class ProductSupplierController {
     ArrayList<ProductSupplier> productSupplierArrayList = new ArrayList<>();
     @FXML
     void initialize() {
-        // Get all products and populate products' combo box
+        // Get all products and populate products' listView
         prodObservableList.addAll(ProductManager.getAllProducts());
-        cbProduct.setItems(prodObservableList);
+        lvProduct.setItems(prodObservableList);
 
+        // Get all product suppliers from product supplier table
         productSupplierArrayList.addAll(ProductSupplierManager.getAllProductsSuppliers());
 
-        // Add selected item event listener to combo box
-        cbProduct.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Product>() {
+        // Addd selected item event listener to lvProduct
+        lvProduct.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Product>() {
             @Override
             public void changed(ObservableValue<? extends Product> observable, Product oldValue, Product newValue) {
                 int productId = newValue.getProductId();
@@ -92,5 +93,22 @@ public class ProductSupplierController {
                 lvSupplier.setItems(supplierObservableList);
             }
         });
+        // Add selected item event listener to combo box
+//        cbProduct.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Product>() {
+//            @Override
+//            public void changed(ObservableValue<? extends Product> observable, Product oldValue, Product newValue) {
+//                int productId = newValue.getProductId();
+//                // Get a list of supplier ids associated with the productId
+//                ArrayList<Integer> supplierIdArrayList = ProductSupplierManager.getSupplierIdsByProductId(productId);
+//
+//                // Now get a list of supplier objects using the supplierIdArrayList
+//                ObservableList<Supplier> supplierObservableList = FXCollections.observableArrayList();
+//                for(Integer supplierId: supplierIdArrayList) {
+//                    supplierObservableList.add(SupplierManager.getSupplierById(supplierId));
+//                }
+//                // Set list view items
+//                lvSupplier.setItems(supplierObservableList);
+//            }
+//        });
     }
 }
