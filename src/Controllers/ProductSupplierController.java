@@ -102,17 +102,39 @@ public class ProductSupplierController {
 
         // Add selected item event listener to lvProduct
         lvProduct.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-            int productId = newValue.getProductId();
-            // Get a list of supplier ids associated with the productId
-            ArrayList<Integer> supplierIdArrayList = ProductSupplierManager.getSupplierIdsByProductId(productId);
+            if (productSelected) {
+                int productId = newValue.getProductId();
+                // Get a list of supplier ids associated with the productId
+                ArrayList<Integer> supplierIdArrayList = ProductSupplierManager.getSupplierIdsByProductId(productId);
 
-            // Now get a list of supplier objects using the supplierIdArrayList
-            ObservableList<Supplier> supplierObservableList = FXCollections.observableArrayList();
-            for(Integer supplierId: supplierIdArrayList) {
-                supplierObservableList.add(SupplierManager.getSupplierById(supplierId));
+                // Now get a list of supplier objects using the supplierIdArrayList
+                ObservableList<Supplier> supplierObservableList = FXCollections.observableArrayList();
+                for(Integer supplierId: supplierIdArrayList) {
+                    supplierObservableList.add(SupplierManager.getSupplierById(supplierId));
+                }
+                // Set list view items
+                lvSupplier.setItems(supplierObservableList);
+
             }
-            // Set list view items
-            lvSupplier.setItems(supplierObservableList);
+        });
+
+        // Add selected item event listener to lvSupplier
+        lvSupplier.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            if (supplierSelected) {
+                int supplierId = newValue.getSupplierId();
+                // Get an arraylist of productIds associated with the supplierId
+                ArrayList<Integer> productIdArrayList = ProductSupplierManager.getProductIdsBySupplierId(supplierId);
+
+                // Now get a list of product objects using the productIdArrayList
+                ObservableList<Product> productObservableList = FXCollections.observableArrayList();
+                for(Integer productId: productIdArrayList) {
+                    productObservableList.add(ProductManager.getProductById(productId));
+                }
+                // Set list view items
+                lvProduct.setItems(productObservableList);
+
+            }
+
         });
     }
 

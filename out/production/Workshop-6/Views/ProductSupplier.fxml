@@ -12,11 +12,11 @@
       <Button fx:id="btnAddSupplier" layoutX="363.0" layoutY="385.0" mnemonicParsing="false" onAction="#btnAddSupplierOnAction" text="Add Supplier" />
       <Button fx:id="btnUpdateSupplier" layoutX="464.0" layoutY="385.0" mnemonicParsing="false" text="Update Supplier" />
       <ListView fx:id="lvProduct" layoutX="52.0" layoutY="47.0" prefHeight="325.0" prefWidth="200.0" />
-      <RadioButton fx:id="radioProducts" layoutX="52.0" layoutY="22.0" mnemonicParsing="false" selected="true" text="Products">
+      <RadioButton fx:id="radioProducts" layoutX="52.0" layoutY="22.0" mnemonicParsing="false" selected="true" text="Search by Product">
          <toggleGroup>
             <ToggleGroup fx:id="tgProductSupplier" />
          </toggleGroup>
       </RadioButton>
-      <RadioButton fx:id="radioSuppliers" layoutX="362.0" layoutY="22.0" mnemonicParsing="false" text="Suppliers" toggleGroup="$tgProductSupplier" />
+      <RadioButton fx:id="radioSuppliers" layoutX="362.0" layoutY="22.0" mnemonicParsing="false" text="Search by Supplier" toggleGroup="$tgProductSupplier" />
    </children>
 </AnchorPane>
