@@ -142,7 +142,7 @@ public class ProductSupplierManager {
      * @param productSupplier
      * @return the newly inserted ProductSupplier object
      */
-    public static ProductSupplier addProductSupplier(ProductSupplier productSupplier) {
+    public static void addProductSupplier(ProductSupplier productSupplier) {
         try {
             // Get database connection
             Connection conn = DbConnection.getConnection();
@@ -168,13 +168,11 @@ public class ProductSupplierManager {
                     e.printStackTrace();
                 }
             }
-
             conn.close();
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return productSupplier;
     }
 }
