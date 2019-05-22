@@ -20,10 +20,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.ListView;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 public class ProductSupplierController {
@@ -47,6 +44,15 @@ public class ProductSupplierController {
     private ListView<Supplier> lvSupplier;
 
     @FXML
+    private RadioButton radioProducts;
+
+    @FXML
+    private ToggleGroup tgProductSupplier;
+
+    @FXML
+    private RadioButton radioSuppliers;
+
+    @FXML
     void btnAddSupplierOnAction(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../Views/addSupplier.fxml"));
         Parent addSupplier = fxmlLoader.load();
@@ -65,50 +71,68 @@ public class ProductSupplierController {
 
     // ObservableList of Products
     ObservableList<Product> prodObservableList = FXCollections.observableArrayList();
+    // ObservableList of Suppliers
+    ObservableList<Supplier> suppObservableList = FXCollections.observableArrayList();
     // Array list of product suppliers
     ArrayList<ProductSupplier> productSupplierArrayList = new ArrayList<>();
+    // Status for selected radio buttons
+    boolean productSelected = true;
+    boolean supplierSelected = false;
     @FXML
     void initialize() {
-        // Get all products and populate products' listView
-        prodObservableList.addAll(ProductManager.getAllProducts());
-        lvProduct.setItems(prodObservableList);
+        // Load products' list view
+        loadProducts();
 
         // Get all product suppliers from product supplier table
         productSupplierArrayList.addAll(ProductSupplierManager.getAllProductsSuppliers());
 
-        // Addd selected item event listener to lvProduct
-        lvProduct.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Product>() {
-            @Override
-            public void changed(ObservableValue<? extends Product> observable, Product oldValue, Product newValue) {
-                int productId = newValue.getProductId();
-                // Get a list of supplier ids associated with the productId
-                ArrayList<Integer> supplierIdArrayList = ProductSupplierManager.getSupplierIdsByProductId(productId);
-
-                // Now get a list of supplier objects using the supplierIdArrayList
-                ObservableList<Supplier> supplierObservableList = FXCollections.observableArrayList();
-                for(Integer supplierId: supplierIdArrayList) {
-                    supplierObservableList.add(SupplierManager.getSupplierById(supplierId));
-                }
-                // Set list view items
-                lvSupplier.setItems(supplierObservableList);
+        // Add change event listener to product supplier toggle group
+        tgProductSupplier.selectedToggleProperty().addListener((observable, oldValue, newValue) -> {
+            RadioButton selectedListView = (RadioButton) newValue;
+            if (selectedListView.getId().equals("radioProducts")) {
+                productSelected = true;
+                supplierSelected = false;
+                loadProducts();
+            } else {
+                productSelected = false;
+                supplierSelected = true;
+                loadSuppliers();
             }
         });
-        // Add selected item event listener to combo box
-//        cbProduct.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Product>() {
-//            @Override
-//            public void changed(ObservableValue<? extends Product> observable, Product oldValue, Product newValue) {
-//                int productId = newValue.getProductId();
-//                // Get a list of supplier ids associated with the productId
-//                ArrayList<Integer> supplierIdArrayList = ProductSupplierManager.getSupplierIdsByProductId(productId);
-//
-//                // Now get a list of supplier objects using the supplierIdArrayList
-//                ObservableList<Supplier> supplierObservableList = FXCollections.observableArrayList();
-//                for(Integer supplierId: supplierIdArrayList) {
-//                    supplierObservableList.add(SupplierManager.getSupplierById(supplierId));
-//                }
-//                // Set list view items
-//                lvSupplier.setItems(supplierObservableList);
-//            }
-//        });
+
+        // Add selected item event listener to lvProduct
+        lvProduct.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            int productId = newValue.getProductId();
+            // Get a list of supplier ids associated with the productId
+            ArrayList<Integer> supplierIdArrayList = ProductSupplierManager.getSupplierIdsByProductId(productId);
+
+            // Now get a list of supplier objects using the supplierIdArrayList
+            ObservableList<Supplier> supplierObservableList = FXCollections.observableArrayList();
+            for(Integer supplierId: supplierIdArrayList) {
+                supplierObservableList.add(SupplierManager.getSupplierById(supplierId));
+            }
+            // Set list view items
+            lvSupplier.setItems(supplierObservableList);
+        });
+    }
+
+    /**
+     *  Get all products and populate products' listView
+      */
+    public void loadProducts() {
+        // clear prodObservableList if it's not empty
+        prodObservableList.clear();
+        prodObservableList.addAll(ProductManager.getAllProducts());
+        lvProduct.setItems(prodObservableList);
+    }
+
+    /**
+     *  Get all suppliers and populate suppliers' listView
+     */
+    public void loadSuppliers() {
+        // clear suppObservableList if it's not empty
+        suppObservableList.clear();
+        suppObservableList.addAll(SupplierManager.getAllSuppliers());
+        lvSupplier.setItems(suppObservableList);
     }
 }
