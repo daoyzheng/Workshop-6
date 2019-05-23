@@ -101,6 +101,8 @@ public class ProductSupplierController {
                 loadProducts();
                 // Clear suppliers' list view
                 lvSupplier.getItems().clear();
+                // Clear tfSearchProduct
+                tfSearchProduct.clear();
                 // Clear tfSearchSupplier
                 tfSearchSupplier.clear();
             } else {
@@ -111,6 +113,8 @@ public class ProductSupplierController {
                 lvProduct.getItems().clear();
                 // Clear tfSearchProduct
                 tfSearchProduct.clear();
+                // Clear tfSearchSupplier
+                tfSearchSupplier.clear();
             }
         });
 

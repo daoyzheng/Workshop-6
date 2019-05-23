@@ -2,14 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d54214f6-0d71-4717-81a4-e647c8cdc3be" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Workshop-6/Controllers/ProductSupplierController$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Workshop-6/Controllers/ProductSupplierController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Workshop-6/Controllers/ProductSupplierController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Workshop-6/DataAccessObjects/ProductManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Workshop-6/DataAccessObjects/ProductManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Workshop-6/DataAccessObjects/SupplierManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Workshop-6/DataAccessObjects/SupplierManager.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controllers/ProductSupplierController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/ProductSupplierController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DataAccessObjects/ProductManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataAccessObjects/ProductManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DataAccessObjects/SupplierManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataAccessObjects/SupplierManager.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -54,8 +47,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Controllers/ProductSupplierController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="89">
-              <caret line="104" column="31" selection-start-line="104" selection-start-column="31" selection-end-line="104" selection-end-column="31" />
+            <state relative-caret-position="64">
+              <caret line="103" column="16" selection-start-line="103" selection-start-column="16" selection-end-line="103" selection-end-column="16" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -363,7 +356,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="34578000" />
+    <option name="totallyTimeSpent" value="34838000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -630,8 +623,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Controllers/ProductSupplierController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="89">
-          <caret line="104" column="31" selection-start-line="104" selection-start-column="31" selection-end-line="104" selection-end-column="31" />
+        <state relative-caret-position="64">
+          <caret line="103" column="16" selection-start-line="103" selection-start-column="16" selection-end-line="103" selection-end-column="16" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
