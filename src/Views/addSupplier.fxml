@@ -15,7 +15,7 @@
          </toggleGroup>
       </RadioButton>
       <RadioButton fx:id="radioExistingSupplier" layoutX="29.0" layoutY="44.0" mnemonicParsing="false" selected="true" text="Choose from existing suppliers" toggleGroup="$tgSupplier" />
-      <ComboBox fx:id="cbSupplier" layoutX="346.0" layoutY="40.0" prefWidth="150.0" />
+      <ComboBox fx:id="cbSupplier" editable="true" layoutX="346.0" layoutY="40.0" prefWidth="150.0" />
       <TextField fx:id="tfNewSupplier" layoutX="29.0" layoutY="110.0" prefHeight="25.0" prefWidth="258.0" />
       <Button fx:id="btnAddSupplier" layoutX="346.0" layoutY="319.0" mnemonicParsing="false" onAction="#btnAddSupplierOnAction" text="Add" />
    </children>
