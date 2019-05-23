@@ -20,7 +20,6 @@ public class ProductSupplier {
     }
 
     public ProductSupplier(int productId, int supplierId) {
-        this.productSupplierId = new SimpleIntegerProperty();
         this.productId = new SimpleIntegerProperty(productId);
         this.supplierId = new SimpleIntegerProperty(supplierId);
     }

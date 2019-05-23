@@ -56,11 +56,11 @@ public class AddSupplierController {
         this.selectedSuppliers = selectedSuppliers;
     }
 
+    private boolean validInsert = true;
 
     @FXML
     void btnAddSupplierOnAction(ActionEvent event) {
         if (isExisting) {
-            boolean validInsert = true;
             // If user is choosing from existing suppliers
             // Get chosen supplier object
             Supplier selectedSupplier = cbSupplier.getSelectionModel().getSelectedItem();
@@ -81,32 +81,6 @@ public class AddSupplierController {
                 ProductSupplierManager.addProductSupplier(new ProductSupplier(
                         selectedProduct.getProductId(),
                         selectedSupplier.getSupplierId()
-                ));
-            }
-        } else {
-            boolean validInsert = true;
-            // Grab new supplier name from text field
-            String newSupplierName = tfNewSupplier.getText();
-            // Validate if supplier name exist already
-            for (Supplier supplier : selectedSuppliers) {
-                if (newSupplierName.equals(supplier.getSupName())) {
-                    Alert alert = new Alert(Alert.AlertType.WARNING, "Supplier already exists");
-                    alert.showAndWait();
-                    validInsert = false;
-                } else {
-                    validInsert = true;
-                }
-            }
-
-            if (validInsert) {
-                // Create supplier object and add to Suppliers table
-                Supplier newSupplier = new Supplier(newSupplierName);
-                SupplierManager.addSupplier(newSupplier);
-
-                // Now add to the product supplier table
-                ProductSupplierManager.addProductSupplier(new ProductSupplier(
-                        selectedProduct.getProductId(),
-                        newSupplier.getSupplierId()
                 ));
             }
         }

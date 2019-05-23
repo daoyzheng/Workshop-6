@@ -17,11 +17,6 @@ public class Supplier {
         this.supName = new SimpleStringProperty(supName);
     }
 
-    public Supplier(String supName) {
-        this.supplierId = new SimpleIntegerProperty();
-        this.supName = new SimpleStringProperty(supName);
-    }
-
     @Override
     public String toString() {
         return supName.getValue();

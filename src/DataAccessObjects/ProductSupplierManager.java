@@ -78,11 +78,6 @@ public class ProductSupplierManager {
         return productSupplier;
     }
 
-    /**
-     * Get an array list of supplierIds associated with the parameter productId
-     * @param productId
-     * @return arraylist of supplierIds
-     */
     public static ArrayList<Integer> getSupplierIdsByProductId(int productId) {
         ArrayList<Integer> supplierIdArrayList = new ArrayList<>();
         try {
@@ -106,32 +101,6 @@ public class ProductSupplierManager {
             e.printStackTrace();
         }
         return supplierIdArrayList;
-    }
-
-
-    public static ArrayList<Integer> getProductIdsBySupplierId(int supplierId) {
-        ArrayList<Integer> productIdArrayList = new ArrayList<>();
-        try {
-            // Get db connection
-            Connection conn = DbConnection.getConnection();
-            // Create query string
-            String query = "SELECT ProductId FROM products_suppliers WHERE SupplierId=?";
-            // Create prepare statement
-            PreparedStatement stmt = conn.prepareStatement(query);
-            // Set prepared Statement parameters
-            stmt.setInt(1, supplierId);
-            // Execute query
-            ResultSet resultSet = stmt.executeQuery();
-            while (resultSet.next()) {
-                productIdArrayList.add(
-                        resultSet.getInt("ProductId")
-                );
-            }
-            conn.close();
-        } catch (SQLException | ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-        return productIdArrayList;
     }
 
     /**
@@ -173,7 +142,7 @@ public class ProductSupplierManager {
      * @param productSupplier
      * @return the newly inserted ProductSupplier object
      */
-    public static void addProductSupplier(ProductSupplier productSupplier) {
+    public static ProductSupplier addProductSupplier(ProductSupplier productSupplier) {
         try {
             // Get database connection
             Connection conn = DbConnection.getConnection();
@@ -199,11 +168,13 @@ public class ProductSupplierManager {
                     e.printStackTrace();
                 }
             }
+
             conn.close();
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return productSupplier;
     }
 }

@@ -95,42 +95,38 @@ public class SupplierManager {
         }
     }
 
-    public static void addSupplier(Supplier supplier) {
-        int genKey = 0;
+    public static Supplier addSupplier(Supplier supplier) {
         try {
             // Get db connection
             Connection conn = DbConnection.getConnection();
-
-            // Generate a default supplier Id
-            String selectQuery = "SELECT max(SupplierId) from Suppliers";
-            // Create select statement
-            Statement stmt = conn.createStatement();
-            // Execute select statement
-            ResultSet selectResult = stmt.executeQuery(selectQuery);
-            if (selectResult.next()) {
-                genKey = selectResult.getInt(1) + 1;
-            }
-
-            // Create query string to insert
-            String query = "INSERT INTO suppliers (SupplierId, SupName) " +
-                    "VALUES(?,?)";
+            // Create query string
+            String query = "INSERT INTO suppliers (SupName) " +
+                    "VALUES(?)";
             // Create prepare statement
-            PreparedStatement pstmt = conn.prepareStatement(query);
+            PreparedStatement stmt = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
             // Assign parameters
-            pstmt.setInt(1, genKey);
-            pstmt.setString(2, supplier.getSupName());
+            stmt.setString(1, supplier.getSupName());
             // Execute query
-            int numRows = pstmt.executeUpdate();
+            int numRows = stmt.executeUpdate();
             if (numRows == 0) {
                 throw new Exception("Failed to add to suppliers table");
             } else {
-                supplier.setSupplierId(genKey);
+                // Get the Id back from new insert
+                try (ResultSet resultSet = stmt.getGeneratedKeys()) {
+                    if (resultSet.next()) {
+                        supplier.setSupplierId(resultSet.getInt("SupplierId"));
+                    }
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
             }
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        return supplier;
     }
 
 //    @Override
