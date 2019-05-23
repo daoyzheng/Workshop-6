@@ -119,7 +119,8 @@ public class AddSupplierController {
         ObservableList<Supplier> supplierObservableList = FXCollections.observableArrayList();
         supplierObservableList.addAll(SupplierManager.getAllSuppliers());
         cbSupplier.setItems(supplierObservableList);
-        cbSupplier.setDisable(true);
+        // Enable combo box by default
+        cbSupplier.setDisable(false);
         // Disable text field by default
         tfNewSupplier.setDisable(true);
         // Add change event listener to supplier toggle group

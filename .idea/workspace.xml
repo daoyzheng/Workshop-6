@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d54214f6-0d71-4717-81a4-e647c8cdc3be" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Workshop-6/Controllers/ProductSupplierController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Workshop-6/Controllers/ProductSupplierController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controllers/ProductSupplierController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/ProductSupplierController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Workshop-6/META-INF/Workshop-6.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Workshop-6/Views/addOrUpdateSupplier.fxml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Views/addSupplier.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/addSupplier.fxml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -47,7 +46,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Controllers/ProductSupplierController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="314">
@@ -65,7 +64,7 @@
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Controllers/AddSupplierController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="250">
@@ -96,12 +95,6 @@
               <caret line="46" column="75" selection-start-line="46" selection-start-column="75" selection-end-line="46" selection-end-column="75" />
             </state>
           </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Views/customer.fxml">
-          <provider editor-type-id="JavaFX-Scene-Builder" />
-          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
@@ -365,7 +358,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="35686000" />
+    <option name="totallyTimeSpent" value="35933000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -541,14 +534,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Views/addSupplier.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="9" selection-start-line="9" selection-end-line="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/DomainEntities/Supplier.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="63">
@@ -606,16 +591,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controllers/AddSupplierController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="112" selection-start-line="112" selection-end-line="112" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Views/main.fxml">
       <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor" />
@@ -634,6 +609,28 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="314">
           <caret line="72" column="7" selection-start-line="72" selection-start-column="7" selection-end-line="72" selection-end-column="7" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Views/addSupplier.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="9" selection-start-line="9" selection-end-line="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Views/addOrUpdateSupplier.fxml">
+      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
+      <provider editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controllers/AddSupplierController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="250">
+          <caret line="112" selection-start-line="112" selection-end-line="112" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
