@@ -93,16 +93,20 @@ public class ProductSupplierController {
                 productSelected = true;
                 supplierSelected = false;
                 loadProducts();
+                // Clear suppliers' list view
+                lvSupplier.getItems().clear();
             } else {
                 productSelected = false;
                 supplierSelected = true;
                 loadSuppliers();
+                // Clear products' list view
+                lvProduct.getItems().clear();
             }
         });
 
         // Add selected item event listener to lvProduct
         lvProduct.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-            if (productSelected) {
+            if (productSelected && (newValue != null)) {
                 int productId = newValue.getProductId();
                 // Get a list of supplier ids associated with the productId
                 ArrayList<Integer> supplierIdArrayList = ProductSupplierManager.getSupplierIdsByProductId(productId);
@@ -120,7 +124,7 @@ public class ProductSupplierController {
 
         // Add selected item event listener to lvSupplier
         lvSupplier.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
-            if (supplierSelected) {
+            if (supplierSelected && (newValue != null)) {
                 int supplierId = newValue.getSupplierId();
                 // Get an arraylist of productIds associated with the supplierId
                 ArrayList<Integer> productIdArrayList = ProductSupplierManager.getProductIdsBySupplierId(supplierId);
