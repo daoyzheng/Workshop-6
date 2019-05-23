@@ -9,6 +9,7 @@ package DataAccessObjects;
 import DataAccess.DbConnection;
 import DomainEntities.Product;
 
+import javax.xml.transform.Result;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -68,6 +69,38 @@ public class ProductManager {
         return product;
     }
 
+    public static ArrayList<Product> getProductByKeyWord (String keyWord) {
+        ArrayList<Product> productArrayList = new ArrayList<>();
+        try {
+            // Get db connection
+            Connection conn = DbConnection.getConnection();
+            // Create query string
+            String query = "SELECT * FROM products WHERE ProdName like ?";
+            // Create prepare statement
+            PreparedStatement pstmt = conn.prepareStatement(query);
+            // Assign parameter
+            pstmt.setString(1, "%" + keyWord + "%");
+            // Execute query
+            ResultSet resultSet = pstmt.executeQuery();
+            // Populate products array list
+            while (resultSet.next()) {
+                productArrayList.add(new Product(
+                        resultSet.getInt("ProductId"),
+                        resultSet.getString("ProdName")
+                ));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return productArrayList;
+    }
+    /**
+     * Update Product name in the Products table
+     * @param oldProduct
+     * @param newProduct
+     */
     public static void updateProduct (Product oldProduct, Product newProduct) {
         try {
             // Get database connection

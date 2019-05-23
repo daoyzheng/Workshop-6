@@ -53,6 +53,12 @@ public class ProductSupplierController {
     private RadioButton radioSuppliers;
 
     @FXML
+    private TextField tfSearchProduct;
+
+    @FXML
+    private TextField tfSearchSupplier;
+
+    @FXML
     void btnAddSupplierOnAction(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../Views/addSupplier.fxml"));
         Parent addSupplier = fxmlLoader.load();
@@ -136,9 +142,25 @@ public class ProductSupplierController {
                 }
                 // Set list view items
                 lvProduct.setItems(productObservableList);
-
             }
+        });
 
+        // Add Change listener to search product text field
+        tfSearchProduct.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                // If search field is empty, load the whole product list
+                if (productSelected && (newValue == null)) {
+                    loadProducts();
+                } else if (productSelected) {
+                    // First clear the prodObservableList
+                    prodObservableList.clear();
+                    // Now load search returns from keyword
+                    prodObservableList.addAll(ProductManager.getProductByKeyWord(newValue));
+                    // assign prodObservableList to product list view
+                    lvProduct.setItems(prodObservableList);
+                }
+            }
         });
     }
 
