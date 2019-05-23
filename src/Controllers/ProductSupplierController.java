@@ -101,12 +101,16 @@ public class ProductSupplierController {
                 loadProducts();
                 // Clear suppliers' list view
                 lvSupplier.getItems().clear();
+                // Clear tfSearchSupplier
+                tfSearchSupplier.clear();
             } else {
                 productSelected = false;
                 supplierSelected = true;
                 loadSuppliers();
                 // Clear products' list view
                 lvProduct.getItems().clear();
+                // Clear tfSearchProduct
+                tfSearchProduct.clear();
             }
         });
 
@@ -146,20 +150,32 @@ public class ProductSupplierController {
         });
 
         // Add Change listener to search product text field
-        tfSearchProduct.textProperty().addListener(new ChangeListener<String>() {
-            @Override
-            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                // If search field is empty, load the whole product list
-                if (productSelected && (newValue == null)) {
-                    loadProducts();
-                } else if (productSelected) {
-                    // First clear the prodObservableList
-                    prodObservableList.clear();
-                    // Now load search returns from keyword
-                    prodObservableList.addAll(ProductManager.getProductByKeyWord(newValue));
-                    // assign prodObservableList to product list view
-                    lvProduct.setItems(prodObservableList);
-                }
+        tfSearchProduct.textProperty().addListener((observable, oldValue, newValue) -> {
+            // If search field is empty, load the whole product list
+            if (productSelected && (newValue == null)) {
+                loadProducts();
+            } else if (productSelected) {
+                // First clear the prodObservableList
+                prodObservableList.clear();
+                // Now load search returns from keyword
+                prodObservableList.addAll(ProductManager.getProductByKeyWord(newValue));
+                // assign prodObservableList to product list view
+                lvProduct.setItems(prodObservableList);
+            }
+        });
+
+        // Add change listener to search supplier text field
+        tfSearchSupplier.textProperty().addListener((observable, oldValue, newValue) -> {
+            // If search field is empty, load the whole supplier list
+            if (supplierSelected && (newValue == null)) {
+                loadSuppliers();
+            } else if (supplierSelected) {
+                // First clear the suppObservableList
+                suppObservableList.clear();
+                // Now load search returns from keyword
+                suppObservableList.addAll(SupplierManager.getSupplierByKeyWord(newValue));
+                // assign suppObservableList to supplier list view
+                lvSupplier.setItems(suppObservableList);
             }
         });
     }

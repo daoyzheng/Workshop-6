@@ -96,6 +96,7 @@ public class ProductManager {
         }
         return productArrayList;
     }
+
     /**
      * Update Product name in the Products table
      * @param oldProduct

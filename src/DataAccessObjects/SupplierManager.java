@@ -70,6 +70,34 @@ public class SupplierManager {
         return supplier;
     }
 
+    public static ArrayList<Supplier> getSupplierByKeyWord (String keyWord) {
+        ArrayList<Supplier> supplierArrayList = new ArrayList<>();
+        try {
+            // Get db connection
+            Connection conn = DbConnection.getConnection();
+            // Create query string
+            String query = "SELECT * FROM suppliers WHERE SupName like ?";
+            // Create prepare statement
+            PreparedStatement pstmt = conn.prepareStatement(query);
+            // Assign parameter
+            pstmt.setString(1, "%" + keyWord + "%");
+            // Execute query
+            ResultSet resultSet = pstmt.executeQuery();
+            // Populate products array list
+            while (resultSet.next()) {
+                supplierArrayList.add(new Supplier(
+                        resultSet.getInt("SupplierId"),
+                        resultSet.getString("SupName")
+                ));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return supplierArrayList;
+    }
+
     public static void updateSupplier(Supplier oldSupplier, Supplier newSupplier) {
         try {
             // Get db connection
