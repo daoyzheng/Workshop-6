@@ -11,8 +11,6 @@ import DataAccessObjects.SupplierManager;
 import DomainEntities.Product;
 import DomainEntities.ProductSupplier;
 import DomainEntities.Supplier;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -63,16 +61,16 @@ public class ProductSupplierController {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../Views/addSupplier.fxml"));
         Parent addSupplier = fxmlLoader.load();
         Stage stage = new Stage();
-        stage.setTitle("Add Supplier");
+        stage.setTitle("Add or Update Supplier");
         stage.setScene(new Scene(addSupplier));
         stage.show();
 
         // Get AddSupplierController
-        //AddSupplierController controller = fxmlLoader.getController();
+        AddSupplierController controller = fxmlLoader.getController();
         // Pass selected product Object to addSupplierController
-        //controller.setSelectedProduct(cbProduct.getSelectionModel().getSelectedItem());
+        controller.setSelectedProduct(lvProduct.getSelectionModel().getSelectedItem());
         // Pass current list view array to addSupplierController
-        //controller.setSelectedSuppliers(lvSupplier.getItems());
+        controller.setSelectedSuppliers(lvSupplier.getItems());
     }
 
     // ObservableList of Products
