@@ -2,6 +2,7 @@ package Controllers;
 
 public class AgentController {
 <<<<<<< HEAD
+<<<<<<< HEAD
 
     private String formMode = "Navigate";  //form mode includes: navigate, new, edit
 
@@ -337,6 +338,8 @@ public class AgentController {
         //set form in read only mode
         setNavigateMode();
     }
+=======
+>>>>>>> parent of 1a9e607... Updated AgentController with detail view code
 =======
 >>>>>>> parent of 1a9e607... Updated AgentController with detail view code
 }
