@@ -1,29 +1,7 @@
 package Controllers;
 
-import DataAccessObjects.AgentManager;
-import DomainEntities.Agent;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.scene.Node;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.control.TextField;
-import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.ColumnConstraints;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-
-import java.net.URL;
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.ResourceBundle;
-
 public class AgentController {
+<<<<<<< HEAD
 
     private String formMode = "Navigate";  //form mode includes: navigate, new, edit
 
@@ -359,4 +337,6 @@ public class AgentController {
         //set form in read only mode
         setNavigateMode();
     }
+=======
+>>>>>>> parent of 1a9e607... Updated AgentController with detail view code
 }
