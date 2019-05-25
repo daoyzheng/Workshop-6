@@ -359,7 +359,4 @@ public class AgentController {
         //set form in read only mode
         setNavigateMode();
     }
-
-
-
 }

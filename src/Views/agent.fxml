@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.201" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.AgentController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.AgentController">
    <children>
       <TabPane prefHeight="461.0" prefWidth="675.0" style="-fx-tab-max-height: 20;" tabClosingPolicy="UNAVAILABLE">
         <tabs>
@@ -210,6 +210,7 @@
                               <Label text="[error msg]" GridPane.columnIndex="2" GridPane.rowIndex="9" />
                              </children>
                          </GridPane>
+                        <ComboBox fx:id="cboAgent" layoutX="14.0" layoutY="14.0" prefWidth="150.0" />
                      </children></AnchorPane>
             </content>
           </Tab>
