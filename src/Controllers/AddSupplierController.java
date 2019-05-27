@@ -10,10 +10,12 @@ import DataAccessObjects.SupplierManager;
 import DomainEntities.Product;
 import DomainEntities.ProductSupplier;
 import DomainEntities.Supplier;
+import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -139,5 +141,20 @@ public class AddSupplierController {
                 }
             }
         });
+
+        // Add a listener to the textProperty of the combobox editor. The
+        // listener will simply filter the list every time the input is changed
+        // as long as the user hasn't selected an item in the list.
+        cbSupplier.getEditor().textProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue == null) {
+                supplierObservableList.removeAll(supplierObservableList);
+                supplierObservableList.addAll(SupplierManager.getAllSuppliers());
+            } else {
+                supplierObservableList.removeAll(supplierObservableList);
+                supplierObservableList.addAll(SupplierManager.getSupplierByKeyWord(newValue));
+            }
+        });
+
+        cbSupplier.setItems(supplierObservableList);
     }
 }
