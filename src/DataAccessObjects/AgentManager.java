@@ -126,7 +126,7 @@ public class AgentManager {
     }
 
     //add a new Agent to the database, returns true if successful
-    public static int addAgent(Agent newAgent) {
+    public static int addAgent(Agent newAgent) throws SQLException, ClassNotFoundException {
         int newAgtId = 0;
 
         String sql = "INSERT INTO agents (" +
@@ -193,7 +193,7 @@ public class AgentManager {
 
     //update an Agent record in the database, returns true if successful
     public static boolean updateAgent(Agent changedAgent) throws SQLException, ClassNotFoundException {
-
+        System.out.println("enter update agent");
         String sql = "update Agents " +
                 "set AgtFirstName=?, " +
                 "AgtMiddleInitial=?, " +
