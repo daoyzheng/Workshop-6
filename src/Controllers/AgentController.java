@@ -217,6 +217,12 @@ public class AgentController {
                 currentAgent = tvNavTable.getSelectionModel().getSelectedItem();
                 setEditMode(currentAgent);
             }});
+
+        setupFocusListenerTfFname();  //First name is text
+        setupFocusListenerTfLname();  //Last name is text
+        setupFocusListenerTfAgtEmail(); //Email is valid email
+        setupFocusListenerTfAgtBusPhone();  //phone is (###) ###-#### format
+        setupFocusListenerTfAgtUsername();  //Username is unique
      }
 
     //*******************************     NAVIGATE MODE      ********************************//
@@ -262,7 +268,7 @@ public class AgentController {
             Node n = nodeList.get(i);
             String controlStyleClass = n.getStyleClass().toString();
             //hide all error message controls that match the styleclass
-            if (controlStyleClass.contains("FieldErrorMsg")) {
+            if (controlStyleClass.contains("DetailError")) {
                 n.setVisible(false);
             }
         }
@@ -315,25 +321,25 @@ public class AgentController {
         //check if any errors messages are displayed
         int errorCount = 0;
 
-//        //get list of all controls in the grid pane
-//        ObservableList<Node> nodeList = grPane.getChildren();
-//
-//        for (int i = 0; i < nodeList.size(); i++) {
-//            //get the control and its style class
-//            Node n = nodeList.get(i);
-//            String controlStyleClass = n.getStyleClass().toString();
-//            if (controlStyleClass.contains("FieldErrorMsg")) {
-//                if (!n.isVisible()) {
-//                    errorCount += 1;
-//                };
-//            }
-//        }
-        System.out.println(formMode);
-        System.out.println("start method");
-        //test if form is in new mode, if true set ID = 0 as temp value
+        //get list of all controls in the grid pane
+        ObservableList<Node> nodeList = grPane.getChildren();
+
+        for (int i = 0; i < nodeList.size(); i++) {
+            //get the control and its style class
+            Node n = nodeList.get(i);
+            String controlStyleClass = n.getStyleClass().toString();
+            if (controlStyleClass.contains("DetailError")) {
+                if (n.isVisible()) {
+                    errorCount += 1;
+                };
+            }
+        }
+        System.out.println("Error count: " + errorCount);
+
+         //test if form is in new mode, if true set ID = 0 as temp value
         if (errorCount == 0) {
             if (formMode.equals("New")) {
-                System.out.println("create new agent object");
+
                 Agent agtChanged = new Agent(
                         0,
                         tfFname.getText(),
@@ -347,9 +353,9 @@ public class AgentController {
                         Integer.parseInt(tfAgencyId.getText()));
                 try {
                     //insert item into database
-                    System.out.println("call add agent");
+
                     int newItemId = AgentManager.addAgent(agtChanged);
-                    System.out.println("call add agent");
+
                     if (newItemId != 0) {
                         JOptionPane.showMessageDialog(null, "New item created!",
                                 "", JOptionPane.INFORMATION_MESSAGE);
@@ -379,9 +385,7 @@ public class AgentController {
                         tfPassword.getText(),
                         Integer.parseInt(tfAgencyId.getText()));
 
-                //update item in database
-                System.out.println("start update");
-                System.out.println("start update");
+
 
                 try {
                     if (AgentManager.updateAgent(agtChanged)) {
@@ -430,8 +434,33 @@ public class AgentController {
                     {
                         //if not valid, display error msg
                         lbErrorAgtFirstName.setVisible(true);
-                        lbErrorAgtFirstName.setText("This is my error message");
-                        lbErrorAgtFirstName.setStyle("-fx-color-label-visible: red");
+                        lbErrorAgtFirstName.setText("First name is required.");
+                        lbErrorAgtFirstName.setStyle("-fx-text-fill:  red");
+                    }
+                }
+            }
+        });
+    }
+
+    public void setupFocusListenerTfLname() {
+
+        tfLname.focusedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> arg0, Boolean oldPropertyValue, Boolean newPropertyValue) {
+                if (!newPropertyValue)  //when field loses focus
+                {
+                    //run field validation rules
+                    if(Validator.isTfText(tfLname))
+                    {
+                        //else hide error message
+                        lbErrorAgtLastName.setVisible(false);
+                    }
+                    else
+                    {
+                        //if not valid, display error msg
+                        lbErrorAgtLastName.setVisible(true);
+                        lbErrorAgtLastName.setText("Last name is required.");
+                        lbErrorAgtLastName.setStyle("-fx-text-fill:  red");
                     }
                 }
             }
@@ -440,6 +469,83 @@ public class AgentController {
 
 
 
+
+    public void setupFocusListenerTfAgtEmail() {
+
+        tfEmail.focusedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> arg0, Boolean oldPropertyValue, Boolean newPropertyValue) {
+                if (!newPropertyValue)  //when field loses focus
+                {
+                    //run field validation rules
+                    if(Validator.isTfEmail(tfEmail))
+                    {
+                        //else hide error message
+                        lbErrorAgtEmail.setVisible(false);
+                    }
+                    else
+                    {
+                        //if not valid, display error msg
+                        lbErrorAgtEmail.setVisible(true);
+                        lbErrorAgtEmail.setText("Provide valid email\n i.e name@domain.com");
+                        lbErrorAgtEmail.setStyle("-fx-text-fill:  red");
+                    }
+                }
+            }
+        });
+    }
+
+    public void setupFocusListenerTfAgtBusPhone() {
+
+        tfBusPhone.focusedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> arg0, Boolean oldPropertyValue, Boolean newPropertyValue) {
+                if (!newPropertyValue)  //when field loses focus
+                {
+                    //run field validation rules
+                    if(Validator.isTfPhoneNumber(tfBusPhone))
+                    {
+                        //else hide error message
+                        lbErrorAgtBusPhone.setVisible(false);
+                    }
+                    else
+                    {
+                        //if not valid, display error msg
+                        lbErrorAgtBusPhone.setVisible(true);
+                        lbErrorAgtBusPhone.setText("Valid format (555) 555-5555 required");
+                        lbErrorAgtBusPhone.setStyle("-fx-text-fill:  red");
+                    }
+                }
+            }
+        });
+    }
+
+    public void setupFocusListenerTfAgtUsername() {
+
+        tfUsername.focusedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> arg0, Boolean oldPropertyValue, Boolean newPropertyValue) {
+                if (!newPropertyValue)  //when field loses focus
+                {
+
+                    System.out.println(AgentManager.checkAgentUsername(tfUsername.getText()));
+                    //run field validation rules
+                    if((AgentManager.checkAgentUsername(tfUsername.getText()) == 0) && (Validator.isTfText(tfUsername)))
+                    {
+                        //else hide error message
+                        lbErrorAgtUsername.setVisible(false);
+                    }
+                    else
+                    {
+                        //if not valid, display error msg
+                        lbErrorAgtUsername.setVisible(true);
+                        lbErrorAgtUsername.setText("A unique username is required");
+                        lbErrorAgtUsername.setStyle("-fx-text-fill:  red");
+                    }
+                }
+            }
+        });
+    }
 
 
 }

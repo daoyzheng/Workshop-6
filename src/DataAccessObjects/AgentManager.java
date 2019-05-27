@@ -4,6 +4,7 @@ import DataAccess.DbConnection;
 import DomainEntities.Agent;
 import javafx.scene.control.Alert;
 
+import javax.lang.model.element.NestingKind;
 import java.sql.*;
 import java.util.ArrayList;
 
@@ -162,12 +163,11 @@ public class AgentManager {
             int numRows = stmt.executeUpdate();
             if (numRows == 0)
             {
-                System.out.println("add new agent not successful");
                 Alert alert = new Alert(Alert.AlertType.ERROR, "No rows were updated. Contact Tech Support.");
                 alert.showAndWait();
             }
             else {
-                System.out.println("add new agent successful");
+
                 //get id of new agent added to database
                 //create statement
                 Statement stmt2 = conn.createStatement();
@@ -193,7 +193,7 @@ public class AgentManager {
 
     //update an Agent record in the database, returns true if successful
     public static boolean updateAgent(Agent changedAgent) throws SQLException, ClassNotFoundException {
-        System.out.println("enter update agent");
+
         String sql = "update Agents " +
                 "set AgtFirstName=?, " +
                 "AgtMiddleInitial=?, " +
@@ -231,16 +231,11 @@ public class AgentManager {
                 alert.showAndWait();
             }
             else {
-
-                System.out.println("result = true");
                 result = true;
             }
 
-            System.out.println("closing conn");
-
             conn.close();
 
-            System.out.println("conn closed");
         }
         catch (SQLException e)
         {
@@ -256,24 +251,29 @@ public class AgentManager {
         return result;
     }
 
-    //check if a username is unqiue value
-    public static boolean checkAgentUsername(String username) {
-        boolean result = true;
+    //check if a username is unique value
+    public static int checkAgentUsername(String username) {
+        int result = 0;
 
         try {
             //create DB connection
             Connection conn =  DbConnection.getConnection();
             //create statement
             Statement stmt = conn.createStatement();
-
+            String sql = "SELECT COUNT(AgtUserName) As rowcount FROM agents WHERE AgtUserName=" + username;
+            System.out.println(sql);
+            System.out.println("username");
             //query database
-            ResultSet rs = stmt.executeQuery("SELECT COUNT(AgtUserName) FROM agents WHERE AgtUserName=" + username);
+            ResultSet rs = stmt.executeQuery(sql);
 
+            if(rs.last()){
+                result = rs.getInt(1);
+                System.out.println(result + "");
+            } else {
+                result = 0;
+            }
 
-            //create Array list to capture data from DB query rs
-            System.out.println(rs.getFetchSize()+"");
-
-            conn.close();
+           conn.close();
         }
         catch (ClassNotFoundException e) {
             e.printStackTrace();
