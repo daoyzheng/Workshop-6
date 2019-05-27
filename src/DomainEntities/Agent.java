@@ -43,35 +43,127 @@ public class Agent {
 
 
     //properties
-    public int getAgentId() { return agentId.getValue();}
-    public void setAgentId(int agentId) { this.agentId.set(agentId); }
 
-    public String getAgtFirstName() { return agtFirstName.getValue(); }
-    public void setAgtFirstName(String agtFirstName) { this.agtFirstName.set(agtFirstName); }
 
-    public String getAgtMiddleInitial() { return agtMiddleInitial.getValue(); }
-    public void setAgtMiddleInitial(String agtMiddleInitial) { this.agtMiddleInitial.set(agtMiddleInitial); }
+    public int getAgentId() {
+        return agentId.get();
+    }
 
-    public String getAgtLastName() { return agtLastName.getValue(); }
-    public void setAgtLastName(String agtLastName) { this.agtLastName.set(agtLastName); }
+    public SimpleIntegerProperty agentIdProperty() {
+        return agentId;
+    }
 
-    public String getAgtBusPhone() { return agtBusPhone.getValue(); }
-    public void setAgtBusPhone(String agtBusPhone) { this.agtBusPhone.set(agtBusPhone); }
+    public void setAgentId(int agentId) {
+        this.agentId.set(agentId);
+    }
 
-    public String getAgtEmail() { return agtEmail.getValue(); }
-    public void setAgtEmail(String agtEmail) { this.agtEmail.set(agtEmail); }
+    public String getAgtFirstName() {
+        return agtFirstName.get();
+    }
 
-    public String getAgtPosition() { return agtPosition.getValue(); }
-    public void setAgtPosition(String agtPosition) { this.agtPosition.set(agtPosition); }
+    public SimpleStringProperty agtFirstNameProperty() {
+        return agtFirstName;
+    }
 
-    public String getAgtUserName() { return agtUserName.getValue(); }
-    public void setAgtUserName(String agtUserName) { this.agtUserName.set(agtUserName); }
+    public void setAgtFirstName(String agtFirstName) {
+        this.agtFirstName.set(agtFirstName);
+    }
 
-    public String getAgtPassword() { return agtPassword.getValue(); }
-    public void setAgtPassword(String agtPassword) { this.agtPassword.set(agtPassword); }
+    public String getAgtMiddleInitial() {
+        return agtMiddleInitial.get();
+    }
 
-    public int getAgencyId() { return agencyId.getValue(); }
-    public void setAgencyId(int agencyId) { this.agencyId.set(agencyId); }
+    public SimpleStringProperty agtMiddleInitialProperty() {
+        return agtMiddleInitial;
+    }
+
+    public void setAgtMiddleInitial(String agtMiddleInitial) {
+        this.agtMiddleInitial.set(agtMiddleInitial);
+    }
+
+    public String getAgtLastName() {
+        return agtLastName.get();
+    }
+
+    public SimpleStringProperty agtLastNameProperty() {
+        return agtLastName;
+    }
+
+    public void setAgtLastName(String agtLastName) {
+        this.agtLastName.set(agtLastName);
+    }
+
+    public String getAgtBusPhone() {
+        return agtBusPhone.get();
+    }
+
+    public SimpleStringProperty agtBusPhoneProperty() {
+        return agtBusPhone;
+    }
+
+    public void setAgtBusPhone(String agtBusPhone) {
+        this.agtBusPhone.set(agtBusPhone);
+    }
+
+    public String getAgtEmail() {
+        return agtEmail.get();
+    }
+
+    public SimpleStringProperty agtEmailProperty() {
+        return agtEmail;
+    }
+
+    public void setAgtEmail(String agtEmail) {
+        this.agtEmail.set(agtEmail);
+    }
+
+    public String getAgtPosition() {
+        return agtPosition.get();
+    }
+
+    public SimpleStringProperty agtPositionProperty() {
+        return agtPosition;
+    }
+
+    public void setAgtPosition(String agtPosition) {
+        this.agtPosition.set(agtPosition);
+    }
+
+    public String getAgtUserName() {
+        return agtUserName.get();
+    }
+
+    public SimpleStringProperty agtUserNameProperty() {
+        return agtUserName;
+    }
+
+    public void setAgtUserName(String agtUserName) {
+        this.agtUserName.set(agtUserName);
+    }
+
+    public String getAgtPassword() {
+        return agtPassword.get();
+    }
+
+    public SimpleStringProperty agtPasswordProperty() {
+        return agtPassword;
+    }
+
+    public void setAgtPassword(String agtPassword) {
+        this.agtPassword.set(agtPassword);
+    }
+
+    public int getAgencyId() {
+        return agencyId.get();
+    }
+
+    public SimpleIntegerProperty agencyIdProperty() {
+        return agencyId;
+    }
+
+    public void setAgencyId(int agencyId) {
+        this.agencyId.set(agencyId);
+    }
 
     //methods
     @Override
