@@ -3,14 +3,14 @@
   <component name="ChangeListManager">
     <list default="true" id="d54214f6-0d71-4717-81a4-e647c8cdc3be" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Workshop-6/Controllers/AgentController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Workshop-6/Controllers/AgentController$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Workshop-6/Controllers/AgentController$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Workshop-6/Controllers/AgentController$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Workshop-6/Controllers/AgentController$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Workshop-6/Controllers/AgentController$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Workshop-6/Controllers/AgentController$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Workshop-6/Controllers/AgentController$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Workshop-6/Controllers/AgentController$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Workshop-6/Controllers/AgentController$5.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Workshop-6/Controllers/AgentController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Workshop-6/Controllers/AgentController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Workshop-6/DataAccessObjects/AgentManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Workshop-6/DataAccessObjects/AgentManager.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Workshop-6/DomainEntities/Agent.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Workshop-6/DomainEntities/Agent.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Workshop-6/Views/agent.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Workshop-6/Views/agent.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controllers/AgentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/AgentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controllers/Validator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/Validator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DataAccessObjects/AgentManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataAccessObjects/AgentManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Views/agent.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/agent.fxml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -24,22 +24,27 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/DataAccessObjects/AgentManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="31" lean-forward="true" selection-start-line="2" selection-start-column="31" selection-end-line="2" selection-end-column="31" />
+            <state relative-caret-position="82">
+              <caret line="262" column="34" selection-start-line="262" selection-start-column="34" selection-end-line="262" selection-end-column="34" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Controllers/AgentController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="493">
-              <caret line="166" column="34" lean-forward="true" selection-start-line="166" selection-start-column="34" selection-end-line="166" selection-end-column="34" />
+            <state relative-caret-position="187">
+              <caret line="535" column="61" lean-forward="true" selection-start-line="535" selection-start-column="61" selection-end-line="535" selection-end-column="61" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#3842#3843#0" expanded="true" />
+                <element signature="e#3867#3868#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -48,8 +53,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Controllers/Validator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="459">
-              <caret line="28" selection-start-line="28" selection-end-line="28" />
+            <state relative-caret-position="476">
+              <caret line="28" lean-forward="true" selection-start-line="28" selection-end-line="28" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -60,10 +65,9 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/DomainEntities/Agent.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="170" column="61" lean-forward="true" selection-start-line="170" selection-start-column="61" selection-end-line="170" selection-end-column="61" />
+            <state relative-caret-position="354">
+              <caret line="47" column="29" selection-start-line="47" selection-start-column="29" selection-end-line="47" selection-end-column="29" />
               <folding>
-                <element signature="e#1668#1669#0" expanded="true" />
                 <element signature="e#1704#1705#0" expanded="true" />
                 <element signature="e#1758#1759#0" expanded="true" />
                 <element signature="e#1788#1789#0" expanded="true" />
@@ -123,8 +127,6 @@
                 <element signature="e#4227#4228#0" expanded="true" />
                 <element signature="e#4272#4273#0" expanded="true" />
                 <element signature="e#4315#4316#0" expanded="true" />
-                <element signature="e#4375#4376#0" expanded="true" />
-                <element signature="e#4442#4443#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -133,8 +135,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Views/agent.fxml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3451">
-              <caret line="203" column="21" selection-start-line="203" selection-start-column="21" selection-end-line="203" selection-end-column="21" />
+            <state relative-caret-position="227">
+              <caret line="203" column="21" lean-forward="true" selection-start-line="203" selection-start-column="21" selection-end-line="203" selection-end-column="21" />
             </state>
           </provider>
           <provider editor-type-id="JavaFX-Scene-Builder" />
@@ -213,26 +215,25 @@
         <option value="$PROJECT_DIR$/src/DataAccessObjects/SupplierManager.java" />
         <option value="$PROJECT_DIR$/src/Controllers/ProductSupplierController.java" />
         <option value="$PROJECT_DIR$/src/Controllers/AddSupplierController.java" />
+        <option value="$PROJECT_DIR$/src/DomainEntities/Agent.java" />
         <option value="$PROJECT_DIR$/src/Views/agent.fxml" />
         <option value="$PROJECT_DIR$/src/Controllers/Validator.java" />
         <option value="$PROJECT_DIR$/src/DataAccessObjects/AgentManager.java" />
-        <option value="$PROJECT_DIR$/src/DomainEntities/Agent.java" />
         <option value="$PROJECT_DIR$/src/Controllers/AgentController.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1382" />
-    <option name="height" value="784" />
+    <option name="x" value="676" />
+    <option name="width" value="697" />
+    <option name="height" value="728" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -279,7 +280,7 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -356,8 +357,6 @@
       <workItem from="1558805440131" duration="14888000" />
       <workItem from="1558956610839" duration="8538000" />
       <workItem from="1558978974437" duration="7832000" />
-      <workItem from="1559048605475" duration="3071000" />
-      <workItem from="1559060270704" duration="2909000" />
     </task>
     <task id="LOCAL-00001" summary="Remove product, supplier and product supplier interface. Rename file from Data Access Object (DAO) to Manager">
       <created>1558154500962</created>
@@ -457,37 +456,17 @@
       <option name="project" value="LOCAL" />
       <updated>1558965585499</updated>
     </task>
-    <task id="LOCAL-00015" summary="Modified agent class">
-      <created>1559064662220</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1559064662220</updated>
-    </task>
-    <task id="LOCAL-00016" summary="Added agent name search">
-      <created>1559064680843</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1559064680843</updated>
-    </task>
-    <task id="LOCAL-00017" summary="Added agent name search">
-      <created>1559064697322</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1559064697322</updated>
-    </task>
-    <option name="localTasksCounter" value="18" />
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="74982000" />
+    <option name="totallyTimeSpent" value="69002000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25567323" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24810892" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -503,7 +482,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Version Control" order="8" visible="true" weight="0.32242227" />
+      <window_info anchor="bottom" id="Version Control" order="8" weight="0.32242227" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Terminal" order="10" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
@@ -585,9 +564,7 @@
     <MESSAGE value="Updated agentManger" />
     <MESSAGE value="Updated agentController" />
     <MESSAGE value="Added validator class" />
-    <MESSAGE value="Modified agent class" />
-    <MESSAGE value="Added agent name search" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added agent name search" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added validator class" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/Controllers/CustomerController.java">
@@ -739,30 +716,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controllers/Validator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="28" selection-start-line="28" selection-end-line="28" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Views/agent.fxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3451">
-          <caret line="203" column="21" selection-start-line="203" selection-start-column="21" selection-end-line="203" selection-end-column="21" />
-        </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/DomainEntities/Agent.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="170" column="61" lean-forward="true" selection-start-line="170" selection-start-column="61" selection-end-line="170" selection-end-column="61" />
+        <state relative-caret-position="354">
+          <caret line="47" column="29" selection-start-line="47" selection-start-column="29" selection-end-line="47" selection-end-column="29" />
           <folding>
-            <element signature="e#1668#1669#0" expanded="true" />
             <element signature="e#1704#1705#0" expanded="true" />
             <element signature="e#1758#1759#0" expanded="true" />
             <element signature="e#1788#1789#0" expanded="true" />
@@ -822,16 +780,22 @@
             <element signature="e#4227#4228#0" expanded="true" />
             <element signature="e#4272#4273#0" expanded="true" />
             <element signature="e#4315#4316#0" expanded="true" />
-            <element signature="e#4375#4376#0" expanded="true" />
-            <element signature="e#4442#4443#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controllers/AgentController.java">
+    <entry file="file://$PROJECT_DIR$/src/Views/agent.fxml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="166" column="34" lean-forward="true" selection-start-line="166" selection-start-column="34" selection-end-line="166" selection-end-column="34" />
+        <state relative-caret-position="227">
+          <caret line="203" column="21" lean-forward="true" selection-start-line="203" selection-start-column="21" selection-end-line="203" selection-end-column="21" />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controllers/Validator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="28" lean-forward="true" selection-start-line="28" selection-end-line="28" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -840,8 +804,23 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/DataAccessObjects/AgentManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="31" lean-forward="true" selection-start-line="2" selection-start-column="31" selection-end-line="2" selection-end-column="31" />
+        <state relative-caret-position="82">
+          <caret line="262" column="34" selection-start-line="262" selection-start-column="34" selection-end-line="262" selection-end-column="34" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controllers/AgentController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="535" column="61" lean-forward="true" selection-start-line="535" selection-start-column="61" selection-end-line="535" selection-end-column="61" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3842#3843#0" expanded="true" />
+            <element signature="e#3867#3868#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
