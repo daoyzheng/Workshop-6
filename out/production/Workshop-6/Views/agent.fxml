@@ -43,7 +43,7 @@
                                     <Button fx:id="btnNavAdd" mnemonicParsing="false" onMouseClicked="#btnNavAddClick" prefWidth="110.0" text="Add new" />
                                     <Button fx:id="btnNavEdit" minWidth="50.0" mnemonicParsing="false" onMouseClicked="#btnNavEditClick" prefWidth="110.0" text="Edit selection" />
                                     <Label alignment="CENTER_RIGHT" contentDisplay="TOP" prefWidth="80.0" text="Search" textAlignment="RIGHT" />
-                                    <TextField prefHeight="25.0" prefWidth="208.0" />
+                                    <TextField fx:id="tfNavSearch" onKeyTyped="#tfNavSearchKeyTyped" prefHeight="25.0" prefWidth="208.0" />
                                  </children>
                                  <padding>
                                     <Insets top="5.0" />
