@@ -259,6 +259,7 @@ public class CustomerController {
         setupFocusListenerTfFname();  //First name is text
         setupFocusListenerTfLname();  //Last name is text
         setupFocusListenerTfCustEmail(); //Email is valid email
+        setupFocusListenerTfCustHomePhone();  //phone is (###) ###-#### format
         setupFocusListenerTfCustBusPhone();  //phone is (###) ###-#### format
         setupFocusListenerTfCustUsername();  //Username is unique
     }
@@ -550,6 +551,32 @@ public class CustomerController {
             }
         });
     }
+
+    public void setupFocusListenerTfCustHomePhone() {
+
+        tfPhoneHome.focusedProperty().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> arg0, Boolean oldPropertyValue, Boolean newPropertyValue) {
+                if (!newPropertyValue)  //when field loses focus
+                {
+                    //run field validation rules
+                    if(Validator.isTfPhoneNumber(tfPhoneHome))
+                    {
+                        //else hide error message
+                        lbErrorCustHomePhone.setVisible(false);
+                    }
+                    else
+                    {
+                        //if not valid, display error msg
+                        lbErrorCustHomePhone.setVisible(true);
+                        lbErrorCustHomePhone.setText("Valid format (555) 555-5555 required");
+                        lbErrorCustHomePhone.setStyle("-fx-text-fill:  red");
+                    }
+                }
+            }
+        });
+    }
+
 
     public void setupFocusListenerTfCustBusPhone() {
 
