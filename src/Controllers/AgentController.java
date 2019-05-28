@@ -4,7 +4,12 @@ import java.awt.*;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.ResourceBundle;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import DataAccessObjects.AgentManager;
 import DomainEntities.Agent;
@@ -20,6 +25,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.SingleSelectionModel;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
@@ -44,6 +50,7 @@ public class AgentController {
     @FXML private TableView<Agent> tvNavTable;
     @FXML private Button btnNavAdd;
     @FXML private Button btnNavEdit;
+    @FXML private TextField tfNavSearch;
 
     @FXML private TableColumn<Agent, Integer> colAgentId;
     @FXML private TableColumn<Agent, String> colAgtFirstName;
@@ -144,7 +151,22 @@ public class AgentController {
         selectionModel.select(tabDetail);
     }
 
+    @FXML
+    void tfNavSearchKeyTyped(KeyEvent event) {
+           System.out.println("pressed");
 
+        String strFilter = tfNavSearch.getText();
+
+        List<Agent> filteredList = navTableArrayList.stream()
+                .filter(d -> d.toString().contains(strFilter))
+                .collect(Collectors.toList());
+
+        System.out.println(filteredList);
+
+        ObservableList<Agent> data = FXCollections.observableArrayList(filteredList);
+        tvNavTable.setItems(data);
+
+    }
 
 
     /****************************************************************************
@@ -406,6 +428,11 @@ public class AgentController {
 
     private void filterNavTable() {
 
+
+
+
+
+
     }
 
 
@@ -546,6 +573,33 @@ public class AgentController {
             }
         });
     }
+
+//    public void setupFocusListerTfSearch() {
+//
+//        .focusedProperty().addListener(new ChangeListener<Boolean>() {
+//            @Override
+//            public void changed(ObservableValue<? extends Boolean> arg0, Boolean oldPropertyValue, Boolean newPropertyValue) {
+//                if (!newPropertyValue)  //when field loses focus
+//                {
+//
+//                    System.out.println(AgentManager.checkAgentUsername(tfUsername.getText()));
+//                    //run field validation rules
+//                    if((AgentManager.checkAgentUsername(tfUsername.getText()) == 0) && (Validator.isTfText(tfUsername)))
+//                    {
+//                        //else hide error message
+//                        lbErrorAgtUsername.setVisible(false);
+//                    }
+//                    else
+//                    {
+//                        //if not valid, display error msg
+//                        lbErrorAgtUsername.setVisible(true);
+//                        lbErrorAgtUsername.setText("A unique username is required");
+//                        lbErrorAgtUsername.setStyle("-fx-text-fill:  red");
+//                    }
+//                }
+//            }
+//        });
+//    }
 
 
 }
