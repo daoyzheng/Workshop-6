@@ -7,14 +7,17 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import Styles.PrettyListView;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.MenuBar;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 
 public class MainController {
 
@@ -31,11 +34,20 @@ public class MainController {
     private MenuBar menuBarTop;
 
     @FXML
+    private VBox vbLeft;
+
+    @FXML
+    private Button btnExpand;
+
+    @FXML
     private ListView<String> lvNavigation;
 
-    ArrayList<Pane> centerPanes = new ArrayList<>();
+    private ArrayList<Pane> centerPanes = new ArrayList<>();
 
 
+    /**
+     * When main layout initializes, create (5) instances of center layouts (agent, customer, ...), save them in an ArrayList<Pane>, when navigation ListView get clicked, switch BoarderPane's center to corresponding layout.
+     * */
     @FXML
     void initialize() {
         // setup ObservableList for navigation options
@@ -62,5 +74,20 @@ public class MainController {
         });
         // first time load app, select first option
         lvNavigation.getSelectionModel().select(0);
+    }
+
+
+    // --- Action Methods ---
+    private boolean isExpand = true;
+    public void btnExpandClicked(){
+        if (isExpand){
+            vbLeft.setPrefWidth(35);
+            btnExpand.setText("▶");
+        }
+        else{
+            vbLeft.setPrefWidth(140);
+            btnExpand.setText("◀");
+        }
+        isExpand = !isExpand;
     }
 }

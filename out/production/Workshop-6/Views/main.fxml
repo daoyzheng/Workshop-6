@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="bpMain" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.201" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.MainController">
+<BorderPane fx:id="bpMain" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" stylesheets="@../Styles/DarkTheme.css" xmlns="http://javafx.com/javafx/8.0.201" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.MainController">
    <top>
       <MenuBar fx:id="menuBarTop" BorderPane.alignment="CENTER">
         <menus>
@@ -29,6 +32,15 @@
       </MenuBar>
    </top>
    <left>
-      <ListView fx:id="lvNavigation" prefHeight="475.0" prefWidth="110.0" BorderPane.alignment="CENTER" />
+      <VBox fx:id="vbLeft" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" styleClass="background" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="btnExpand" alignment="CENTER" contentDisplay="CENTER" minWidth="30" mnemonicParsing="false" onAction="#btnExpandClicked" prefHeight="40.0" prefWidth="140" styleClass="button-expand" text="◀" textAlignment="CENTER" VBox.vgrow="ALWAYS">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <ListView fx:id="lvNavigation" prefHeight="475.0" prefWidth="140.0" styleClass="list-cell" stylesheets="@../Styles/ListCell.css" />
+         </children>
+      </VBox>
    </left>
 </BorderPane>
