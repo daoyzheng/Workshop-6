@@ -168,6 +168,6 @@ public class Agent {
     //methods
     @Override
     public String toString() {
-        return agtFirstName.get() + " " + agtLastName.get();
+        return agtLastName.get() + ", " + agtFirstName.get();
     }
 }
