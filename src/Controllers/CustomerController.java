@@ -275,11 +275,14 @@ public class CustomerController {
 
     //*******************************     EDIT MODE      ********************************//
     private void setEditMode(Customer cust) {
+
+        System.out.println("edit mode");
         formMode = "Edit";
+
         SelectionModel<Tab> selectionModel = tabpaneMain.getSelectionModel();
         selectionModel.select(tabDetail);
 
-        tfAgentId.setVisible(true);
+        tfCustomerId.setVisible(true);
         clearDetailErrorMessages();
         loadItemDetail(cust);
     }
@@ -289,7 +292,7 @@ public class CustomerController {
     private void setNewMode() {
         formMode = "New";
         System.out.println(formMode);
-        tfAgentId.setVisible(false);
+        tfCustomerId.setVisible(false);
         clearDetailErrorMessages();
         clearDetailForm();
     }
@@ -402,12 +405,14 @@ public class CustomerController {
                     //insert item into database
 
                     int newItemId = CustomerManager.addCustomer(custChanged);
-
+                    System.out.println("new item #: " + newItemId);
                     if (newItemId != 0) {
                         JOptionPane.showMessageDialog(null, "New item created!",
                                 "", JOptionPane.INFORMATION_MESSAGE);
                         currentCustomer = CustomerManager.getCustomerById(newItemId);
+                        System.out.println(currentCustomer);
                         setEditMode(currentCustomer);
+
                     } else {
                         JOptionPane.showMessageDialog(null, "Cannot save item.  Please correct input errors and try saving again.",
                                 "Warning", JOptionPane.ERROR_MESSAGE);
@@ -436,7 +441,7 @@ public class CustomerController {
                         tfPassword.getText(),
                         Integer.parseInt(tfAgentId.getText()));
 
-
+                        System.out.println(custChanged);
 
                 try {
                     if (CustomerManager.updateCustomer(custChanged)) {
@@ -453,16 +458,6 @@ public class CustomerController {
     }
 
 
-    /*******************************     FILTER NAV TABLE      ********************************/
-
-    private void filterNavTable() {
-
-
-
-
-
-
-    }
 
 
     /**********************************************************************************************
@@ -611,9 +606,9 @@ public class CustomerController {
                 if (!newPropertyValue)  //when field loses focus
                 {
 
-                    System.out.println(AgentManager.checkAgentUsername(tfUsername.getText()));
+                    System.out.println(CustomerManager.checkCustomerUsername(tfUsername.getText()));
                     //run field validation rules
-                    if((AgentManager.checkAgentUsername(tfUsername.getText()) == 0) && (Validator.isTfText(tfUsername)))
+                    if((CustomerManager.checkCustomerUsername(tfUsername.getText()) == 0) && (Validator.isTfText(tfUsername)))
                     {
                         //else hide error message
                         lbErrorCustUsername.setVisible(false);
@@ -629,6 +624,5 @@ public class CustomerController {
             }
         });
     }
-
 
 }

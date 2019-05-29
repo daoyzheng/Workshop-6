@@ -222,7 +222,7 @@ public class Customer {
     //methods
     @Override
     public String toString() {
-        return custLastName + ", " + custFirstName;
+        return getCustLastName() + ", " + getCustFirstName();
     }
 }
 
