@@ -40,8 +40,9 @@
                               </TableView>
                               <HBox layoutX="6.0" layoutY="7.0" prefHeight="38.0" prefWidth="652.0" spacing="10.0">
                                  <children>
-                                    <Button fx:id="btnNavAdd" minWidth="0.0" mnemonicParsing="false" onMouseClicked="#btnNavAddClick" prefWidth="200.0" text="Add new" />
-                                    <Button fx:id="btnNavEdit" minWidth="0.0" mnemonicParsing="false" onMouseClicked="#btnNavEditClick" prefHeight="29.0" prefWidth="200.0" text="Edit selection" />
+                                    <Button fx:id="btnNavAdd" minWidth="0.0" mnemonicParsing="false" onMouseClicked="#btnNavAddClick" prefHeight="0.0" prefWidth="140.0" text="Add new" />
+                                    <Button fx:id="btnNavEdit" minWidth="0.0" mnemonicParsing="false" onMouseClicked="#btnNavEditClick" prefHeight="0.0" prefWidth="140.0" text="Edit agent" />
+                                    <Button fx:id="btnNavAgencies" mnemonicParsing="false" onMouseClicked="#btnNavAgenciesClicked" prefHeight="0.0" prefWidth="140.0" text="Agencies" />
                                     <Label alignment="CENTER_RIGHT" contentDisplay="TOP" prefHeight="21.0" prefWidth="137.0" text="Search by name:" textAlignment="RIGHT" />
                                     <TextField fx:id="tfNavSearch" onKeyTyped="#tfNavSearchKeyTyped" prefHeight="37.0" prefWidth="155.0" />
                                  </children>

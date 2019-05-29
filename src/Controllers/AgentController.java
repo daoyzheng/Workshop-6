@@ -1,6 +1,7 @@
 package Controllers;
 
 import java.awt.*;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -19,7 +20,10 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -29,6 +33,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
 
 import javax.swing.*;
 
@@ -50,6 +55,7 @@ public class AgentController {
     @FXML private TableView<Agent> tvNavTable;
     @FXML private Button btnNavAdd;
     @FXML private Button btnNavEdit;
+    @FXML private Button btnNavAgencies;
     @FXML private TextField tfNavSearch;
 
     @FXML private TableColumn<Agent, Integer> colAgentId;
@@ -141,6 +147,16 @@ public class AgentController {
         setNewMode();
         SingleSelectionModel<Tab> selectionModel = tabpaneMain.getSelectionModel();
         selectionModel.select(tabDetail);
+    }
+
+    @FXML
+    void btnNavAgenciesClicked(MouseEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../Views/agency.fxml"));
+        Parent agency = fxmlLoader.load();
+        Stage stage = new Stage();
+        stage.setTitle("Manage agencies");
+        stage.setScene(new Scene(agency));
+        stage.show();
     }
 
     @FXML
