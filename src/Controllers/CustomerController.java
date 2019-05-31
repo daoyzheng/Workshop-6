@@ -4,6 +4,7 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
@@ -71,7 +72,7 @@ public class CustomerController {
     @FXML private TextField tfEmail;
     @FXML private TextField tfUsername;
     @FXML private TextField tfPassword;
-    @FXML private TextField tfAgentId;
+    @FXML private ComboBox<Agent> cboAgentId;
     @FXML private Label lbErrorCustFirstName;
     @FXML private Label lbErrorCustLastName;
     @FXML private Label lbErrorCustAddress;
@@ -174,60 +175,6 @@ public class CustomerController {
 
     @FXML
     void initialize() {
-        assert tabpaneMain != null : "fx:id=\"tabpaneMain\" was not injected: check your FXML file 'customer.fxml'.";
-        assert tabNav != null : "fx:id=\"tabNav\" was not injected: check your FXML file 'customer.fxml'.";
-        assert tvNavTable != null : "fx:id=\"tvNavTable\" was not injected: check your FXML file 'customer.fxml'.";
-        assert colCustomerId != null : "fx:id=\"colCustomerId\" was not injected: check your FXML file 'customer.fxml'.";
-        assert colCustFirstName != null : "fx:id=\"colCustFirstName\" was not injected: check your FXML file 'customer.fxml'.";
-        assert colCustLastName != null : "fx:id=\"colCustLastName\" was not injected: check your FXML file 'customer.fxml'.";
-        assert colCustAddress != null : "fx:id=\"colCustAddress\" was not injected: check your FXML file 'customer.fxml'.";
-        assert colCustCity != null : "fx:id=\"colCustCity\" was not injected: check your FXML file 'customer.fxml'.";
-        assert colCustProv != null : "fx:id=\"colCustProv\" was not injected: check your FXML file 'customer.fxml'.";
-        assert colCustPostal != null : "fx:id=\"colCustPostal\" was not injected: check your FXML file 'customer.fxml'.";
-        assert colCustCountry != null : "fx:id=\"colCustCountry\" was not injected: check your FXML file 'customer.fxml'.";
-        assert colCustHomePhone != null : "fx:id=\"colCustHomePhone\" was not injected: check your FXML file 'customer.fxml'.";
-        assert colCustBusPhone != null : "fx:id=\"colCustBusPhone\" was not injected: check your FXML file 'customer.fxml'.";
-        assert colCustEmail != null : "fx:id=\"colCustEmail\" was not injected: check your FXML file 'customer.fxml'.";
-        assert colCustUserName != null : "fx:id=\"colCustUserName\" was not injected: check your FXML file 'customer.fxml'.";
-        assert colCustPassword != null : "fx:id=\"colCustPassword\" was not injected: check your FXML file 'customer.fxml'.";
-        assert colAgentId != null : "fx:id=\"colAgentId\" was not injected: check your FXML file 'customer.fxml'.";
-        assert btnNavAdd != null : "fx:id=\"btnNavAdd\" was not injected: check your FXML file 'customer.fxml'.";
-        assert btnNavEdit != null : "fx:id=\"btnNavEdit\" was not injected: check your FXML file 'customer.fxml'.";
-        assert tfNavSearch != null : "fx:id=\"tfNavSearch\" was not injected: check your FXML file 'customer.fxml'.";
-        assert tabDetail != null : "fx:id=\"tabDetail\" was not injected: check your FXML file 'customer.fxml'.";
-        assert grPane != null : "fx:id=\"grPane\" was not injected: check your FXML file 'customer.fxml'.";
-        assert gpDetails != null : "fx:id=\"gpDetails\" was not injected: check your FXML file 'customer.fxml'.";
-        assert tfCustomerId != null : "fx:id=\"tfCustomerId\" was not injected: check your FXML file 'customer.fxml'.";
-        assert tfFname != null : "fx:id=\"tfFname\" was not injected: check your FXML file 'customer.fxml'.";
-        assert tfLname != null : "fx:id=\"tfLname\" was not injected: check your FXML file 'customer.fxml'.";
-        assert tfAddress != null : "fx:id=\"tfAddress\" was not injected: check your FXML file 'customer.fxml'.";
-        assert tfCity != null : "fx:id=\"tfCity\" was not injected: check your FXML file 'customer.fxml'.";
-        assert tfProv != null : "fx:id=\"tfProv\" was not injected: check your FXML file 'customer.fxml'.";
-        assert tfPostal != null : "fx:id=\"tfPostal\" was not injected: check your FXML file 'customer.fxml'.";
-        assert tfCountry != null : "fx:id=\"tfCountry\" was not injected: check your FXML file 'customer.fxml'.";
-        assert tfPhoneHome != null : "fx:id=\"tfPhoneHome\" was not injected: check your FXML file 'customer.fxml'.";
-        assert tfPhoneBus != null : "fx:id=\"tfPhoneBus\" was not injected: check your FXML file 'customer.fxml'.";
-        assert tfEmail != null : "fx:id=\"tfEmail\" was not injected: check your FXML file 'customer.fxml'.";
-        assert tfUsername != null : "fx:id=\"tfUsername\" was not injected: check your FXML file 'customer.fxml'.";
-        assert tfPassword != null : "fx:id=\"tfPassword\" was not injected: check your FXML file 'customer.fxml'.";
-        assert tfAgentId != null : "fx:id=\"tfAgentId\" was not injected: check your FXML file 'customer.fxml'.";
-        assert lbErrorCustFirstName != null : "fx:id=\"lbErrorCustFirstName\" was not injected: check your FXML file 'customer.fxml'.";
-        assert lbErrorCustLastName != null : "fx:id=\"lbErrorCustLastName\" was not injected: check your FXML file 'customer.fxml'.";
-        assert lbErrorCustAddress != null : "fx:id=\"lbErrorCustAddress\" was not injected: check your FXML file 'customer.fxml'.";
-        assert lbErrorCustCity != null : "fx:id=\"lbErrorCustCity\" was not injected: check your FXML file 'customer.fxml'.";
-        assert lbErrorCustProv != null : "fx:id=\"lbErrorCustProv\" was not injected: check your FXML file 'customer.fxml'.";
-        assert lbErrorCustPostal != null : "fx:id=\"lbErrorCustPostal\" was not injected: check your FXML file 'customer.fxml'.";
-        assert lbErrorCustCountry != null : "fx:id=\"lbErrorCustCountry\" was not injected: check your FXML file 'customer.fxml'.";
-        assert lbErrorCustHomePhone != null : "fx:id=\"lbErrorCustHomePhone\" was not injected: check your FXML file 'customer.fxml'.";
-        assert lbErrorCustBusPhone != null : "fx:id=\"lbErrorCustBusPhone\" was not injected: check your FXML file 'customer.fxml'.";
-        assert lbErrorCustEmail != null : "fx:id=\"lbErrorCustEmail\" was not injected: check your FXML file 'customer.fxml'.";
-        assert lbErrorCustUsername != null : "fx:id=\"lbErrorCustUsername\" was not injected: check your FXML file 'customer.fxml'.";
-        assert lbErrorCustPassword != null : "fx:id=\"lbErrorCustPassword\" was not injected: check your FXML file 'customer.fxml'.";
-        assert lbErrorCustAgentId != null : "fx:id=\"lbErrorCustAgentId\" was not injected: check your FXML file 'customer.fxml'.";
-        assert btnDetailClose != null : "fx:id=\"btnDetailClose\" was not injected: check your FXML file 'customer.fxml'.";
-        assert btnDetailSaveClose != null : "fx:id=\"btnDetailSaveClose\" was not injected: check your FXML file 'customer.fxml'.";
-        assert btnDetailSave != null : "fx:id=\"btnDetailSave\" was not injected: check your FXML file 'customer.fxml'.";
-        assert btnDetailUndo != null : "fx:id=\"btnDetailUndo\" was not injected: check your FXML file 'customer.fxml'.";
 
         //setup up table cell factories
         colCustomerId.setCellValueFactory(cellData -> cellData.getValue().customerIdProperty().asObject());
@@ -291,8 +238,8 @@ public class CustomerController {
 
     private void setNewMode() {
         formMode = "New";
-        System.out.println(formMode);
         tfCustomerId.setVisible(false);
+        cboAgentId.setValue(null);
         clearDetailErrorMessages();
         clearDetailForm();
     }
@@ -356,7 +303,23 @@ public class CustomerController {
         tfEmail.setText(c.getCustEmail());
         tfUsername.setText(c.getCustUserName());
         tfPassword.setText(c.getCustPassword());
-        tfAgentId.setText(String.valueOf(c.getAgentId()));
+
+        //refresh the Agency Combobox data source
+        ArrayList<Agent> agents = AgentManager.getAllAgents();
+        ObservableList<Agent> obsList = FXCollections.observableArrayList(agents);
+        cboAgentId.setItems(obsList);
+
+        int agentId = c.getAgentId();
+
+        //Set agency id in combo box
+        if (!Objects.equals(agentId, null) || !Objects.equals(agentId, 0)) {  //test if value is null or zero
+            Agent currentAgent = AgentManager.getAgentById(c.getAgentId());
+            SelectionModel<Agent> selectionModel = cboAgentId.getSelectionModel();
+            selectionModel.selectFirst();
+            while (selectionModel.getSelectedItem().getAgencyId() != c.getAgentId()) {
+                selectionModel.selectNext();
+            }
+        }
     }
 
 
@@ -380,7 +343,6 @@ public class CustomerController {
                 };
             }
         }
-        System.out.println("Error count: " + errorCount);
 
         //test if form is in new mode, if true set ID = 0 as temp value
         if (errorCount == 0) {
@@ -400,7 +362,7 @@ public class CustomerController {
                         tfEmail.getText(),
                         tfUsername.getText(),
                         tfPassword.getText(),
-                        Integer.parseInt(tfAgentId.getText()));
+                        cboAgentId.getSelectionModel().getSelectedItem().getAgencyId());
                 try {
                     //insert item into database
 
@@ -439,10 +401,7 @@ public class CustomerController {
                         tfEmail.getText(),
                         tfUsername.getText(),
                         tfPassword.getText(),
-                        Integer.parseInt(tfAgentId.getText()));
-
-                        System.out.println(custChanged);
-
+                        cboAgentId.getSelectionModel().getSelectedItem().getAgencyId());
                 try {
                     if (CustomerManager.updateCustomer(custChanged)) {
                         JOptionPane.showMessageDialog(null, "Update successful.",

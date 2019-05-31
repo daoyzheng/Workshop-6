@@ -19,7 +19,7 @@
    <children>
       <TabPane prefHeight="461.0" prefWidth="675.0" style="-fx-tab-max-height: 20;" tabClosingPolicy="UNAVAILABLE">
         <tabs>
-          <Tab text="Agent List">
+          <Tab text="Booking List">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="390.0" prefWidth="623.0">
                      <children>
@@ -42,14 +42,12 @@
                               </HBox>
                               <TableView layoutX="2.0" layoutY="114.0" prefHeight="316.0" prefWidth="659.0">
                                 <columns>
-                                  <TableColumn prefWidth="75.0" text="First Name" />
-                                  <TableColumn prefWidth="75.0" text="M. Initial" />
-                                    <TableColumn prefWidth="75.0" text="Last Name" />
-                                    <TableColumn prefWidth="109.0" text="Business Phone" />
-                                    <TableColumn prefWidth="93.0" text="Email" />
-                                    <TableColumn prefWidth="66.0" text="Username" />
-                                    <TableColumn prefWidth="89.0" text="Password" />
-                                    <TableColumn prefWidth="75.0" text="Agency ID" />
+                                  <TableColumn prefWidth="75.0" text="Book Date" />
+                                  <TableColumn prefWidth="75.0" text="Book No." />
+                                    <TableColumn prefWidth="75.0" text="Travellers" />
+                                    <TableColumn prefWidth="109.0" text="Customer Name" />
+                                    <TableColumn prefWidth="93.0" text="Trip Type" />
+                                    <TableColumn prefWidth="66.0" text="Package" />
                                 </columns>
                               </TableView>
                               <HBox layoutX="6.0" layoutY="7.0" prefHeight="38.0" prefWidth="652.0" spacing="10.0">
@@ -68,7 +66,7 @@
                   </AnchorPane>
             </content>
           </Tab>
-          <Tab text="Agent Editor">
+          <Tab text="Booking Editor">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="397.0" prefWidth="675.0">
                      <children>
@@ -95,119 +93,96 @@
                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                              </rowConstraints>
                              <children>
-                                 <Label text="Agent ID">
+                                 <Label text="Booking Date" GridPane.rowIndex="1">
                                      <GridPane.margin>
                                          <Insets bottom="5.0" left="20.0" right="5.0" top="5.0" />
                                      </GridPane.margin>
                                  </Label>
-                                 <Label text="First Name" GridPane.rowIndex="1">
+                                 <Label text="Booking No." GridPane.rowIndex="2">
                                      <GridPane.margin>
                                          <Insets bottom="5.0" left="20.0" right="5.0" top="5.0" />
                                      </GridPane.margin>
                                  </Label>
-                                 <Label text="Middle Initial" GridPane.rowIndex="2">
+                                 <Label text="Traveller No." GridPane.rowIndex="3">
                                      <GridPane.margin>
                                          <Insets bottom="5.0" left="20.0" right="5.0" top="5.0" />
                                      </GridPane.margin>
                                  </Label>
-                                 <Label text="Last Name" GridPane.rowIndex="3">
+                                 <Label text="First Name" GridPane.rowIndex="4">
                                      <GridPane.margin>
                                          <Insets bottom="5.0" left="20.0" right="5.0" top="5.0" />
                                      </GridPane.margin>
                                  </Label>
-                                 <Label text="Business Phone" GridPane.rowIndex="4">
+                                 <Label text="Last Name" GridPane.rowIndex="5">
                                      <GridPane.margin>
                                          <Insets bottom="5.0" left="20.0" right="5.0" top="5.0" />
                                      </GridPane.margin>
                                  </Label>
-                                 <Label text="Email" GridPane.rowIndex="5">
+                                 <Label text="Trip Type" GridPane.rowIndex="6">
                                      <GridPane.margin>
                                          <Insets bottom="5.0" left="20.0" right="5.0" top="5.0" />
                                      </GridPane.margin>
                                  </Label>
-                                 <Label text="Position" GridPane.rowIndex="6">
+                                 <Label text="Package" GridPane.rowIndex="7">
                                      <GridPane.margin>
                                          <Insets bottom="5.0" left="20.0" right="5.0" top="5.0" />
                                      </GridPane.margin>
                                  </Label>
-                                 <Label text="Username" GridPane.rowIndex="7">
+                                 <Label text="AgencyId">
                                      <GridPane.margin>
                                          <Insets bottom="5.0" left="20.0" right="5.0" top="5.0" />
                                      </GridPane.margin>
                                  </Label>
-                                 <Label text="Password" GridPane.rowIndex="8">
-                                     <GridPane.margin>
-                                         <Insets bottom="5.0" left="20.0" right="5.0" top="5.0" />
-                                     </GridPane.margin>
-                                 </Label>
-                                 <Label text="AgencyId" GridPane.rowIndex="9">
-                                     <GridPane.margin>
-                                         <Insets bottom="5.0" left="20.0" right="5.0" top="5.0" />
-                                     </GridPane.margin>
-                                 </Label>
-                                 <TextField fx:id="tfAgentId" GridPane.columnIndex="1">
+                                 <TextField fx:id="tfAgentId" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                      <GridPane.margin>
                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                      </GridPane.margin>
                                  </TextField>
-                                 <TextField fx:id="tfFname" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                 <TextField fx:id="tfFname" GridPane.columnIndex="1" GridPane.rowIndex="2">
                                      <GridPane.margin>
                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                      </GridPane.margin>
                                  </TextField>
-                                 <TextField fx:id="tfMinitial" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                 <TextField fx:id="tfMinitial" GridPane.columnIndex="1" GridPane.rowIndex="3">
                                      <GridPane.margin>
                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                      </GridPane.margin>
                                  </TextField>
-                                 <TextField fx:id="tfLname" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                 <TextField fx:id="tfLname" GridPane.columnIndex="1" GridPane.rowIndex="4">
                                      <GridPane.margin>
                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                      </GridPane.margin>
                                  </TextField>
-                                 <TextField fx:id="tfBusPhone" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                 <TextField fx:id="tfBusPhone" GridPane.columnIndex="1" GridPane.rowIndex="5">
                                      <GridPane.margin>
                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                      </GridPane.margin>
                                  </TextField>
-                                 <TextField fx:id="tfEmail" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                                 <TextField fx:id="tfEmail" GridPane.columnIndex="1" GridPane.rowIndex="6">
                                      <GridPane.margin>
                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                      </GridPane.margin>
                                  </TextField>
-                                 <TextField fx:id="tfPosition" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                                 <TextField fx:id="tfPosition" GridPane.columnIndex="1" GridPane.rowIndex="7">
                                      <GridPane.margin>
                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                      </GridPane.margin>
                                  </TextField>
-                                 <TextField fx:id="tfUsername" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                                 <TextField fx:id="tfAgencyId" GridPane.columnIndex="1">
                                      <GridPane.margin>
                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                      </GridPane.margin>
                                  </TextField>
-                                 <TextField fx:id="tfPassword" GridPane.columnIndex="1" GridPane.rowIndex="8">
-                                     <GridPane.margin>
-                                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                     </GridPane.margin>
-                                 </TextField>
-                                 <TextField fx:id="tfAgencyId" GridPane.columnIndex="1" GridPane.rowIndex="9">
-                                     <GridPane.margin>
-                                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-                                     </GridPane.margin>
-                                 </TextField>
-                              <Label text="[error msg]" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                               <Label text="[error msg]" GridPane.columnIndex="2" GridPane.rowIndex="2" />
                               <Label text="[error msg]" GridPane.columnIndex="2" GridPane.rowIndex="3" />
                               <Label text="[error msg]" GridPane.columnIndex="2" GridPane.rowIndex="4" />
                               <Label text="[error msg]" GridPane.columnIndex="2" GridPane.rowIndex="5" />
                               <Label text="[error msg]" GridPane.columnIndex="2" GridPane.rowIndex="6" />
                               <Label text="[error msg]" GridPane.columnIndex="2" GridPane.rowIndex="7" />
-                              <Label text="[error msg]" GridPane.columnIndex="2" GridPane.rowIndex="8" />
-                              <Label text="[error msg]" GridPane.columnIndex="2" GridPane.rowIndex="9" />
+                              <Label text="[error msg]" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                              <Label layoutX="390.0" layoutY="63.0" text="[error msg]" GridPane.columnIndex="2" />
                              </children>
                          </GridPane>
                      </children></AnchorPane>

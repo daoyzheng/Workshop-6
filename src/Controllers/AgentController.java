@@ -4,10 +4,8 @@ import java.awt.*;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.*;
 import java.util.List;
-import java.util.ResourceBundle;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -249,6 +247,7 @@ public class AgentController {
     private void setNewMode() {
         formMode = "New";
         tfAgentId.setVisible(false);
+        cboAgencyId.setValue(null);
         clearDetailErrorMessages();
         clearDetailForm();
     }
@@ -314,15 +313,17 @@ public class AgentController {
         ObservableList<Agency> obsList = FXCollections.observableArrayList(agencies);
         cboAgencyId.setItems(obsList);
 
+        int agencyId = a.getAgencyId();
 
         //Set agency id in combo box
-        Agency currentAgency = AgencyManager.getAgencyById(a.getAgencyId());
-        SelectionModel<Agency> selectionModel = cboAgencyId.getSelectionModel();
-        selectionModel.selectFirst();
-        while (selectionModel.getSelectedItem().getAgencyId() != a.getAgencyId()) {
-            selectionModel.selectNext();
+        if (!Objects.equals(agencyId, null) || !Objects.equals(agencyId, 0)) {  //test if value is null or zero
+            Agency currentAgency = AgencyManager.getAgencyById(a.getAgencyId());
+            SelectionModel<Agency> selectionModel = cboAgencyId.getSelectionModel();
+            selectionModel.selectFirst();
+            while (selectionModel.getSelectedItem().getAgencyId() != a.getAgencyId()) {
+                selectionModel.selectNext();
+            }
         }
-
     }
 
 
