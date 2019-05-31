@@ -70,7 +70,6 @@ public class AgencyManager {
                         rs.getString(7),
                         rs.getString(8));
             }
-            System.out.println("closing conn");
             conn.close();
 
 
@@ -149,7 +148,6 @@ public class AgencyManager {
             stmt.setString(6,newAgency.getAgncyPhone());
             stmt.setString(7,newAgency.getAgncyFax());
 
-            System.out.println("execute statement");
             int numRows = stmt.executeUpdate();
 
             if (numRows == 0)

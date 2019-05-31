@@ -260,7 +260,7 @@ public class AgentManager {
             Connection conn =  DbConnection.getConnection();
             //create statement
             Statement stmt = conn.createStatement();
-            String sql = "SELECT COUNT(AgtUserName) As rowcount FROM agents WHERE AgtUserName=" + username;
+            String sql = "SELECT COUNT(AgtUserName) As rowcount FROM agents WHERE AgtUserName='" + username + "'";
             System.out.println(sql);
             System.out.println("username");
             //query database
