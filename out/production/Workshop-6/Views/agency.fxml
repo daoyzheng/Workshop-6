@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" stylesheets="@../Styles/DarkTheme.css" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.AgencyController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@../Styles/DarkTheme.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.AgencyController">
     <children>
         <TabPane fx:id="tabpaneMain" prefHeight="461.0" prefWidth="675.0" tabClosingPolicy="UNAVAILABLE" tabMaxHeight="0.0" tabMaxWidth="0.0">
             <tabs>
@@ -119,7 +119,7 @@
                                                 <Insets bottom="5.0" left="20.0" right="5.0" top="5.0" />
                                             </GridPane.margin>
                                         </Label>
-                                        <TextField fx:id="tfAgencyId" editable="false" styleClass="DetailInput" GridPane.columnIndex="1">
+                                        <TextField fx:id="tfAgencyId" disable="true" editable="false" styleClass="DetailInput" GridPane.columnIndex="1">
                                             <GridPane.margin>
                                                 <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                             </GridPane.margin>

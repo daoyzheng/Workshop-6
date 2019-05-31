@@ -166,7 +166,7 @@
                                     <Insets bottom="5.0" left="20.0" right="5.0" top="5.0" />
                                  </GridPane.margin>
                               </Label>
-                              <TextField fx:id="tfCustomerId" editable="false" styleClass="DetailInput" GridPane.columnIndex="1">
+                              <TextField fx:id="tfCustomerId" disable="true" editable="false" styleClass="DetailInput" GridPane.columnIndex="1">
                                  <GridPane.margin>
                                     <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                  </GridPane.margin>

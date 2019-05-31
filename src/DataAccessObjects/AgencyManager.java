@@ -131,10 +131,8 @@ public class AgencyManager {
                 "AgncyPostal, " +
                 "AgncyCountry, " +
                 "AgncyPhone, " +
-                "AgncyFax, " +
-                "AgncyPassword, " +
-                "AgencyId) " +
-                "VALUES (?,?,?,?,?,?,?,?)";
+                "AgncyFax) " +
+                "VALUES (?,?,?,?,?,?,?)";
 
         System.out.println(sql);
 
@@ -150,10 +148,10 @@ public class AgencyManager {
             stmt.setString(5,newAgency.getAgncyCountry());
             stmt.setString(6,newAgency.getAgncyPhone());
             stmt.setString(7,newAgency.getAgncyFax());
-            stmt.setInt(8,newAgency.getAgencyId());
 
-
+            System.out.println("execute statement");
             int numRows = stmt.executeUpdate();
+
             if (numRows == 0)
             {
                 Alert alert = new Alert(Alert.AlertType.ERROR, "No rows were updated. Contact Tech Support.");
