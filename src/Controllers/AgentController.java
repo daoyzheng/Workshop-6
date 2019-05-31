@@ -12,9 +12,7 @@ import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import DataAccessObjects.AgencyManager;
 import DataAccessObjects.AgentManager;
-import DomainEntities.Agency;
 import DomainEntities.Agent;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -91,7 +89,7 @@ public class AgentController {
     @FXML private TextField tfPosition;
     @FXML private TextField tfUsername;
     @FXML private TextField tfPassword;
-    @FXML private ComboBox<Agency> cboAgencyId;
+    @FXML private TextField tfAgencyId;
     @FXML private Label lbErrorAgtFirstName;
     @FXML private Label lbErrorAgtMiddleInitial;
     @FXML private Label lbErrorAgtLastName;
@@ -163,19 +161,23 @@ public class AgentController {
 
     @FXML
     void btnNavEditClick(MouseEvent event) {
-        SingleSelectionModel<Tab> selectionModel = tabpaneMain.getSelectionModel();
-        selectionModel.select(tabDetail);
         currentAgent =  tvNavTable.getSelectionModel().getSelectedItem();
         setEditMode(currentAgent);
+        SingleSelectionModel<Tab> selectionModel = tabpaneMain.getSelectionModel();
+        selectionModel.select(tabDetail);
     }
 
     @FXML
     void tfNavSearchKeyTyped(KeyEvent event) {
+           System.out.println("pressed");
 
         String strFilter = tfNavSearch.getText();
+
         List<Agent> filteredList = navTableArrayList.stream()
                 .filter(d -> d.toString().contains(strFilter))
                 .collect(Collectors.toList());
+
+        System.out.println(filteredList);
 
         ObservableList<Agent> data = FXCollections.observableArrayList(filteredList);
         tvNavTable.setItems(data);
@@ -193,6 +195,43 @@ public class AgentController {
 
     @FXML
     void initialize() {
+
+        assert tabpaneMain != null : "fx:id=\"tabpaneMain\" was not injected: check your FXML file 'agent.fxml'.";
+        assert tabNav != null : "fx:id=\"tabNav\" was not injected: check your FXML file 'agent.fxml'.";
+        assert tvNavTable != null : "fx:id=\"tvNavTable\" was not injected: check your FXML file 'agent.fxml'.";
+        assert colAgentId != null : "fx:id=\"colAgentId\" was not injected: check your FXML file 'agent.fxml'.";
+        assert colAgtFirstName != null : "fx:id=\"colAgtFirstName\" was not injected: check your FXML file 'agent.fxml'.";
+        assert colAgtMiddleInitial != null : "fx:id=\"colAgtMiddleInitial\" was not injected: check your FXML file 'agent.fxml'.";
+        assert colAgtLastName != null : "fx:id=\"colAgtLastName\" was not injected: check your FXML file 'agent.fxml'.";
+        assert colAgtBusPhone != null : "fx:id=\"colAgtBusPhone\" was not injected: check your FXML file 'agent.fxml'.";
+        assert colAgtEmail != null : "fx:id=\"colAgtEmail\" was not injected: check your FXML file 'agent.fxml'.";
+        assert colAgtPosition != null : "fx:id=\"colAgtPosition\" was not injected: check your FXML file 'agent.fxml'.";
+        assert colAgtUsername != null : "fx:id=\"colAgtUsername\" was not injected: check your FXML file 'agent.fxml'.";
+        assert colAgtPassword != null : "fx:id=\"colAgtPassword\" was not injected: check your FXML file 'agent.fxml'.";
+        assert colAgencyId != null : "fx:id=\"colAgencyId\" was not injected: check your FXML file 'agent.fxml'.";
+        assert tabDetail != null : "fx:id=\"tabDetail\" was not injected: check your FXML file 'agent.fxml'.";
+        assert grPane != null : "fx:id=\"grPane\" was not injected: check your FXML file 'agent.fxml'.";
+        assert gpDetails != null : "fx:id=\"gpDetails\" was not injected: check your FXML file 'agent.fxml'.";
+        assert tfAgentId != null : "fx:id=\"tfAgentId\" was not injected: check your FXML file 'agent.fxml'.";
+        assert tfFname != null : "fx:id=\"tfFname\" was not injected: check your FXML file 'agent.fxml'.";
+        assert tfMinitial != null : "fx:id=\"tfMinitial\" was not injected: check your FXML file 'agent.fxml'.";
+        assert tfLname != null : "fx:id=\"tfLname\" was not injected: check your FXML file 'agent.fxml'.";
+        assert tfBusPhone != null : "fx:id=\"tfBusPhone\" was not injected: check your FXML file 'agent.fxml'.";
+        assert tfEmail != null : "fx:id=\"tfEmail\" was not injected: check your FXML file 'agent.fxml'.";
+        assert tfPosition != null : "fx:id=\"tfPosition\" was not injected: check your FXML file 'agent.fxml'.";
+        assert tfUsername != null : "fx:id=\"tfUsername\" was not injected: check your FXML file 'agent.fxml'.";
+        assert tfPassword != null : "fx:id=\"tfPassword\" was not injected: check your FXML file 'agent.fxml'.";
+        assert tfAgencyId != null : "fx:id=\"tfAgencyId\" was not injected: check your FXML file 'agent.fxml'.";
+        assert lbErrorAgtFirstName != null : "fx:id=\"lbErrorAgtFirstName\" was not injected: check your FXML file 'agent.fxml'.";
+        assert lbErrorAgtMiddleInitial != null : "fx:id=\"lbErrorAgtMiddleInitial\" was not injected: check your FXML file 'agent.fxml'.";
+        assert lbErrorAgtLastName != null : "fx:id=\"lbErrorAgtLastName\" was not injected: check your FXML file 'agent.fxml'.";
+        assert lbErrorAgtBusPhone != null : "fx:id=\"lbErrorAgtBusPhone\" was not injected: check your FXML file 'agent.fxml'.";
+        assert lbErrorAgtEmail != null : "fx:id=\"lbErrorAgtEmail\" was not injected: check your FXML file 'agent.fxml'.";
+        assert lbErrorAgtPosition != null : "fx:id=\"lbErrorAgtPosition\" was not injected: check your FXML file 'agent.fxml'.";
+        assert lbErrorAgtUsername != null : "fx:id=\"lbErrorAgtUsername\" was not injected: check your FXML file 'agent.fxml'.";
+        assert lbErrorAgtPassword != null : "fx:id=\"lbErrorAgtPassword\" was not injected: check your FXML file 'agent.fxml'.";
+        assert lbErrorAgtAgencyID != null : "fx:id=\"lbErrorAgtAgencyID\" was not injected: check your FXML file 'agent.fxml'.";
+
 
         //setup up table cell factories
         colAgentId.setCellValueFactory(cellData -> cellData.getValue().agentIdProperty().asObject());
@@ -248,6 +287,7 @@ public class AgentController {
 
     private void setNewMode() {
         formMode = "New";
+        System.out.println(formMode);
         tfAgentId.setVisible(false);
         clearDetailErrorMessages();
         clearDetailForm();
@@ -298,7 +338,7 @@ public class AgentController {
 
     private void loadItemDetail(Agent a) {
 
-         //populate controls with data
+        //populate controls with data
         tfAgentId.setText(String.valueOf(a.getAgentId()));
         tfFname.setText(a.getAgtFirstName());
         tfMinitial.setText(a.getAgtMiddleInitial());
@@ -308,21 +348,7 @@ public class AgentController {
         tfPosition.setText(a.getAgtPosition());
         tfUsername.setText(a.getAgtUserName());
         tfPassword.setText(a.getAgtPassword());
-
-        //refresh the Agency Combobox data source
-        ArrayList<Agency> agencies = AgencyManager.getAllAgencies();
-        ObservableList<Agency> obsList = FXCollections.observableArrayList(agencies);
-        cboAgencyId.setItems(obsList);
-
-
-        //Set agency id in combo box
-        Agency currentAgency = AgencyManager.getAgencyById(a.getAgencyId());
-        SelectionModel<Agency> selectionModel = cboAgencyId.getSelectionModel();
-        selectionModel.selectFirst();
-        while (selectionModel.getSelectedItem().getAgencyId() != a.getAgencyId()) {
-            selectionModel.selectNext();
-        }
-
+        tfAgencyId.setText(String.valueOf(a.getAgencyId()));
     }
 
 
@@ -346,6 +372,7 @@ public class AgentController {
                 };
             }
         }
+        System.out.println("Error count: " + errorCount);
 
          //test if form is in new mode, if true set ID = 0 as temp value
         if (errorCount == 0) {
@@ -361,7 +388,7 @@ public class AgentController {
                         tfPosition.getText(),
                         tfUsername.getText(),
                         tfPassword.getText(),
-                        cboAgencyId.getSelectionModel().getSelectedItem().getAgencyId());
+                        Integer.parseInt(tfAgencyId.getText()));
                 try {
                     //insert item into database
 
@@ -394,7 +421,10 @@ public class AgentController {
                         tfPosition.getText(),
                         tfUsername.getText(),
                         tfPassword.getText(),
-                        cboAgencyId.getSelectionModel().getSelectedItem().getAgencyId());;
+                        Integer.parseInt(tfAgencyId.getText()));
+
+
+
                 try {
                     if (AgentManager.updateAgent(agtChanged)) {
                         JOptionPane.showMessageDialog(null, "Update successful.",
@@ -407,6 +437,18 @@ public class AgentController {
                 }
             }
         }
+    }
+
+
+    /*******************************     FILTER NAV TABLE      ********************************/
+
+    private void filterNavTable() {
+
+
+
+
+
+
     }
 
 
@@ -528,6 +570,8 @@ public class AgentController {
             public void changed(ObservableValue<? extends Boolean> arg0, Boolean oldPropertyValue, Boolean newPropertyValue) {
                 if (!newPropertyValue)  //when field loses focus
                 {
+
+                    System.out.println(AgentManager.checkAgentUsername(tfUsername.getText()));
                     //run field validation rules
                     if((AgentManager.checkAgentUsername(tfUsername.getText()) == 0) && (Validator.isTfText(tfUsername)))
                     {
@@ -545,5 +589,34 @@ public class AgentController {
             }
         });
     }
+
+//    public void setupFocusListerTfSearch() {
+//
+//        .focusedProperty().addListener(new ChangeListener<Boolean>() {
+//            @Override
+//            public void changed(ObservableValue<? extends Boolean> arg0, Boolean oldPropertyValue, Boolean newPropertyValue) {
+//                if (!newPropertyValue)  //when field loses focus
+//                {
+//
+//                    System.out.println(AgentManager.checkAgentUsername(tfUsername.getText()));
+//                    //run field validation rules
+//                    if((AgentManager.checkAgentUsername(tfUsername.getText()) == 0) && (Validator.isTfText(tfUsername)))
+//                    {
+//                        //else hide error message
+//                        lbErrorAgtUsername.setVisible(false);
+//                    }
+//                    else
+//                    {
+//                        //if not valid, display error msg
+//                        lbErrorAgtUsername.setVisible(true);
+//                        lbErrorAgtUsername.setText("A unique username is required");
+//                        lbErrorAgtUsername.setStyle("-fx-text-fill:  red");
+//                    }
+//                }
+//            }
+//        });
+//    }
+
+
 }
 
