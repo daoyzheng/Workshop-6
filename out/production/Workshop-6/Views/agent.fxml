@@ -17,26 +17,26 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.AgentController">
    <children>
-      <TabPane fx:id="tabpaneMain" prefHeight="461.0" prefWidth="675.0" tabClosingPolicy="UNAVAILABLE" tabMaxHeight="0.0" tabMaxWidth="0.0">
+      <TabPane fx:id="tabpaneMain" tabClosingPolicy="UNAVAILABLE" tabMaxHeight="0.0" tabMaxWidth="0.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
         <tabs>
           <Tab fx:id="tabNav" closable="false">
             <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="390.0" prefWidth="623.0">
+              <AnchorPane minHeight="0.0" minWidth="0.0">
                      <children>
-                        <AnchorPane layoutX="7.0" prefHeight="436.0" prefWidth="675.0">
+                        <AnchorPane layoutX="7.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
                            <children>
-                              <TableView fx:id="tvNavTable" layoutX="5.0" layoutY="66.0" prefHeight="364.0" prefWidth="656.0">
+                              <TableView fx:id="tvNavTable" layoutX="5.0" layoutY="66.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="60.0">
                                 <columns>
-                                    <TableColumn fx:id="colAgentId" prefWidth="45.0" text="ID" />
-                                  <TableColumn fx:id="colAgtFirstName" prefWidth="105.0" text="First Name" />
-                                  <TableColumn fx:id="colAgtMiddleInitial" prefWidth="75.0" text="M. Initial" />
-                                    <TableColumn fx:id="colAgtLastName" prefWidth="75.0" text="Last Name" />
-                                    <TableColumn fx:id="colAgtBusPhone" prefWidth="67.0" text="Business Phone" />
-                                    <TableColumn fx:id="colAgtEmail" prefWidth="114.0" text="Email" />
-                                    <TableColumn fx:id="colAgtPosition" prefWidth="75.0" text="Position" />
-                                    <TableColumn fx:id="colAgtUsername" prefWidth="48.0" text="Username" />
-                                    <TableColumn fx:id="colAgtPassword" prefWidth="70.0" text="Password" />
-                                    <TableColumn fx:id="colAgencyId" prefWidth="133.0" text="Agency ID" />
+                                    <TableColumn fx:id="colAgentId" maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="50.0" text="ID" />
+                                  <TableColumn fx:id="colAgtFirstName" maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="150.0" text="First Name" />
+                                  <TableColumn fx:id="colAgtMiddleInitial" maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="75.0" text="M. Initial" />
+                                    <TableColumn fx:id="colAgtLastName" maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="150.0" text="Last Name" />
+                                    <TableColumn fx:id="colAgtBusPhone" maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="125.0" text="Business Phone" />
+                                    <TableColumn fx:id="colAgtEmail" maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="125.0" text="Email" />
+                                    <TableColumn fx:id="colAgtPosition" maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="150.0" text="Position" />
+                                    <TableColumn fx:id="colAgtUsername" maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="150.0" text="Username" />
+                                    <TableColumn fx:id="colAgtPassword" maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="150.0" text="Password" />
+                                    <TableColumn fx:id="colAgencyId" maxWidth="1.7976931348623157E308" minWidth="-1.0" prefWidth="150.0" text="Agency ID" />
                                 </columns>
                               </TableView>
                               <HBox layoutX="6.0" layoutY="7.0" prefHeight="38.0" prefWidth="652.0" spacing="10.0">
