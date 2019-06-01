@@ -8,11 +8,10 @@ package DomainEntities;
 
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 
-import java.time.LocalDate;
-//import java.util.Date;
-import java.sql.Date;
+import java.util.Date;
 
 public class Booking {
     // PK
@@ -23,19 +22,19 @@ public class Booking {
     private SimpleIntegerProperty travelerCount;
     // FKs
     private SimpleIntegerProperty customerId;
-    private SimpleIntegerProperty tripTypeId;
+    private SimpleStringProperty tripTypeId;
     private SimpleIntegerProperty packageId;
 
     // Constructor
 
-    public Booking(int bookingId, Date bookingDate, String bookingNo, int travelerCount, int customerId, int tripTypeId, int packageId) {
-        this.bookingId.set(bookingId);
-        this.bookingDate.set(bookingDate);
-        this.bookingNo.set(bookingNo);
-        this.travelerCount.set(travelerCount);
-        this.customerId.set(customerId);
-        this.tripTypeId.set(tripTypeId);
-        this.packageId.set(packageId);
+    public Booking(int bookingId, Date bookingDate, String bookingNo, int travelerCount, int customerId, String tripTypeId, int packageId) {
+        this.bookingId = new SimpleIntegerProperty(bookingId);
+        this.bookingDate = new SimpleObjectProperty<>(bookingDate);
+        this.bookingNo = new SimpleStringProperty(bookingNo);
+        this.travelerCount = new SimpleIntegerProperty(travelerCount);
+        this.customerId = new SimpleIntegerProperty(customerId);
+        this.tripTypeId = new SimpleStringProperty(tripTypeId);
+        this.packageId = new SimpleIntegerProperty(packageId);
     }
 
     // getters & setters
@@ -47,6 +46,7 @@ public class Booking {
     public SimpleIntegerProperty bookingIdProperty() {
         return bookingId;
     }
+
     /* shouldn't set PK
     public void setBookingId(int bookingId) {
         this.bookingId.set(bookingId);
@@ -100,15 +100,15 @@ public class Booking {
         this.customerId.set(customerId);
     }
 
-    public int getTripTypeId() {
+    public String getTripTypeId() {
         return tripTypeId.get();
     }
 
-    public SimpleIntegerProperty tripTypeIdProperty() {
+    public SimpleStringProperty tripTypeIdProperty() {
         return tripTypeId;
     }
 
-    public void setTripTypeId(int tripTypeId) {
+    public void setTripTypeId(String tripTypeId) {
         this.tripTypeId.set(tripTypeId);
     }
 

@@ -1,12 +1,16 @@
 package Controllers;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.ResourceBundle;
 
+import DataAccessObjects.BookingManager;
 import DomainEntities.Booking;
 import DomainEntities.BookingDetail;
 import DomainEntities.TripType;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -20,6 +24,17 @@ import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 
 public class BookingController {
+
+    // ------- My Props -------
+    enum Mode{
+        NAV, EDIT, ADD;
+    }
+
+    private Mode currentMode = Mode.NAV;
+
+    private ArrayList<Booking> bookingArrayList;
+
+    // ------- FXML Controls Starts Here -------
 
     @FXML
     private ResourceBundle resources;
@@ -49,7 +64,7 @@ public class BookingController {
     private TableColumn<Booking, Integer> colTravellerNo;
 
     @FXML
-    private TableColumn<Booking, String> colCustName;
+    private TableColumn<Booking, Integer> colCustName;
 
     @FXML
     private TableColumn<Booking, String> colTripType;
@@ -163,8 +178,18 @@ public class BookingController {
 
     @FXML
     void initialize() {
+        // Set up booking table columns
+        colBookId.setCellValueFactory(param -> param.getValue().bookingIdProperty().asObject());
+        colBookDate.setCellValueFactory(param -> param.getValue().bookingDateProperty());
+        colBookNo.setCellValueFactory(param -> param.getValue().bookingNoProperty());
+        colTravellerNo.setCellValueFactory(param -> param.getValue().travelerCountProperty().asObject());
+        colCustName.setCellValueFactory(param -> param.getValue().customerIdProperty().asObject());
+        colTripType.setCellValueFactory(param -> param.getValue().tripTypeIdProperty());
+        // colPackage.setCellValueFactory();   Currently All Values is Null
 
-
-
+        // Load data into table
+        bookingArrayList = BookingManager.getAllBookings();
+        ObservableList<Booking> bookings = FXCollections.observableArrayList(bookingArrayList);
+        tvOverviewBooking.setItems(bookings);
     }
 }

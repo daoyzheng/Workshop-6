@@ -34,8 +34,8 @@ public class BookingManager {
                         rs.getString(3),
                         rs.getInt(4),
                         rs.getInt(5),
-                        rs.getInt(6),
-                        rs.getInt(7)));
+                        rs.getString(6),
+                        rs.getInt(7)));  // if Null, return 0
             }
             conn.close();
         } catch (SQLException | ClassNotFoundException e){
@@ -72,7 +72,7 @@ public class BookingManager {
                         rs.getString(3),
                         rs.getInt(4),
                         rs.getInt(5),
-                        rs.getInt(6),
+                        rs.getString(6),
                         rs.getInt(7));
             }
             conn.close();
@@ -98,11 +98,11 @@ public class BookingManager {
             // Create prepare statement
             PreparedStatement stmt = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
             // Assign parameters
-            stmt.setDate(1, newBooking.getBookingDate());
+            stmt.setDate(1, new java.sql.Date(newBooking.getBookingDate().getTime()));
             stmt.setString(2, newBooking.getBookingNo());
             stmt.setInt(3, newBooking.getTravelerCount());
             stmt.setInt(4, newBooking.getCustomerId());
-            stmt.setInt(5, newBooking.getTripTypeId());
+            stmt.setString(5, newBooking.getTripTypeId());
             stmt.setInt(6, newBooking.getPackageId());
             // Execute query
             int numRows = stmt.executeUpdate();
@@ -141,11 +141,11 @@ public class BookingManager {
             // Create prepare statement
             PreparedStatement stmt = conn.prepareStatement(query);
             // Assign parameter
-            stmt.setDate(1,newB.getBookingDate());
+            stmt.setDate(1,new java.sql.Date(newB.getBookingDate().getTime()));
             stmt.setString(2,newB.getBookingNo());
             stmt.setInt(3, newB.getTravelerCount());
             stmt.setInt(4, newB.getCustomerId());
-            stmt.setInt(5, newB.getTripTypeId());
+            stmt.setString(5, newB.getTripTypeId());
             stmt.setInt(6, newB.getPackageId());
             stmt.setInt(7, oldB.getBookingId());
             // Execute query
