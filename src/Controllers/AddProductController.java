@@ -32,16 +32,18 @@ public class AddProductController {
 
     @FXML
     void btnAddProductOnAction(ActionEvent event) {
+        // check if name entered is equal to selected product name
+        if (tfNewProductName.getText().toString().equals(selectedProduct.getProdName())) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION, "Product Name already exists");
+            alert.showAndWait();
+        } else {
+
+        }
 
     }
 
     @FXML
     void initialize() {
-        // check if name entered is equal to selected product name
-//        if (tfNewProductName.getText().toString().equals(selectedProduct.getProdName())) {
-//            Alert alert = new Alert(Alert.AlertType.INFORMATION, "Product Name already exists");
-//            alert.showAndWait();
-//        }
     }
 }
 
