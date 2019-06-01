@@ -82,6 +82,8 @@ public class ProductSupplierController {
             controller.setSelectedProduct(selectedProd);
             // Pass current list view array to addSupplierController
             controller.setSelectedSuppliers(lvSupplier.getItems());
+            // Pass product list view reference to addSupplierController
+            controller.setLvProduct(lvProduct);
         }
     }
 

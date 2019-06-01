@@ -1,5 +1,6 @@
 package Controllers;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -18,7 +19,11 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.control.*;
+import javafx.stage.Stage;
 
 public class AddSupplierController {
 
@@ -49,19 +54,27 @@ public class AddSupplierController {
     @FXML
     private Label lbProductName;
 
-    public Product selectedProduct;
+    private Product selectedProduct;
 
     public void setSelectedProduct(Product selectedProduct) {
         this.selectedProduct = selectedProduct;
     }
 
-    public ObservableList<Supplier> selectedSuppliers;
+    private ObservableList<Supplier> selectedSuppliers;
 
     public void setSelectedSuppliers(ObservableList<Supplier> selectedSuppliers) {
         this.selectedSuppliers = selectedSuppliers;
     }
 
+    private ListView<Product> lvProduct;
+
+    public void setLvProduct(ListView<Product> lvProduct) {
+        this.lvProduct = lvProduct;
+    }
+
     private boolean isExisting = true;
+
+    private boolean addSuccess = true;
 
     @FXML
     void btnAddSupplierOnAction(ActionEvent event) {
@@ -84,12 +97,12 @@ public class AddSupplierController {
 
             if(validInsert) {
                 // If no duplicates exist, then we can safely add to the product supplier table
-                ProductSupplierManager.addProductSupplier(new ProductSupplier(
+                addSuccess = ProductSupplierManager.addProductSupplier(new ProductSupplier(
                         selectedProduct.getProductId(),
                         selectedSupplier.getSupplierId()
                 ));
             }
-        } else {
+        } else { // If adding a new Supplier
             boolean validInsert = true;
             // Grab new supplier name from text field
             String newSupplierName = tfNewSupplier.getText();
@@ -110,11 +123,20 @@ public class AddSupplierController {
                 SupplierManager.addSupplier(newSupplier);
 
                 // Now add to the product supplier table
-                ProductSupplierManager.addProductSupplier(new ProductSupplier(
+                addSuccess = ProductSupplierManager.addProductSupplier(new ProductSupplier(
                         selectedProduct.getProductId(),
                         newSupplier.getSupplierId()
                 ));
             }
+        }
+
+        if (addSuccess) {
+            Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
+            // Refresh the supplier list view
+            lvProduct.getSelectionModel().selectFirst();
+            lvProduct.getSelectionModel().select(selectedProduct);
+
+            stage.close();
         }
     }
 
