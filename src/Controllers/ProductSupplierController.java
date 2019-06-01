@@ -64,19 +64,25 @@ public class ProductSupplierController {
 
     @FXML
     void btnAddSupplierOnAction(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../Views/addSupplier.fxml"));
-        Parent addSupplier = fxmlLoader.load();
-        Stage stage = new Stage();
-        stage.setTitle("Add Supplier");
-        stage.setScene(new Scene(addSupplier));
-        stage.show();
+        Product selectedProd = lvProduct.getSelectionModel().getSelectedItem();
+        if (selectedProd == null) {
+            Alert alert = new Alert(Alert.AlertType.WARNING, "Please select a product to add the supplier to");
+            alert.showAndWait();
+        } else {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../Views/addSupplier.fxml"));
+            Parent addSupplier = fxmlLoader.load();
+            Stage stage = new Stage();
+            stage.setTitle("Add Supplier");
+            stage.setScene(new Scene(addSupplier));
+            stage.show();
 
-        // Get AddSupplierController
-        AddSupplierController controller = fxmlLoader.getController();
-        // Pass selected product Object to addSupplierController
-        controller.setSelectedProduct(lvProduct.getSelectionModel().getSelectedItem());
-        // Pass current list view array to addSupplierController
-        controller.setSelectedSuppliers(lvSupplier.getItems());
+            // Get AddSupplierController
+            AddSupplierController controller = fxmlLoader.getController();
+            // Pass selected product Object to addSupplierController
+            controller.setSelectedProduct(selectedProd);
+            // Pass current list view array to addSupplierController
+            controller.setSelectedSuppliers(lvSupplier.getItems());
+        }
     }
 
 

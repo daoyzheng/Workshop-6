@@ -46,6 +46,9 @@ public class AddSupplierController {
     @FXML
     private Button btnAddSupplier;
 
+    @FXML
+    private Label lbProductName;
+
     public Product selectedProduct;
 
     public void setSelectedProduct(Product selectedProduct) {
@@ -58,6 +61,7 @@ public class AddSupplierController {
         this.selectedSuppliers = selectedSuppliers;
     }
 
+    private boolean isExisting = true;
 
     @FXML
     void btnAddSupplierOnAction(ActionEvent event) {
@@ -114,9 +118,10 @@ public class AddSupplierController {
         }
     }
 
-    private boolean isExisting = false;
     @FXML
     void initialize() {
+        // Display product name
+        //lbProductName.setText(selectedProduct.getProdName());
         // Populate existing supplier combo box, but set it to disable by default
         ObservableList<Supplier> supplierObservableList = FXCollections.observableArrayList();
         supplierObservableList.addAll(SupplierManager.getAllSuppliers());
@@ -141,20 +146,5 @@ public class AddSupplierController {
                 }
             }
         });
-
-//        // Add a listener to the textProperty of the combobox editor. The
-//        // listener will simply filter the list every time the input is changed
-//        // as long as the user hasn't selected an item in the list.
-//        cbSupplier.getEditor().textProperty().addListener((observable, oldValue, newValue) -> {
-//            if (newValue == null) {
-//                supplierObservableList.removeAll(supplierObservableList);
-//                supplierObservableList.addAll(SupplierManager.getAllSuppliers());
-//            } else {
-//                supplierObservableList.removeAll(supplierObservableList);
-//                supplierObservableList.addAll(SupplierManager.getSupplierByKeyWord(newValue));
-//            }
-//        });
-
-        cbSupplier.setItems(supplierObservableList);
     }
 }

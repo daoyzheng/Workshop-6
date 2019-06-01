@@ -43,7 +43,6 @@ public class AddProductController {
                     tfNewProductName.getText()
             ));
         }
-
     }
 
     @FXML
