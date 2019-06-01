@@ -20,6 +20,6 @@
       <TextField fx:id="tfNewSupplier" layoutX="29.0" layoutY="110.0" prefHeight="25.0" prefWidth="258.0" />
       <Button fx:id="btnAddSupplier" layoutX="346.0" layoutY="319.0" mnemonicParsing="false" onAction="#btnAddSupplierOnAction" text="Add" />
       <Label layoutX="29.0" layoutY="14.0" text="Adding Supplier to:" />
-      <Label fx:id="lbProductName" layoutX="148.0" layoutY="14.0" text="Label" />
+      <Label fx:id="labelProdName" layoutX="148.0" layoutY="14.0" text="Label" />
    </children>
 </AnchorPane>

@@ -74,7 +74,6 @@ public class ProductSupplierController {
             Stage stage = new Stage();
             stage.setTitle("Add Supplier");
             stage.setScene(new Scene(addSupplier));
-            stage.show();
 
             // Get AddSupplierController
             AddSupplierController controller = fxmlLoader.getController();
@@ -84,6 +83,13 @@ public class ProductSupplierController {
             controller.setSelectedSuppliers(lvSupplier.getItems());
             // Pass product list view reference to addSupplierController
             controller.setLvProduct(lvProduct);
+            // Set label to display product name
+            Label labelProdName = controller.getLabelProdName();
+            labelProdName.setText(selectedProd.getProdName());
+
+            stage.show();
+
+
         }
     }
 
@@ -95,12 +101,13 @@ public class ProductSupplierController {
         Stage stage = new Stage();
         stage.setTitle("Add Product");
         stage.setScene(new Scene(addProduct));
-        stage.show();
 
         // Get AddProductController
         AddProductController controller = fxmlLoader.getController();
         // Pass selected product Object to addProductController
         controller.setSelectedProduct(lvProduct.getSelectionModel().getSelectedItem());
+
+        stage.show();
 
     }
     

@@ -52,7 +52,7 @@ public class AddSupplierController {
     private Button btnAddSupplier;
 
     @FXML
-    private Label lbProductName;
+    private Label labelProdName;
 
     private Product selectedProduct;
 
@@ -70,6 +70,10 @@ public class AddSupplierController {
 
     public void setLvProduct(ListView<Product> lvProduct) {
         this.lvProduct = lvProduct;
+    }
+
+    public Label getLabelProdName() {
+        return labelProdName;
     }
 
     private boolean isExisting = true;
@@ -142,8 +146,6 @@ public class AddSupplierController {
 
     @FXML
     void initialize() {
-        // Display product name
-        //lbProductName.setText(selectedProduct.getProdName());
         // Populate existing supplier combo box, but set it to disable by default
         ObservableList<Supplier> supplierObservableList = FXCollections.observableArrayList();
         supplierObservableList.addAll(SupplierManager.getAllSuppliers());
@@ -153,19 +155,16 @@ public class AddSupplierController {
         // Disable text field by default
         tfNewSupplier.setDisable(true);
         // Add change event listener to supplier toggle group
-        tgSupplier.selectedToggleProperty().addListener(new ChangeListener<Toggle>() {
-            @Override
-            public void changed(ObservableValue<? extends Toggle> observable, Toggle oldValue, Toggle newValue) {
-                RadioButton selectedRadioButton = (RadioButton) newValue;
-                if (selectedRadioButton.getId().equals("radioExistingSupplier")) {
-                    cbSupplier.setDisable(false);
-                    tfNewSupplier.setDisable(true);
-                    isExisting = true;
-                } else {
-                    cbSupplier.setDisable(true);
-                    tfNewSupplier.setDisable(false);
-                    isExisting = false;
-                }
+        tgSupplier.selectedToggleProperty().addListener((observable, oldValue, newValue) -> {
+            RadioButton selectedRadioButton = (RadioButton) newValue;
+            if (selectedRadioButton.getId().equals("radioExistingSupplier")) {
+                cbSupplier.setDisable(false);
+                tfNewSupplier.setDisable(true);
+                isExisting = true;
+            } else {
+                cbSupplier.setDisable(true);
+                tfNewSupplier.setDisable(false);
+                isExisting = false;
             }
         });
     }
