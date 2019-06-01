@@ -3,6 +3,7 @@ package Controllers;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import DataAccessObjects.ProductManager;
 import DomainEntities.Product;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -33,11 +34,14 @@ public class AddProductController {
     @FXML
     void btnAddProductOnAction(ActionEvent event) {
         // check if name entered is equal to selected product name
-        if (tfNewProductName.getText().toString().equals(selectedProduct.getProdName())) {
+        if (tfNewProductName.getText().equals(selectedProduct.getProdName())) {
             Alert alert = new Alert(Alert.AlertType.INFORMATION, "Product Name already exists");
             alert.showAndWait();
         } else {
-
+            // Add new product to product's table
+            ProductManager.addProduct(new Product(
+                    tfNewProductName.getText()
+            ));
         }
 
     }

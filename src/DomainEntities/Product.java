@@ -19,6 +19,11 @@ public class Product {
         this.prodName = new SimpleStringProperty(prodName);
     }
 
+    public Product(String prodName) {
+        this.productId = new SimpleIntegerProperty();
+        this.prodName = new SimpleStringProperty(prodName);
+    }
+
     public int getProductId() {
         return productId.getValue();
     }

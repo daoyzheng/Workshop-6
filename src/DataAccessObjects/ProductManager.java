@@ -128,7 +128,7 @@ public class ProductManager {
         }
     }
 
-    public static Product addProduct(Product product) {
+    public static void addProduct(Product product) {
         try {
             // Get database connection
             Connection conn = DbConnection.getConnection();
@@ -159,8 +159,6 @@ public class ProductManager {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-        return product;
     }
 
 }
