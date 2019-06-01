@@ -21,5 +21,7 @@
       <RadioButton fx:id="radioSuppliers" layoutX="362.0" layoutY="22.0" mnemonicParsing="false" text="Search by Supplier" toggleGroup="$tgProductSupplier" />
       <TextField fx:id="tfSearchProduct" layoutX="52.0" layoutY="45.0" />
       <TextField fx:id="tfSearchSupplier" layoutX="364.0" layoutY="45.0" />
+      <Button fx:id="btnAddProduct" layoutX="52.0" layoutY="433.0" mnemonicParsing="false" onAction="#btnAddProductOnAction" text="Add Product" />
+      <Button fx:id="btnUpdateProduct" layoutX="152.0" layoutY="433.0" mnemonicParsing="false" text="Update Product" />
    </children>
 </AnchorPane>
