@@ -1,11 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: orange;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.PackageController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.201" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.PackageController">
    <children>
-      <Label layoutX="272.0" layoutY="183.0" text="package" />
+      <AnchorPane prefHeight="0.0" prefWidth="600.0" AnchorPane.bottomAnchor="371.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <TabPane prefHeight="30.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <tabs>
+                  <Tab text="Edit the package">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                     </content>
+                  </Tab>
+                  <Tab text="Add a new package">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                     </content>
+                  </Tab>
+               </tabs>
+            </TabPane>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutY="84.0" prefHeight="317.0" prefWidth="400.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="200.0" AnchorPane.topAnchor="84.0">
+         <children>
+            <TableView prefHeight="317.0" prefWidth="601.0">
+               <columns>
+                  <TableColumn id="PackageId" prefWidth="66.99998474121094" text="Package Id" />
+                  <TableColumn id="pkgName" prefWidth="88.0" text="Package Name" />
+                  <TableColumn id="pkgStartDate" prefWidth="62.0" text="Start Date" />
+                  <TableColumn id="pkgEndDate" prefWidth="55.0" text="End Date" />
+                  <TableColumn id="pkgDesc" prefWidth="107.0" text="Description" />
+                  <TableColumn id="pkgBasePrice" prefWidth="62.0" text="Base Price" />
+                  <TableColumn id="pkgAgencyCommission" prefWidth="118.0" text="Agency Commission" />
+                  <TableColumn id="pkgAgencyCommission" prefWidth="41.0" text="Active" />
+               </columns>
+            </TableView>
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

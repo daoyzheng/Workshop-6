@@ -1,7 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d54214f6-0d71-4717-81a4-e647c8cdc3be" name="Default Changelist" comment="" />
+    <list default="true" id="d54214f6-0d71-4717-81a4-e647c8cdc3be" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Workshop-6/Controllers/AddSupplierController$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Workshop-6/Controllers/AddSupplierController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Workshop-6/Controllers/AgencyController$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Workshop-6/Controllers/AgencyController$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Workshop-6/Controllers/AgencyController$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Workshop-6/Controllers/AgencyController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Workshop-6/Controllers/AgentController$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Workshop-6/Controllers/AgentController$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Workshop-6/Controllers/AgentController$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Workshop-6/Controllers/AgentController$4.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Workshop-6/Controllers/AgentController$5.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Workshop-6/Controllers/AgentController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Workshop-6/Controllers/BookingController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Workshop-6/Controllers/CustomerController$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Workshop-6/Controllers/CustomerController$2.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Workshop-6/Controllers/CustomerController$3.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Workshop-6/Controllers/CustomerController$4.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Workshop-6/Controllers/CustomerController$5.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Workshop-6/Controllers/CustomerController$6.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Workshop-6/Controllers/CustomerController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Workshop-6/Controllers/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Workshop-6/Controllers/MainController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Workshop-6/Controllers/PackageController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Workshop-6/Controllers/ProductSupplierController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Workshop-6/Controllers/Validator.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Workshop-6/DataAccess/DbConnection.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Workshop-6/DataAccessObjects/AgencyManager.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Workshop-6/DataAccessObjects/AgentManager.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Workshop-6/DataAccessObjects/BookingManager.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Workshop-6/DataAccessObjects/CustomerManager.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Workshop-6/DataAccessObjects/PackageManager.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Workshop-6/DataAccessObjects/PackageProductSupplierManager.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Workshop-6/DataAccessObjects/ProductManager.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Workshop-6/DataAccessObjects/ProductSupplierManager.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Workshop-6/DataAccessObjects/SupplierManager.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Workshop-6/DomainEntities/Agency.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Workshop-6/DomainEntities/Agent.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Workshop-6/DomainEntities/Booking.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Workshop-6/DomainEntities/BookingDetail.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Workshop-6/DomainEntities/Customer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Workshop-6/DomainEntities/Package.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Workshop-6/DomainEntities/PackageProductSupplier.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Workshop-6/DomainEntities/Product.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Workshop-6/DomainEntities/ProductSupplier.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Workshop-6/DomainEntities/Supplier.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Workshop-6/Styles/PrettyListView.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Views/package.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/package.fxml" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -17,7 +66,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/DataAccessObjects/AgentManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
+            <state relative-caret-position="44">
               <caret line="2" column="31" selection-start-line="2" selection-start-column="31" selection-end-line="2" selection-end-column="31" />
             </state>
           </provider>
@@ -26,8 +75,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Controllers/AgentController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="108">
-              <caret line="156" lean-forward="true" selection-start-line="156" selection-end-line="156" />
+            <state relative-caret-position="2662">
+              <caret line="156" selection-start-line="156" selection-end-line="156" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -38,7 +87,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Controllers/Validator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="459">
+            <state relative-caret-position="594">
               <caret line="28" selection-start-line="28" selection-end-line="28" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -50,7 +99,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/DomainEntities/Agent.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1768">
+            <state relative-caret-position="2288">
               <caret line="170" column="61" selection-start-line="170" selection-start-column="61" selection-end-line="170" selection-end-column="61" />
               <folding>
                 <element signature="e#1668#1669#0" expanded="true" />
@@ -120,12 +169,31 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Views/agent.fxml">
-          <provider editor-type-id="JavaFX-Scene-Builder" />
+          <provider editor-type-id="text-editor">
+            <state relative-caret-position="962">
+              <caret line="200" column="21" selection-start-line="200" selection-start-column="21" selection-end-line="200" selection-end-column="21" />
+            </state>
+          </provider>
+          <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Views/package.fxml">
+          <provider editor-type-id="text-editor">
+            <state relative-caret-position="513">
+              <caret line="46" selection-start-line="46" selection-end-line="46" />
+            </state>
+          </provider>
+          <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/DomainEntities/Package.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="302">
-              <caret line="203" column="21" selection-start-line="203" selection-start-column="21" selection-end-line="203" selection-end-column="21" />
+            <state relative-caret-position="374">
+              <caret line="24" column="40" selection-start-line="24" selection-start-column="34" selection-end-line="24" selection-end-column="40" />
             </state>
           </provider>
         </entry>
@@ -204,6 +272,7 @@
         <option value="$PROJECT_DIR$/src/DataAccessObjects/SupplierManager.java" />
         <option value="$PROJECT_DIR$/src/Controllers/ProductSupplierController.java" />
         <option value="$PROJECT_DIR$/src/Controllers/AddSupplierController.java" />
+        <option value="$PROJECT_DIR$/src/Views/package.fxml" />
       </list>
     </option>
   </component>
@@ -216,10 +285,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="524" />
-    <option name="y" value="6" />
-    <option name="width" value="846" />
-    <option name="height" value="775" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1386" />
+    <option name="height" value="788" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -227,50 +296,28 @@
     </navigator>
     <panes>
       <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
-              <item name="Workshop-6-GIT" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Workshop-6-GIT" type="462c0819:PsiDirectoryNode" />
+              <item name="Workshop-6" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Workshop-6" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="Workshop-6-GIT" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Workshop-6-GIT" type="462c0819:PsiDirectoryNode" />
-              <item name=".idea" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Workshop-6-GIT" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Workshop-6-GIT" type="462c0819:PsiDirectoryNode" />
+              <item name="Workshop-6" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Workshop-6" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="Workshop-6-GIT" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Workshop-6-GIT" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Controllers" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Workshop-6-GIT" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Workshop-6-GIT" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="DataAccess" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Workshop-6-GIT" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Workshop-6-GIT" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="DataAccessObjects" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Workshop-6-GIT" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Workshop-6-GIT" type="462c0819:PsiDirectoryNode" />
+              <item name="Workshop-6" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Workshop-6" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="DomainEntities" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="Workshop-6-GIT" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Workshop-6-GIT" type="462c0819:PsiDirectoryNode" />
+              <item name="Workshop-6" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Workshop-6" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="Views" type="462c0819:PsiDirectoryNode" />
             </path>
@@ -278,14 +325,16 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/mysql-connector-java-5.1.17-bin.jar!/" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../hoor" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Project" />
@@ -343,6 +392,7 @@
       <workItem from="1558487386228" duration="845000" />
       <workItem from="1558561135805" duration="1966000" />
       <workItem from="1559149325652" duration="1112000" />
+      <workItem from="1559349194066" duration="1441000" />
     </task>
     <task id="LOCAL-00001" summary="Remove product, supplier and product supplier interface. Rename file from Data Access Object (DAO) to Manager">
       <created>1558154500962</created>
@@ -397,13 +447,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="40920000" />
+    <option name="totallyTimeSpent" value="42361000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2632375" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.12481089" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -571,8 +621,8 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Views/customer.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor" />
+      <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Controllers/MainController.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -606,8 +656,8 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Views/main.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor" />
+      <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/DataAccessObjects/SupplierManager.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -630,12 +680,12 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Views/addSupplier.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
           <caret line="9" selection-start-line="9" selection-end-line="9" />
         </state>
       </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Views/addOrUpdateSupplier.fxml" />
     <entry file="file://$PROJECT_DIR$/src/Controllers/AddSupplierController.java">
@@ -650,14 +700,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/DataAccessObjects/AgentManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
+        <state relative-caret-position="44">
           <caret line="2" column="31" selection-start-line="2" selection-start-column="31" selection-end-line="2" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controllers/AgentController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2662">
+          <caret line="156" selection-start-line="156" selection-end-line="156" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Controllers/Validator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
+        <state relative-caret-position="594">
           <caret line="28" selection-start-line="28" selection-end-line="28" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -667,7 +727,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/DomainEntities/Agent.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1768">
+        <state relative-caret-position="2288">
           <caret line="170" column="61" selection-start-line="170" selection-start-column="61" selection-end-line="170" selection-end-column="61" />
           <folding>
             <element signature="e#1668#1669#0" expanded="true" />
@@ -736,23 +796,35 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controllers/AgentController.java">
+    <entry file="file://$PROJECT_DIR$/src/Controllers/PackageController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="156" lean-forward="true" selection-start-line="156" selection-end-line="156" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="44">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Views/agent.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="302">
-          <caret line="203" column="21" selection-start-line="203" selection-start-column="21" selection-end-line="203" selection-end-column="21" />
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="962">
+          <caret line="200" column="21" selection-start-line="200" selection-start-column="21" selection-end-line="200" selection-end-column="21" />
         </state>
       </provider>
+      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/DomainEntities/Package.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="24" column="40" selection-start-line="24" selection-start-column="34" selection-end-line="24" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Views/package.fxml">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="513">
+          <caret line="46" selection-start-line="46" selection-end-line="46" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
     </entry>
   </component>
   <component name="masterDetails">
