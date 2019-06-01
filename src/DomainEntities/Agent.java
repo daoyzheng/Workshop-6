@@ -7,8 +7,11 @@ Date: May, 2019
 
 package DomainEntities;
 
+import DataAccessObjects.AgencyManager;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
+
+import java.util.Objects;
 
 public class Agent {
 
@@ -22,6 +25,7 @@ public class Agent {
     private SimpleStringProperty agtUserName;
     private SimpleStringProperty agtPassword;
     private SimpleIntegerProperty agencyId;
+    private SimpleStringProperty agencyLocation;
 
 
     //constructor
@@ -39,6 +43,13 @@ public class Agent {
         this.agtUserName = new SimpleStringProperty(agtUserName);
         this.agtPassword = new SimpleStringProperty(agtPassword);
         this.agencyId = new SimpleIntegerProperty(agencyId);
+
+        String aName = "";
+        if (!Objects.equals(agencyId, null)) {
+            Agency a = AgencyManager.getAgencyById(getAgencyId());
+            aName = a.toString();
+           }
+        this.agencyLocation = new SimpleStringProperty(aName);
     }
 
 
@@ -163,6 +174,31 @@ public class Agent {
 
     public void setAgencyId(int agencyId) {
         this.agencyId.set(agencyId);
+        String aName = "";
+        if (!Objects.equals(agencyId, null)) {
+            Agency a = AgencyManager.getAgencyById(getAgencyId());
+            aName = a.toString();
+        }
+        this.agencyLocation = new SimpleStringProperty(aName);
+    }
+
+    public String getAgencyLocation() {
+            return agencyLocation.get();
+    }
+
+    public SimpleStringProperty agencyLocationProperty() {
+        return agencyLocation;
+    }
+
+    public String setAgencyLocation() {
+        if (Objects.equals(getAgencyId(), null)) {
+            this.agencyLocation.set("");
+            return "";
+        } else {
+            Agency a = AgencyManager.getAgencyById(getAgencyId());
+            this.agencyLocation.set(a.toString());
+            return a.toString();
+        }
     }
 
     //methods
@@ -170,4 +206,6 @@ public class Agent {
     public String toString() {
         return agtLastName.get() + ", " + agtFirstName.get();
     }
+
+
 }

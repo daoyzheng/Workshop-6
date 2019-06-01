@@ -67,7 +67,7 @@ public class AgentController {
     @FXML private TableColumn<Agent, String> colAgtPosition;
     @FXML private TableColumn<Agent, String> colAgtUsername;
     @FXML private TableColumn<Agent, String> colAgtPassword;
-    @FXML private TableColumn<Agent, Integer> colAgencyId;
+    @FXML private TableColumn<Agent, String> colAgencyId;
 
 
     //Detail tab controls
@@ -202,7 +202,8 @@ public class AgentController {
         colAgtPosition.setCellValueFactory(cellData -> cellData.getValue().agtEmailProperty());
         colAgtUsername.setCellValueFactory(cellData -> cellData.getValue().agtUserNameProperty());
         colAgtPassword.setCellValueFactory(cellData -> cellData.getValue().agtPositionProperty());
-        colAgencyId.setCellValueFactory(cellData -> cellData.getValue().agencyIdProperty().asObject());
+//        colAgencyId.setCellValueFactory(cellData -> cellData.getValue().agencyIdProperty().asObject());
+        colAgencyId.setCellValueFactory(cellData -> cellData.getValue().agencyLocationProperty());
 
         setNavigateMode();
 

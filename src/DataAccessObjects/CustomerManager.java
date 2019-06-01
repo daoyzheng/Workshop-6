@@ -86,7 +86,6 @@ public class CustomerManager {
                         rs.getString(13),
                         Integer.parseInt(rs.getString(14)));
             }
-            System.out.println("closing conn");
             conn.close();
 
 
@@ -251,7 +250,6 @@ public class CustomerManager {
             stmt.setInt(13,changedCustomer.getAgentId());
             stmt.setInt(14,changedCustomer.getCustomerId());
 
-            System.out.println("execute stmt");
             int numRows = stmt.executeUpdate();
             if (numRows == 0)
             {
@@ -313,6 +311,4 @@ public class CustomerManager {
         }
         return result;
     }
-
-
 }

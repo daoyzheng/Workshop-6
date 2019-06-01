@@ -52,7 +52,7 @@ public class CustomerController {
     @FXML private TableColumn<Customer, String> colCustEmail;
     @FXML private TableColumn<Customer, String> colCustUserName;
     @FXML private TableColumn<Customer, String> colCustPassword;
-    @FXML private TableColumn<Customer, Integer> colAgentId;
+    @FXML private TableColumn<Customer, String> colAgentId;
     @FXML private Button btnNavAdd;
     @FXML private Button btnNavEdit;
     @FXML private TextField tfNavSearch;
@@ -190,7 +190,8 @@ public class CustomerController {
         colCustEmail.setCellValueFactory(cellData -> cellData.getValue().custEmailProperty());
         colCustUserName.setCellValueFactory(cellData -> cellData.getValue().custUserNameProperty());
         colCustPassword.setCellValueFactory(cellData -> cellData.getValue().custPasswordProperty());
-        colAgentId.setCellValueFactory(cellData -> cellData.getValue().agentIdProperty().asObject());
+//        colAgentId.setCellValueFactory(cellData -> cellData.getValue().agentIdProperty().asObject());
+        colAgentId.setCellValueFactory(cellData -> cellData.getValue().agentNameProperty());
 
         setNavigateMode();
 
