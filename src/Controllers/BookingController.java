@@ -1,25 +1,24 @@
 package Controllers;
 
 import java.net.URL;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.ResourceBundle;
 
 import DataAccessObjects.BookingManager;
+import DataAccessObjects.CustomerManager;
+import DataAccessObjects.TripTypeManager;
 import DomainEntities.Booking;
 import DomainEntities.BookingDetail;
+import DomainEntities.Customer;
 import DomainEntities.TripType;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
-import javafx.scene.control.Tab;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 
@@ -33,6 +32,7 @@ public class BookingController {
     private Mode currentMode = Mode.NAV;
 
     private ArrayList<Booking> bookingArrayList;
+    private Booking selectedBooking;
 
     // ------- FXML Controls Starts Here -------
 
@@ -49,13 +49,16 @@ public class BookingController {
     private TextField tfSearchBarBooking;
 
     @FXML
+    private TabPane tabPaneBooking;
+
+    @FXML
     private TableView<Booking> tvOverviewBooking;
 
     @FXML
     private TableColumn<Booking, Integer> colBookId;
 
     @FXML
-    private TableColumn<Booking, Date> colBookDate;
+    private TableColumn<Booking, LocalDate> colBookDate;
 
     @FXML
     private TableColumn<Booking, String> colBookNo;
@@ -192,4 +195,46 @@ public class BookingController {
         ObservableList<Booking> bookings = FXCollections.observableArrayList(bookingArrayList);
         tvOverviewBooking.setItems(bookings);
     }
+
+    /****************************************************************************
+     *
+     *                              Handler Methods
+     *
+     *
+     * **************************************************************************/
+
+    public void btnDetailBookingClicked(){
+        selectedBooking = tvOverviewBooking.getSelectionModel().getSelectedItem();
+        if (selectedBooking != null){
+            enterEditMode(selectedBooking);
+        }
+    }
+
+
+    /****************************************************************************
+     *
+     *                              Convenient Methods
+     *
+     *
+     * **************************************************************************/
+
+    private void enterEditMode(Booking selectedB) {
+        currentMode = Mode.EDIT;
+        tabPaneBooking.getSelectionModel().select(tabDetail);
+
+        // display details
+        tfBookId.setText(String.valueOf(selectedB.getBookingId()));
+        pickerBookDate.setValue(selectedB.getBookingDate());  // shitty way to convert Date to LocalDate
+        tfBookNo.setText(selectedB.getBookingNo());
+        tfTravellerNo.setText(String.valueOf(selectedB.getTravelerCount()));
+        Customer customer = CustomerManager.getCustomerById(selectedB.getCustomerId());
+        tfFirstName.setText(customer.getCustFirstName());
+        tfLastName.setText(customer.getCustLastName());
+        ArrayList<TripType> list = TripTypeManager.getAllTT();
+        ObservableList<TripType> TTs = FXCollections.observableArrayList(list);
+        cmbTripType.setItems(TTs);
+        String[] tripTypes = {"B", "G", "L"};
+        cmbTripType.getSelectionModel().select(Arrays.asList(tripTypes).indexOf(selectedB.getTripTypeId()));
+    }
+
 }

@@ -4,25 +4,25 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 
 public class TripType {
-    private SimpleIntegerProperty tripTypeId;
+    private SimpleStringProperty tripTypeId;
     private SimpleStringProperty tTName;
 
     // constructor
-    public TripType(Integer tripTypeId, String tTName) {
-        this.tripTypeId = new SimpleIntegerProperty(tripTypeId);
+    public TripType(String tripTypeId, String tTName) {
+        this.tripTypeId = new SimpleStringProperty(tripTypeId);
         this.tTName = new SimpleStringProperty(tTName);
     }
 
     // getter & setter
-    public int getTripTypeId() {
+    public String getTripTypeId() {
         return tripTypeId.get();
     }
 
-    public SimpleIntegerProperty tripTypeIdProperty() {
+    public SimpleStringProperty tripTypeIdProperty() {
         return tripTypeId;
     }
 
-    public void setTripTypeId(int tripTypeId) {
+    public void setTripTypeId(String tripTypeId) {
         this.tripTypeId.set(tripTypeId);
     }
 
@@ -36,5 +36,12 @@ public class TripType {
 
     public void settTName(String tTName) {
         this.tTName.set(tTName);
+    }
+
+    // overrides
+
+    @Override
+    public String toString() {
+        return tTName.get();
     }
 }

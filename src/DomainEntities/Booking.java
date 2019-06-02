@@ -11,13 +11,14 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class Booking {
     // PK
     private SimpleIntegerProperty bookingId;
 
-    private ObjectProperty<Date> bookingDate;  // ? Date or LocalDate
+    private ObjectProperty<LocalDate> bookingDate;  // ? Date or LocalDate
     private SimpleStringProperty bookingNo;
     private SimpleIntegerProperty travelerCount;
     // FKs
@@ -27,7 +28,7 @@ public class Booking {
 
     // Constructor
 
-    public Booking(int bookingId, Date bookingDate, String bookingNo, int travelerCount, int customerId, String tripTypeId, int packageId) {
+    public Booking(int bookingId, LocalDate bookingDate, String bookingNo, int travelerCount, int customerId, String tripTypeId, int packageId) {
         this.bookingId = new SimpleIntegerProperty(bookingId);
         this.bookingDate = new SimpleObjectProperty<>(bookingDate);
         this.bookingNo = new SimpleStringProperty(bookingNo);
@@ -52,15 +53,15 @@ public class Booking {
         this.bookingId.set(bookingId);
     }*/
 
-    public Date getBookingDate() {
+    public LocalDate getBookingDate() {
         return bookingDate.get();
     }
 
-    public ObjectProperty<Date> bookingDateProperty() {
+    public ObjectProperty<LocalDate> bookingDateProperty() {
         return bookingDate;
     }
 
-    public void setBookingDate(Date bookingDate) {
+    public void setBookingDate(LocalDate bookingDate) {
         this.bookingDate.set(bookingDate);
     }
 

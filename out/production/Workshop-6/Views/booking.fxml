@@ -18,7 +18,7 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.201" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.BookingController">
    <children>
-      <TabPane prefHeight="461.0" prefWidth="675.0" style="-fx-tab-max-height: 20;" tabClosingPolicy="UNAVAILABLE">
+      <TabPane fx:id="tabPaneBooking" prefHeight="461.0" prefWidth="675.0" style="-fx-tab-max-height: 20;" tabClosingPolicy="UNAVAILABLE">
         <tabs>
           <Tab fx:id="tabOverview" text="Overview">
             <content>
@@ -52,7 +52,7 @@
                               <HBox layoutX="6.0" layoutY="7.0" prefHeight="38.0" prefWidth="652.0" spacing="10.0">
                                  <children>
                                     <Button fx:id="btnAddBooking" mnemonicParsing="false" text="Add new" />
-                                    <Button fx:id="btnDetailBooking" mnemonicParsing="false" text="View Detail" />
+                                    <Button fx:id="btnDetailBooking" mnemonicParsing="false" onAction="#btnDetailBookingClicked" text="View Detail" />
                                     <Button fx:id="btnDeleteBooking" mnemonicParsing="false" text="Delete selection" />
                                  </children>
                                  <padding>
@@ -75,9 +75,9 @@
                            </padding></HBox>
                          <GridPane fx:id="grPane" prefHeight="232.0" prefWidth="526.0" AnchorPane.topAnchor="5.0">
                              <columnConstraints>
-                                 <ColumnConstraints fx:id="gpDetails" hgrow="SOMETIMES" maxWidth="281.0" minWidth="10.0" prefWidth="129.0" />
-                                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="447.0" minWidth="10.0" prefWidth="287.0" />
-                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="447.0" minWidth="10.0" prefWidth="187.0" />
+                                 <ColumnConstraints fx:id="gpDetails" hgrow="SOMETIMES" maxWidth="281.0" minWidth="10.0" prefWidth="146.0" />
+                                 <ColumnConstraints hgrow="SOMETIMES" maxWidth="447.0" minWidth="10.0" prefWidth="278.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="447.0" minWidth="10.0" prefWidth="111.0" />
                              </columnConstraints>
                              <rowConstraints>
                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
