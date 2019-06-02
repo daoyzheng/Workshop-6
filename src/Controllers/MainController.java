@@ -71,13 +71,14 @@ public class MainController {
             // switch center according to selected value
             Pane centerPane = centerPanes.get(navs.indexOf(newValue));
             bpMain.setCenter(centerPane);
+            // todo: set center constraint to bpMain
         });
         // first time load app, select first option
         lvNavigation.getSelectionModel().select(0);
     }
 
 
-    // --- Action Methods ---
+    // -------- Action Methods ---------
     private boolean isExpand = true;
     public void btnExpandClicked(){
         if (isExpand){

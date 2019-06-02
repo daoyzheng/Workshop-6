@@ -30,12 +30,12 @@ public class BookingManager {
             while (rs.next()){
                 list.add(new Booking(
                         rs.getInt(1),
-                        rs.getDate(2),
+                        rs.getDate(2).toLocalDate(),
                         rs.getString(3),
                         rs.getInt(4),
                         rs.getInt(5),
-                        rs.getInt(6),
-                        rs.getInt(7)));
+                        rs.getString(6),
+                        rs.getInt(7)));  // if Null, return 0
             }
             conn.close();
         } catch (SQLException | ClassNotFoundException e){
@@ -68,11 +68,11 @@ public class BookingManager {
             if (rs.next()) {
                 booking = new Booking(
                         rs.getInt(1),
-                        rs.getDate(2),
+                        rs.getDate(2).toLocalDate(),
                         rs.getString(3),
                         rs.getInt(4),
                         rs.getInt(5),
-                        rs.getInt(6),
+                        rs.getString(6),
                         rs.getInt(7));
             }
             conn.close();
@@ -84,10 +84,10 @@ public class BookingManager {
 
     // CREATE
     /**
-     * @param newBooking  a booking object
+     * @param newB  a booking object
      * @return a bool indicate if record was successfully inserted
      */
-    public static boolean addBooking(Booking newBooking){
+    public static boolean addBooking(Booking newB){
         boolean isSuccess = false;
         try {
             // Get db connection
@@ -98,12 +98,12 @@ public class BookingManager {
             // Create prepare statement
             PreparedStatement stmt = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
             // Assign parameters
-            stmt.setDate(1, newBooking.getBookingDate());
-            stmt.setString(2, newBooking.getBookingNo());
-            stmt.setInt(3, newBooking.getTravelerCount());
-            stmt.setInt(4, newBooking.getCustomerId());
-            stmt.setInt(5, newBooking.getTripTypeId());
-            stmt.setInt(6, newBooking.getPackageId());
+            stmt.setDate(1, Date.valueOf(newB.getBookingDate()));
+            stmt.setString(2, newB.getBookingNo());
+            stmt.setInt(3, newB.getTravelerCount());
+            stmt.setInt(4, newB.getCustomerId());
+            stmt.setString(5, newB.getTripTypeId());
+            stmt.setInt(6, newB.getPackageId());
             // Execute query
             int numRows = stmt.executeUpdate();
             if (numRows == 0) {
@@ -141,11 +141,11 @@ public class BookingManager {
             // Create prepare statement
             PreparedStatement stmt = conn.prepareStatement(query);
             // Assign parameter
-            stmt.setDate(1,newB.getBookingDate());
+            stmt.setDate(1, Date.valueOf(newB.getBookingDate()));
             stmt.setString(2,newB.getBookingNo());
             stmt.setInt(3, newB.getTravelerCount());
             stmt.setInt(4, newB.getCustomerId());
-            stmt.setInt(5, newB.getTripTypeId());
+            stmt.setString(5, newB.getTripTypeId());
             stmt.setInt(6, newB.getPackageId());
             stmt.setInt(7, oldB.getBookingId());
             // Execute query
