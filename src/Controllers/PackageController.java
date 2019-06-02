@@ -1,15 +1,33 @@
 package Controllers;
 
 import java.net.URL;
+import java.util.Date;
 import java.util.ResourceBundle;
+import DomainEntities.PackageProductSupplier;
+import javafx.beans.property.ObjectProperty;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
+import javafx.scene.control.Tab;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
+
+import DataAccessObjects.PackageManager;
+import DataAccessObjects.ProductSupplierManager;
+import DomainEntities.Package;
+import DomainEntities.PackageProductSupplier;
+
 
 public class PackageController {
 
@@ -20,58 +38,158 @@ public class PackageController {
     private URL location;
 
     @FXML
-    private Button btnNavAdd;
+    private ListView<PackageProductSupplier> lvProductsSuppliers;
 
     @FXML
-    private Button btnNavEdit;
+    private TableView<Package> tvPackages;
 
     @FXML
-    private TextField tfNavSearch;
+    private TableColumn<Package, Integer> PackageId;
 
     @FXML
-    private Button btnDetailClose;
+    private TableColumn<Package, String> pkgName;
 
     @FXML
-    private Button btnDetailSaveClose;
+    private TableColumn<Package, ObjectProperty<Date>> pkgStartDate;
 
     @FXML
-    private Button btnDetailSave;
+    private TableColumn<Package, Date> pkgEndDate;
 
     @FXML
-    private Button btnDetailUndo;
+    private TableColumn<Package, String> pkgDesc;
 
     @FXML
-    private GridPane grPane1;
+    private TableColumn<Package, Double> pkgBasePrice;
+
+    @FXML
+    private TableColumn<Package, Double> pkgAgencyCommission;
+
+    @FXML
+    private TableColumn<Package, Boolean> active;
+
+    @FXML
+    private Button btnEdit;
+
+    @FXML
+    private Button btnAdd;
+
+    @FXML
+    private TextField tfSearch;
+
+    @FXML
+    private Tab gpEdit;
+
+    @FXML
+    private Button btnCloseEdit;
+
+    @FXML
+    private Button btnSaveCloseEdit;
+
+    @FXML
+    private Button btnSaveEdit;
+
+    @FXML
+    private Button btnUndo;
+
+    @FXML
+    private GridPane grPaneEdit;
 
     @FXML
     private ColumnConstraints gpDetails1;
 
     @FXML
-    private TextField tfFname1;
+    private TextField pkgNameEdit;
 
     @FXML
-    private TextField tfBusPhone1;
+    private TextField pkgDescEdit;
 
     @FXML
-    private TextField tfEmail1;
+    private TextField pkgBasePriceEdit;
 
     @FXML
-    private TextField tfPosition1;
+    private TextField pkgAgencyCommissionEdit;
 
     @FXML
-    private Label lbErrorAgtFirstName1;
+    private Label lbErPkgNameEdit;
 
     @FXML
-    private Label lbErrorAgtMiddleInitial1;
+    private Label lbErPkgSDatEdit;
 
     @FXML
-    private Label lbErrorAgtLastName1;
+    private Label lbErPkgEDatEdit;
 
     @FXML
-    private Label lbErrorAgtEmail1;
+    private Label lbErPkgBPriceEdit;
 
     @FXML
-    private Label lbErrorAgtPosition1;
+    private Label lbErPkgCommissionEdit;
+
+    @FXML
+    private DatePicker pkgStartDateEdit;
+
+    @FXML
+    private DatePicker pkgEndDateEdit;
+
+    @FXML
+    private CheckBox activeEdit;
+
+    @FXML
+    private Tab gpAdd;
+
+    @FXML
+    private Button btnCloseAdd;
+
+    @FXML
+    private Button btnSaveCloseAdd;
+
+    @FXML
+    private Button btnSaveAdd;
+
+    @FXML
+    private Button btnReset;
+
+    @FXML
+    private GridPane grPaneAdd;
+
+    @FXML
+    private ColumnConstraints gpDetails11;
+
+    @FXML
+    private TextField pkgNameAdd;
+
+    @FXML
+    private TextField pkgDescAdd;
+
+    @FXML
+    private TextField pkgBasePriceAdd;
+
+    @FXML
+    private TextField pkgAgencyCommissionAdd;
+
+    @FXML
+    private Label lbErPkgNameAdd;
+
+    @FXML
+    private Label lbErPkgSDatAdd;
+
+    @FXML
+    private Label lbErPkgEDatAdd;
+
+    @FXML
+    private Label lbErPkgBPriceAdd;
+
+    @FXML
+    private Label lbErPkgCommissionAdd;
+
+    @FXML
+    private DatePicker pkgStartDateAdd;
+
+    @FXML
+    private DatePicker pkgEndDateAdd;
+
+    @FXML
+    private CheckBox activeAdd;
+    private Main main;
 
     @FXML
     void btnDetailCloseClicked(MouseEvent event) {
@@ -108,26 +226,33 @@ public class PackageController {
 
     }
 
+
     @FXML
     void initialize() {
-        assert btnNavAdd != null : "fx:id=\"btnNavAdd\" was not injected: check your FXML file 'package.fxml'.";
-        assert btnNavEdit != null : "fx:id=\"btnNavEdit\" was not injected: check your FXML file 'package.fxml'.";
-        assert tfNavSearch != null : "fx:id=\"tfNavSearch\" was not injected: check your FXML file 'package.fxml'.";
-        assert btnDetailClose != null : "fx:id=\"btnDetailClose\" was not injected: check your FXML file 'package.fxml'.";
-        assert btnDetailSaveClose != null : "fx:id=\"btnDetailSaveClose\" was not injected: check your FXML file 'package.fxml'.";
-        assert btnDetailSave != null : "fx:id=\"btnDetailSave\" was not injected: check your FXML file 'package.fxml'.";
-        assert btnDetailUndo != null : "fx:id=\"btnDetailUndo\" was not injected: check your FXML file 'package.fxml'.";
-        assert grPane1 != null : "fx:id=\"grPane1\" was not injected: check your FXML file 'package.fxml'.";
-        assert gpDetails1 != null : "fx:id=\"gpDetails1\" was not injected: check your FXML file 'package.fxml'.";
-        assert tfFname1 != null : "fx:id=\"tfFname1\" was not injected: check your FXML file 'package.fxml'.";
-        assert tfBusPhone1 != null : "fx:id=\"tfBusPhone1\" was not injected: check your FXML file 'package.fxml'.";
-        assert tfEmail1 != null : "fx:id=\"tfEmail1\" was not injected: check your FXML file 'package.fxml'.";
-        assert tfPosition1 != null : "fx:id=\"tfPosition1\" was not injected: check your FXML file 'package.fxml'.";
-        assert lbErrorAgtFirstName1 != null : "fx:id=\"lbErrorAgtFirstName1\" was not injected: check your FXML file 'package.fxml'.";
-        assert lbErrorAgtMiddleInitial1 != null : "fx:id=\"lbErrorAgtMiddleInitial1\" was not injected: check your FXML file 'package.fxml'.";
-        assert lbErrorAgtLastName1 != null : "fx:id=\"lbErrorAgtLastName1\" was not injected: check your FXML file 'package.fxml'.";
-        assert lbErrorAgtEmail1 != null : "fx:id=\"lbErrorAgtEmail1\" was not injected: check your FXML file 'package.fxml'.";
-        assert lbErrorAgtPosition1 != null : "fx:id=\"lbErrorAgtPosition1\" was not injected: check your FXML file 'package.fxml'.";
 
+        //setup up table cell factories
+        PackageId.setCellValueFactory(cellData -> cellData.getValue().packageIdProperty().asObject());
+        pkgName.setCellValueFactory(cellData -> cellData.getValue().pkgNameProperty());
+        pkgStartDate.setCellValueFactory(cellData -> cellData.getValue().pkgStartDateProperty());
+        pkgEndDate.setCellValueFactory(cellData -> cellData.getValue().pkgEndDateProperty());
+        pkgDesc.setCellValueFactory(cellData -> cellData.getValue().pkgDescProperty());
+        pkgBasePrice.setCellValueFactory(cellData -> cellData.getValue().pkgBasePriceProperty().asObject());
+        pkgAgencyCommission.setCellValueFactory(cellData -> cellData.getValue().pkgAgencyCommissionProperty().asObject());
+        active.setCellValueFactory(cellData -> cellData.getValue().activeProperty());
+
+        loadPackages();
+    }
+
+
+    private void loadPackages()
+    {
+        ObservableList<Package> packages = FXCollections.observableArrayList();
+        packages = PackageManager.getAllPackages();
+        tvPackages.setItems(packages);
+    }
+
+    public void setMain(Main main)
+    {
+        this.main = main;
     }
 }

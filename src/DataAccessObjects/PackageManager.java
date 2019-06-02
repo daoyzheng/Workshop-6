@@ -8,18 +8,18 @@ package DataAccessObjects;
 
 import DataAccess.DbConnection;
 import DomainEntities.Package;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
-
 import java.sql.*;
-import java.util.ArrayList;
 
 public class PackageManager {
 
     //retrieve all packages from the database and populates package objects in a list
-    public static ArrayList<Package> getAllPackages()
+    public static ObservableList<Package> getAllPackages()
     {
-        ArrayList<Package> arrayList = new ArrayList<>();
+        ObservableList<Package> packages = FXCollections.observableArrayList();
 
         try {
             Connection conn = DbConnection.getConnection();
@@ -27,10 +27,10 @@ public class PackageManager {
             ResultSet resultSet = statement.executeQuery("SELECT * FROM 'packages'");
             while (resultSet.next())
             {
-                arrayList.add(new Package(resultSet.getInt(1),
+                packages.add(new Package(resultSet.getInt(1),
                         resultSet.getString(2),
-                        resultSet.getDate(3),
-                        resultSet.getDate(3),
+                        resultSet.getDate(3).toLocalDate(),
+                        resultSet.getDate(3).toLocalDate(),
                         resultSet.getString(3),
                         resultSet.getDouble(3),
                         resultSet.getDouble(3),
@@ -38,11 +38,10 @@ public class PackageManager {
             }
             conn.close();// should be in finally block?
         }
-        catch (SQLException | ClassNotFoundException e){
+        catch (ClassNotFoundException | SQLException e){
             e.printStackTrace();
         }
-
-        return arrayList;
+        return packages;
     }
 
 
@@ -60,8 +59,8 @@ public class PackageManager {
             {
                 pkg.setPackageId(resultSet.getInt(1));
                 pkg.setPkgName(resultSet.getString(2));
-                pkg.setPkgStartDate(resultSet.getDate(3));
-                pkg.setPkgEndDate(resultSet.getDate(4));
+                pkg.setPkgStartDate(resultSet.getDate(3).toLocalDate());
+                pkg.setPkgEndDate(resultSet.getDate(4).toLocalDate());
                 pkg.setPkgDesc(resultSet.getString(5));
                 pkg.setPkgBasePrice(resultSet.getDouble(6));
                 pkg.setPkgAgencyCommission(resultSet.getDouble(7));
@@ -93,8 +92,8 @@ public class PackageManager {
                             "`PkgAgencyCommission`=?," +
                             "`Active`=? WHERE `PackageId`=?");
             prepStatement.setString(1,newPackage.getPkgName());
-            prepStatement.setDate(2,newPackage.getPkgStartDate());
-            prepStatement.setDate(3,newPackage.getPkgEndDate());
+            prepStatement.setDate(2, Date.valueOf(newPackage.getPkgStartDate()));
+            prepStatement.setDate(3, Date.valueOf(newPackage.getPkgEndDate()));
             prepStatement.setString(4, newPackage.getPkgDesc());
             prepStatement.setDouble(5,newPackage.getPkgBasePrice());
             prepStatement.setDouble(6,newPackage.getPkgAgencyCommission());
@@ -130,8 +129,8 @@ public class PackageManager {
             PreparedStatement prepStatement = conn.prepareStatement(
                     "INSERT INTO 'packages' VALUES (???????)", Statement.RETURN_GENERATED_KEYS);
             prepStatement.setString(1,pkg.getPkgName());
-            prepStatement.setDate(2,pkg.getPkgStartDate());
-            prepStatement.setDate(3, pkg.getPkgEndDate());
+            prepStatement.setDate(2, Date.valueOf(pkg.getPkgStartDate()));
+            prepStatement.setDate(3, Date.valueOf(pkg.getPkgEndDate()));
             prepStatement.setString(4, pkg.getPkgDesc());
             prepStatement.setDouble(5, pkg.getPkgBasePrice());
             prepStatement.setDouble(6, pkg.getPkgAgencyCommission());

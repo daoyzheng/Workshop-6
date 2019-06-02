@@ -7,9 +7,7 @@ Date: May, 2019
 package DomainEntities;
 
 import javafx.beans.property.*;
-
 import java.time.LocalDate;
-import java.sql.Date;
 
 public class Package {
 
@@ -17,8 +15,8 @@ public class Package {
     // properties:
     private SimpleIntegerProperty packageId;
     private SimpleStringProperty pkgName;
-    private ObjectProperty<Date> pkgStartDate;
-    private ObjectProperty<Date> pkgEndDate;
+    private SimpleObjectProperty<LocalDate> pkgStartDate;
+    private SimpleObjectProperty<LocalDate> pkgEndDate;
     private SimpleStringProperty pkgDesc;
     private SimpleDoubleProperty pkgBasePrice;
     private SimpleDoubleProperty pkgAgencyCommission;
@@ -29,7 +27,7 @@ public class Package {
     public Package() {
     }
 
-    public Package(int packageId, String pkgName, Date pkgStartDate, Date pkgEndDate,
+    public Package(int packageId, String pkgName, LocalDate pkgStartDate, LocalDate pkgEndDate,
                    String pkgDesc, Double pkgBasePrice, Double pkgAgencyCommission,
                    Boolean active) {
         this.packageId.set(packageId);
@@ -68,27 +66,27 @@ public class Package {
         this.pkgName.set(pkgName);
     }
 
-    public Date getPkgStartDate() {
+    public LocalDate getPkgStartDate() {
         return pkgStartDate.get();
     }
 
-    public ObjectProperty<Date> pkgStartDateProperty() {
+    public SimpleObjectProperty<LocalDate> pkgStartDateProperty() {
         return pkgStartDate;
     }
 
-    public void setPkgStartDate(Date pkgStartDate) {
+    public void setPkgStartDate(LocalDate pkgStartDate) {
         this.pkgStartDate.set(pkgStartDate);
     }
 
-    public Date getPkgEndDate() {
+    public LocalDate getPkgEndDate() {
         return pkgEndDate.get();
     }
 
-    public ObjectProperty<Date> pkgEndDateProperty() {
+    public SimpleObjectProperty<LocalDate> pkgEndDateProperty() {
         return pkgEndDate;
     }
 
-    public void setPkgEndDate(Date pkgEndDate) {
+    public void setPkgEndDate(LocalDate pkgEndDate) {
         this.pkgEndDate.set(pkgEndDate);
     }
 
@@ -128,7 +126,7 @@ public class Package {
         this.pkgAgencyCommission.set(pkgAgencyCommission);
     }
 
-    public boolean isActive() { //???????
+    public boolean isActive() {
         return active.get();
     }
 
