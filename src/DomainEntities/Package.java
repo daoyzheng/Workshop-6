@@ -32,14 +32,14 @@ public class Package {
                    Boolean active) {
 
 
-        this.packageId.set(packageId);
-        this.pkgName.set(pkgName);
+        this.packageId = new SimpleIntegerProperty(packageId);
+        this.pkgName = new SimpleStringProperty(pkgName);
         this.pkgStartDate = new SimpleObjectProperty<>(pkgStartDate);
         this.pkgEndDate = new SimpleObjectProperty<>(pkgEndDate);
-        this.pkgDesc.set(pkgDesc);
-        this.pkgBasePrice.set(pkgBasePrice);
-        this.pkgAgencyCommission.set(pkgAgencyCommission);
-        this.active.set(active);
+        this.pkgDesc = new SimpleStringProperty(pkgDesc);
+        this.pkgBasePrice = new SimpleDoubleProperty(pkgBasePrice);
+        this.pkgAgencyCommission = new SimpleDoubleProperty(pkgAgencyCommission);
+        this.active = new SimpleBooleanProperty(active);
     }
 
 
