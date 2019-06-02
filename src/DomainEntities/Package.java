@@ -30,10 +30,12 @@ public class Package {
     public Package(int packageId, String pkgName, LocalDate pkgStartDate, LocalDate pkgEndDate,
                    String pkgDesc, Double pkgBasePrice, Double pkgAgencyCommission,
                    Boolean active) {
+
+
         this.packageId.set(packageId);
         this.pkgName.set(pkgName);
-        this.pkgStartDate.set(pkgStartDate);
-        this.pkgEndDate.set(pkgEndDate);
+        this.pkgStartDate = new SimpleObjectProperty<>(pkgStartDate);
+        this.pkgEndDate = new SimpleObjectProperty<>(pkgEndDate);
         this.pkgDesc.set(pkgDesc);
         this.pkgBasePrice.set(pkgBasePrice);
         this.pkgAgencyCommission.set(pkgAgencyCommission);
@@ -75,7 +77,7 @@ public class Package {
     }
 
     public void setPkgStartDate(LocalDate pkgStartDate) {
-        this.pkgStartDate.set(pkgStartDate);
+        this.pkgStartDate = new SimpleObjectProperty<>(pkgStartDate);
     }
 
     public LocalDate getPkgEndDate() {
@@ -87,7 +89,7 @@ public class Package {
     }
 
     public void setPkgEndDate(LocalDate pkgEndDate) {
-        this.pkgEndDate.set(pkgEndDate);
+        this.pkgEndDate = new SimpleObjectProperty<>(pkgEndDate);
     }
 
     public String getPkgDesc() {

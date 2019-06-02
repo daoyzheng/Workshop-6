@@ -1,13 +1,8 @@
 package Controllers;
 
 import java.net.URL;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
-import DomainEntities.PackageProductSupplier;
-import javafx.beans.property.ObjectProperty;
-import javafx.beans.value.ObservableValue;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
@@ -22,12 +17,15 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
+import javafx.beans.property.ObjectProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
-import DataAccessObjects.PackageManager;
-import DataAccessObjects.ProductSupplierManager;
-import DomainEntities.Package;
+import java.util.Date;
+
 import DomainEntities.PackageProductSupplier;
-
+import DataAccessObjects.PackageManager;
+import DomainEntities.Package;
 
 public class PackageController {
 
@@ -36,6 +34,9 @@ public class PackageController {
 
     @FXML
     private URL location;
+
+    @FXML
+    private TextField tfSearch;
 
     @FXML
     private ListView<PackageProductSupplier> lvProductsSuppliers;
@@ -50,10 +51,10 @@ public class PackageController {
     private TableColumn<Package, String> pkgName;
 
     @FXML
-    private TableColumn<Package, ObjectProperty<Date>> pkgStartDate;
+    private TableColumn<Package, LocalDate> pkgStartDate;
 
     @FXML
-    private TableColumn<Package, Date> pkgEndDate;
+    private TableColumn<Package, LocalDate> pkgEndDate;
 
     @FXML
     private TableColumn<Package, String> pkgDesc;
@@ -68,16 +69,7 @@ public class PackageController {
     private TableColumn<Package, Boolean> active;
 
     @FXML
-    private Button btnEdit;
-
-    @FXML
-    private Button btnAdd;
-
-    @FXML
-    private TextField tfSearch;
-
-    @FXML
-    private Tab gpEdit;
+    private Tab tapEdit;
 
     @FXML
     private Button btnCloseEdit;
@@ -93,9 +85,6 @@ public class PackageController {
 
     @FXML
     private GridPane grPaneEdit;
-
-    @FXML
-    private ColumnConstraints gpDetails1;
 
     @FXML
     private TextField pkgNameEdit;
@@ -152,9 +141,6 @@ public class PackageController {
     private GridPane grPaneAdd;
 
     @FXML
-    private ColumnConstraints gpDetails11;
-
-    @FXML
     private TextField pkgNameAdd;
 
     @FXML
@@ -189,35 +175,44 @@ public class PackageController {
 
     @FXML
     private CheckBox activeAdd;
-    private Main main;
 
     @FXML
-    void btnDetailCloseClicked(MouseEvent event) {
+    void btnCloseAddClicked(MouseEvent event) {
 
     }
 
     @FXML
-    void btnDetailSaveClicked(MouseEvent event) {
+    void btnCloseEditClicked(MouseEvent event) {
 
     }
 
     @FXML
-    void btnDetailSaveCloseClicked(MouseEvent event) {
+    void btnResetClicked(MouseEvent event) {
 
     }
 
     @FXML
-    void btnDetailUndoClicked(MouseEvent event) {
+    void btnSaveAddClicked(MouseEvent event) {
 
     }
 
     @FXML
-    void btnNavAddClick(MouseEvent event) {
+    void btnSaveCloseAddClicked(MouseEvent event) {
 
     }
 
     @FXML
-    void btnNavEditClick(MouseEvent event) {
+    void btnSaveCloseEditClicked(MouseEvent event) {
+
+    }
+
+    @FXML
+    void btnSaveEditClicked(MouseEvent event) {
+
+    }
+
+    @FXML
+    void btnUndoClicked(MouseEvent event) {
 
     }
 
@@ -225,7 +220,6 @@ public class PackageController {
     void tfNavSearchKeyTyped(KeyEvent event) {
 
     }
-
 
     @FXML
     void initialize() {
@@ -246,13 +240,33 @@ public class PackageController {
 
     private void loadPackages()
     {
-        ObservableList<Package> packages = FXCollections.observableArrayList();
+        ObservableList<Package> packages;
         packages = PackageManager.getAllPackages();
         tvPackages.setItems(packages);
     }
 
-    public void setMain(Main main)
-    {
-        this.main = main;
-    }
+//    public void setMain(Main main)
+//    {
+//        this.main = main;
+//    }
+
+
+
+
+//    @FXML
+//    void tfNavSearchKeyTyped(KeyEvent event) {
+//        System.out.println("pressed");
+//
+//        String strFilter = tfNavSearch.getText();
+//
+//        List<Agency> filteredList = navTableArrayList.stream()
+//                .filter(d -> d.toString().contains(strFilter))
+//                .collect(Collectors.toList());
+//
+//        System.out.println(filteredList);
+//
+//        ObservableList<Agency> data = FXCollections.observableArrayList(filteredList);
+//        tvNavTable.setItems(data);
+//
+//    }
 }

@@ -30,15 +30,7 @@
                            <children>
                               <HBox prefHeight="50.0" prefWidth="652.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
-                                    <Button fx:id="btnEdit" minWidth="0.0" mnemonicParsing="false" onMouseClicked="#btnNavAddClick" prefHeight="30.0" prefWidth="200.0" text="Edit a package">
-                                       <font>
-                                          <Font name="System Bold" size="12.0" />
-                                       </font></Button>
-                                    <Button fx:id="btnAdd" minWidth="0.0" mnemonicParsing="false" onMouseClicked="#btnNavEditClick" prefHeight="30.0" prefWidth="200.0" text="Add a new package">
-                                       <font>
-                                          <Font name="System Bold" size="12.0" />
-                                       </font></Button>
-                                    <Label alignment="CENTER_RIGHT" contentDisplay="TOP" prefHeight="30.0" prefWidth="150.0" text="Search by name:" textAlignment="RIGHT">
+                                    <Label alignment="CENTER_RIGHT" contentDisplay="TOP" prefHeight="30.0" prefWidth="100.0" text="Search by name:" textAlignment="RIGHT">
                                        <font>
                                           <Font name="System Bold Italic" size="12.0" />
                                        </font></Label>
@@ -97,7 +89,7 @@
                      </children></AnchorPane>
               </content>
             </Tab>
-            <Tab fx:id="gpEdit" text="Edit the package">
+            <Tab fx:id="tapEdit" text="Edit the package">
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="400.0" prefWidth="800.0">
                      <children>
@@ -105,13 +97,13 @@
                            <children>
                               <HBox layoutX="1.0" layoutY="1.0" prefHeight="41.0" prefWidth="675.0" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
-                                    <Button fx:id="btnCloseEdit" mnemonicParsing="false" onMouseClicked="#btnDetailCloseClicked" prefHeight="0.0" prefWidth="200.0" text="Close">
+                                    <Button fx:id="btnCloseEdit" mnemonicParsing="false" onMouseClicked="#btnCloseEditClicked" prefHeight="0.0" prefWidth="200.0" text="Close">
                                        <opaqueInsets>
                                           <Insets />
                                        </opaqueInsets></Button>
-                                    <Button id="btnSaveClose" fx:id="btnSaveCloseEdit" mnemonicParsing="false" onMouseClicked="#btnDetailSaveCloseClicked" prefHeight="0.0" prefWidth="200.0" text="Save &amp; Close" />
-                                    <Button id="btnSaveEdit" fx:id="btnSaveEdit" mnemonicParsing="false" onMouseClicked="#btnDetailSaveClicked" prefHeight="0.0" prefWidth="200.0" text="Save &amp; Edit Product-Supplier" />
-                                    <Button id="btnUndo" fx:id="btnUndo" mnemonicParsing="false" onMouseClicked="#btnDetailUndoClicked" prefHeight="0.0" prefWidth="200.0" text="Undo changes" />
+                                    <Button id="btnSaveClose" fx:id="btnSaveCloseEdit" mnemonicParsing="false" onMouseClicked="#btnSaveCloseEditClicked" prefHeight="0.0" prefWidth="200.0" text="Save &amp; Close" />
+                                    <Button id="btnSaveEdit" fx:id="btnSaveEdit" mnemonicParsing="false" onMouseClicked="#btnSaveEditClicked" prefHeight="0.0" prefWidth="200.0" text="Save &amp; Edit Product-Supplier" />
+                                    <Button id="btnUndo" fx:id="btnUndo" mnemonicParsing="false" onMouseClicked="#btnUndoClicked" prefHeight="0.0" prefWidth="200.0" text="Undo changes" />
                                  </children>
                                  <padding>
                                     <Insets bottom="5.0" left="20.0" right="20.0" top="5.0" />
@@ -123,7 +115,7 @@
                            <children>
                               <GridPane fx:id="grPaneEdit" prefHeight="359.0" prefWidth="601.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <columnConstraints>
-                                    <ColumnConstraints fx:id="gpDetails1" hgrow="SOMETIMES" maxWidth="281.0" minWidth="10.0" prefWidth="129.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="281.0" minWidth="10.0" prefWidth="129.0" />
                                     <ColumnConstraints hgrow="SOMETIMES" maxWidth="447.0" minWidth="10.0" prefWidth="255.0" />
                                     <ColumnConstraints hgrow="SOMETIMES" maxWidth="447.0" minWidth="10.0" prefWidth="222.0" />
                                  </columnConstraints>
@@ -259,14 +251,14 @@
                            <children>
                               <HBox layoutX="1.0" layoutY="1.0" prefHeight="41.0" prefWidth="675.0" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
-                                    <Button fx:id="btnCloseAdd" mnemonicParsing="false" onMouseClicked="#btnDetailCloseClicked" prefHeight="0.0" prefWidth="200.0" text="Close">
+                                    <Button fx:id="btnCloseAdd" mnemonicParsing="false" onMouseClicked="#btnCloseAddClicked" prefHeight="0.0" prefWidth="200.0" text="Close">
                                        <opaqueInsets>
                                           <Insets />
                                        </opaqueInsets>
                                     </Button>
-                                    <Button fx:id="btnSaveCloseAdd" mnemonicParsing="false" onMouseClicked="#btnDetailSaveCloseClicked" prefHeight="0.0" prefWidth="200.0" text="Save &amp; Close" />
-                                    <Button fx:id="btnSaveAdd" mnemonicParsing="false" onMouseClicked="#btnDetailSaveClicked" prefHeight="0.0" prefWidth="200.0" text="Save &amp; Add Product-Supplier" />
-                                    <Button fx:id="btnReset" mnemonicParsing="false" onMouseClicked="#btnDetailUndoClicked" prefHeight="0.0" prefWidth="200.0" text="Reset" />
+                                    <Button fx:id="btnSaveCloseAdd" mnemonicParsing="false" onMouseClicked="#btnSaveCloseAddClicked" prefHeight="0.0" prefWidth="200.0" text="Save &amp; Close" />
+                                    <Button fx:id="btnSaveAdd" mnemonicParsing="false" onMouseClicked="#btnSaveAddClicked" prefHeight="0.0" prefWidth="200.0" text="Save &amp; Add Product-Supplier" />
+                                    <Button fx:id="btnReset" mnemonicParsing="false" onMouseClicked="#btnResetClicked" prefHeight="0.0" prefWidth="200.0" text="Reset" />
                                  </children>
                                  <padding>
                                     <Insets bottom="5.0" left="20.0" right="20.0" top="5.0" />
@@ -278,7 +270,7 @@
                            <children>
                               <GridPane fx:id="grPaneAdd" prefHeight="359.0" prefWidth="601.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <columnConstraints>
-                                    <ColumnConstraints fx:id="gpDetails11" hgrow="SOMETIMES" maxWidth="281.0" minWidth="10.0" prefWidth="129.0" />
+                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="281.0" minWidth="10.0" prefWidth="129.0" />
                                     <ColumnConstraints hgrow="SOMETIMES" maxWidth="447.0" minWidth="10.0" prefWidth="255.0" />
                                     <ColumnConstraints hgrow="SOMETIMES" maxWidth="447.0" minWidth="10.0" prefWidth="222.0" />
                                  </columnConstraints>
