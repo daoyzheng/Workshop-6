@@ -24,17 +24,17 @@ public class PackageManager {
         try {
             Connection conn = DbConnection.getConnection();
             Statement statement = conn.createStatement();
-            ResultSet resultSet = statement.executeQuery("SELECT * FROM 'packages'");
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM packages");
             while (resultSet.next())
             {
                 packages.add(new Package(resultSet.getInt(1),
                         resultSet.getString(2),
                         resultSet.getDate(3).toLocalDate(),
-                        resultSet.getDate(3).toLocalDate(),
-                        resultSet.getString(3),
-                        resultSet.getDouble(3),
-                        resultSet.getDouble(3),
-                        resultSet.getBoolean(3)));
+                        resultSet.getDate(4).toLocalDate(),
+                        resultSet.getString(5),
+                        resultSet.getDouble(6),
+                        resultSet.getDouble(7),
+                        resultSet.getBoolean(8)));
             }
             conn.close();// should be in finally block?
         }

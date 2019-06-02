@@ -195,14 +195,14 @@ public class PackageController {
 
         loadPackages();
 
-        curntPkg = firstPackage();
+//        curntPkg = firstPackage();
     }
 
 
     // a method to find the first package in the table as the selected package
-    private Package firstPackage() {
-
-    }
+//    private Package firstPackage() {
+//
+//    }
 
 
     private void loadPackages()
