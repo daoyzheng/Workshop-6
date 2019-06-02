@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="d54214f6-0d71-4717-81a4-e647c8cdc3be" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/src/Controllers/PackageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/PackageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DomainEntities/Package.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/DomainEntities/Package.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Views/package.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/package.fxml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -51,45 +49,19 @@
           <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Controllers/PackageController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-485">
-              <caret line="234" column="85" lean-forward="true" selection-start-line="234" selection-start-column="85" selection-end-line="234" selection-end-column="85" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="352">
+              <caret line="203" selection-start-line="203" selection-end-line="203" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/DomainEntities/Package.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="324">
-              <caret line="29" column="38" lean-forward="true" selection-start-line="29" selection-start-column="38" selection-end-line="29" selection-end-column="38" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#1761#1762#0" expanded="true" />
-                <element signature="e#1802#1803#0" expanded="true" />
-                <element signature="e#1871#1872#0" expanded="true" />
-                <element signature="e#1906#1907#0" expanded="true" />
-                <element signature="e#2056#2057#0" expanded="true" />
-                <element signature="e#2095#2096#0" expanded="true" />
-                <element signature="e#2162#2163#0" expanded="true" />
-                <element signature="e#2195#2196#0" expanded="true" />
-                <element signature="e#2327#2328#0" expanded="true" />
-                <element signature="e#2399#2400#0" expanded="true" />
-                <element signature="method#setPkgAgencyCommission#0;class#Package#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/DataAccessObjects/PackageManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="175">
+            <state relative-caret-position="1254">
               <caret line="73" lean-forward="true" selection-start-line="19" selection-start-column="42" selection-end-line="19" selection-end-column="56" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -346,7 +318,7 @@
       <workItem from="1559357918411" duration="28000" />
       <workItem from="1559357968949" duration="5995000" />
       <workItem from="1559364365404" duration="1759000" />
-      <workItem from="1559428137148" duration="35017000" />
+      <workItem from="1559428137148" duration="37013000" />
     </task>
     <task id="LOCAL-00001" summary="Remove product, supplier and product supplier interface. Rename file from Data Access Object (DAO) to Manager">
       <created>1558154500962</created>
@@ -401,7 +373,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="91688000" />
+    <option name="totallyTimeSpent" value="93684000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -815,16 +787,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/DataAccessObjects/PackageManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="73" lean-forward="true" selection-start-line="19" selection-start-column="42" selection-end-line="19" selection-end-column="56" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Views/agent.fxml">
       <provider editor-type-id="text-editor">
         <state relative-caret-position="141">
@@ -854,7 +816,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/DomainEntities/Package.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
+        <state relative-caret-position="550">
           <caret line="29" column="38" lean-forward="true" selection-start-line="29" selection-start-column="38" selection-end-line="29" selection-end-column="38" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -875,8 +837,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Controllers/PackageController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-485">
-          <caret line="234" column="85" lean-forward="true" selection-start-line="234" selection-start-column="85" selection-end-line="234" selection-end-column="85" />
+        <state relative-caret-position="352">
+          <caret line="203" selection-start-line="203" selection-end-line="203" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/DataAccessObjects/PackageManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1254">
+          <caret line="73" lean-forward="true" selection-start-line="19" selection-start-column="42" selection-end-line="19" selection-end-column="56" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

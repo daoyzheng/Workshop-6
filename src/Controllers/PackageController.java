@@ -176,6 +176,43 @@ public class PackageController {
     @FXML
     private CheckBox activeAdd;
 
+
+    // class-level variables:
+    Package curntPkg = new Package(); // current (selected) package in the package scene
+
+        @FXML
+    void initialize() {
+
+        //setup up table cell factories
+        PackageId.setCellValueFactory(cellData -> cellData.getValue().packageIdProperty().asObject());
+        pkgName.setCellValueFactory(cellData -> cellData.getValue().pkgNameProperty());
+        pkgStartDate.setCellValueFactory(cellData -> cellData.getValue().pkgStartDateProperty());
+        pkgEndDate.setCellValueFactory(cellData -> cellData.getValue().pkgEndDateProperty());
+        pkgDesc.setCellValueFactory(cellData -> cellData.getValue().pkgDescProperty());
+        pkgBasePrice.setCellValueFactory(cellData -> cellData.getValue().pkgBasePriceProperty().asObject());
+        pkgAgencyCommission.setCellValueFactory(cellData -> cellData.getValue().pkgAgencyCommissionProperty().asObject());
+        active.setCellValueFactory(cellData -> cellData.getValue().activeProperty());
+
+        loadPackages();
+
+        curntPkg = firstPackage();
+    }
+
+
+    // a method to find the first package in the table as the selected package
+    private Package firstPackage() {
+
+    }
+
+
+    private void loadPackages()
+    {
+        ObservableList<Package> packages;
+        packages = PackageManager.getAllPackages();
+        tvPackages.setItems(packages);
+    }
+
+
     @FXML
     void btnCloseAddClicked(MouseEvent event) {
 
@@ -221,29 +258,7 @@ public class PackageController {
 
     }
 
-    @FXML
-    void initialize() {
 
-        //setup up table cell factories
-        PackageId.setCellValueFactory(cellData -> cellData.getValue().packageIdProperty().asObject());
-        pkgName.setCellValueFactory(cellData -> cellData.getValue().pkgNameProperty());
-        pkgStartDate.setCellValueFactory(cellData -> cellData.getValue().pkgStartDateProperty());
-        pkgEndDate.setCellValueFactory(cellData -> cellData.getValue().pkgEndDateProperty());
-        pkgDesc.setCellValueFactory(cellData -> cellData.getValue().pkgDescProperty());
-        pkgBasePrice.setCellValueFactory(cellData -> cellData.getValue().pkgBasePriceProperty().asObject());
-        pkgAgencyCommission.setCellValueFactory(cellData -> cellData.getValue().pkgAgencyCommissionProperty().asObject());
-        active.setCellValueFactory(cellData -> cellData.getValue().activeProperty());
-
-        loadPackages();
-    }
-
-
-    private void loadPackages()
-    {
-        ObservableList<Package> packages;
-        packages = PackageManager.getAllPackages();
-        tvPackages.setItems(packages);
-    }
 
 //    public void setMain(Main main)
 //    {
