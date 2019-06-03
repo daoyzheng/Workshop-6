@@ -240,6 +240,12 @@ public class CustomerController {
     private void setNewMode() {
         formMode = "New";
         tfCustomerId.setVisible(false);
+
+        //refresh the Agency Combobox data source
+        ArrayList<Agent> agents = AgentManager.getAllAgents();
+        ObservableList<Agent> obsList = FXCollections.observableArrayList(agents);
+        cboAgentId.setItems(obsList);
+
         cboAgentId.setValue(null);
         clearDetailErrorMessages();
         clearDetailForm();

@@ -248,6 +248,12 @@ public class AgentController {
     private void setNewMode() {
         formMode = "New";
         tfAgentId.setVisible(false);
+        //load
+
+        ArrayList<Agency> agencies = AgencyManager.getAllAgencies();
+        ObservableList<Agency> obsList = FXCollections.observableArrayList(agencies);
+        cboAgencyId.setItems(obsList);
+
         cboAgencyId.setValue(null);
         clearDetailErrorMessages();
         clearDetailForm();
