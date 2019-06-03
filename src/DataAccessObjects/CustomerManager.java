@@ -104,38 +104,6 @@ public class CustomerManager {
     }
 
 
-    //retrieve a customer from database based on ID
-    public static int getCustomerMaxId() {
-        int maxId = 0;
-
-        try {
-            //create DB connection
-            Connection conn =  DbConnection.getConnection();
-            //create statement
-            Statement stmt = conn.createStatement();
-
-            //query database
-            ResultSet rs = stmt.executeQuery("SELECT MAX(CustomerId) FROM customers");
-
-            //create Array list to capture data from DB query rs
-            while (rs.next()) {
-               // maxId = rs.getInt(1);
-                System.out.println(rs.getInt(1));
-            }
-            conn.close();
-
-        }
-        catch (ClassNotFoundException e) {
-            e.printStackTrace();
-            System.out.println("class not found exception");
-        }
-        catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        return maxId;
-    }
-
     //add a new Customer to the database, returns true if successful
     public static int addCustomer(Customer newCustomer) throws SQLException, ClassNotFoundException {
         int newCustId = 0;

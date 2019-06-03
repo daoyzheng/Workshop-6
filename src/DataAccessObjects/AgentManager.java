@@ -93,38 +93,6 @@ public class AgentManager {
         }
     }
 
-
-//    //retrieve a customer from database based on ID
-//    public static int getAgentMaxId() {
-//        int maxId = 0;
-//
-//        try {
-//            //create DB connection
-//            Connection conn =  DbConnection.getConnection();
-//            //create statement
-//            Statement stmt = conn.createStatement();
-//
-//            //query database
-//            ResultSet rs = stmt.executeQuery("SELECT MAX(AgentId) FROM agents");
-//
-//            //create Array list to capture data from DB query rs
-//            while (rs.next()) {
-//                System.out.println(rs.getInt(1));
-//            }
-//            conn.close();
-//
-//        }
-//        catch (ClassNotFoundException e) {
-//            e.printStackTrace();
-//            System.out.println("class not found exception");
-//        }
-//        catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-//
-//        return maxId;
-//    }
-
     //add a new Agent to the database, returns true if successful
     public static int addAgent(Agent newAgent) throws SQLException, ClassNotFoundException {
         int newAgtId = 0;
