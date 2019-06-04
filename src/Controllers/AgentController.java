@@ -3,6 +3,10 @@ package Controllers;
 import java.awt.*;
 import java.io.IOException;
 import java.net.URL;
+import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
+import java.security.spec.InvalidKeySpecException;
+import java.security.spec.KeySpec;
 import java.sql.SQLException;
 import java.util.*;
 import java.util.List;
@@ -12,6 +16,7 @@ import java.util.stream.Stream;
 
 import DataAccessObjects.AgencyManager;
 import DataAccessObjects.AgentManager;
+import DataAccessObjects.PasswordManager;
 import DomainEntities.Agency;
 import DomainEntities.Agent;
 import javafx.beans.value.ChangeListener;
@@ -35,6 +40,8 @@ import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
+import javax.crypto.SecretKeyFactory;
+import javax.crypto.spec.PBEKeySpec;
 import javax.swing.*;
 
 public class AgentController {
@@ -230,6 +237,8 @@ public class AgentController {
         navTableArrayList = AgentManager.getAllAgents();
         ObservableList<Agent> data = FXCollections.observableArrayList(navTableArrayList);
         tvNavTable.setItems(data);
+        SelectionModel<Agent> selectionModel = tvNavTable.getSelectionModel();
+        selectionModel.selectFirst();
     }
 
     //*******************************     EDIT MODE      ********************************//
@@ -334,9 +343,17 @@ public class AgentController {
     }
 
 
-
     /*******************************    SAVE ITEM      ********************************/
     private void saveItem() {
+
+        try {
+            PasswordManager.testerCreateHashedSaltedPassword();
+            PasswordManager.testerPasswordValidator();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        } catch (InvalidKeySpecException e) {
+            e.printStackTrace();
+        }
 
         //check if any errors messages are displayed
         int errorCount = 0;

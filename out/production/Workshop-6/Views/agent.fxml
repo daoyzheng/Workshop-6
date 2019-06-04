@@ -130,7 +130,7 @@
                                          <Insets bottom="5.0" left="20.0" right="5.0" top="5.0" />
                                      </GridPane.margin>
                                  </Label>
-                                 <Label text="AgencyId" GridPane.rowIndex="9">
+                                 <Label text="Agency" GridPane.rowIndex="9">
                                      <GridPane.margin>
                                          <Insets bottom="5.0" left="20.0" right="5.0" top="5.0" />
                                      </GridPane.margin>

@@ -228,6 +228,8 @@ public class AgencyController {
         navTableArrayList = AgencyManager.getAllAgencies();
         ObservableList<Agency> data = FXCollections.observableArrayList(navTableArrayList);
         tvNavTable.setItems(data);
+        SelectionModel<Agency> selectionModel = tvNavTable.getSelectionModel();
+        selectionModel.selectFirst();
     }
 
     //*******************************     EDIT MODE      ********************************//

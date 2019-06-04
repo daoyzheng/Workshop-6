@@ -219,6 +219,9 @@ public class CustomerController {
         navTableArrayList = CustomerManager.getAllCustomers();
         ObservableList<Customer> data = FXCollections.observableArrayList(navTableArrayList);
         tvNavTable.setItems(data);
+
+        SelectionModel<Customer> selectionModel = tvNavTable.getSelectionModel();
+        selectionModel.selectFirst();
     }
 
     //*******************************     EDIT MODE      ********************************//
