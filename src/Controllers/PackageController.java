@@ -69,19 +69,19 @@ public class PackageController {
     private TableColumn<Package, Boolean> active;
 
     @FXML
-    private Tab tapEdit;
+    private Tab tabEdit;
 
     @FXML
-    private Button btnCloseEdit;
+    private Button btnEditBack;
 
     @FXML
-    private Button btnSaveCloseEdit;
+    private Button btnEditSaveBack;
 
     @FXML
-    private Button btnSaveEdit;
+    private Button btnEditSaveEdit;
 
     @FXML
-    private Button btnUndo;
+    private Button btnEditUndo;
 
     @FXML
     private GridPane grPaneEdit;
@@ -123,19 +123,19 @@ public class PackageController {
     private CheckBox activeEdit;
 
     @FXML
-    private Tab gpAdd;
+    private Tab tabAdd;
 
     @FXML
-    private Button btnCloseAdd;
+    private Button btnAddBack;
 
     @FXML
-    private Button btnSaveCloseAdd;
+    private Button btnAddSaveBack;
 
     @FXML
-    private Button btnSaveAdd;
+    private Button btnAddSaveAdd;
 
     @FXML
-    private Button btnReset;
+    private Button btnAddReset;
 
     @FXML
     private GridPane grPaneAdd;
@@ -176,6 +176,43 @@ public class PackageController {
     @FXML
     private CheckBox activeAdd;
 
+    @FXML
+    private Tab tabAddEdit;
+
+    @FXML
+    private Button btnAddEditBack;
+
+    @FXML
+    private Button btnAddEditSaveBack;
+
+    @FXML
+    private Button btnAddEditBackReset;
+
+    @FXML
+    private TableView<?> tvPdcSpl1;
+
+    @FXML
+    private TableColumn<?, ?> colProduct1;
+
+    @FXML
+    private TableColumn<?, ?> colSupplier1;
+
+    @FXML
+    private Button btnAddEditDelete;
+
+    @FXML
+    private Button btnAddEditDeleteAll;
+
+    @FXML
+    private TableView<?> tvPdcSpl2;
+
+    @FXML
+    private Button btnAddEditAdd;
+
+    @FXML
+    private Button btnAddEditAddAll;
+
+
 
     // class-level variables:
     Package curntPkg = new Package(); // current (selected) package in the package scene
@@ -195,14 +232,14 @@ public class PackageController {
 
         loadPackages();
 
-//        curntPkg = firstPackage();
+        firstPackage();
     }
 
 
-    // a method to find the first package in the table as the selected package
-//    private Package firstPackage() {
-//
-//    }
+    // a method to pre-select the first package in the table as the selected package
+    private void firstPackage() {
+        tvPackages.getSelectionModel().select(0);
+    }
 
 
     private void loadPackages()
@@ -211,6 +248,48 @@ public class PackageController {
         packages = PackageManager.getAllPackages();
         tvPackages.setItems(packages);
     }
+
+
+//    // a method to load the selected package to the Edit tab
+//    private Package firstPackage() {
+//        Package pkg = new Package();
+//        pkg = tvPackages.getSelectionModel().select(0);
+//        return pkg;
+//    }
+
+
+
+
+
+//    public void setMain(Main main)
+//    {
+//        this.main = main;
+//    }
+
+
+
+
+//    @FXML
+//    void tfNavSearchKeyTyped(KeyEvent event) {
+//        System.out.println("pressed");
+//
+//        String strFilter = tfNavSearch.getText();
+//
+//        List<Agency> filteredList = navTableArrayList.stream()
+//                .filter(d -> d.toString().contains(strFilter))
+//                .collect(Collectors.toList());
+//
+//        System.out.println(filteredList);
+//
+//        ObservableList<Agency> data = FXCollections.observableArrayList(filteredList);
+//        tvNavTable.setItems(data);
+//
+//    }
+//    @FXML
+//    Void tabEditClicked (MouseEvent event)
+//    {
+//
+//    }
 
 
     @FXML
@@ -257,31 +336,4 @@ public class PackageController {
     void tfNavSearchKeyTyped(KeyEvent event) {
 
     }
-
-
-
-//    public void setMain(Main main)
-//    {
-//        this.main = main;
-//    }
-
-
-
-
-//    @FXML
-//    void tfNavSearchKeyTyped(KeyEvent event) {
-//        System.out.println("pressed");
-//
-//        String strFilter = tfNavSearch.getText();
-//
-//        List<Agency> filteredList = navTableArrayList.stream()
-//                .filter(d -> d.toString().contains(strFilter))
-//                .collect(Collectors.toList());
-//
-//        System.out.println(filteredList);
-//
-//        ObservableList<Agency> data = FXCollections.observableArrayList(filteredList);
-//        tvNavTable.setItems(data);
-//
-//    }
 }

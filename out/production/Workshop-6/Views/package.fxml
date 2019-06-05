@@ -6,6 +6,7 @@
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TableColumn?>
@@ -15,18 +16,20 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="400.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.201" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.PackageController">
+<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="400.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.PackageController">
    <children>
       <TabPane layoutY="-26.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <tabs>
             <Tab text="All Packages">
               <content>
-                <AnchorPane>
+                <AnchorPane minHeight="200.0" minWidth="400.0" prefHeight="400.0" prefWidth="800.0">
                      <children>
-                        <AnchorPane prefHeight="50.0" prefWidth="800.0" AnchorPane.bottomAnchor="320.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+                        <AnchorPane minHeight="50.0" minWidth="400.0" prefHeight="50.0" prefWidth="800.0" AnchorPane.bottomAnchor="320.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
                            <children>
                               <HBox prefHeight="50.0" prefWidth="652.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
@@ -89,21 +92,24 @@
                      </children></AnchorPane>
               </content>
             </Tab>
-            <Tab fx:id="tapEdit" text="Edit the package">
+            <Tab fx:id="tabEdit" text="Edit the package">
                <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="400.0" prefWidth="800.0">
+                  <AnchorPane minHeight="200.0" minWidth="400.0" prefHeight="400.0" prefWidth="800.0">
                      <children>
                         <AnchorPane layoutX="-255.0" layoutY="95.0" minHeight="0.0" minWidth="0.0" prefHeight="397.0" prefWidth="675.0" AnchorPane.bottomAnchor="320.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="10.0">
                            <children>
                               <HBox layoutX="1.0" layoutY="1.0" prefHeight="41.0" prefWidth="675.0" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
-                                    <Button fx:id="btnCloseEdit" mnemonicParsing="false" onMouseClicked="#btnCloseEditClicked" prefHeight="0.0" prefWidth="200.0" text="Close">
+                                    <Button fx:id="btnEditBack" mnemonicParsing="false" onMouseClicked="#btnCloseEditClicked" prefHeight="0.0" prefWidth="200.0" text="Back">
                                        <opaqueInsets>
                                           <Insets />
                                        </opaqueInsets></Button>
-                                    <Button id="btnSaveClose" fx:id="btnSaveCloseEdit" mnemonicParsing="false" onMouseClicked="#btnSaveCloseEditClicked" prefHeight="0.0" prefWidth="200.0" text="Save &amp; Close" />
-                                    <Button id="btnSaveEdit" fx:id="btnSaveEdit" mnemonicParsing="false" onMouseClicked="#btnSaveEditClicked" prefHeight="0.0" prefWidth="200.0" text="Save &amp; Edit Product-Supplier" />
-                                    <Button id="btnUndo" fx:id="btnUndo" mnemonicParsing="false" onMouseClicked="#btnUndoClicked" prefHeight="0.0" prefWidth="200.0" text="Undo changes" />
+                                    <Region />
+                                    <Button id="btnSaveClose" fx:id="btnEditSaveBack" mnemonicParsing="false" onMouseClicked="#btnSaveCloseEditClicked" prefHeight="0.0" prefWidth="200.0" text="Save &amp; Back" />
+                                    <Region />
+                                    <Button id="btnSaveEdit" fx:id="btnEditSaveEdit" mnemonicParsing="false" onMouseClicked="#btnSaveEditClicked" prefHeight="0.0" prefWidth="200.0" text="Save &amp; Edit Product-Supplier" />
+                                    <Region />
+                                    <Button id="btnUndo" fx:id="btnEditUndo" mnemonicParsing="false" onMouseClicked="#btnUndoClicked" prefHeight="0.0" prefWidth="200.0" text="Undo changes" />
                                  </children>
                                  <padding>
                                     <Insets bottom="5.0" left="20.0" right="20.0" top="5.0" />
@@ -243,22 +249,25 @@
                      </children></AnchorPane>
                </content>
             </Tab>
-            <Tab fx:id="gpAdd" text="Add a new package">
+            <Tab fx:id="tabAdd" text="Add a new package">
                <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="400.0" prefWidth="800.0">
+                  <AnchorPane minHeight="200.0" minWidth="400.0" prefHeight="400.0" prefWidth="800.0">
                      <children>
                         <AnchorPane layoutX="-255.0" layoutY="95.0" minHeight="0.0" minWidth="0.0" prefHeight="397.0" prefWidth="675.0" AnchorPane.bottomAnchor="320.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="10.0">
                            <children>
                               <HBox layoutX="1.0" layoutY="1.0" prefHeight="41.0" prefWidth="675.0" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
-                                    <Button fx:id="btnCloseAdd" mnemonicParsing="false" onMouseClicked="#btnCloseAddClicked" prefHeight="0.0" prefWidth="200.0" text="Close">
+                                    <Button fx:id="btnAddBack" mnemonicParsing="false" onMouseClicked="#btnCloseAddClicked" prefHeight="0.0" prefWidth="200.0" text="Back">
                                        <opaqueInsets>
                                           <Insets />
                                        </opaqueInsets>
                                     </Button>
-                                    <Button fx:id="btnSaveCloseAdd" mnemonicParsing="false" onMouseClicked="#btnSaveCloseAddClicked" prefHeight="0.0" prefWidth="200.0" text="Save &amp; Close" />
-                                    <Button fx:id="btnSaveAdd" mnemonicParsing="false" onMouseClicked="#btnSaveAddClicked" prefHeight="0.0" prefWidth="200.0" text="Save &amp; Add Product-Supplier" />
-                                    <Button fx:id="btnReset" mnemonicParsing="false" onMouseClicked="#btnResetClicked" prefHeight="0.0" prefWidth="200.0" text="Reset" />
+                                    <Region />
+                                    <Button fx:id="btnAddSaveBack" mnemonicParsing="false" onMouseClicked="#btnSaveCloseAddClicked" prefHeight="0.0" prefWidth="200.0" text="Save &amp; Back" />
+                                    <Region />
+                                    <Button fx:id="btnAddSaveAdd" mnemonicParsing="false" onMouseClicked="#btnSaveAddClicked" prefHeight="0.0" prefWidth="200.0" text="Save &amp; Add Product-Supplier" />
+                                    <Region />
+                                    <Button fx:id="btnAddReset" mnemonicParsing="false" onMouseClicked="#btnResetClicked" prefHeight="0.0" prefWidth="200.0" text="Reset" />
                                  </children>
                                  <padding>
                                     <Insets bottom="5.0" left="20.0" right="20.0" top="5.0" />
@@ -394,6 +403,117 @@
                                     </CheckBox>
                                  </children>
                               </GridPane>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+            <Tab fx:id="tabAddEdit" text="Add/ Edit Product-Supplier">
+               <content>
+                  <AnchorPane minHeight="200.0" minWidth="400.0">
+                     <children>
+                        <SplitPane dividerPositions="0.5" layoutY="39.0" prefHeight="331.0" prefWidth="800.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="55.0">
+                          <items>
+                              <AnchorPane minHeight="80.0" minWidth="180.0">
+                                 <children>
+                                    <VBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <children>
+                                          <Label maxHeight="40.0" minHeight="20.0" prefHeight="40.0" text="Possible Product - Supplier Specification" textAlignment="CENTER">
+                                             <font>
+                                                <Font name="System Bold" size="12.0" />
+                                             </font>
+                                             <VBox.margin>
+                                                <Insets left="70.0" right="70.0" />
+                                             </VBox.margin>
+                                          </Label>
+                                          <TableView fx:id="tvPdcSpl2">
+                                             <columns>
+                                                <TableColumn fx:id="colProduct1" prefWidth="75.0" text="C1" />
+                                                <TableColumn fx:id="colSupplier1" prefWidth="75.0" text="C2" />
+                                             </columns>
+                                          </TableView>
+                                          <HBox maxHeight="40.0" minHeight="40.0" prefHeight="40.0">
+                                             <children>
+                                                <Button fx:id="btnAddEditAdd" minWidth="150.0" mnemonicParsing="false" text="Add">
+                                                   <HBox.margin>
+                                                      <Insets left="20.0" />
+                                                   </HBox.margin></Button>
+                                                <Region prefWidth="200.0" />
+                                                <Button fx:id="btnAddEditAddAll" minWidth="150.0" mnemonicParsing="false" text="Add All">
+                                                   <HBox.margin>
+                                                      <Insets right="20.0" />
+                                                   </HBox.margin></Button>
+                                             </children>
+                                             <padding>
+                                                <Insets top="10.0" />
+                                             </padding>
+                                          </HBox>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane minHeight="80.0" minWidth="180.0">
+                                 <children>
+                                    <VBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <children>
+                                          <Label maxHeight="40.0" minHeight="20.0" prefHeight="40.0" text="Current Product - Supplier Specification">
+                                             <font>
+                                                <Font name="System Bold" size="12.0" />
+                                             </font>
+                                             <VBox.margin>
+                                                <Insets left="70.0" right="70.0" />
+                                             </VBox.margin>
+                                          </Label>
+                                          <TableView fx:id="tvPdcSpl1">
+                                            <columns>
+                                              <TableColumn fx:id="colProduct1" prefWidth="75.0" text="C1" />
+                                              <TableColumn fx:id="colSupplier1" prefWidth="75.0" text="C2" />
+                                            </columns>
+                                          </TableView>
+                                          <HBox maxHeight="40.0" minHeight="40.0" prefHeight="40.0">
+                                             <children>
+                                                <Button fx:id="btnAddEditDelete" minWidth="150.0" mnemonicParsing="false" text="Delete">
+                                                   <HBox.margin>
+                                                      <Insets left="20.0" />
+                                                   </HBox.margin></Button>
+                                                <Region prefWidth="200.0" />
+                                                <Button fx:id="btnAddEditDeleteAll" minWidth="150.0" mnemonicParsing="false" text="Delete All">
+                                                   <HBox.margin>
+                                                      <Insets right="20.0" />
+                                                   </HBox.margin></Button>
+                                             </children>
+                                             <padding>
+                                                <Insets top="10.0" />
+                                             </padding>
+                                          </HBox>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </AnchorPane>
+                          </items>
+                        </SplitPane>
+                        <AnchorPane layoutX="-255.0" layoutY="95.0" minHeight="50.0" minWidth="600.0" prefHeight="50.0" prefWidth="800.0" AnchorPane.bottomAnchor="340.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+                           <children>
+                              <HBox layoutX="1.0" layoutY="1.0" prefHeight="100.0" prefWidth="200.0" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <Button fx:id="btnAddEditBack" minWidth="50.0" mnemonicParsing="false" onMouseClicked="#btnCloseAddClicked" prefWidth="200.0" text="Back">
+                                       <opaqueInsets>
+                                          <Insets />
+                                       </opaqueInsets>
+                                       <HBox.margin>
+                                          <Insets left="30.0" />
+                                       </HBox.margin>
+                                    </Button>
+                                    <Region />
+                                    <Button fx:id="btnAddEditSaveBack" minWidth="50.0" mnemonicParsing="false" onMouseClicked="#btnSaveCloseAddClicked" prefWidth="200.0" text="Save &amp; Back" />
+                                    <Region />
+                                    <Button fx:id="btnAddEditBackReset" minWidth="50.0" mnemonicParsing="false" onMouseClicked="#btnResetClicked" prefWidth="200.0" text="Reset" />
+                                 </children>
+                                 <padding>
+                                    <Insets bottom="5.0" left="20.0" right="20.0" top="5.0" />
+                                 </padding>
+                              </HBox>
                            </children>
                         </AnchorPane>
                      </children>
