@@ -320,13 +320,14 @@ public class CustomerController {
         cboAgentId.setItems(obsList);
 
         int agentId = c.getAgentId();
-
+        System.out.println(agentId+"");
         //Set agency id in combo box
         if (!Objects.equals(agentId, null) || !Objects.equals(agentId, 0)) {  //test if value is null or zero
             Agent currentAgent = AgentManager.getAgentById(c.getAgentId());
             SelectionModel<Agent> selectionModel = cboAgentId.getSelectionModel();
             selectionModel.selectFirst();
-            while (selectionModel.getSelectedItem().getAgencyId() != c.getAgentId()) {
+            while (selectionModel.getSelectedItem().getAgentId() != c.getAgentId()) {
+                System.out.println();
                 selectionModel.selectNext();
             }
         }
