@@ -6,15 +6,7 @@ import java.util.ResourceBundle;
 
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.Tab;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.ColumnConstraints;
@@ -32,6 +24,9 @@ import DomainEntities.Package;
 import javax.xml.soap.SOAPPart;
 
 public class PackageController {
+
+    @FXML
+    private TabPane tapPaneMain;
 
     @FXML
     private ResourceBundle resources;
@@ -238,6 +233,7 @@ public class PackageController {
 
         firstPackage();
 
+        selectToEdit();
 
 
     }
@@ -252,10 +248,9 @@ public class PackageController {
     }
 
 
-    // a method to pre-select the first package in the table
-    // and show it on the Edit tab
-    private void firstPackage() {
-        tvPackages.getSelectionModel().select(0);
+    // a method to show a given package on the Edit tab
+    private void loadPackage()
+    {
         Package pkg = tvPackages.getSelectionModel().getSelectedItem();
         pkgNameEdit.setText(pkg.getPkgName());
         pkgStartDateEdit.setValue(pkg.getPkgStartDate());
@@ -265,40 +260,32 @@ public class PackageController {
         pkgAgencyCommissionEdit.setText(Double.toString(pkg.getPkgAgencyCommission()));
         if (!pkg.isActive())
             pkgActiveEdit.setSelected(false);
-
     }
 
 
-    // a method to show the pre-selected package on the Edit tab
-//    private void showEditTap()
-//    {
-//        Package pkg = firstPackage();
-//        pkgNameEdit.setText(pkg.getPkgName());
-//
-//    }
-
-//    // a method to return the selected package
-//    private Package SelectedPackage() {
-//        Package pkg = new Package();
-//        pkg = tvPackages.getSelectionModel().getSelectedItem();
-//        return pkg;
-//    }
+    // a method to pre-select the first package in the table
+    // and show it on the Edit tab
+    private void firstPackage() {
+        tvPackages.getSelectionModel().select(0);
+        loadPackage();
+    }
 
 
-
-
-//    // a method to show the selected package on the Edit tab
-//    private void showEditTap(MouseEvent event)
-//    {
-//        tvPackages.setOnMouseClicked(new EventHandler<MouseEvent>() {
-//            @Override
-//            public void handle(MouseEvent event) {
-//                Package pkg = SelectedPackage();
-//                pkgNameEdit.setText(pkg.getPkgName());
-//            }
-//        });
-//    }
-
+    // a method to show the selected package on the Edit tab
+    private void selectToEdit()
+    {
+        tvPackages.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                loadPackage();
+                if (event.getClickCount() == 2) //Checking double click
+                {
+                    SelectionModel<Tab> selectionModel = tapPaneMain.getSelectionModel();
+                    selectionModel.select(tabEdit);
+                }
+            }
+        });
+    }
 
 
 
