@@ -3,6 +3,8 @@ package Controllers;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
+
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
@@ -26,6 +28,8 @@ import java.util.Date;
 import DomainEntities.PackageProductSupplier;
 import DataAccessObjects.PackageManager;
 import DomainEntities.Package;
+
+import javax.xml.soap.SOAPPart;
 
 public class PackageController {
 
@@ -120,7 +124,7 @@ public class PackageController {
     private DatePicker pkgEndDateEdit;
 
     @FXML
-    private CheckBox activeEdit;
+    private CheckBox pkgActiveEdit;
 
     @FXML
     private Tab tabAdd;
@@ -233,15 +237,13 @@ public class PackageController {
         loadPackages();
 
         firstPackage();
+
+
+
     }
 
 
-    // a method to pre-select the first package in the table as the selected package
-    private void firstPackage() {
-        tvPackages.getSelectionModel().select(0);
-    }
-
-
+    // a method to load all packages from database to the table view
     private void loadPackages()
     {
         ObservableList<Package> packages;
@@ -250,11 +252,51 @@ public class PackageController {
     }
 
 
-//    // a method to load the selected package to the Edit tab
-//    private Package firstPackage() {
+    // a method to pre-select the first package in the table
+    // and show it on the Edit tab
+    private void firstPackage() {
+        tvPackages.getSelectionModel().select(0);
+        Package pkg = tvPackages.getSelectionModel().getSelectedItem();
+        pkgNameEdit.setText(pkg.getPkgName());
+        pkgStartDateEdit.setValue(pkg.getPkgStartDate());
+        pkgEndDateEdit.setValue(pkg.getPkgEndDate());
+        pkgDescEdit.setText(pkg.getPkgDesc());
+        pkgBasePriceEdit.setText(String.valueOf(pkg.getPkgBasePrice()));
+        pkgAgencyCommissionEdit.setText(Double.toString(pkg.getPkgAgencyCommission()));
+        if (!pkg.isActive())
+            pkgActiveEdit.setSelected(false);
+
+    }
+
+
+    // a method to show the pre-selected package on the Edit tab
+//    private void showEditTap()
+//    {
+//        Package pkg = firstPackage();
+//        pkgNameEdit.setText(pkg.getPkgName());
+//
+//    }
+
+//    // a method to return the selected package
+//    private Package SelectedPackage() {
 //        Package pkg = new Package();
-//        pkg = tvPackages.getSelectionModel().select(0);
+//        pkg = tvPackages.getSelectionModel().getSelectedItem();
 //        return pkg;
+//    }
+
+
+
+
+//    // a method to show the selected package on the Edit tab
+//    private void showEditTap(MouseEvent event)
+//    {
+//        tvPackages.setOnMouseClicked(new EventHandler<MouseEvent>() {
+//            @Override
+//            public void handle(MouseEvent event) {
+//                Package pkg = SelectedPackage();
+//                pkgNameEdit.setText(pkg.getPkgName());
+//            }
+//        });
 //    }
 
 

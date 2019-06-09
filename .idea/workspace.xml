@@ -2,9 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d54214f6-0d71-4717-81a4-e647c8cdc3be" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Workshop-6/Controllers/PackageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Workshop-6/Controllers/PackageController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Workshop-6/Views/package.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Workshop-6/Views/package.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controllers/PackageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/PackageController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Views/package.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/package.fxml" afterDir="false" />
     </list>
@@ -23,7 +20,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Controllers/AgentController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1738">
+            <state relative-caret-position="384">
               <caret line="79" column="45" selection-start-line="79" selection-start-column="36" selection-end-line="79" selection-end-column="45" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -34,11 +31,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Controllers/PackageController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="6402">
-              <caret line="293" selection-start-line="293" selection-end-line="293" />
+            <state relative-caret-position="446">
+              <caret line="266" column="43" selection-start-line="266" selection-start-column="43" selection-end-line="266" selection-end-column="43" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -46,17 +43,30 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/DomainEntities/Package.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="473">
+              <caret line="138" column="25" selection-start-line="138" selection-start-column="16" selection-end-line="138" selection-end-column="25" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="method#setPkgAgencyCommission#0;class#Package#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Views/package.fxml">
-          <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
           <provider editor-type-id="text-editor" />
+          <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/DataAccessObjects/PackageManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="572">
-              <caret line="36" column="46" selection-start-line="36" selection-start-column="46" selection-end-line="36" selection-end-column="46" />
+            <state relative-caret-position="296">
+              <caret line="26" column="43" selection-start-line="26" selection-start-column="34" selection-end-line="26" selection-end-column="43" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -90,6 +100,9 @@
       <find>column</find>
       <find>gpDetails</find>
       <find>tab</find>
+      <find>obser</find>
+      <find>activeEdit</find>
+      <find>check</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -160,8 +173,8 @@
         <option value="$PROJECT_DIR$/src/DataAccess/DbConnection.java" />
         <option value="$PROJECT_DIR$/src/Controllers/AgencyController.java" />
         <option value="$PROJECT_DIR$/src/DataAccessObjects/PackageManager.java" />
-        <option value="$PROJECT_DIR$/src/Controllers/PackageController.java" />
         <option value="$PROJECT_DIR$/src/Views/package.fxml" />
+        <option value="$PROJECT_DIR$/src/Controllers/PackageController.java" />
       </list>
     </option>
   </component>
@@ -189,7 +202,38 @@
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
-    <panes />
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="Workshop-6" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Workshop-6" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Workshop-6" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Workshop-6" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Workshop-6" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Workshop-6" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Controllers" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Workshop-6" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Workshop-6" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="DomainEntities" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="PackagesPane" />
+    </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
@@ -269,6 +313,7 @@
       <workItem from="1559672551086" duration="1502000" />
       <workItem from="1559684404697" duration="2204000" />
       <workItem from="1559704808403" duration="10000" />
+      <workItem from="1560106793720" duration="5939000" />
     </task>
     <task id="LOCAL-00001" summary="Remove product, supplier and product supplier interface. Rename file from Data Access Object (DAO) to Manager">
       <created>1558154500962</created>
@@ -323,7 +368,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="108775000" />
+    <option name="totallyTimeSpent" value="114714000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -336,8 +381,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.12934947" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18078668" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -369,7 +415,7 @@
       <window_info anchor="right" x="594" y="58" width="178" height="611" id="Find" order="9" weight="0.26096824" />
     </layout>
     <layout-to-restore>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.12934947" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.18078668" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -378,18 +424,17 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info id="Learn" order="7" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.3289689" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.1391162" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.39934534" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" weight="0.3289689" />
-      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" weight="0.32242227" />
-      <window_info anchor="bottom" id="Database Changes" order="9" />
-      <window_info anchor="bottom" id="Terminal" order="10" weight="0.3289689" />
-      <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" weight="0.3289689" />
-      <window_info anchor="bottom" id="Messages" order="12" weight="0.3289689" />
+      <window_info anchor="bottom" id="Run" order="1" visible="true" weight="0.1391162" />
+      <window_info anchor="bottom" id="Debug" order="2" weight="0.39934534" />
+      <window_info anchor="bottom" id="Cvs" order="3" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="4" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="5" weight="0.3289689" />
+      <window_info anchor="bottom" id="Docker" order="6" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.32242227" />
+      <window_info anchor="bottom" id="Database Changes" order="8" />
+      <window_info anchor="bottom" id="Terminal" order="9" weight="0.3289689" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" weight="0.3289689" />
+      <window_info anchor="bottom" id="Messages" order="11" weight="0.3289689" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -399,6 +444,7 @@
       <window_info anchor="right" id="Capture Analysis" order="6" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
       <window_info anchor="right" id="Maven" order="8" weight="0.32980332" />
+      <window_info anchor="right" x="594" y="58" width="178" height="611" id="Find" order="9" weight="0.26096824" />
     </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -544,20 +590,20 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Views/customer.fxml">
-      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
       <provider editor-type-id="text-editor" />
+      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Views/booking.fxml">
-      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
       <provider editor-type-id="text-editor" />
+      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Views/addSupplier.fxml">
-      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
       <provider editor-type-id="text-editor">
         <state relative-caret-position="198">
           <caret line="9" selection-start-line="9" selection-end-line="9" />
         </state>
       </provider>
+      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/DomainEntities/Product.java">
       <provider selected="true" editor-type-id="text-editor" />
@@ -693,33 +739,12 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Views/main.fxml">
-      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
       <provider editor-type-id="text-editor">
         <state relative-caret-position="130">
           <caret line="8" column="35" lean-forward="true" selection-start-line="8" selection-start-column="35" selection-end-line="8" selection-end-column="35" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/DomainEntities/Package.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="550">
-          <caret line="29" column="38" lean-forward="true" selection-start-line="29" selection-start-column="38" selection-end-line="29" selection-end-column="38" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1761#1762#0" expanded="true" />
-            <element signature="e#1802#1803#0" expanded="true" />
-            <element signature="e#1871#1872#0" expanded="true" />
-            <element signature="e#1906#1907#0" expanded="true" />
-            <element signature="e#2056#2057#0" expanded="true" />
-            <element signature="e#2095#2096#0" expanded="true" />
-            <element signature="e#2162#2163#0" expanded="true" />
-            <element signature="e#2195#2196#0" expanded="true" />
-            <element signature="e#2327#2328#0" expanded="true" />
-            <element signature="e#2399#2400#0" expanded="true" />
-            <element signature="method#setPkgAgencyCommission#0;class#Package#0" />
-          </folding>
-        </state>
-      </provider>
+      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Controllers/MainController.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -729,8 +754,8 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Views/ProductSupplier.fxml">
-      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
       <provider editor-type-id="text-editor" />
+      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Controllers/Main.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -740,12 +765,12 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Views/agent.fxml">
-      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
       <provider editor-type-id="text-editor">
         <state relative-caret-position="1298">
           <caret line="59" column="40" selection-start-line="59" selection-start-column="40" selection-end-line="59" selection-end-column="40" />
         </state>
       </provider>
+      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Controllers/AgencyController.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -766,7 +791,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Controllers/AgentController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1738">
+        <state relative-caret-position="384">
           <caret line="79" column="45" selection-start-line="79" selection-start-column="36" selection-end-line="79" selection-end-column="45" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -776,29 +801,40 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controllers/PackageController.java">
+    <entry file="file://$PROJECT_DIR$/src/Views/package.fxml">
+      <provider editor-type-id="text-editor" />
+      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/DomainEntities/Package.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6402">
-          <caret line="293" selection-start-line="293" selection-end-line="293" />
+        <state relative-caret-position="473">
+          <caret line="138" column="25" selection-start-line="138" selection-start-column="16" selection-end-line="138" selection-end-column="25" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="method#setPkgAgencyCommission#0;class#Package#0" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/DataAccessObjects/PackageManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="572">
-          <caret line="36" column="46" selection-start-line="36" selection-start-column="46" selection-end-line="36" selection-end-column="46" />
+        <state relative-caret-position="296">
+          <caret line="26" column="43" selection-start-line="26" selection-start-column="34" selection-end-line="26" selection-end-column="43" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Views/package.fxml">
-      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
-      <provider editor-type-id="text-editor" />
+    <entry file="file://$PROJECT_DIR$/src/Controllers/PackageController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="446">
+          <caret line="266" column="43" selection-start-line="266" selection-start-column="43" selection-end-line="266" selection-end-column="43" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
     </entry>
   </component>
   <component name="masterDetails">
