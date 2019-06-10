@@ -56,11 +56,29 @@ public class ProductSupplierController {
     private TextField tfSearchSupplier;
 
     @FXML
+    private Button btnAddProduct;
+
+    @FXML
+    void btnAddProductOnAction(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../Views/addProduct.fxml"));
+        Parent addProduct = fxmlLoader.load();
+        Stage stage = new Stage();
+        stage.setTitle("Add Product");
+        stage.setScene(new Scene(addProduct));
+        stage.show();
+
+        // Get AddSupplierController
+        AddProductController controller = fxmlLoader.getController();
+        // Pass current list view array to addProductController
+        controller.setProductObservableList(lvProduct.getItems());
+    }
+
+    @FXML
     void btnAddSupplierOnAction(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../Views/addSupplier.fxml"));
         Parent addSupplier = fxmlLoader.load();
         Stage stage = new Stage();
-        stage.setTitle("Add or Update Supplier");
+        stage.setTitle("Add Supplier");
         stage.setScene(new Scene(addSupplier));
         // If no product is selected, show alert instead
         Product selectedProd = lvProduct.getSelectionModel().getSelectedItem();
