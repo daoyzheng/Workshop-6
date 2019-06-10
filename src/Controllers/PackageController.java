@@ -26,13 +26,13 @@ import javax.xml.soap.SOAPPart;
 public class PackageController {
 
     @FXML
-    private TabPane tapPaneMain;
+    private TabPane tabPaneMain;
+
+//    @FXML
+//    private Tab tab;
 
     @FXML
-    private ResourceBundle resources;
-
-    @FXML
-    private URL location;
+    private Tab tabMain;
 
     @FXML
     private TextField tfSearch;
@@ -173,28 +173,28 @@ public class PackageController {
     private DatePicker pkgEndDateAdd;
 
     @FXML
-    private CheckBox activeAdd;
+    private CheckBox pkgActiveAdd;
 
     @FXML
     private Tab tabAddEdit;
 
-    @FXML
-    private Button btnAddEditBack;
+//    @FXML
+//    private TableView<?> tvPdcSpl2;
+//
+//    @FXML
+//    private TableColumn<?, ?> colProduct1;
+//
+//    @FXML
+//    private TableColumn<?, ?> colSupplier1;
 
     @FXML
-    private Button btnAddEditSaveBack;
+    private Button btnAddEditAdd;
 
     @FXML
-    private Button btnAddEditBackReset;
+    private Button btnAddEditAddAll;
 
-    @FXML
-    private TableView<?> tvPdcSpl1;
-
-    @FXML
-    private TableColumn<?, ?> colProduct1;
-
-    @FXML
-    private TableColumn<?, ?> colSupplier1;
+//    @FXML
+//    private TableView<?> tvPdcSpl1;
 
     @FXML
     private Button btnAddEditDelete;
@@ -203,13 +203,7 @@ public class PackageController {
     private Button btnAddEditDeleteAll;
 
     @FXML
-    private TableView<?> tvPdcSpl2;
-
-    @FXML
-    private Button btnAddEditAdd;
-
-    @FXML
-    private Button btnAddEditAddAll;
+    private Button btnAddEditBack;
 
 
 
@@ -234,8 +228,6 @@ public class PackageController {
         firstPackage();
 
         selectToEdit();
-
-
     }
 
 
@@ -248,7 +240,7 @@ public class PackageController {
     }
 
 
-    // a method to show a given package on the Edit tab
+    // a method to show the selected package on the Edit tab
     private void loadPackage()
     {
         Package pkg = tvPackages.getSelectionModel().getSelectedItem();
@@ -260,6 +252,8 @@ public class PackageController {
         pkgAgencyCommissionEdit.setText(Double.toString(pkg.getPkgAgencyCommission()));
         if (!pkg.isActive())
             pkgActiveEdit.setSelected(false);
+        else
+            pkgActiveEdit.setSelected(true);
     }
 
 
@@ -272,6 +266,7 @@ public class PackageController {
 
 
     // a method to show the selected package on the Edit tab
+    // and set double click settings
     private void selectToEdit()
     {
         tvPackages.setOnMouseClicked(new EventHandler<MouseEvent>() {
@@ -280,13 +275,44 @@ public class PackageController {
                 loadPackage();
                 if (event.getClickCount() == 2) //Checking double click
                 {
-                    SelectionModel<Tab> selectionModel = tapPaneMain.getSelectionModel();
-                    selectionModel.select(tabEdit);
+                    showTab(tabEdit);
                 }
             }
         });
     }
 
+
+    // a method to return the selected package for further editing
+    private Package currentPackage()
+    {
+        Package pkg = tvPackages.getSelectionModel().getSelectedItem();
+        return pkg;
+    }
+
+    // a method to show different tabs
+    private void showTab(Tab tab)
+    {
+        SelectionModel<Tab> selectionModel = tabPaneMain.getSelectionModel();
+        selectionModel.select(tab);
+    }
+
+
+    // a method to create a package from text fields
+    private Package readPackage()
+    {
+        Package pkg = new Package();
+        pkg.setPkgName(pkgNameEdit.getText());
+        pkg.setPkgStartDate(pkgStartDateEdit.getValue());
+        pkg.setPkgEndDate(pkgEndDateEdit.getValue());
+        pkg.setPkgDesc(pkgDescEdit.getText());
+        pkg.setPkgBasePrice(Double.parseDouble(pkgBasePriceEdit.getText()));
+        pkg.setPkgAgencyCommission(Double.parseDouble(pkgAgencyCommissionEdit.getText()));
+        if (pkgActiveEdit.isSelected())
+            pkg.setActive(true);
+        else
+            pkg.setActive(false);
+        return pkg;
+    }
 
 
 
@@ -321,48 +347,100 @@ public class PackageController {
 //    }
 
 
-    @FXML
-    void btnCloseAddClicked(MouseEvent event) {
+//****************************************************Edit Tab**********************************************************
 
+    // Back button
+    @FXML
+    void btnEditBackClicked(MouseEvent event)
+    {
+        showTab(tabMain);
     }
 
+    // Save & Back button
     @FXML
-    void btnCloseEditClicked(MouseEvent event) {
-
+    void btnEditSaveBackClicked(MouseEvent event)
+    {
+//        Package oldPkg = currentPackage();
+//        Package newPkg = readPackage();
+//        newPkg.setPackageId(oldPkg.getPackageId());
+//        PackageManager.updatePackage(newPkg, oldPkg);
+        showTab(tabMain);
     }
 
+    // Save & Edit Product-Supplier button
     @FXML
-    void btnResetClicked(MouseEvent event) {
-
+    void btnEditSaveEditClicked(MouseEvent event)
+    {
+//        Package oldPkg = currentPackage();
+//        Package newPkg = readPackage();
+//        newPkg.setPackageId(oldPkg.getPackageId());
+//        PackageManager.updatePackage(newPkg, oldPkg);
+        showTab(tabAddEdit);
     }
 
+    // Undo changes button
     @FXML
-    void btnSaveAddClicked(MouseEvent event) {
-
+    void btnEditUndoClicked(MouseEvent event)
+    {
+        loadPackage();
     }
 
-    @FXML
-    void btnSaveCloseAddClicked(MouseEvent event) {
+//****************************************************Add Tab**********************************************************
 
+    // Back button
+    @FXML
+    void btnAddBackClicked(MouseEvent event)
+    {
+        showTab(tabMain);
     }
 
+    // Save & Back button
     @FXML
-    void btnSaveCloseEditClicked(MouseEvent event) {
-
+    void btnAddSaveBackClicked(MouseEvent event)
+    {
+//        Package pkg = readPackage();
+//        PackageManager.insertPackage(pkg);
+        showTab(tabMain);
     }
 
+    // Save & Add Product-Supplier button
     @FXML
-    void btnSaveEditClicked(MouseEvent event) {
-
+    void btnAddSaveAddClicked(MouseEvent event)
+    {
+//        Package pkg = readPackage();
+//        PackageManager.insertPackage(pkg);
+        showTab(tabAddEdit);
     }
 
+    // Reset button
     @FXML
-    void btnUndoClicked(MouseEvent event) {
-
+    void btnAddResetClicked(MouseEvent event)
+    {
+        pkgNameAdd.setText("");
+        pkgStartDateAdd.getEditor().clear();
+        pkgEndDateAdd.getEditor().clear();
+        pkgDescAdd.setText("");
+        pkgBasePriceAdd.setText("");
+        pkgAgencyCommissionAdd.setText("");
+        pkgActiveAdd.setSelected(true);
     }
 
+//****************************************************Add/ Edit Tab*****************************************************
+
+    // Back button
     @FXML
-    void tfNavSearchKeyTyped(KeyEvent event) {
+    void btnAddEditBackClicked(MouseEvent event)
+    {
+        showTab(tabMain);
+    }
+
+
+
+
+
+    @FXML
+    void tfNavSearchKeyTyped(KeyEvent event)
+    {
 
     }
 }
