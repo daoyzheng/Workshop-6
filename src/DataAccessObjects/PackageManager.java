@@ -84,21 +84,21 @@ public class PackageManager {
         {
             Connection conn = DbConnection.getConnection();
             PreparedStatement prepStatement = conn.prepareStatement(
-                    "UPDATE 'packages' SET `PkgName`=?, " +
-                            "`PkgStartDate`=?," +
-                            "`PkgEndDate`=?," +
-                            "`PkgDesc`=?," +
-                            "`PkgBasePrice`=?," +
-                            "`PkgAgencyCommission`=?," +
-                            "`Active`=? WHERE `PackageId`=?");
+                    "UPDATE 'packages' SET PkgName=?, " +
+                            "PkgStartDate=?," +
+                            "PkgEndDate=?," +
+                            "PkgDesc=?," +
+                            "PkgBasePrice=?," +
+                            "PkgAgencyCommission=?," +
+                            "Active=? WHERE PackageId=?");
             prepStatement.setString(1,newPackage.getPkgName());
             prepStatement.setDate(2, Date.valueOf(newPackage.getPkgStartDate()));
             prepStatement.setDate(3, Date.valueOf(newPackage.getPkgEndDate()));
             prepStatement.setString(4, newPackage.getPkgDesc());
-            prepStatement.setDouble(5,newPackage.getPkgBasePrice());
-            prepStatement.setDouble(6,newPackage.getPkgAgencyCommission());
+            prepStatement.setDouble(5, newPackage.getPkgBasePrice());
+            prepStatement.setDouble(6, newPackage.getPkgAgencyCommission());
             prepStatement.setBoolean(7, newPackage.isActive());
-            prepStatement.setInt(8,oldPackage.getPackageId());
+            prepStatement.setInt(8, oldPackage.getPackageId());
 
             int numRows = prepStatement.executeUpdate();
             if (numRows == 0)
@@ -128,7 +128,7 @@ public class PackageManager {
             Connection conn = DbConnection.getConnection();
             PreparedStatement prepStatement = conn.prepareStatement(
                     "INSERT INTO 'packages' VALUES (???????)", Statement.RETURN_GENERATED_KEYS);
-            prepStatement.setString(1,pkg.getPkgName());
+            prepStatement.setString(1, pkg.getPkgName());
             prepStatement.setDate(2, Date.valueOf(pkg.getPkgStartDate()));
             prepStatement.setDate(3, Date.valueOf(pkg.getPkgEndDate()));
             prepStatement.setString(4, pkg.getPkgDesc());

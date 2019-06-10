@@ -360,11 +360,12 @@ public class PackageController {
     @FXML
     void btnEditSaveBackClicked(MouseEvent event)
     {
-//        Package oldPkg = currentPackage();
-//        Package newPkg = readPackage();
-//        newPkg.setPackageId(oldPkg.getPackageId());
-//        PackageManager.updatePackage(newPkg, oldPkg);
+        Package oldPkg = currentPackage();
+        Package newPkg = readPackage();
+        newPkg.setPackageId(oldPkg.getPackageId());
+        PackageManager.updatePackage(newPkg, oldPkg);
         showTab(tabMain);
+        loadPackage();
     }
 
     // Save & Edit Product-Supplier button
