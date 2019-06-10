@@ -46,6 +46,13 @@ public class AddSupplierController {
     @FXML
     private Button btnAddSupplier;
 
+    @FXML
+    private Label labelProd;
+
+    public Label getLabelProd() {
+        return this.labelProd;
+    }
+
     public Product selectedProduct;
 
     public void setSelectedProduct(Product selectedProduct) {
