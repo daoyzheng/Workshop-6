@@ -62,12 +62,19 @@ public class ProductSupplierController {
         Stage stage = new Stage();
         stage.setTitle("Add or Update Supplier");
         stage.setScene(new Scene(addSupplier));
-        stage.show();
+        // If no product is selected, show alert instead
+        Product selectedProd = lvProduct.getSelectionModel().getSelectedItem();
+        if (selectedProd == null) {
+            Alert alert = new Alert(Alert.AlertType.WARNING, "Please select a product first");
+            alert.showAndWait();
+        } else {
+            stage.show();
+        }
 
         // Get AddSupplierController
         AddSupplierController controller = fxmlLoader.getController();
         // Pass selected product Object to addSupplierController
-        controller.setSelectedProduct(lvProduct.getSelectionModel().getSelectedItem());
+        controller.setSelectedProduct(selectedProd);
         // Pass current list view array to addSupplierController
         controller.setSelectedSuppliers(lvSupplier.getItems());
     }
