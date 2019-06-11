@@ -54,7 +54,7 @@ public class PackageManager {
         {
             Connection conn = DbConnection.getConnection();
             Statement statement = conn.createStatement();
-            ResultSet resultSet = statement.executeQuery("SELECT * FROM 'packages' WHERE packageId = " + id);
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM packages WHERE packageId = " + id);
             while (resultSet.next())
             {
                 pkg.setPackageId(resultSet.getInt(1));
@@ -84,7 +84,7 @@ public class PackageManager {
         {
             Connection conn = DbConnection.getConnection();
             PreparedStatement prepStatement = conn.prepareStatement(
-                    "UPDATE 'packages' SET PkgName=?, " +
+                    "UPDATE packages SET PkgName=?, " +
                             "PkgStartDate=?," +
                             "PkgEndDate=?," +
                             "PkgDesc=?," +
@@ -127,7 +127,9 @@ public class PackageManager {
         try {
             Connection conn = DbConnection.getConnection();
             PreparedStatement prepStatement = conn.prepareStatement(
-                    "INSERT INTO 'packages' VALUES (???????)", Statement.RETURN_GENERATED_KEYS);
+                    "INSERT INTO packages (PkgName, PkgStartDate, PkgEndDate, PkgDesc, " +
+                            "PkgBasePrice, PkgAgencyCommission, Active) " +
+                            "VALUES (?,?,?,?,?,?,?)");
             prepStatement.setString(1, pkg.getPkgName());
             prepStatement.setDate(2, Date.valueOf(pkg.getPkgStartDate()));
             prepStatement.setDate(3, Date.valueOf(pkg.getPkgEndDate()));
