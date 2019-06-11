@@ -237,6 +237,8 @@ public class PackageController {
         ObservableList<Package> packages;
         packages = PackageManager.getAllPackages();
         tvPackages.setItems(packages);
+
+        firstPackage();
     }
 
 
@@ -297,8 +299,8 @@ public class PackageController {
     }
 
 
-    // a method to create a package from text fields
-    private Package readPackage()
+    // a method to create a package from text fields on Edit tab
+    private Package readEditedPackage()
     {
         Package pkg = new Package();
         pkg.setPkgName(pkgNameEdit.getText());
@@ -315,6 +317,22 @@ public class PackageController {
     }
 
 
+    // a method to create a package from text fields on Add tab
+    private Package readAddedPackage()
+    {
+        Package pkg = new Package();
+        pkg.setPkgName(pkgNameAdd.getText());
+        pkg.setPkgStartDate(pkgStartDateAdd.getValue());
+        pkg.setPkgEndDate(pkgEndDateAdd.getValue());
+        pkg.setPkgDesc(pkgDescAdd.getText());
+        pkg.setPkgBasePrice(Double.parseDouble(pkgBasePriceAdd.getText()));
+        pkg.setPkgAgencyCommission(Double.parseDouble(pkgAgencyCommissionAdd.getText()));
+        if (pkgActiveAdd.isSelected())
+            pkg.setActive(true);
+        else
+            pkg.setActive(false);
+        return pkg;
+    }
 
 //    public void setMain(Main main)
 //    {
@@ -361,21 +379,22 @@ public class PackageController {
     void btnEditSaveBackClicked(MouseEvent event)
     {
         Package oldPkg = currentPackage();
-        Package newPkg = readPackage();
+        Package newPkg = readEditedPackage();
         newPkg.setPackageId(oldPkg.getPackageId());
         PackageManager.updatePackage(newPkg, oldPkg);
+        loadPackages();
         showTab(tabMain);
-        loadPackage();
     }
 
     // Save & Edit Product-Supplier button
     @FXML
     void btnEditSaveEditClicked(MouseEvent event)
     {
-//        Package oldPkg = currentPackage();
-//        Package newPkg = readPackage();
-//        newPkg.setPackageId(oldPkg.getPackageId());
-//        PackageManager.updatePackage(newPkg, oldPkg);
+        Package oldPkg = currentPackage();
+        Package newPkg = readEditedPackage();
+        newPkg.setPackageId(oldPkg.getPackageId());
+        PackageManager.updatePackage(newPkg, oldPkg);
+        loadPackages();
         showTab(tabAddEdit);
     }
 
@@ -399,8 +418,10 @@ public class PackageController {
     @FXML
     void btnAddSaveBackClicked(MouseEvent event)
     {
-//        Package pkg = readPackage();
-//        PackageManager.insertPackage(pkg);
+        Package pkg = readAddedPackage();
+        PackageManager.insertPackage(pkg);
+        loadPackages();
+        clearAddTab();
         showTab(tabMain);
     }
 
@@ -408,8 +429,10 @@ public class PackageController {
     @FXML
     void btnAddSaveAddClicked(MouseEvent event)
     {
-//        Package pkg = readPackage();
-//        PackageManager.insertPackage(pkg);
+        Package pkg = readAddedPackage();
+        PackageManager.insertPackage(pkg);
+        loadPackages();
+        clearAddTab();
         showTab(tabAddEdit);
     }
 
@@ -417,6 +440,11 @@ public class PackageController {
     @FXML
     void btnAddResetClicked(MouseEvent event)
     {
+        clearAddTab();
+    }
+
+    // a method to clear the fields on Add tab
+    private void clearAddTab() {
         pkgNameAdd.setText("");
         pkgStartDateAdd.getEditor().clear();
         pkgEndDateAdd.getEditor().clear();
