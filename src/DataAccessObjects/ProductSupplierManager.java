@@ -173,7 +173,8 @@ public class ProductSupplierManager {
      * @param productSupplier
      * @return the newly inserted ProductSupplier object
      */
-    public static void addProductSupplier(ProductSupplier productSupplier) {
+    public static int addProductSupplier(ProductSupplier productSupplier) {
+        int numRows = 0;
         try {
             // Get database connection
             Connection conn = DbConnection.getConnection();
@@ -186,9 +187,9 @@ public class ProductSupplierManager {
             stmt.setInt(1,productSupplier.getProductId());
             stmt.setInt(2,productSupplier.getSupplierId());
             // Execute query
-            int numRows = stmt.executeUpdate();
+            numRows = stmt.executeUpdate();
             if (numRows == 0) {
-                throw new Exception("Failed to add to ProductSupplier table");
+                return numRows;
             } else {
                 // Get id from inserted row
                 try (ResultSet resultSet = stmt.getGeneratedKeys()) {
@@ -205,5 +206,6 @@ public class ProductSupplierManager {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return numRows;
     }
 }

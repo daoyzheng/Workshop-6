@@ -69,6 +69,12 @@ public class AddSupplierController {
         this.selectedSuppliers = selectedSuppliers;
     }
 
+    private ListView<Supplier> supplierListView;
+
+    public void setLvSupplier(ListView<Supplier> supplierListView) {
+        this.supplierListView = supplierListView;
+    }
+
     private boolean isExisting = true;
 
     @FXML
@@ -90,30 +96,34 @@ public class AddSupplierController {
 
             if(validInsert) {
                 // If no duplicates exist, then we can safely add to the product supplier table
-                ProductSupplierManager.addProductSupplier(new ProductSupplier(
+                int numRows = ProductSupplierManager.addProductSupplier(new ProductSupplier(
                         selectedProduct.getProductId(),
                         selectedSupplier.getSupplierId()
                 ));
 
-                // Refresh list view
-                // Get ProductSupplierController
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../Views/ProductSupplier.fxml"));
-                try {
-                    Parent prodSupplier = fxmlLoader.load();
-                    ProductSupplierController productSupplierController = fxmlLoader.getController();
+                if (numRows > 0) {
+                    // Refresh list view
+                    // Get ProductSupplierController
+                    //FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../Views/ProductSupplier.fxml"));
+                        //Parent prodSupplier = fxmlLoader.load();
+                        //ProductSupplierController productSupplierController = fxmlLoader.getController();
 
-                    // Refresh supplier list view
-                    ListView<Supplier> supplierListView = productSupplierController.getLvSupplier();
-                    supplierListView.getSelectionModel().selectFirst();
-                    supplierListView.getSelectionModel().select(selectedSupplier);
+                        // Refresh supplier list view
+                    ArrayList<Integer> updatedSuppliers = ProductSupplierManager.getSupplierIdsByProductId(selectedProduct.getProductId());
+                    // Now get a list of supplier objects using the supplierIdArrayList
+                    ObservableList<Supplier> supplierObservableList = FXCollections.observableArrayList();
+                    for(Integer supplierId: updatedSuppliers) {
+                        supplierObservableList.add(SupplierManager.getSupplierById(supplierId));
+                    }
+                    supplierListView.setItems(supplierObservableList);
+//                        ListView<Supplier> supplierListView = productSupplierController.getLvSupplier();
+//                        supplierListView.getSelectionModel().selectFirst();
+//                        supplierListView.getSelectionModel().select(selectedSupplier);
 
-                    // get a handle to the stage
-                    Stage stage = (Stage) btnAddSupplier.getScene().getWindow();
-                    // Close current window
-                    stage.close();
-
-                } catch (IOException e) {
-                    e.printStackTrace();
+                        // get a handle to the stage
+                        Stage stage = (Stage) btnAddSupplier.getScene().getWindow();
+                        // Close current window
+                        stage.close();
                 }
             }
         } else {

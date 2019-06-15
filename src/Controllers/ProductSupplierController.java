@@ -106,6 +106,9 @@ public class ProductSupplierController {
         controller.setSelectedSuppliers(lvSupplier.getItems());
         // Set label text
         controller.getLabelProd().setText(selectedProd.getProdName());
+        // Pass fxmlLoader
+        controller.setLvSupplier(lvSupplier);
+
     }
 
     // ObservableList of Products
