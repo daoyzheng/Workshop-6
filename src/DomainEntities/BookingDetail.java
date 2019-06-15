@@ -30,7 +30,8 @@ public class BookingDetail {
     private SimpleIntegerProperty productSupplierId;
 
     // Constructor
-    public BookingDetail(int itineraryNo, LocalDate tripStart, LocalDate tripEnd, String description, String destination, double basePrice, double agencyCommission, int bookingId, String regionId, String classId, String feeId, int productSupplierId) {
+    public BookingDetail(int detailId, int itineraryNo, LocalDate tripStart, LocalDate tripEnd, String description, String destination, double basePrice, double agencyCommission, int bookingId, String regionId, String classId, String feeId, int productSupplierId) {
+        this.bookingDetailId = new SimpleIntegerProperty(detailId);
         this.itineraryNo = new SimpleIntegerProperty(itineraryNo);
         this.tripStart = new SimpleObjectProperty<>(tripStart);
         this.tripEnd = new SimpleObjectProperty<>(tripEnd);

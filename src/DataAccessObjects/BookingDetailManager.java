@@ -25,7 +25,7 @@ public class BookingDetailManager {
      * @return
      *
      * */
-    public static ArrayList<BookingDetail> getBookingDetailByBookingId(int bookingId){
+    public static ArrayList<BookingDetail> getBookingDetailsByBookingId(int bookingId){
 
         ArrayList<BookingDetail> details = new ArrayList<>();
 
@@ -43,6 +43,7 @@ public class BookingDetailManager {
             // Get first row of data
             while (rs.next()) {
                 details.add(new BookingDetail(
+                        rs.getInt(1),
                         rs.getInt(2),
                         rs.getDate(3).toLocalDate(),
                         rs.getDate(4).toLocalDate(),

@@ -8,12 +8,11 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.ResourceBundle;
 
-import DataAccessObjects.BookingManager;
-import DataAccessObjects.CustomerManager;
-import DataAccessObjects.TripTypeManager;
+import DataAccessObjects.*;
 import DomainEntities.Booking;
 import DomainEntities.BookingDetail;
 import DomainEntities.Customer;
+import DomainEntities.Package;
 import DomainEntities.TripType;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -159,10 +158,10 @@ public class BookingController {
     private TableColumn<BookingDetail, Integer> colItineraryNo;
 
     @FXML
-    private TableColumn<BookingDetail, Date> colStartDate;
+    private TableColumn<BookingDetail, LocalDate> colStartDate;
 
     @FXML
-    private TableColumn<BookingDetail, Date> colEndDate;
+    private TableColumn<BookingDetail, LocalDate> colEndDate;
 
     @FXML
     private TableColumn<BookingDetail, String> colDesc;
@@ -188,7 +187,20 @@ public class BookingController {
         colTravellerNo.setCellValueFactory(param -> param.getValue().travelerCountProperty().asObject());
         colCustName.setCellValueFactory(param -> param.getValue().customerIdProperty().asObject());
         colTripType.setCellValueFactory(param -> param.getValue().tripTypeIdProperty());
-        // colPackage.setCellValueFactory();   Currently All Values is Null
+        colPackage.setCellValueFactory(param -> param.getValue().packageIdProperty().asObject());
+
+        // Set up booking detail table columns
+        colDetailId.setCellValueFactory(param -> param.getValue().bookingDetailIdProperty().asObject());
+        colItineraryNo.setCellValueFactory(param -> param.getValue().itineraryNoProperty().asObject());
+        colStartDate.setCellValueFactory(param -> param.getValue().tripStartProperty());
+        colEndDate.setCellValueFactory(param -> param.getValue().tripEndProperty());
+        colDesc.setCellValueFactory(param -> param.getValue().descriptionProperty());
+        colDestination.setCellValueFactory(param -> param.getValue().destinationProperty());
+        colBasePrice.setCellValueFactory(param -> param.getValue().basePriceProperty().asObject());
+        colCommission.setCellValueFactory(param -> param.getValue().agencyCommissionProperty().asObject());
+        colProductSupplier.setCellValueFactory(param -> param.getValue().productSupplierIdProperty().asObject());
+
+
 
         // Load data into table
         bookingArrayList = BookingManager.getAllBookings();
@@ -224,7 +236,7 @@ public class BookingController {
 
         // display details
         tfBookId.setText(String.valueOf(selectedB.getBookingId()));
-        pickerBookDate.setValue(selectedB.getBookingDate());  // shitty way to convert Date to LocalDate
+        pickerBookDate.setValue(selectedB.getBookingDate());
         tfBookNo.setText(selectedB.getBookingNo());
         tfTravellerNo.setText(String.valueOf(selectedB.getTravelerCount()));
         Customer customer = CustomerManager.getCustomerById(selectedB.getCustomerId());
@@ -235,6 +247,12 @@ public class BookingController {
         cmbTripType.setItems(TTs);
         String[] tripTypes = {"B", "G", "L"};
         cmbTripType.getSelectionModel().select(Arrays.asList(tripTypes).indexOf(selectedB.getTripTypeId()));
+        Package bookedPackge = PackageManager.getPackageById(selectedB.getPackageId());
+        tfPackage.setText(bookedPackge==null ? "N/A" : bookedPackge.getPkgName());
+
+        // load booking detail table
+        ArrayList<BookingDetail> details = BookingDetailManager.getBookingDetailsByBookingId(selectedB.getBookingId());
+        tvBookingDetail.setItems(FXCollections.observableArrayList(details));
     }
 
 }

@@ -49,29 +49,28 @@ public class PackageManager {
     public static Package getPackageById(int id)
     {
         Package pkg = null;
-
         try
         {
             Connection conn = DbConnection.getConnection();
             Statement statement = conn.createStatement();
             ResultSet resultSet = statement.executeQuery("SELECT * FROM packages WHERE packageId = " + id);
-            while (resultSet.next())
+            if (resultSet.next())
             {
-                pkg.setPackageId(resultSet.getInt(1));
-                pkg.setPkgName(resultSet.getString(2));
-                pkg.setPkgStartDate(resultSet.getDate(3).toLocalDate());
-                pkg.setPkgEndDate(resultSet.getDate(4).toLocalDate());
-                pkg.setPkgDesc(resultSet.getString(5));
-                pkg.setPkgBasePrice(resultSet.getDouble(6));
-                pkg.setPkgAgencyCommission(resultSet.getDouble(7));
-                pkg.setActive(resultSet.getBoolean(8));
+                pkg = new Package(resultSet.getInt(1),
+                        resultSet.getString(2),
+                        resultSet.getDate(3).toLocalDate(),
+                        resultSet.getDate(4).toLocalDate(),
+                        resultSet.getString(5),
+                        resultSet.getDouble(6),
+                        resultSet.getDouble(7),
+                        resultSet.getBoolean(8)
+                        );
             }
             conn.close(); // should be in finally block?
         }
         catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
-
         return pkg;
     }
 
