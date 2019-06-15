@@ -6,10 +6,7 @@ Date: May, 2019
 
 package DomainEntities;
 
-import javafx.beans.property.ObjectProperty;
-import javafx.beans.property.SimpleDoubleProperty;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.*;
 
 import java.time.LocalDate;
 import java.util.Date;
@@ -32,21 +29,8 @@ public class BookingDetail {
     private SimpleStringProperty feeId;
     private SimpleIntegerProperty productSupplierId;
 
-    // Constructors
-    public BookingDetail(int bookingDetailId, int itineraryNo, LocalDate tripStart, LocalDate tripEnd, String description, String destination, double basePrice, double agencyCommission, int productSupplierId) {
-        this.bookingDetailId = new SimpleIntegerProperty(bookingDetailId);
-        this.itineraryNo = new SimpleIntegerProperty(itineraryNo);
-        this.tripStart = new SimpleObjectProperty<>(tripStart);
-        this.tripEnd = new SimpleObjectProperty<>(tripEnd);
-        this.description = new SimpleStringProperty(description);
-        this.destination = new SimpleStringProperty(destination);
-        this.basePrice = new SimpleDoubleProperty(basePrice);
-        this.agencyCommission = new SimpleDoubleProperty(agencyCommission);
-        this.productSupplierId = new SimpleIntegerProperty(productSupplierId);
-    }
-    // full version
-    public BookingDetail(int bookingDetailId, int itineraryNo, LocalDate tripStart, LocalDate tripEnd, String description, String destination, double basePrice, double agencyCommission, int bookingId, String regionId, String classId, String feeId, int productSupplierId) {
-        this.bookingDetailId = new SimpleIntegerProperty(bookingDetailId);
+    // Constructor
+    public BookingDetail(int itineraryNo, LocalDate tripStart, LocalDate tripEnd, String description, String destination, double basePrice, double agencyCommission, int bookingId, String regionId, String classId, String feeId, int productSupplierId) {
         this.itineraryNo = new SimpleIntegerProperty(itineraryNo);
         this.tripStart = new SimpleObjectProperty<>(tripStart);
         this.tripEnd = new SimpleObjectProperty<>(tripEnd);
@@ -74,15 +58,15 @@ public class BookingDetail {
         this.bookingDetailId.set(bookingDetailId);
     }*/
 
-    public double getItineraryNo() {
+    public int getItineraryNo() {
         return itineraryNo.get();
     }
 
-    public SimpleDoubleProperty itineraryNoProperty() {
+    public SimpleIntegerProperty itineraryNoProperty() {
         return itineraryNo;
     }
 
-    public void setItineraryNo(double itineraryNo) {
+    public void setItineraryNo(int itineraryNo) {
         this.itineraryNo.set(itineraryNo);
     }
 

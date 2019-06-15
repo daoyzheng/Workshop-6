@@ -8,7 +8,6 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.ResourceBundle;
 
-import DataAccessObjects.BookingDetailManager;
 import DataAccessObjects.BookingManager;
 import DataAccessObjects.CustomerManager;
 import DataAccessObjects.TripTypeManager;
@@ -160,10 +159,10 @@ public class BookingController {
     private TableColumn<BookingDetail, Integer> colItineraryNo;
 
     @FXML
-    private TableColumn<BookingDetail, LocalDate> colStartDate;
+    private TableColumn<BookingDetail, Date> colStartDate;
 
     @FXML
-    private TableColumn<BookingDetail, LocalDate> colEndDate;
+    private TableColumn<BookingDetail, Date> colEndDate;
 
     @FXML
     private TableColumn<BookingDetail, String> colDesc;
@@ -222,16 +221,8 @@ public class BookingController {
     private void enterEditMode(Booking selectedB) {
         currentMode = Mode.EDIT;
         tabPaneBooking.getSelectionModel().select(tabDetail);
-        // display details
-        displayDetails(selectedB);
-        // load according booking details from db into tvBookingDetail
-        ArrayList<BookingDetail> detailList = BookingDetailManager.getBookingDetailByBookingId(selectedB.getBookingId());
-        ObservableList<BookingDetail> details = FXCollections.observableArrayList(detailList);
-        tvBookingDetail.setItems(details);
-        // todo: setup cell value factory for tvBookingDetail
-    }
 
-    private void displayDetails(Booking selectedB) {
+        // display details
         tfBookId.setText(String.valueOf(selectedB.getBookingId()));
         pickerBookDate.setValue(selectedB.getBookingDate());  // shitty way to convert Date to LocalDate
         tfBookNo.setText(selectedB.getBookingNo());
