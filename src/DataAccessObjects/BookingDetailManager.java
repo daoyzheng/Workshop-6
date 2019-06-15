@@ -43,7 +43,6 @@ public class BookingDetailManager {
             // Get first row of data
             while (rs.next()) {
                 details.add(new BookingDetail(
-                        rs.getInt(1),
                         rs.getInt(2),
                         rs.getDate(3).toLocalDate(),
                         rs.getDate(4).toLocalDate(),
@@ -51,6 +50,10 @@ public class BookingDetailManager {
                         rs.getString(6),
                         rs.getDouble(7),
                         rs.getDouble(8),
+                        rs.getInt(9),
+                        rs.getString(10),
+                        rs.getString(11),
+                        rs.getString(12),
                         rs.getInt(13)
                         ));
             }
