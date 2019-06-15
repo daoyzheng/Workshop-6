@@ -80,6 +80,8 @@ public class ProductSupplierController {
         AddProductController controller = fxmlLoader.getController();
         // Pass current list view array to addProductController
         controller.setProductObservableList(lvProduct.getItems());
+        // Pass Product list view
+        controller.setProductListView(lvProduct);
     }
 
     @FXML

@@ -104,11 +104,6 @@ public class AddSupplierController {
                 if (numRows > 0) {
                     // Refresh list view
                     // Get ProductSupplierController
-                    //FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../Views/ProductSupplier.fxml"));
-                        //Parent prodSupplier = fxmlLoader.load();
-                        //ProductSupplierController productSupplierController = fxmlLoader.getController();
-
-                        // Refresh supplier list view
                     ArrayList<Integer> updatedSuppliers = ProductSupplierManager.getSupplierIdsByProductId(selectedProduct.getProductId());
                     // Now get a list of supplier objects using the supplierIdArrayList
                     ObservableList<Supplier> supplierObservableList = FXCollections.observableArrayList();
@@ -116,14 +111,11 @@ public class AddSupplierController {
                         supplierObservableList.add(SupplierManager.getSupplierById(supplierId));
                     }
                     supplierListView.setItems(supplierObservableList);
-//                        ListView<Supplier> supplierListView = productSupplierController.getLvSupplier();
-//                        supplierListView.getSelectionModel().selectFirst();
-//                        supplierListView.getSelectionModel().select(selectedSupplier);
 
-                        // get a handle to the stage
-                        Stage stage = (Stage) btnAddSupplier.getScene().getWindow();
-                        // Close current window
-                        stage.close();
+                    // get a handle to the stage
+                    Stage stage = (Stage) btnAddSupplier.getScene().getWindow();
+                    // Close current window
+                    stage.close();
                 }
             }
         } else {

@@ -2,10 +2,13 @@ package Controllers;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import DataAccessObjects.ProductManager;
+import DataAccessObjects.ProductSupplierManager;
 import DomainEntities.Product;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -37,6 +40,12 @@ public class AddProductController {
         this.productObservableList = observableList;
     }
 
+    private ListView<Product> productListView;
+
+    public void setProductListView(ListView<Product> productListView) {
+        this.productListView = productListView;
+    }
+
     @FXML
     void btnAddProductOnAction(ActionEvent event) {
         boolean validInsert = true;
@@ -57,24 +66,14 @@ public class AddProductController {
             ProductManager.addProduct(newProd);
 
             // Refresh list view
-            // Get ProductSupplierController
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../Views/ProductSupplier.fxml"));
-            try {
-                Parent prodSupplier = fxmlLoader.load();
-                ProductSupplierController productSupplierController = fxmlLoader.getController();
+            // Get all products
+            ArrayList<Product> productArrayList = ProductManager.getAllProducts();
+            productListView.setItems(FXCollections.observableArrayList(productArrayList));
 
-                // Refresh supplier list view
-                ListView<Product> productListView = productSupplierController.getLvProduct();
-                productListView.getSelectionModel().selectFirst();
-
-                // get a handle to the stage
-                Stage stage = (Stage) btnAddProduct.getScene().getWindow();
-                // Close current window
-                stage.close();
-
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            // get a handle to the stage
+            Stage stage = (Stage) btnAddProduct.getScene().getWindow();
+            // Close current window
+            stage.close();
         }
 
     }
