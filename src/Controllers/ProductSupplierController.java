@@ -58,6 +58,15 @@ public class ProductSupplierController {
     @FXML
     private Button btnAddProduct;
 
+    // Allow public access of list view reference from other controllers
+    public ListView<Supplier> getLvSupplier() {
+        return this.lvSupplier;
+    }
+
+    public ListView<Product> getLvProduct() {
+        return this.lvProduct;
+    }
+
     @FXML
     void btnAddProductOnAction(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../Views/addProduct.fxml"));
@@ -97,6 +106,8 @@ public class ProductSupplierController {
         controller.setSelectedSuppliers(lvSupplier.getItems());
         // Set label text
         controller.getLabelProd().setText(selectedProd.getProdName());
+        // Pass observablearray of products to addSupplierController
+        //controller.setProductObservableList(prodObservableList);
     }
 
     // ObservableList of Products

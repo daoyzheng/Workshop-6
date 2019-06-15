@@ -43,8 +43,6 @@ public class AddProductController {
                 Alert alert = new Alert(Alert.AlertType.WARNING, "Product already exists");
                 alert.showAndWait();
                 validInsert = false;
-            } else {
-                validInsert = true;
             }
         }
 

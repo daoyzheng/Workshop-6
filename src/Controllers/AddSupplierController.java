@@ -1,5 +1,6 @@
 package Controllers;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -18,7 +19,10 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.*;
+import javafx.stage.Stage;
 
 public class AddSupplierController {
 
@@ -53,18 +57,19 @@ public class AddSupplierController {
         return this.labelProd;
     }
 
-    public Product selectedProduct;
+    private Product selectedProduct;
 
     public void setSelectedProduct(Product selectedProduct) {
         this.selectedProduct = selectedProduct;
     }
 
-    public ObservableList<Supplier> selectedSuppliers;
+    private ObservableList<Supplier> selectedSuppliers;
 
     public void setSelectedSuppliers(ObservableList<Supplier> selectedSuppliers) {
         this.selectedSuppliers = selectedSuppliers;
     }
 
+    private boolean isExisting = true;
 
     @FXML
     void btnAddSupplierOnAction(ActionEvent event) {
@@ -80,8 +85,6 @@ public class AddSupplierController {
                     Alert alert = new Alert(Alert.AlertType.WARNING, "Supplier already exists");
                     alert.showAndWait();
                     validInsert = false;
-                } else {
-                    validInsert = true;
                 }
             }
 
@@ -91,6 +94,32 @@ public class AddSupplierController {
                         selectedProduct.getProductId(),
                         selectedSupplier.getSupplierId()
                 ));
+
+                // Refresh list view
+                // Get ProductSupplierController
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../Views/ProductSupplier.fxml"));
+                try {
+                    Parent prodSupplier = fxmlLoader.load();
+                    ProductSupplierController productSupplierController = fxmlLoader.getController();
+
+                    // Refresh product list view
+                    ListView<Product> productListView = productSupplierController.getLvProduct();
+
+                    productListView.getSelectionModel().select(selectedProduct);
+
+                    // Refresh supplier list view
+//                    ListView<Supplier> supplierListView = productSupplierController.getLvSupplier();
+//                    supplierListView.getSelectionModel().selectFirst();
+//                    supplierListView.getSelectionModel().select(selectedSupplier);
+
+                    // get a handle to the stage
+                    Stage stage = (Stage) btnAddSupplier.getScene().getWindow();
+                    // Close current window
+                    stage.close();
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         } else {
             boolean validInsert = true;
@@ -121,7 +150,6 @@ public class AddSupplierController {
         }
     }
 
-    private boolean isExisting = false;
     @FXML
     void initialize() {
         // Populate existing supplier combo box, but set it to disable by default
