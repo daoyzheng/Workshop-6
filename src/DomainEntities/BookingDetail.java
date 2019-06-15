@@ -18,9 +18,9 @@ public class BookingDetail {
     // PK
     private SimpleIntegerProperty bookingDetailId;
 
-    private SimpleDoubleProperty itineraryNo;
-    private ObjectProperty<Date> tripStart;  // ? Date or LocalDate
-    private ObjectProperty<Date> tripEnd;
+    private SimpleIntegerProperty itineraryNo;
+    private ObjectProperty<LocalDate> tripStart;  // ? Date or LocalDate
+    private ObjectProperty<LocalDate> tripEnd;
     private SimpleStringProperty description;
     private SimpleStringProperty destination;
     private SimpleDoubleProperty basePrice;
@@ -32,20 +32,33 @@ public class BookingDetail {
     private SimpleStringProperty feeId;
     private SimpleIntegerProperty productSupplierId;
 
-    // Constructor
-    public BookingDetail(double itineraryNo, Date tripStart, Date tripEnd, String description, String destination, double basePrice, double agencyCommission, int bookingId, String regionId, String classId, String feeId, int productSupplierId) {
-        this.itineraryNo.set(itineraryNo);
-        this.tripStart.set(tripStart);
-        this.tripEnd.set(tripEnd);
-        this.description.set(description);
-        this.destination.set(destination);
-        this.basePrice.set(basePrice);
-        this.agencyCommission.set(agencyCommission);
-        this.bookingId.set(bookingId);
-        this.regionId.set(regionId);
-        this.classId.set(classId);
-        this.feeId.set(feeId);
-        this.productSupplierId.set(productSupplierId);
+    // Constructors
+    public BookingDetail(int bookingDetailId, int itineraryNo, LocalDate tripStart, LocalDate tripEnd, String description, String destination, double basePrice, double agencyCommission, int productSupplierId) {
+        this.bookingDetailId = new SimpleIntegerProperty(bookingDetailId);
+        this.itineraryNo = new SimpleIntegerProperty(itineraryNo);
+        this.tripStart = new SimpleObjectProperty<>(tripStart);
+        this.tripEnd = new SimpleObjectProperty<>(tripEnd);
+        this.description = new SimpleStringProperty(description);
+        this.destination = new SimpleStringProperty(destination);
+        this.basePrice = new SimpleDoubleProperty(basePrice);
+        this.agencyCommission = new SimpleDoubleProperty(agencyCommission);
+        this.productSupplierId = new SimpleIntegerProperty(productSupplierId);
+    }
+    // full version
+    public BookingDetail(int bookingDetailId, int itineraryNo, LocalDate tripStart, LocalDate tripEnd, String description, String destination, double basePrice, double agencyCommission, int bookingId, String regionId, String classId, String feeId, int productSupplierId) {
+        this.bookingDetailId = new SimpleIntegerProperty(bookingDetailId);
+        this.itineraryNo = new SimpleIntegerProperty(itineraryNo);
+        this.tripStart = new SimpleObjectProperty<>(tripStart);
+        this.tripEnd = new SimpleObjectProperty<>(tripEnd);
+        this.description = new SimpleStringProperty(description);
+        this.destination = new SimpleStringProperty(destination);
+        this.basePrice = new SimpleDoubleProperty(basePrice);
+        this.agencyCommission = new SimpleDoubleProperty(agencyCommission);
+        this.bookingId = new SimpleIntegerProperty(bookingId);
+        this.regionId = new SimpleStringProperty(regionId);
+        this.classId = new SimpleStringProperty(classId);
+        this.feeId = new SimpleStringProperty(feeId);
+        this.productSupplierId = new SimpleIntegerProperty(productSupplierId);
     }
 
     // getters & setters
@@ -73,27 +86,27 @@ public class BookingDetail {
         this.itineraryNo.set(itineraryNo);
     }
 
-    public Date getTripStart() {
+    public LocalDate getTripStart() {
         return tripStart.get();
     }
 
-    public ObjectProperty<Date> tripStartProperty() {
+    public ObjectProperty<LocalDate> tripStartProperty() {
         return tripStart;
     }
 
-    public void setTripStart(Date tripStart) {
+    public void setTripStart(LocalDate tripStart) {
         this.tripStart.set(tripStart);
     }
 
-    public Date getTripEnd() {
+    public LocalDate getTripEnd() {
         return tripEnd.get();
     }
 
-    public ObjectProperty<Date> tripEndProperty() {
+    public ObjectProperty<LocalDate> tripEndProperty() {
         return tripEnd;
     }
 
-    public void setTripEnd(Date tripEnd) {
+    public void setTripEnd(LocalDate tripEnd) {
         this.tripEnd.set(tripEnd);
     }
 
