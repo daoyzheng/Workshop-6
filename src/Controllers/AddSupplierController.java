@@ -102,15 +102,10 @@ public class AddSupplierController {
                     Parent prodSupplier = fxmlLoader.load();
                     ProductSupplierController productSupplierController = fxmlLoader.getController();
 
-                    // Refresh product list view
-                    ListView<Product> productListView = productSupplierController.getLvProduct();
-
-                    productListView.getSelectionModel().select(selectedProduct);
-
                     // Refresh supplier list view
-//                    ListView<Supplier> supplierListView = productSupplierController.getLvSupplier();
-//                    supplierListView.getSelectionModel().selectFirst();
-//                    supplierListView.getSelectionModel().select(selectedSupplier);
+                    ListView<Supplier> supplierListView = productSupplierController.getLvSupplier();
+                    supplierListView.getSelectionModel().selectFirst();
+                    supplierListView.getSelectionModel().select(selectedSupplier);
 
                     // get a handle to the stage
                     Stage stage = (Stage) btnAddSupplier.getScene().getWindow();

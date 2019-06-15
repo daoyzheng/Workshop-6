@@ -106,8 +106,6 @@ public class ProductSupplierController {
         controller.setSelectedSuppliers(lvSupplier.getItems());
         // Set label text
         controller.getLabelProd().setText(selectedProd.getProdName());
-        // Pass observablearray of products to addSupplierController
-        //controller.setProductObservableList(prodObservableList);
     }
 
     // ObservableList of Products
