@@ -1,12 +1,17 @@
 package Controllers;
 
+import java.awt.*;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 
+import DataAccessObjects.PackageProductSupplierManager;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.ColumnConstraints;
@@ -28,9 +33,8 @@ public class PackageController {
     @FXML
     private TabPane tabPaneMain;
 
-//    @FXML
-//    private Tab tab;
 
+    //////////////////////////////////////////////// Main Tab  /////////////////////////////////////////////////////////
     @FXML
     private Tab tabMain;
 
@@ -67,6 +71,8 @@ public class PackageController {
     @FXML
     private TableColumn<Package, Boolean> active;
 
+
+    //////////////////////////////////////////////// Edit Tab //////////////////////////////////////////////////////////
     @FXML
     private Tab tabEdit;
 
@@ -121,6 +127,8 @@ public class PackageController {
     @FXML
     private CheckBox pkgActiveEdit;
 
+
+    //////////////////////////////////////////////// Add Tab ///////////////////////////////////////////////////////////
     @FXML
     private Tab tabAdd;
 
@@ -242,7 +250,15 @@ public class PackageController {
     }
 
 
-    // a method to show the selected package on the Edit tab
+    // a method to pre-select the first package in the table,
+    // show it on the Edit tab and show its product-supplier combinations on list view
+    private void firstPackage() {
+        tvPackages.getSelectionModel().select(0);
+        loadPackage();
+    }
+
+
+    // a method to show the selected package on the Edit tab and show its product-supplier combinations on list view
     private void loadPackage()
     {
         Package pkg = tvPackages.getSelectionModel().getSelectedItem();
@@ -256,14 +272,10 @@ public class PackageController {
             pkgActiveEdit.setSelected(false);
         else
             pkgActiveEdit.setSelected(true);
-    }
 
 
-    // a method to pre-select the first package in the table
-    // and show it on the Edit tab
-    private void firstPackage() {
-        tvPackages.getSelectionModel().select(0);
-        loadPackage();
+        ObservableList<PackageProductSupplier> PrdSpl = FXCollections.observableArrayList();
+        lvProductsSuppliers.setItems(PackageProductSupplierManager.getPrdSplByPkgId(pkg.getPackageId()));
     }
 
 
@@ -290,6 +302,7 @@ public class PackageController {
         Package pkg = tvPackages.getSelectionModel().getSelectedItem();
         return pkg;
     }
+
 
     // a method to show different tabs
     private void showTab(Tab tab)

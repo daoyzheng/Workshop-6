@@ -9,6 +9,8 @@ package DataAccessObjects;
 import DataAccess.DbConnection;
 import DomainEntities.PackageProductSupplier;
 import javafx.beans.binding.When;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 
@@ -17,21 +19,30 @@ import java.util.ArrayList;
 
 public class PackageProductSupplierManager
 {
-    //retrieve a PackageProductSupplier from database based on PackageID
-    public static PackageProductSupplier getPrdSplByPkgId(int PkgId)
+    //retrieve ProductSupplier sets from database based on PackageID
+    public static ObservableList<PackageProductSupplier> getPrdSplByPkgId(int PkgId)
     {
-        PackageProductSupplier PkgPrdSpl = null;
+        ObservableList<PackageProductSupplier> PrdSpl = FXCollections.observableArrayList();
 
         try
         {
             Connection conn = DbConnection.getConnection();
             Statement stm = conn.createStatement();
-            ResultSet rs = stm.executeQuery("SELECT * FROM 'packages_products_suppliersHide' WHERE PackageId = " + PkgId);
+            ResultSet rs = stm.executeQuery("SELECT packages_products_suppliers.PackageId, " +
+                    "packages_products_suppliers.ProductSupplierId, " +
+                    "ProdName, SupName FROM packages_products_suppliers " +
+                    "INNER JOIN products_suppliers " +
+                    "ON packages_products_suppliers.ProductSupplierId = products_suppliers.ProductSupplierId " +
+                    "INNER JOIN products " +
+                    "ON products_suppliers.ProductId = products.ProductId " +
+                    "INNER JOIN suppliers " +
+                    "ON products_suppliers.SupplierId = suppliers.SupplierId "+
+                    "WHERE PackageId = " + PkgId);
 
             while (rs.next())
             {
-                PkgPrdSpl.setPackageId(rs.getInt(1));
-                PkgPrdSpl.setProductSupplierId(rs.getInt(2));
+                PrdSpl.add(new PackageProductSupplier(rs.getInt(1), rs.getInt(2),
+                        rs.getString(3), rs.getString(4)));
             }
             conn.close(); // should be in finally block?
 
@@ -41,7 +52,7 @@ public class PackageProductSupplierManager
             e.printStackTrace();
         }
 
-        return PkgPrdSpl;
+        return PrdSpl;
     }
 
 
@@ -92,7 +103,7 @@ public class PackageProductSupplierManager
 
             if (rs == null)
             {
-                Alert alert = new Alert(Alert.AlertType.ERROR, "Error inserting into the database!", ButtonType.CLOSE);
+                Alert alert = new Alert(Alert.AlertType.ERROR, "Error deleting from the database!", ButtonType.CLOSE);
                 alert.showAndWait();
             }
             else

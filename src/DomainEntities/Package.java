@@ -26,7 +26,7 @@ public class Package {
     // constructors:
     public Package() {
         this.packageId = new SimpleIntegerProperty();
-        this.pkgName = new SimpleStringProperty("");
+        this.pkgName = new SimpleStringProperty();
         this.pkgStartDate = new SimpleObjectProperty<>();
         this.pkgEndDate = new SimpleObjectProperty<>();
         this.pkgDesc = new SimpleStringProperty();

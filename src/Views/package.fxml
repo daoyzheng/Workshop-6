@@ -64,20 +64,12 @@
                            <children>
                               <HBox maxHeight="25.0" maxWidth="182.0" minHeight="25.0" minWidth="182.0" prefHeight="25.0" prefWidth="182.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-2.0" AnchorPane.topAnchor="1.0">
                                  <children>
-                                    <Label text="Products">
+                                    <Label prefHeight="17.0" prefWidth="148.0" text="Products/ Suppliers">
                                        <font>
                                           <Font name="System Bold" size="12.0" />
                                        </font>
                                        <HBox.margin>
-                                          <Insets left="20.0" right="40.0" />
-                                       </HBox.margin>
-                                    </Label>
-                                    <Label text="Suppliers">
-                                       <font>
-                                          <Font name="System Bold" size="12.0" />
-                                       </font>
-                                       <HBox.margin>
-                                          <Insets />
+                                          <Insets left="30.0" right="30.0" />
                                        </HBox.margin>
                                     </Label>
                                  </children>
