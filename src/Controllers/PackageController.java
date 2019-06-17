@@ -1,40 +1,36 @@
 package Controllers;
 
-import java.awt.*;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 
+import DataAccessObjects.PackageManager;
 import DataAccessObjects.PackageProductSupplierManager;
+import DomainEntities.PackageProductSupplier;
+import DomainEntities.Package;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
-import javafx.beans.property.ObjectProperty;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-
-import java.util.Date;
-
-import DomainEntities.PackageProductSupplier;
-import DataAccessObjects.PackageManager;
-import DomainEntities.Package;
-
-import javax.xml.soap.SOAPPart;
 
 public class PackageController {
+
+    @FXML
+    private ResourceBundle resources;
+
+    @FXML
+    private URL location;
 
     @FXML
     private TabPane tabPaneMain;
 
 
-    //////////////////////////////////////////////// Main Tab  /////////////////////////////////////////////////////////
+    //***************************************** Main Tab*********************************************
     @FXML
     private Tab tabMain;
 
@@ -72,7 +68,7 @@ public class PackageController {
     private TableColumn<Package, Boolean> active;
 
 
-    //////////////////////////////////////////////// Edit Tab //////////////////////////////////////////////////////////
+    //***************************************** Edit Tab*********************************************
     @FXML
     private Tab tabEdit;
 
@@ -128,7 +124,7 @@ public class PackageController {
     private CheckBox pkgActiveEdit;
 
 
-    //////////////////////////////////////////////// Add Tab ///////////////////////////////////////////////////////////
+    //***************************************** Add Tab**********************************************
     @FXML
     private Tab tabAdd;
 
@@ -183,17 +179,13 @@ public class PackageController {
     @FXML
     private CheckBox pkgActiveAdd;
 
+
+    //***************************************** Add/Edit Tab*****************************************
     @FXML
     private Tab tabAddEdit;
 
-//    @FXML
-//    private TableView<?> tvPdcSpl2;
-//
-//    @FXML
-//    private TableColumn<?, ?> colProduct1;
-//
-//    @FXML
-//    private TableColumn<?, ?> colSupplier1;
+    @FXML
+    private ListView<PackageProductSupplier> lvPsblPrdSpl;
 
     @FXML
     private Button btnAddEditAdd;
@@ -201,8 +193,8 @@ public class PackageController {
     @FXML
     private Button btnAddEditAddAll;
 
-//    @FXML
-//    private TableView<?> tvPdcSpl1;
+    @FXML
+    private ListView<PackageProductSupplier> lvCrntPrdSpl;
 
     @FXML
     private Button btnAddEditDelete;
@@ -214,11 +206,12 @@ public class PackageController {
     private Button btnAddEditBack;
 
 
-
+    //***************************************** Main Tab*********************************************
     // class-level variables:
     Package curntPkg = new Package(); // current (selected) package in the package scene
 
-        @FXML
+
+    @FXML
     void initialize() {
 
         //setup up table cell factories
@@ -258,7 +251,9 @@ public class PackageController {
     }
 
 
-    // a method to show the selected package on the Edit tab and show its product-supplier combinations on list view
+    // a method to show the selected package on the Edit tab,
+    // show its product-supplier combinations on list view and
+    // show its product-supplier combinations on Add/Edit tab
     private void loadPackage()
     {
         Package pkg = tvPackages.getSelectionModel().getSelectedItem();
@@ -274,8 +269,17 @@ public class PackageController {
             pkgActiveEdit.setSelected(true);
 
 
+        setListView(lvProductsSuppliers, pkg);
+
+
+        setListView(lvCrntPrdSpl, pkg);
+    }
+
+
+    // a method to set the items for a list view based on a given packageId
+    private void setListView(ListView lv, Package pkg) {
         ObservableList<PackageProductSupplier> PrdSpl = FXCollections.observableArrayList();
-        lvProductsSuppliers.setItems(PackageProductSupplierManager.getPrdSplByPkgId(pkg.getPackageId()));
+        lv.setItems(PackageProductSupplierManager.getPrdSplByPkgId(pkg.getPackageId()));
     }
 
 
@@ -299,8 +303,8 @@ public class PackageController {
     // a method to return the selected package for further editing
     private Package currentPackage()
     {
-        Package pkg = tvPackages.getSelectionModel().getSelectedItem();
-        return pkg;
+        curntPkg = tvPackages.getSelectionModel().getSelectedItem();
+        return curntPkg;
     }
 
 
@@ -312,48 +316,11 @@ public class PackageController {
     }
 
 
-    // a method to create a package from text fields on Edit tab
-    private Package readEditedPackage()
+    @FXML
+    void tfNavSearchKeyTyped(KeyEvent event)
     {
-        Package pkg = new Package();
-        pkg.setPkgName(pkgNameEdit.getText());
-        pkg.setPkgStartDate(pkgStartDateEdit.getValue());
-        pkg.setPkgEndDate(pkgEndDateEdit.getValue());
-        pkg.setPkgDesc(pkgDescEdit.getText());
-        pkg.setPkgBasePrice(Double.parseDouble(pkgBasePriceEdit.getText()));
-        pkg.setPkgAgencyCommission(Double.parseDouble(pkgAgencyCommissionEdit.getText()));
-        if (pkgActiveEdit.isSelected())
-            pkg.setActive(true);
-        else
-            pkg.setActive(false);
-        return pkg;
+
     }
-
-
-    // a method to create a package from text fields on Add tab
-    private Package readAddedPackage()
-    {
-        Package pkg = new Package();
-        pkg.setPkgName(pkgNameAdd.getText());
-        pkg.setPkgStartDate(pkgStartDateAdd.getValue());
-        pkg.setPkgEndDate(pkgEndDateAdd.getValue());
-        pkg.setPkgDesc(pkgDescAdd.getText());
-        pkg.setPkgBasePrice(Double.parseDouble(pkgBasePriceAdd.getText()));
-        pkg.setPkgAgencyCommission(Double.parseDouble(pkgAgencyCommissionAdd.getText()));
-        if (pkgActiveAdd.isSelected())
-            pkg.setActive(true);
-        else
-            pkg.setActive(false);
-        return pkg;
-    }
-
-//    public void setMain(Main main)
-//    {
-//        this.main = main;
-//    }
-
-
-
 
 //    @FXML
 //    void tfNavSearchKeyTyped(KeyEvent event) {
@@ -378,7 +345,24 @@ public class PackageController {
 //    }
 
 
-//****************************************************Edit Tab**********************************************************
+    //*********************************************Edit Tab**********************************************
+    // a method to create a package from text fields on Edit tab
+    private Package readEditedPackage()
+    {
+        Package pkg = new Package();
+        pkg.setPkgName(pkgNameEdit.getText());
+        pkg.setPkgStartDate(pkgStartDateEdit.getValue());
+        pkg.setPkgEndDate(pkgEndDateEdit.getValue());
+        pkg.setPkgDesc(pkgDescEdit.getText());
+        pkg.setPkgBasePrice(Double.parseDouble(pkgBasePriceEdit.getText()));
+        pkg.setPkgAgencyCommission(Double.parseDouble(pkgAgencyCommissionEdit.getText()));
+        if (pkgActiveEdit.isSelected())
+            pkg.setActive(true);
+        else
+            pkg.setActive(false);
+        return pkg;
+    }
+
 
     // Back button
     @FXML
@@ -386,6 +370,7 @@ public class PackageController {
     {
         showTab(tabMain);
     }
+
 
     // Save & Back button
     @FXML
@@ -399,6 +384,7 @@ public class PackageController {
         showTab(tabMain);
     }
 
+
     // Save & Edit Product-Supplier button
     @FXML
     void btnEditSaveEditClicked(MouseEvent event)
@@ -411,6 +397,7 @@ public class PackageController {
         showTab(tabAddEdit);
     }
 
+
     // Undo changes button
     @FXML
     void btnEditUndoClicked(MouseEvent event)
@@ -418,7 +405,25 @@ public class PackageController {
         loadPackage();
     }
 
-//****************************************************Add Tab**********************************************************
+
+    //**********************************************Add Tab**********************************************
+    // a method to create a package from text fields on Add tab
+    private Package readAddedPackage()
+    {
+        Package pkg = new Package();
+        pkg.setPkgName(pkgNameAdd.getText());
+        pkg.setPkgStartDate(pkgStartDateAdd.getValue());
+        pkg.setPkgEndDate(pkgEndDateAdd.getValue());
+        pkg.setPkgDesc(pkgDescAdd.getText());
+        pkg.setPkgBasePrice(Double.parseDouble(pkgBasePriceAdd.getText()));
+        pkg.setPkgAgencyCommission(Double.parseDouble(pkgAgencyCommissionAdd.getText()));
+        if (pkgActiveAdd.isSelected())
+            pkg.setActive(true);
+        else
+            pkg.setActive(false);
+        return pkg;
+    }
+
 
     // Back button
     @FXML
@@ -426,6 +431,7 @@ public class PackageController {
     {
         showTab(tabMain);
     }
+
 
     // Save & Back button
     @FXML
@@ -438,6 +444,7 @@ public class PackageController {
         showTab(tabMain);
     }
 
+
     // Save & Add Product-Supplier button
     @FXML
     void btnAddSaveAddClicked(MouseEvent event)
@@ -449,12 +456,14 @@ public class PackageController {
         showTab(tabAddEdit);
     }
 
+
     // Reset button
     @FXML
     void btnAddResetClicked(MouseEvent event)
     {
         clearAddTab();
     }
+
 
     // a method to clear the fields on Add tab
     private void clearAddTab() {
@@ -467,8 +476,8 @@ public class PackageController {
         pkgActiveAdd.setSelected(true);
     }
 
-//****************************************************Add/ Edit Tab*****************************************************
 
+    //**************************************** Add/ Edit Tab*********************************************
     // Back button
     @FXML
     void btnAddEditBackClicked(MouseEvent event)
@@ -477,12 +486,39 @@ public class PackageController {
     }
 
 
+    @FXML
+    void btnAddEditAddClicked(MouseEvent event) {
 
+    }
 
 
     @FXML
-    void tfNavSearchKeyTyped(KeyEvent event)
-    {
+    void btnAddEditAddAllClicked(MouseEvent event) {
 
+    }
+
+
+    @FXML
+    void btnAddEditDeleteClicked(MouseEvent event) {
+        PackageProductSupplier pk = lvCrntPrdSpl.getSelectionModel().getSelectedItem();
+        int pkId = pk.getPackageId();
+        int psId = pk.getProductSupplierId();
+        PackageProductSupplierManager.deletePkgPrdSpl(pkId, psId);
+
+        Package curntPkg = currentPackage();
+        setListView(lvCrntPrdSpl, curntPkg);
+
+        loadPackage();
+    }
+
+
+    @FXML
+    void btnAddEditDeleteAllClicked(MouseEvent event) {
+        Package curntPkg = currentPackage();
+        PackageProductSupplierManager.deleteAllPkgPrdSpl(curntPkg.getPackageId());
+
+        setListView(lvCrntPrdSpl, curntPkg);
+        
+        loadPackage();
     }
 }

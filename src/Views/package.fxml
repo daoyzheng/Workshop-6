@@ -46,7 +46,7 @@
                            </children></AnchorPane>
                         <AnchorPane layoutY="76.0" maxHeight="1.7976931348623157E308" minHeight="200.0" minWidth="600.0" prefHeight="350.0" prefWidth="600.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="50.0">
                            <children>
-                              <TableView fx:id="tvPackages" prefHeight="313.0" prefWidth="610.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="190.0" AnchorPane.topAnchor="0.0">
+                              <TableView fx:id="tvPackages" prefHeight="313.0" prefWidth="510.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="225.0" AnchorPane.topAnchor="0.0">
                                  <columns>
                                     <TableColumn fx:id="PackageId" editable="false" prefWidth="66.99998474121094" text="Package Id" />
                                     <TableColumn fx:id="pkgName" editable="false" prefWidth="88.0" text="Package Name" />
@@ -60,23 +60,23 @@
                               </TableView>
                            </children>
                         </AnchorPane>
-                        <AnchorPane layoutX="611.0" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="180.0" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="50.0">
+                        <AnchorPane layoutX="611.0" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="311.0" prefWidth="222.0" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="50.0">
                            <children>
                               <HBox maxHeight="25.0" maxWidth="182.0" minHeight="25.0" minWidth="182.0" prefHeight="25.0" prefWidth="182.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-2.0" AnchorPane.topAnchor="1.0">
                                  <children>
-                                    <Label prefHeight="17.0" prefWidth="148.0" text="Products/ Suppliers">
+                                    <Label prefHeight="17.0" prefWidth="120.0" text="Products/ Suppliers">
                                        <font>
                                           <Font name="System Bold" size="12.0" />
                                        </font>
                                        <HBox.margin>
-                                          <Insets left="30.0" right="30.0" />
+                                          <Insets left="50.0" right="30.0" />
                                        </HBox.margin>
                                     </Label>
                                  </children>
                               </HBox>
                               <HBox layoutX="-1.0" layoutY="47.0" maxWidth="180.0" minHeight="288.0" minWidth="180.0" prefHeight="288.0" prefWidth="180.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0">
                                  <children>
-                                    <ListView fx:id="lvProductsSuppliers" prefHeight="200.0" prefWidth="200.0" />
+                                    <ListView fx:id="lvProductsSuppliers" prefHeight="200.0" prefWidth="300.0" />
                                  </children>
                               </HBox>
                            </children>
@@ -419,20 +419,15 @@
                                                 <Insets left="70.0" right="70.0" />
                                              </VBox.margin>
                                           </Label>
-                                          <TableView fx:id="tvPdcSpl2">
-                                             <columns>
-                                                <TableColumn fx:id="colProduct1" prefWidth="75.0" text="C1" />
-                                                <TableColumn fx:id="colSupplier1" prefWidth="75.0" text="C2" />
-                                             </columns>
-                                          </TableView>
+                                          <ListView fx:id="lvPsblPrdSpl" prefHeight="200.0" prefWidth="200.0" />
                                           <HBox maxHeight="40.0" minHeight="40.0" prefHeight="40.0">
                                              <children>
-                                                <Button fx:id="btnAddEditAdd" minWidth="150.0" mnemonicParsing="false" text="Add">
+                                                <Button fx:id="btnAddEditAdd" minWidth="150.0" mnemonicParsing="false" onMouseClicked="#btnAddEditAddClicked" text="Add">
                                                    <HBox.margin>
                                                       <Insets left="20.0" />
                                                    </HBox.margin></Button>
                                                 <Region prefWidth="200.0" />
-                                                <Button fx:id="btnAddEditAddAll" minWidth="150.0" mnemonicParsing="false" text="Add All">
+                                                <Button fx:id="btnAddEditAddAll" minWidth="150.0" mnemonicParsing="false" onMouseClicked="#btnAddEditAddAllClicked" text="Add All">
                                                    <HBox.margin>
                                                       <Insets right="20.0" />
                                                    </HBox.margin></Button>
@@ -457,20 +452,15 @@
                                                 <Insets left="70.0" right="70.0" />
                                              </VBox.margin>
                                           </Label>
-                                          <TableView fx:id="tvPdcSpl1">
-                                            <columns>
-                                              <TableColumn fx:id="colProduct1" prefWidth="75.0" text="C1" />
-                                              <TableColumn fx:id="colSupplier1" prefWidth="75.0" text="C2" />
-                                            </columns>
-                                          </TableView>
+                                          <ListView fx:id="lvCrntPrdSpl" prefHeight="200.0" prefWidth="200.0" />
                                           <HBox maxHeight="40.0" minHeight="40.0" prefHeight="40.0">
                                              <children>
-                                                <Button fx:id="btnAddEditDelete" minWidth="150.0" mnemonicParsing="false" text="Delete">
+                                                <Button fx:id="btnAddEditDelete" minWidth="150.0" mnemonicParsing="false" onMouseClicked="#btnAddEditDeleteClicked" text="Delete">
                                                    <HBox.margin>
                                                       <Insets left="20.0" />
                                                    </HBox.margin></Button>
                                                 <Region prefWidth="200.0" />
-                                                <Button fx:id="btnAddEditDeleteAll" minWidth="150.0" mnemonicParsing="false" text="Delete All">
+                                                <Button fx:id="btnAddEditDeleteAll" minWidth="150.0" mnemonicParsing="false" onMouseClicked="#btnAddEditDeleteAllClicked" text="Delete All">
                                                    <HBox.margin>
                                                       <Insets right="20.0" />
                                                    </HBox.margin></Button>

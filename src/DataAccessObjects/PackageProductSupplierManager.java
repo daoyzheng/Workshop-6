@@ -64,7 +64,7 @@ public class PackageProductSupplierManager
         try
         {
             Connection conn = DbConnection.getConnection();
-            PreparedStatement stm = conn.prepareStatement("INSERT INTO 'packages_products_suppliers' " +
+            PreparedStatement stm = conn.prepareStatement("INSERT INTO packages_products_suppliers " +
                     "VALUES (??)");
             stm.setInt(1, PkgID);
             stm.setInt(2, PrdSplId);
@@ -98,17 +98,17 @@ public class PackageProductSupplierManager
         {
             Connection conn = DbConnection.getConnection();
             Statement stm = conn.createStatement();
-            ResultSet rs = stm.executeQuery("DELETE FROM 'packages_products_suppliers' " +
-                    "WHERE 'PackageId' = " + PkgID + " AND 'ProductSupplierId' = " + PrdSplId);
+            int rs = stm.executeUpdate("DELETE FROM packages_products_suppliers " +
+                    "WHERE PackageId = " + PkgID + " AND ProductSupplierId = " + PrdSplId);
 
-            if (rs == null)
+            if (rs > 0)
             {
-                Alert alert = new Alert(Alert.AlertType.ERROR, "Error deleting from the database!", ButtonType.CLOSE);
-                alert.showAndWait();
+                isSuccess = true;
             }
             else
             {
-                isSuccess = true;
+                Alert alert = new Alert(Alert.AlertType.ERROR, "Error deleting from the database!", ButtonType.CLOSE);
+                alert.showAndWait();
             }
 
         }
@@ -120,4 +120,35 @@ public class PackageProductSupplierManager
         return isSuccess;
     }
 
+
+    // delete all PkgPrdSpl record in the database for a given packageId, returns true if successful
+    public static boolean deleteAllPkgPrdSpl(int PkgID)
+    {
+        Boolean isSuccess = false;
+
+        try
+        {
+            Connection conn = DbConnection.getConnection();
+            Statement stm = conn.createStatement();
+            int rs = stm.executeUpdate("DELETE FROM packages_products_suppliers " +
+                    "WHERE PackageId = " + PkgID);
+
+            if (rs > 0)
+            {
+                isSuccess = true;
+            }
+            else
+            {
+                Alert alert = new Alert(Alert.AlertType.ERROR, "Error deleting from the database!", ButtonType.CLOSE);
+                alert.showAndWait();
+            }
+
+        }
+        catch (SQLException | ClassNotFoundException e)
+        {
+            e.printStackTrace();
+        }
+
+        return isSuccess;
+    }
 }
