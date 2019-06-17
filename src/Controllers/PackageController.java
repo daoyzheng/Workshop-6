@@ -9,6 +9,7 @@ import DataAccessObjects.PackageProductSupplierManager;
 import DomainEntities.PackageProductSupplier;
 import DomainEntities.Package;
 
+import DomainEntities.ProductSupplierNames;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
@@ -273,13 +274,22 @@ public class PackageController {
 
 
         setListView(lvCrntPrdSpl, pkg);
+
+
+        setListViewOther(lvPsblPrdSpl, pkg);
     }
 
 
     // a method to set the items for a list view based on a given packageId
     private void setListView(ListView lv, Package pkg) {
-        ObservableList<PackageProductSupplier> PrdSpl = FXCollections.observableArrayList();
         lv.setItems(PackageProductSupplierManager.getPrdSplByPkgId(pkg.getPackageId()));
+    }
+
+
+    // a method to set the items for a list view based on a given packageId
+    // the items on the list view do not belog to the package
+    private void setListViewOther(ListView lv, Package pkg) {
+        lv.setItems(PackageProductSupplierManager.getPrdSplNotForPkgId(pkg.getPackageId()));
     }
 
 
@@ -478,6 +488,9 @@ public class PackageController {
 
 
     //**************************************** Add/ Edit Tab*********************************************
+
+
+
     // Back button
     @FXML
     void btnAddEditBackClicked(MouseEvent event)
@@ -518,7 +531,7 @@ public class PackageController {
         PackageProductSupplierManager.deleteAllPkgPrdSpl(curntPkg.getPackageId());
 
         setListView(lvCrntPrdSpl, curntPkg);
-        
+
         loadPackage();
     }
 }

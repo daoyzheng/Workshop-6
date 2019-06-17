@@ -1,7 +1,7 @@
 /*
 Purpose: Domain entity class for packages_products_suppliers
 Author:  Hoora
-Date: May, 2019
+Date: June, 2019
  */
 
 package DomainEntities;
@@ -9,26 +9,22 @@ package DomainEntities;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 
-public class PackageProductSupplier {
+public class ProductSupplierNames {
 
     // properties:
-    private SimpleIntegerProperty PackageId;
     private SimpleIntegerProperty ProductSupplierId;
     private SimpleStringProperty ProductName;
     private SimpleStringProperty SupplierName;
 
 
-
     // constructors:
-    public PackageProductSupplier() {
-        this.PackageId = new SimpleIntegerProperty();
+    public ProductSupplierNames() {
         this.ProductSupplierId = new SimpleIntegerProperty();
         this.ProductName = new SimpleStringProperty();
         this.SupplierName = new SimpleStringProperty();
     }
 
-    public PackageProductSupplier(int packageId, int productSupplierId, String productName, String supplierName) {
-        this.PackageId = new SimpleIntegerProperty(packageId);
+    public ProductSupplierNames(int productSupplierId, String productName, String supplierName) {
         this.ProductSupplierId = new SimpleIntegerProperty(productSupplierId);
         this.ProductName = new SimpleStringProperty(productName);
         this.SupplierName = new SimpleStringProperty(supplierName);
@@ -36,17 +32,6 @@ public class PackageProductSupplier {
 
 
     // getters-setters:
-    public int getPackageId() {
-        return PackageId.get();
-    }
-
-    public SimpleIntegerProperty packageIdProperty() {
-        return PackageId;
-    }
-
-    public void setPackageId(int packageId) {
-        this.PackageId.set(packageId);
-    }
 
     public int getProductSupplierId() {
         return ProductSupplierId.get();
@@ -86,8 +71,9 @@ public class PackageProductSupplier {
 
 
     // toString:
+
     @Override
     public String toString() {
-        return getProductName() +", " + getSupplierName();
+        return getProductName() + ", " + getSupplierName();
     }
 }

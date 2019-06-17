@@ -7,7 +7,11 @@ Date: May, 2019
 package DataAccessObjects;
 
 import DataAccess.DbConnection;
+
 import DomainEntities.PackageProductSupplier;
+import DomainEntities.ProductSupplier;
+import DomainEntities.ProductSupplierNames;
+
 import javafx.beans.binding.When;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -43,6 +47,42 @@ public class PackageProductSupplierManager
             {
                 PrdSpl.add(new PackageProductSupplier(rs.getInt(1), rs.getInt(2),
                         rs.getString(3), rs.getString(4)));
+            }
+            conn.close(); // should be in finally block?
+
+        }
+        catch (SQLException | ClassNotFoundException e)
+        {
+            e.printStackTrace();
+        }
+
+        return PrdSpl;
+    }
+
+
+    //retrieve ProductSupplier sets from database which are not connected to PackageID
+    public static ObservableList<ProductSupplierNames> getPrdSplNotForPkgId(int PkgId)
+    {
+        ObservableList<ProductSupplierNames> PrdSpl = FXCollections.observableArrayList();
+
+        try
+        {
+            Connection conn = DbConnection.getConnection();
+            Statement stm = conn.createStatement();
+            ResultSet rs = stm.executeQuery("SELECT products_suppliers.ProductSupplierId, ProdName, SupName " +
+                    "FROM products_suppliers " +
+                    "INNER JOIN products ON products_suppliers.ProductId = products.ProductId " +
+                    "INNER JOIN suppliers ON products_suppliers.SupplierId = suppliers.SupplierId " +
+                    "WHERE ProductSupplierId NOT IN " +
+                    "(SELECT ProductSupplierId FROM packages_products_suppliers WHERE PackageId = " + PkgId + ")");
+
+            while (rs.next())
+            {
+                PrdSpl.add(new ProductSupplierNames(
+                        rs.getInt(1),
+                        rs.getString(2),
+                        rs.getString(3)
+                            ));
             }
             conn.close(); // should be in finally block?
 
