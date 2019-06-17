@@ -105,7 +105,7 @@ public class PackageProductSupplierManager
         {
             Connection conn = DbConnection.getConnection();
             PreparedStatement stm = conn.prepareStatement("INSERT INTO packages_products_suppliers " +
-                    "VALUES (??)");
+                    "VALUES (?,?)");
             stm.setInt(1, PkgID);
             stm.setInt(2, PrdSplId);
             int numRows = stm.executeUpdate();

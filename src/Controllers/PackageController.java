@@ -186,7 +186,7 @@ public class PackageController {
     private Tab tabAddEdit;
 
     @FXML
-    private ListView<PackageProductSupplier> lvPsblPrdSpl;
+    private ListView<ProductSupplierNames> lvPsblPrdSpl;
 
     @FXML
     private Button btnAddEditAdd;
@@ -501,7 +501,15 @@ public class PackageController {
 
     @FXML
     void btnAddEditAddClicked(MouseEvent event) {
+        ProductSupplierNames prdSpl = lvPsblPrdSpl.getSelectionModel().getSelectedItem();
+        Package curntPkg = currentPackage();
+        int pkgId = curntPkg.getPackageId();
+        int prdSplId = prdSpl.getProductSupplierId();
+        PackageProductSupplierManager.insertPkgPrdSpl(pkgId, prdSplId);
 
+        setListView(lvCrntPrdSpl, curntPkg);
+        setListViewOther(lvPsblPrdSpl, curntPkg);
+        loadPackage();
     }
 
 
@@ -520,7 +528,7 @@ public class PackageController {
 
         Package curntPkg = currentPackage();
         setListView(lvCrntPrdSpl, curntPkg);
-
+        setListViewOther(lvPsblPrdSpl, curntPkg);
         loadPackage();
     }
 
@@ -531,7 +539,7 @@ public class PackageController {
         PackageProductSupplierManager.deleteAllPkgPrdSpl(curntPkg.getPackageId());
 
         setListView(lvCrntPrdSpl, curntPkg);
-
+        setListViewOther(lvPsblPrdSpl, curntPkg);
         loadPackage();
     }
 }
