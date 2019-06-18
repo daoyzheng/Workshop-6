@@ -19,7 +19,8 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 
-public class PackageController {
+public class PackageController
+{
 
     @FXML
     private ResourceBundle resources;
@@ -213,7 +214,8 @@ public class PackageController {
 
 
     @FXML
-    void initialize() {
+    void initialize()
+    {
 
         //setup up table cell factories
         PackageId.setCellValueFactory(cellData -> cellData.getValue().packageIdProperty().asObject());
@@ -246,7 +248,8 @@ public class PackageController {
 
     // a method to pre-select the first package in the table,
     // show it on the Edit tab and show its product-supplier combinations on list view
-    private void firstPackage() {
+    private void firstPackage()
+    {
         tvPackages.getSelectionModel().select(0);
         loadPackage();
     }
@@ -281,14 +284,16 @@ public class PackageController {
 
 
     // a method to set the items for a list view based on a given packageId
-    private void setListView(ListView lv, Package pkg) {
+    private void setListView(ListView lv, Package pkg)
+    {
         lv.setItems(PackageProductSupplierManager.getPrdSplByPkgId(pkg.getPackageId()));
     }
 
 
     // a method to set the items for a list view based on a given packageId
     // the items on the list view do not belog to the package
-    private void setListViewOther(ListView lv, Package pkg) {
+    private void setListViewOther(ListView lv, Package pkg)
+    {
         lv.setItems(PackageProductSupplierManager.getPrdSplNotForPkgId(pkg.getPackageId()));
     }
 
@@ -297,9 +302,11 @@ public class PackageController {
     // and set double click settings
     private void selectToEdit()
     {
-        tvPackages.setOnMouseClicked(new EventHandler<MouseEvent>() {
+        tvPackages.setOnMouseClicked(new EventHandler<MouseEvent>()
+        {
             @Override
-            public void handle(MouseEvent event) {
+            public void handle(MouseEvent event)
+            {
                 loadPackage();
                 if (event.getClickCount() == 2) //Checking double click
                 {
@@ -333,7 +340,8 @@ public class PackageController {
     }
 
 //    @FXML
-//    void tfNavSearchKeyTyped(KeyEvent event) {
+//    void tfNavSearchKeyTyped(KeyEvent event)
+//    {
 //        System.out.println("pressed");
 //
 //        String strFilter = tfNavSearch.getText();
@@ -476,7 +484,8 @@ public class PackageController {
 
 
     // a method to clear the fields on Add tab
-    private void clearAddTab() {
+    private void clearAddTab()
+    {
         pkgNameAdd.setText("");
         pkgStartDateAdd.getEditor().clear();
         pkgEndDateAdd.getEditor().clear();
@@ -488,9 +497,6 @@ public class PackageController {
 
 
     //**************************************** Add/ Edit Tab*********************************************
-
-
-
     // Back button
     @FXML
     void btnAddEditBackClicked(MouseEvent event)
@@ -500,7 +506,8 @@ public class PackageController {
 
 
     @FXML
-    void btnAddEditAddClicked(MouseEvent event) {
+    void btnAddEditAddClicked(MouseEvent event)
+    {
         ProductSupplierNames prdSpl = lvPsblPrdSpl.getSelectionModel().getSelectedItem();
         Package curntPkg = currentPackage();
         int pkgId = curntPkg.getPackageId();
@@ -514,13 +521,33 @@ public class PackageController {
 
 
     @FXML
-    void btnAddEditAddAllClicked(MouseEvent event) {
+    void btnAddEditAddAllClicked(MouseEvent event)
+    {
+//        setListViewOther(lvPsblPrdSpl, curntPkg);
+        Package curntPkg = currentPackage();
+        int pkgId = curntPkg.getPackageId();
 
+        ObservableList<ProductSupplierNames> PrdSpls =
+                PackageProductSupplierManager.getPrdSplNotForPkgId(curntPkg.getPackageId());
+        int listLength = PrdSpls.size();
+
+        for (int i=0; i<listLength;i++)
+        {
+            lvPsblPrdSpl.getSelectionModel().select(i);
+            ProductSupplierNames prdSpl = lvPsblPrdSpl.getSelectionModel().getSelectedItem();
+            int prdSplId = prdSpl.getProductSupplierId();
+            PackageProductSupplierManager.insertPkgPrdSpl(pkgId, prdSplId);
+        }
+
+        setListView(lvCrntPrdSpl, curntPkg);
+        setListViewOther(lvPsblPrdSpl, curntPkg);
+        loadPackage();
     }
 
 
     @FXML
-    void btnAddEditDeleteClicked(MouseEvent event) {
+    void btnAddEditDeleteClicked(MouseEvent event)
+    {
         PackageProductSupplier pk = lvCrntPrdSpl.getSelectionModel().getSelectedItem();
         int pkId = pk.getPackageId();
         int psId = pk.getProductSupplierId();
@@ -534,7 +561,8 @@ public class PackageController {
 
 
     @FXML
-    void btnAddEditDeleteAllClicked(MouseEvent event) {
+    void btnAddEditDeleteAllClicked(MouseEvent event)
+    {
         Package curntPkg = currentPackage();
         PackageProductSupplierManager.deleteAllPkgPrdSpl(curntPkg.getPackageId());
 
