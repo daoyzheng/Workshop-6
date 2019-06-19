@@ -21,7 +21,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="400.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.201" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.PackageController">
+<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="400.0" style="-fx-background-color: white" xmlns="http://javafx.com/javafx/8.0.201" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.PackageController">
    <children>
       <TabPane fx:id="tabPaneMain" layoutY="-26.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <tabs>
@@ -255,9 +255,9 @@
                                        </opaqueInsets>
                                     </Button>
                                     <Region />
-                                    <Button fx:id="btnAddSaveBack" mnemonicParsing="false" onMouseClicked="#btnAddSaveBackClicked" prefHeight="0.0" prefWidth="200.0" text="Save &amp; Back" />
+                                    <Button fx:id="btnAddSaveBack" disable="true" mnemonicParsing="false" onMouseClicked="#btnAddSaveBackClicked" prefHeight="0.0" prefWidth="200.0" text="Save &amp; Back" />
                                     <Region />
-                                    <Button fx:id="btnAddSaveAdd" mnemonicParsing="false" onMouseClicked="#btnAddSaveAddClicked" prefHeight="0.0" prefWidth="200.0" text="Save &amp; Add Product-Supplier" />
+                                    <Button fx:id="btnAddSaveAdd" disable="true" mnemonicParsing="false" onMouseClicked="#btnAddSaveAddClicked" prefHeight="0.0" prefWidth="200.0" text="Save &amp; Add Product-Supplier" />
                                     <Region />
                                     <Button fx:id="btnAddReset" mnemonicParsing="false" onMouseClicked="#btnAddResetClicked" prefHeight="0.0" prefWidth="200.0" text="Reset" />
                                  </children>
@@ -345,7 +345,7 @@
                                           <Font name="System Bold" size="12.0" />
                                        </font>
                                     </Label>
-                                    <TextField id="pkgName" fx:id="pkgNameAdd" styleClass="DetailInput" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                    <TextField id="pkgName" fx:id="pkgNameAdd" onKeyTyped="#pkgNameAddTyped" styleClass="DetailInput" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                        <GridPane.margin>
                                           <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                        </GridPane.margin>
@@ -355,7 +355,7 @@
                                           <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                        </GridPane.margin>
                                     </TextField>
-                                    <TextField id="pkgBasePrice" fx:id="pkgBasePriceAdd" styleClass="DetailInput" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                                    <TextField id="pkgBasePrice" fx:id="pkgBasePriceAdd" onKeyTyped="#pkgBasePriceAddTyped" styleClass="DetailInput" GridPane.columnIndex="1" GridPane.rowIndex="5">
                                        <GridPane.margin>
                                           <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                        </GridPane.margin>

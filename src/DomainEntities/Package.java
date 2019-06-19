@@ -1,5 +1,5 @@
 /*
-Purpose: Domain entity class for packages
+Purpose: Domain entity class for Packages
 Author:  Hoora
 Date: May, 2019
  */
