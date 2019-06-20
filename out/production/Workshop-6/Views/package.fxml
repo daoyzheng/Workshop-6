@@ -187,7 +187,7 @@
                                           <Font name="System Bold" size="12.0" />
                                        </font>
                                     </Label>
-                                    <TextField id="pkgName" fx:id="pkgNameEdit" styleClass="DetailInput" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                    <TextField id="pkgName" fx:id="pkgNameEdit" onKeyPressed="#pkgNameEditTyped" styleClass="DetailInput" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                        <GridPane.margin>
                                           <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                        </GridPane.margin>
@@ -197,7 +197,7 @@
                                           <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                        </GridPane.margin>
                                     </TextField>
-                                    <TextField id="pkgBasePrice" fx:id="pkgBasePriceEdit" styleClass="DetailInput" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                                    <TextField id="pkgBasePrice" fx:id="pkgBasePriceEdit" onKeyTyped="#pkgBasePriceEditTyped" styleClass="DetailInput" GridPane.columnIndex="1" GridPane.rowIndex="5">
                                        <GridPane.margin>
                                           <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                        </GridPane.margin>
@@ -207,11 +207,16 @@
                                           <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                        </GridPane.margin>
                                     </TextField>
-                                    <Label fx:id="lbErPkgNameEdit" styleClass="DetailError" text="[error msg]" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                    <Label fx:id="lbErPkgNameEdit" styleClass="DetailError" text="Required" textFill="#f20707" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font></Label>
                                     <Label fx:id="lbErPkgSDatEdit" styleClass="DetailError" text="[error msg]" GridPane.columnIndex="2" GridPane.rowIndex="2" />
                                     <Label fx:id="lbErPkgEDatEdit" styleClass="DetailError" text="[error msg]" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-                                    <Label fx:id="lbErPkgBPriceEdit" styleClass="DetailError" text="[error msg]" GridPane.columnIndex="2" GridPane.rowIndex="5" />
-                                    <Label fx:id="lbErPkgCommissionEdit" styleClass="DetailError" text="[error msg]" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+                                    <Label fx:id="lbErPkgBPriceEdit" styleClass="DetailError" text="Required" textFill="#ee0909" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="5">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font></Label>
                                     <Label text="* required field" GridPane.rowIndex="9">
                                        <GridPane.margin>
                                           <Insets bottom="5.0" left="20.0" right="5.0" top="5.0" />
@@ -365,11 +370,16 @@
                                           <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                        </GridPane.margin>
                                     </TextField>
-                                    <Label fx:id="lbErPkgNameAdd" styleClass="DetailError" text="[error msg]" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                    <Label fx:id="lbErPkgNameAdd" styleClass="DetailError" text="Required" textFill="#e40606" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font></Label>
                                     <Label fx:id="lbErPkgSDatAdd" styleClass="DetailError" text="[error msg]" GridPane.columnIndex="2" GridPane.rowIndex="2" />
                                     <Label fx:id="lbErPkgEDatAdd" styleClass="DetailError" text="[error msg]" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-                                    <Label fx:id="lbErPkgBPriceAdd" styleClass="DetailError" text="[error msg]" GridPane.columnIndex="2" GridPane.rowIndex="5" />
-                                    <Label fx:id="lbErPkgCommissionAdd" styleClass="DetailError" text="[error msg]" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+                                    <Label fx:id="lbErPkgBPriceAdd" styleClass="DetailError" text="Required" textFill="#ee0808" GridPane.columnIndex="2" GridPane.rowIndex="5">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font></Label>
                                     <Label text="* required field" GridPane.rowIndex="9">
                                        <GridPane.margin>
                                           <Insets bottom="5.0" left="20.0" right="5.0" top="5.0" />
