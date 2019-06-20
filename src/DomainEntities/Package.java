@@ -120,11 +120,11 @@ public class Package {
         return pkgBasePrice;
     }
 
-    public void setPkgBasePrice(Double pkgBasePrice) {
+    public void setPkgBasePrice(double pkgBasePrice) {
         this.pkgBasePrice.set(pkgBasePrice);
     }
 
-    public Double getPkgAgencyCommission() {
+    public double getPkgAgencyCommission() {
         return pkgAgencyCommission.get();
     }
 
@@ -132,7 +132,7 @@ public class Package {
         return pkgAgencyCommission;
     }
 
-    public void setPkgAgencyCommission(Double pkgAgencyCommission) {
+    public void setPkgAgencyCommission(double pkgAgencyCommission) {
         this.pkgAgencyCommission.set(pkgAgencyCommission);
     }
 
