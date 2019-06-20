@@ -27,14 +27,36 @@ public class PackageManager {
             ResultSet resultSet = statement.executeQuery("SELECT * FROM packages");
             while (resultSet.next())
             {
-                packages.add(new Package(resultSet.getInt(1),
-                        resultSet.getString(2),
-                        resultSet.getDate(3).toLocalDate(),
-                        resultSet.getDate(4).toLocalDate(),
-                        resultSet.getString(5),
-                        resultSet.getDouble(6),
-                        resultSet.getDouble(7),
-                        resultSet.getBoolean(8)));
+                Package pkg = new Package();
+                pkg.setPackageId(resultSet.getInt(1));
+
+                pkg.setPkgName(resultSet.getString(2));
+
+                if (resultSet.getDate(3) != null)
+                    pkg.setPkgStartDate(resultSet.getDate(3).toLocalDate());
+                else
+                    pkg.setPkgStartDate(null);
+
+                if (resultSet.getDate(4) != null)
+                    pkg.setPkgEndDate(resultSet.getDate(4).toLocalDate());
+                else
+                    pkg.setPkgEndDate(null);
+
+                if (resultSet.getString(5) != null)
+                    pkg.setPkgDesc(resultSet.getString(5));
+                else
+                    pkg.setPkgDesc(null);
+
+                pkg.setPkgBasePrice(resultSet.getDouble(6));
+
+                if (resultSet.getDouble(7) > 0)
+                    pkg.setPkgAgencyCommission(resultSet.getDouble(7));
+                else
+                    pkg.setPkgAgencyCommission(null);
+
+                pkg.setActive(resultSet.getBoolean(8));
+
+                packages.add(pkg);
             }
             conn.close();// should be in finally block?
         }
@@ -58,12 +80,31 @@ public class PackageManager {
             while (resultSet.next())
             {
                 pkg.setPackageId(resultSet.getInt(1));
+
                 pkg.setPkgName(resultSet.getString(2));
-                pkg.setPkgStartDate(resultSet.getDate(3).toLocalDate());
-                pkg.setPkgEndDate(resultSet.getDate(4).toLocalDate());
-                pkg.setPkgDesc(resultSet.getString(5));
+
+                if (resultSet.getDate(3) != null)
+                    pkg.setPkgStartDate(resultSet.getDate(3).toLocalDate());
+                else
+                    pkg.setPkgStartDate(null);
+
+                if (resultSet.getDate(4) != null)
+                    pkg.setPkgEndDate(resultSet.getDate(4).toLocalDate());
+                else
+                    pkg.setPkgEndDate(null);
+
+                if (resultSet.getString(5) != null)
+                    pkg.setPkgDesc(resultSet.getString(5));
+                else
+                    pkg.setPkgDesc(null);
+
                 pkg.setPkgBasePrice(resultSet.getDouble(6));
-                pkg.setPkgAgencyCommission(resultSet.getDouble(7));
+
+                if (resultSet.getDouble(7) > 0)
+                    pkg.setPkgAgencyCommission(resultSet.getDouble(7));
+                else
+                    pkg.setPkgAgencyCommission(null);
+
                 pkg.setActive(resultSet.getBoolean(8));
             }
             conn.close(); // should be in finally block?
@@ -131,12 +172,31 @@ public class PackageManager {
                             "PkgBasePrice, PkgAgencyCommission, Active) " +
                             "VALUES (?,?,?,?,?,?,?)");
             prepStatement.setString(1, pkg.getPkgName());
-            prepStatement.setDate(2, Date.valueOf(pkg.getPkgStartDate()));
-            prepStatement.setDate(3, Date.valueOf(pkg.getPkgEndDate()));
-            prepStatement.setString(4, pkg.getPkgDesc());
+
+            if (pkg.getPkgStartDate() != null)
+                prepStatement.setDate(2, Date.valueOf(pkg.getPkgStartDate()));
+            else
+                prepStatement.setDate(2, null);
+
+            if (pkg.getPkgEndDate() != null)
+                prepStatement.setDate(3, Date.valueOf(pkg.getPkgEndDate()));
+            else
+                prepStatement.setDate(3, null);
+
+            if (pkg.getPkgDesc() != null)
+                prepStatement.setString(4, pkg.getPkgDesc());
+            else
+                prepStatement.setString(4, null);
+
             prepStatement.setDouble(5, pkg.getPkgBasePrice());
-            prepStatement.setDouble(6, pkg.getPkgAgencyCommission());
-            prepStatement.setBoolean(7, pkg.isActive());
+
+            if (pkg.getPkgAgencyCommission() != null)
+                prepStatement.setDouble(6, pkg.getPkgAgencyCommission());
+            else
+                prepStatement.setString(6, null);//??????????????????????????
+
+            prepStatement.setBoolean(7, pkg.isActive()); //???????????????
+
             int numRows = prepStatement.executeUpdate();
             if (numRows == 0)
             {
