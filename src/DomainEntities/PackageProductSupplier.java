@@ -1,7 +1,7 @@
 /*
 Purpose: Domain entity class for packages_products_suppliers
 Author:  Hoora
-Date: May, 2019
+Date: June, 2019
  */
 
 package DomainEntities;

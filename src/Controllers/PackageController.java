@@ -1,8 +1,24 @@
+/*
+Purpose: Controller Class for packages and their Product-Supplier combinations
+Author:  Hoora
+Date: June, 2019
+
+
+<!--
+    Purpose: view for packages and their Product-Supplier combinations
+    Author:  Hoora
+    Date: May-June, 2019
+-->
+
+ */
+
 package Controllers;
 
 import java.net.URL;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 
 import DataAccessObjects.PackageManager;
 import DataAccessObjects.PackageProductSupplierManager;
@@ -114,9 +130,6 @@ public class PackageController
     private Label lbErPkgBPriceEdit;
 
     @FXML
-    private Label lbErPkgCommissionEdit;
-
-    @FXML
     private DatePicker pkgStartDateEdit;
 
     @FXML
@@ -168,9 +181,6 @@ public class PackageController
 
     @FXML
     private Label lbErPkgBPriceAdd;
-
-    @FXML
-    private Label lbErPkgCommissionAdd;
 
     @FXML
     private DatePicker pkgStartDateAdd;
@@ -339,31 +349,108 @@ public class PackageController
 
     }
 
-//    @FXML
-//    void tfNavSearchKeyTyped(KeyEvent event)
-//    {
-//        System.out.println("pressed");
-//
-//        String strFilter = tfNavSearch.getText();
-//
-//        List<Agency> filteredList = navTableArrayList.stream()
-//                .filter(d -> d.toString().contains(strFilter))
-//                .collect(Collectors.toList());
-//
-//        System.out.println(filteredList);
-//
-//        ObservableList<Agency> data = FXCollections.observableArrayList(filteredList);
-//        tvNavTable.setItems(data);
-//
-//    }
-//    @FXML
-//    Void tabEditClicked (MouseEvent event)
-//    {
-//
-//    }
+    @FXML
+    void tfSearchKeyTyped(KeyEvent event)
+    {
+        System.out.println("pressed");
+
+        String stringFilter = tfSearch.getText();
+
+        ObservableList<Package> packages;
+        packages = PackageManager.getAllPackages();
+
+        List<Package> filteredList = packages.stream()
+                .filter(d -> d.toString().contains(stringFilter))
+                .collect(Collectors.toList());
+
+        System.out.println(filteredList);
+
+        ObservableList<Package> data = FXCollections.observableArrayList(filteredList);
+        tvPackages.setItems(data);
+    }
 
 
     //*********************************************Edit Tab**********************************************
+    // an event handler on the Package Name text field so after filling it, the save buttons are disabled
+    // and message beside it will disappear
+    @FXML
+    void pkgNameEditTyped(KeyEvent event)
+    {
+        boolean isNameEmpty = checkpkgNameEdit();
+        boolean isPriceEmpty = checkpkgPriceEdit();
+        setButtonsEdit(isNameEmpty, isPriceEmpty);
+
+        if(isNameEmpty == false)
+        {
+            lbErPkgNameEdit.setVisible(false);
+        }
+        else
+        {
+            lbErPkgNameEdit.setVisible(true);
+        }
+    }
+
+
+    // an event handler on the Package Base Price text field so after filling it, the save buttons are disabled
+    // and message beside it will disappear
+    @FXML
+    void pkgBasePriceEditTyped(KeyEvent event)
+    {
+        boolean isNameEmpty = checkpkgNameEdit();
+        boolean isPriceEmpty = checkpkgPriceEdit();
+        setButtonsEdit(isNameEmpty, isPriceEmpty);
+
+        if(isPriceEmpty == false)
+        {
+            lbErPkgBPriceEdit.setVisible(false);
+        }
+        else
+        {
+            lbErPkgBPriceEdit.setVisible(true);
+        }
+    }
+
+
+    private boolean checkpkgNameEdit()
+    {
+        boolean isEmpty = false;
+
+        if (pkgNameEdit.getText().equals(""))
+        {
+            isEmpty = true;
+        }
+
+        return isEmpty;
+    }
+
+
+    private boolean checkpkgPriceEdit()
+    {
+        boolean isEmpty = false;
+
+        if (pkgBasePriceEdit.getText().equals(""))
+        {
+            isEmpty = true;
+        }
+
+        return isEmpty;
+    }
+
+
+    private void setButtonsEdit(boolean isNameEmpty, boolean isPriceEmpty) {
+        if (isNameEmpty == false && isPriceEmpty == false)
+        {
+            btnEditSaveBack.setDisable(false);
+            btnEditSaveEdit.setDisable(false);
+        }
+        else
+        {
+            btnEditSaveBack.setDisable(true);
+            btnEditSaveEdit.setDisable(true);
+        }
+    }
+
+
     // a method to create a package from text fields on Edit tab
     private Package readEditedPackage()
     {
@@ -421,20 +508,131 @@ public class PackageController
     void btnEditUndoClicked(MouseEvent event)
     {
         loadPackage();
+        btnEditSaveBack.setDisable(false);
+        btnEditSaveEdit.setDisable(false);
+
+        lbErPkgNameEdit.setVisible(false);
+        lbErPkgBPriceEdit.setVisible(false);
     }
 
 
     //**********************************************Add Tab**********************************************
+    // an event handler on the Package Name text field so after filling it, the save buttons are disabled
+    // and message beside it will disappear
+    @FXML
+    void pkgNameAddTyped(KeyEvent event)
+    {
+        boolean isNameEmpty = checkpkgNameAdd();
+        boolean isPriceEmpty = checkpkgPriceAdd();
+        setButtonsAdd(isNameEmpty, isPriceEmpty);
+
+        if(isNameEmpty == false)
+        {
+            lbErPkgNameAdd.setVisible(false);
+        }
+        else
+        {
+            lbErPkgNameAdd.setVisible(true);
+        }
+    }
+
+
+    // an event handler on the Package Base Price text field so after filling it, the save buttons are no longer disabled
+    @FXML
+    void pkgBasePriceAddTyped(KeyEvent event)
+    {
+        boolean isNameEmpty = checkpkgNameAdd();
+        boolean isPriceEmpty = checkpkgPriceAdd();
+        setButtonsAdd(isNameEmpty, isPriceEmpty);
+
+        if (isNameEmpty == false && isPriceEmpty == false)
+        {
+            btnAddSaveBack.setDisable(false);
+            btnAddSaveAdd.setDisable(false);
+        }
+        else
+        {
+            btnAddSaveBack.setDisable(true);
+            btnAddSaveAdd.setDisable(true);
+        }
+        if(isPriceEmpty == false)
+        {
+            lbErPkgBPriceAdd.setVisible(false);
+        }
+        else
+        {
+            lbErPkgBPriceAdd.setVisible(true);
+        }
+    }
+
+
+    private boolean checkpkgNameAdd()
+    {
+        boolean isEmpty = false;
+
+        if (pkgNameAdd.getText().equals(""))
+        {
+            isEmpty = true;
+        }
+
+        return isEmpty;
+    }
+
+
+    private boolean checkpkgPriceAdd()
+    {
+        boolean isEmpty = false;
+
+        if (pkgBasePriceAdd.getText().equals(""))
+        {
+            isEmpty = true;
+        }
+
+        return isEmpty;
+    }
+
+
+    private void setButtonsAdd(boolean isNameEmpty, boolean isPriceEmpty) {
+        if (isNameEmpty == false && isPriceEmpty == false)
+        {
+            btnAddSaveBack.setDisable(false);
+            btnAddSaveAdd.setDisable(false);
+        }
+        else
+        {
+            btnAddSaveBack.setDisable(true);
+            btnAddSaveAdd.setDisable(true);
+        }
+    }
+
+
     // a method to create a package from text fields on Add tab
     private Package readAddedPackage()
     {
         Package pkg = new Package();
+
         pkg.setPkgName(pkgNameAdd.getText());
-        pkg.setPkgStartDate(pkgStartDateAdd.getValue());
-        pkg.setPkgEndDate(pkgEndDateAdd.getValue());
-        pkg.setPkgDesc(pkgDescAdd.getText());
-        pkg.setPkgBasePrice(Double.parseDouble(pkgBasePriceAdd.getText()));
-        pkg.setPkgAgencyCommission(Double.parseDouble(pkgAgencyCommissionAdd.getText()));
+
+        if (pkgStartDateAdd.getValue()!=null)
+            pkg.setPkgStartDate(pkgStartDateAdd.getValue());
+        else
+            pkg.setPkgStartDate(null);
+
+        if (pkgEndDateAdd.getValue()!=null)
+            pkg.setPkgEndDate(pkgEndDateAdd.getValue());
+        else
+            pkg.setPkgEndDate(null);
+
+        if (pkgDescAdd.getText()!=null)
+            pkg.setPkgDesc(pkgDescAdd.getText());
+        else
+            pkg.setPkgDesc(null);
+
+        if (pkgAgencyCommissionAdd.getText()!=null)
+            pkg.setPkgAgencyCommission(Double.parseDouble(pkgAgencyCommissionAdd.getText()));
+        else
+//            pkg.setPkgAgencyCommission(null);
+
         if (pkgActiveAdd.isSelected())
             pkg.setActive(true);
         else
@@ -458,9 +656,11 @@ public class PackageController
         Package pkg = readAddedPackage();
         PackageManager.insertPackage(pkg);
         loadPackages();
-        clearAddTab();
+        resetAddTab();
         showTab(tabMain);
     }
+
+
 
 
     // Save & Add Product-Supplier button
@@ -470,7 +670,7 @@ public class PackageController
         Package pkg = readAddedPackage();
         PackageManager.insertPackage(pkg);
         loadPackages();
-        clearAddTab();
+        resetAddTab();
         showTab(tabAddEdit);
     }
 
@@ -479,20 +679,26 @@ public class PackageController
     @FXML
     void btnAddResetClicked(MouseEvent event)
     {
-        clearAddTab();
+        resetAddTab();
     }
 
 
-    // a method to clear the fields on Add tab
-    private void clearAddTab()
+    // a method to clear the fields on Add tab and disable the save buttons and show the messages
+    private void resetAddTab()
     {
         pkgNameAdd.setText("");
-        pkgStartDateAdd.getEditor().clear();
-        pkgEndDateAdd.getEditor().clear();
+        pkgStartDateAdd.setValue(null);
+        pkgEndDateAdd.setValue(null);
         pkgDescAdd.setText("");
         pkgBasePriceAdd.setText("");
         pkgAgencyCommissionAdd.setText("");
         pkgActiveAdd.setSelected(true);
+
+        btnAddSaveBack.setDisable(true);
+        btnAddSaveAdd.setDisable(true);
+
+        lbErPkgNameAdd.setVisible(true);
+        lbErPkgBPriceAdd.setVisible(true);
     }
 
 
