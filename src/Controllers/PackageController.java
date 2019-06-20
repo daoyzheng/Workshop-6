@@ -628,10 +628,10 @@ public class PackageController
         else
             pkg.setPkgDesc(null);
 
-        if (pkgAgencyCommissionAdd.getText()!=null)
+        if (pkgAgencyCommissionAdd.getText()!= null)
             pkg.setPkgAgencyCommission(Double.parseDouble(pkgAgencyCommissionAdd.getText()));
         else
-//            pkg.setPkgAgencyCommission(null);
+            pkg.setPkgAgencyCommission(null);
 
         if (pkgActiveAdd.isSelected())
             pkg.setActive(true);
