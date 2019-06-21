@@ -239,9 +239,9 @@ public class PackageController
 
         loadPackages();
 
-        firstPackage();
-
         selectToEdit();
+
+        firstPackage();
     }
 
 
@@ -251,8 +251,6 @@ public class PackageController
         ObservableList<Package> packages;
         packages = PackageManager.getAllPackages();
         tvPackages.setItems(packages);
-
-        firstPackage();
     }
 
 
@@ -261,16 +259,17 @@ public class PackageController
     private void firstPackage()
     {
         tvPackages.getSelectionModel().select(0);
-        loadPackage();
+        Package pkg = tvPackages.getSelectionModel().getSelectedItem();
+        loadPackage(pkg);
     }
 
 
     // a method to show the selected package on the Edit tab,
     // show its product-supplier combinations on list view and
     // show its product-supplier combinations on Add/Edit tab
-    private void loadPackage()
+    private void loadPackage(Package pkg)
     {
-        Package pkg = tvPackages.getSelectionModel().getSelectedItem();
+//        Package pkg = tvPackages.getSelectionModel().getSelectedItem();
         pkgNameEdit.setText(pkg.getPkgName());
         pkgStartDateEdit.setValue(pkg.getPkgStartDate());
         pkgEndDateEdit.setValue(pkg.getPkgEndDate());
@@ -317,7 +316,8 @@ public class PackageController
             @Override
             public void handle(MouseEvent event)
             {
-                loadPackage();
+                curntPkg = currentPackage();
+                loadPackage(curntPkg);
                 if (event.getClickCount() == 2) //Checking double click
                 {
                     showTab(tabEdit);
@@ -330,8 +330,8 @@ public class PackageController
     // a method to return the selected package for further editing
     private Package currentPackage()
     {
-        curntPkg = tvPackages.getSelectionModel().getSelectedItem();
-        return curntPkg;
+        Package Pkg = tvPackages.getSelectionModel().getSelectedItem();
+        return Pkg;
     }
 
 
@@ -455,12 +455,28 @@ public class PackageController
     private Package readEditedPackage()
     {
         Package pkg = new Package();
+
         pkg.setPkgName(pkgNameEdit.getText());
-        pkg.setPkgStartDate(pkgStartDateEdit.getValue());
-        pkg.setPkgEndDate(pkgEndDateEdit.getValue());
-        pkg.setPkgDesc(pkgDescEdit.getText());
+
+        if (pkgStartDateEdit.getValue()!=null)
+            pkg.setPkgStartDate(pkgStartDateEdit.getValue());
+        else
+            pkg.setPkgStartDate(null);
+
+        if (pkgEndDateEdit.getValue()!=null)
+            pkg.setPkgEndDate(pkgEndDateEdit.getValue());
+        else
+            pkg.setPkgEndDate(null);
+
+        if (!pkgDescEdit.getText().isEmpty())
+            pkg.setPkgDesc(pkgDescEdit.getText());
+        else
+            pkg.setPkgDesc("");
+
         pkg.setPkgBasePrice(Double.parseDouble(pkgBasePriceEdit.getText()));
+
         pkg.setPkgAgencyCommission(Double.parseDouble(pkgAgencyCommissionEdit.getText()));
+
         if (pkgActiveEdit.isSelected())
             pkg.setActive(true);
         else
@@ -474,6 +490,7 @@ public class PackageController
     void btnEditBackClicked(MouseEvent event)
     {
         showTab(tabMain);
+        firstPackage();
     }
 
 
@@ -481,11 +498,12 @@ public class PackageController
     @FXML
     void btnEditSaveBackClicked(MouseEvent event)
     {
-        Package oldPkg = currentPackage();
+        Package oldPkg = curntPkg;
         Package newPkg = readEditedPackage();
         newPkg.setPackageId(oldPkg.getPackageId());
         PackageManager.updatePackage(newPkg, oldPkg);
         loadPackages();
+        firstPackage();
         showTab(tabMain);
     }
 
@@ -494,10 +512,11 @@ public class PackageController
     @FXML
     void btnEditSaveEditClicked(MouseEvent event)
     {
-        Package oldPkg = currentPackage();
+        Package oldPkg = curntPkg;
         Package newPkg = readEditedPackage();
         newPkg.setPackageId(oldPkg.getPackageId());
         PackageManager.updatePackage(newPkg, oldPkg);
+        loadPackage(newPkg);
         loadPackages();
         showTab(tabAddEdit);
     }
@@ -507,7 +526,8 @@ public class PackageController
     @FXML
     void btnEditUndoClicked(MouseEvent event)
     {
-        loadPackage();
+        Package Pkg = curntPkg;
+        loadPackage(Pkg);
         btnEditSaveBack.setDisable(false);
         btnEditSaveEdit.setDisable(false);
 
@@ -570,7 +590,7 @@ public class PackageController
     {
         boolean isEmpty = false;
 
-        if (pkgNameAdd.getText().equals(""))
+        if (pkgNameAdd.getText().isEmpty())
         {
             isEmpty = true;
         }
@@ -623,15 +643,14 @@ public class PackageController
         else
             pkg.setPkgEndDate(null);
 
-        if (pkgDescAdd.getText()!=null)
+        if (!pkgDescAdd.getText().isEmpty())
             pkg.setPkgDesc(pkgDescAdd.getText());
         else
-            pkg.setPkgDesc(null);
+            pkg.setPkgDesc("");
 
-        if (pkgAgencyCommissionAdd.getText()!=null)
-            pkg.setPkgAgencyCommission(Double.parseDouble(pkgAgencyCommissionAdd.getText()));
-        else
-//            pkg.setPkgAgencyCommission(null);
+        pkg.setPkgBasePrice(Double.parseDouble(pkgBasePriceAdd.getText()));
+
+        pkg.setPkgAgencyCommission(Double.parseDouble(pkgAgencyCommissionAdd.getText()));
 
         if (pkgActiveAdd.isSelected())
             pkg.setActive(true);
@@ -645,6 +664,7 @@ public class PackageController
     @FXML
     void btnAddBackClicked(MouseEvent event)
     {
+        firstPackage();
         showTab(tabMain);
     }
 
@@ -655,20 +675,21 @@ public class PackageController
     {
         Package pkg = readAddedPackage();
         PackageManager.insertPackage(pkg);
+        firstPackage();
         loadPackages();
         resetAddTab();
         showTab(tabMain);
     }
 
 
-
-
     // Save & Add Product-Supplier button
     @FXML
     void btnAddSaveAddClicked(MouseEvent event)
     {
-        Package pkg = readAddedPackage();
-        PackageManager.insertPackage(pkg);
+        curntPkg = readAddedPackage();
+        int id = PackageManager.insertPackage(curntPkg);
+        curntPkg.setPackageId(id);
+        loadPackage(curntPkg);
         loadPackages();
         resetAddTab();
         showTab(tabAddEdit);
@@ -708,6 +729,7 @@ public class PackageController
     void btnAddEditBackClicked(MouseEvent event)
     {
         showTab(tabMain);
+        firstPackage();
     }
 
 
@@ -715,14 +737,13 @@ public class PackageController
     void btnAddEditAddClicked(MouseEvent event)
     {
         ProductSupplierNames prdSpl = lvPsblPrdSpl.getSelectionModel().getSelectedItem();
-        Package curntPkg = currentPackage();
         int pkgId = curntPkg.getPackageId();
         int prdSplId = prdSpl.getProductSupplierId();
         PackageProductSupplierManager.insertPkgPrdSpl(pkgId, prdSplId);
 
         setListView(lvCrntPrdSpl, curntPkg);
         setListViewOther(lvPsblPrdSpl, curntPkg);
-        loadPackage();
+        loadPackage(curntPkg);
     }
 
 
@@ -730,7 +751,6 @@ public class PackageController
     void btnAddEditAddAllClicked(MouseEvent event)
     {
 //        setListViewOther(lvPsblPrdSpl, curntPkg);
-        Package curntPkg = currentPackage();
         int pkgId = curntPkg.getPackageId();
 
         ObservableList<ProductSupplierNames> PrdSpls =
@@ -747,7 +767,7 @@ public class PackageController
 
         setListView(lvCrntPrdSpl, curntPkg);
         setListViewOther(lvPsblPrdSpl, curntPkg);
-        loadPackage();
+        loadPackage(curntPkg);
     }
 
 
@@ -759,21 +779,19 @@ public class PackageController
         int psId = pk.getProductSupplierId();
         PackageProductSupplierManager.deletePkgPrdSpl(pkId, psId);
 
-        Package curntPkg = currentPackage();
         setListView(lvCrntPrdSpl, curntPkg);
         setListViewOther(lvPsblPrdSpl, curntPkg);
-        loadPackage();
+        loadPackage(curntPkg);
     }
 
 
     @FXML
     void btnAddEditDeleteAllClicked(MouseEvent event)
     {
-        Package curntPkg = currentPackage();
         PackageProductSupplierManager.deleteAllPkgPrdSpl(curntPkg.getPackageId());
 
         setListView(lvCrntPrdSpl, curntPkg);
         setListViewOther(lvPsblPrdSpl, curntPkg);
-        loadPackage();
+        loadPackage(curntPkg);
     }
 }

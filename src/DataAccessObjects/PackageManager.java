@@ -21,22 +21,42 @@ public class PackageManager {
     {
         ObservableList<Package> packages = FXCollections.observableArrayList();
 
-        try {
+        try
+        {
             Connection conn = DbConnection.getConnection();
             Statement statement = conn.createStatement();
             ResultSet resultSet = statement.executeQuery("SELECT * FROM packages");
             while (resultSet.next())
             {
-                packages.add(new Package(resultSet.getInt(1),
-                        resultSet.getString(2),
-                        resultSet.getDate(3).toLocalDate(),
-                        resultSet.getDate(4).toLocalDate(),
-                        resultSet.getString(5),
-                        resultSet.getDouble(6),
-                        resultSet.getDouble(7),
-                        resultSet.getBoolean(8)));
+                Package pkg = new Package();
+                pkg.setPackageId(resultSet.getInt(1));
+
+                pkg.setPkgName(resultSet.getString(2));
+
+                if (resultSet.getDate(3) != null)
+                    pkg.setPkgStartDate(resultSet.getDate(3).toLocalDate());
+                else
+                    pkg.setPkgStartDate(null);
+
+                if (resultSet.getDate(4) != null)
+                    pkg.setPkgEndDate(resultSet.getDate(4).toLocalDate());
+                else
+                    pkg.setPkgEndDate(null);
+
+                if (resultSet.getString(5) != null)
+                    pkg.setPkgDesc(resultSet.getString(5));
+                else
+                    pkg.setPkgDesc(null);
+
+                pkg.setPkgBasePrice(resultSet.getDouble(6));
+
+                pkg.setPkgAgencyCommission(resultSet.getDouble(7));
+
+                pkg.setActive(resultSet.getBoolean(8));
+
+                packages.add(pkg);
             }
-            conn.close();// should be in finally block?
+            conn.close();
         }
         catch (ClassNotFoundException | SQLException e){
             e.printStackTrace();
@@ -56,17 +76,32 @@ public class PackageManager {
             ResultSet resultSet = statement.executeQuery("SELECT * FROM packages WHERE packageId = " + id);
             if (resultSet.next())
             {
-                pkg = new Package(resultSet.getInt(1),
-                        resultSet.getString(2),
-                        resultSet.getDate(3).toLocalDate(),
-                        resultSet.getDate(4).toLocalDate(),
-                        resultSet.getString(5),
-                        resultSet.getDouble(6),
-                        resultSet.getDouble(7),
-                        resultSet.getBoolean(8)
-                        );
+                pkg.setPackageId(resultSet.getInt(1));
+
+                pkg.setPkgName(resultSet.getString(2));
+
+                if (resultSet.getDate(3) != null)
+                    pkg.setPkgStartDate(resultSet.getDate(3).toLocalDate());
+                else
+                    pkg.setPkgStartDate(null);
+
+                if (resultSet.getDate(4) != null)
+                    pkg.setPkgEndDate(resultSet.getDate(4).toLocalDate());
+                else
+                    pkg.setPkgEndDate(null);
+
+                if (resultSet.getString(5) != null)
+                    pkg.setPkgDesc(resultSet.getString(5));
+                else
+                    pkg.setPkgDesc(null);
+
+                pkg.setPkgBasePrice(resultSet.getDouble(6));
+
+                pkg.setPkgAgencyCommission(resultSet.getDouble(7));
+
+                pkg.setActive(resultSet.getBoolean(8));
             }
-            conn.close(); // should be in finally block?
+            conn.close();
         }
         catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
@@ -90,10 +125,24 @@ public class PackageManager {
                             "PkgBasePrice=?," +
                             "PkgAgencyCommission=?," +
                             "Active=? WHERE PackageId=?");
+
             prepStatement.setString(1,newPackage.getPkgName());
-            prepStatement.setDate(2, Date.valueOf(newPackage.getPkgStartDate()));
-            prepStatement.setDate(3, Date.valueOf(newPackage.getPkgEndDate()));
-            prepStatement.setString(4, newPackage.getPkgDesc());
+
+            if (newPackage.getPkgStartDate() != null)
+                prepStatement.setDate(2, Date.valueOf(newPackage.getPkgStartDate()));
+            else
+                prepStatement.setDate(2, null);
+
+            if (newPackage.getPkgEndDate() != null)
+                prepStatement.setDate(3, Date.valueOf(newPackage.getPkgEndDate()));
+            else
+                prepStatement.setDate(3, null);
+
+            if (newPackage.getPkgDesc() != null)
+                prepStatement.setString(4, newPackage.getPkgDesc());
+            else
+                prepStatement.setString(4, null);
+
             prepStatement.setDouble(5, newPackage.getPkgBasePrice());
             prepStatement.setDouble(6, newPackage.getPkgAgencyCommission());
             prepStatement.setBoolean(7, newPackage.isActive());
@@ -109,6 +158,7 @@ public class PackageManager {
             {
                 isSuccess = true;
             }
+            conn.close();
         }
         catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
@@ -119,23 +169,40 @@ public class PackageManager {
 
 
     //insert a package in the database, returns true if successful
-    public static boolean insertPackage (Package pkg)
+    public static int insertPackage (Package pkg)
     {
-        Boolean isSuccessful = false;
+        int newPkgId = 0;
 
-        try {
+        try
+        {
             Connection conn = DbConnection.getConnection();
             PreparedStatement prepStatement = conn.prepareStatement(
                     "INSERT INTO packages (PkgName, PkgStartDate, PkgEndDate, PkgDesc, " +
                             "PkgBasePrice, PkgAgencyCommission, Active) " +
                             "VALUES (?,?,?,?,?,?,?)");
             prepStatement.setString(1, pkg.getPkgName());
-            prepStatement.setDate(2, Date.valueOf(pkg.getPkgStartDate()));
-            prepStatement.setDate(3, Date.valueOf(pkg.getPkgEndDate()));
-            prepStatement.setString(4, pkg.getPkgDesc());
+
+            if (pkg.getPkgStartDate() != null)
+                prepStatement.setDate(2, Date.valueOf(pkg.getPkgStartDate()));
+            else
+                prepStatement.setDate(2, null);
+
+            if (pkg.getPkgEndDate() != null)
+                prepStatement.setDate(3, Date.valueOf(pkg.getPkgEndDate()));
+            else
+                prepStatement.setDate(3, null);
+
+            if (pkg.getPkgDesc() != null)
+                prepStatement.setString(4, pkg.getPkgDesc());
+            else
+                prepStatement.setString(4, null);
+
             prepStatement.setDouble(5, pkg.getPkgBasePrice());
+
             prepStatement.setDouble(6, pkg.getPkgAgencyCommission());
+
             prepStatement.setBoolean(7, pkg.isActive());
+
             int numRows = prepStatement.executeUpdate();
             if (numRows == 0)
             {
@@ -144,14 +211,22 @@ public class PackageManager {
             }
             else
             {
-                isSuccessful = true;
-            }
+                //get the id of the new package added to the database
+                Statement stmt = conn.createStatement();
 
+                ResultSet rs = stmt.executeQuery("SELECT MAX(PackageId) FROM packages");
+
+                while (rs.next())
+                {
+                    newPkgId = rs.getInt(1);
+                }
+            }
+            conn.close();
         }
-        catch (ClassNotFoundException | SQLException e) {
+        catch (ClassNotFoundException | SQLException e)
+        {
             e.printStackTrace();
         }
-
-        return isSuccessful;
+        return newPkgId;
     }
 }
