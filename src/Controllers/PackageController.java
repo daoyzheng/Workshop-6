@@ -130,6 +130,9 @@ public class PackageController
     private Label lbErPkgBPriceEdit;
 
     @FXML
+    private Label lbErPkgComEdit;
+
+    @FXML
     private DatePicker pkgStartDateEdit;
 
     @FXML
@@ -181,6 +184,9 @@ public class PackageController
 
     @FXML
     private Label lbErPkgBPriceAdd;
+
+    @FXML
+    private Label lbErPkgComAdd;
 
     @FXML
     private DatePicker pkgStartDateAdd;
@@ -367,14 +373,15 @@ public class PackageController
 
 
     //*********************************************Edit Tab**********************************************
-    // an event handler on the Package Name text field so after filling it, the save buttons are disabled
+    // an event handler on the Package Name text field so after filling it, the save buttons are enabled
     // and message beside it will disappear
     @FXML
     void pkgNameEditTyped(KeyEvent event)
     {
         boolean isNameEmpty = checkpkgNameEdit();
         boolean isPriceEmpty = checkpkgPriceEdit();
-        setButtonsEdit(isNameEmpty, isPriceEmpty, errMsgEdit);
+        boolean isCommissionEmpty = checkpkgComEdit();
+        setButtonsEdit(isNameEmpty, isPriceEmpty, isCommissionEmpty, errMsgEdit);
 
         if(isNameEmpty == false)
         {
@@ -387,14 +394,15 @@ public class PackageController
     }
 
 
-    // an event handler on the Package Base Price text field so after filling it, the save buttons are disabled
+    // an event handler on the Package Base Price text field so after filling it, the save buttons are enabled
     // and message beside it will disappear
     @FXML
     void pkgBasePriceEditTyped(KeyEvent event)
     {
         boolean isNameEmpty = checkpkgNameEdit();
         boolean isPriceEmpty = checkpkgPriceEdit();
-        setButtonsEdit(isNameEmpty, isPriceEmpty, errMsgEdit);
+        boolean isCommissionEmpty = checkpkgComEdit();
+        setButtonsEdit(isNameEmpty, isPriceEmpty, isCommissionEmpty, errMsgEdit);
 
         if(isPriceEmpty == false)
         {
@@ -403,6 +411,27 @@ public class PackageController
         else
         {
             lbErPkgBPriceEdit.setVisible(true);
+        }
+    }
+
+
+    // an event handler on the Package agency commission text field so after filling it, the save buttons are enabled
+    // and message beside it will disappear
+    @FXML
+    void pkgAgencyCommissionEditTyped(KeyEvent event)
+    {
+        boolean isNameEmpty = checkpkgNameEdit();
+        boolean isPriceEmpty = checkpkgPriceEdit();
+        boolean isCommissionEmpty = checkpkgComEdit();
+        setButtonsEdit(isNameEmpty, isPriceEmpty, isCommissionEmpty, errMsgEdit);
+
+        if(isCommissionEmpty == false)
+        {
+            lbErPkgComEdit.setVisible(false);
+        }
+        else
+        {
+            lbErPkgComEdit.setVisible(true);
         }
     }
 
@@ -434,9 +463,23 @@ public class PackageController
     }
 
 
+    // a method to check if the package agency commission field is empty or not
+    private boolean checkpkgComEdit()
+    {
+        boolean isEmpty = false;
+
+        if (pkgAgencyCommissionEdit.getText().equals(""))
+        {
+            isEmpty = true;
+        }
+
+        return isEmpty;
+    }
+
+
     // set the save buttons disabled or enabled based on the required fields content(empty or not)
-    private void setButtonsEdit(boolean isNameEmpty, boolean isPriceEmpty, boolean errMsg) {
-        if (isNameEmpty == false && isPriceEmpty == false && errMsg == false)
+    private void setButtonsEdit(boolean isNameEmpty, boolean isPriceEmpty, boolean isCommissionEmpty, boolean errMsg) {
+        if (isNameEmpty == false && isPriceEmpty == false && isCommissionEmpty == false && errMsg == false)
         {
             btnEditSaveBack.setDisable(false);
             btnEditSaveEdit.setDisable(false);
@@ -464,7 +507,8 @@ public class PackageController
 
             boolean isNameEmpty = checkpkgNameEdit();
             boolean isPriceEmpty = checkpkgPriceEdit();
-            setButtonsEdit(isNameEmpty, isPriceEmpty, errMsgEdit);
+            boolean isCommissionEmpty = checkpkgComEdit();
+            setButtonsEdit(isNameEmpty, isPriceEmpty, isCommissionEmpty, errMsgEdit);
         }
         else
         {
@@ -473,7 +517,8 @@ public class PackageController
 
             boolean isNameEmpty = checkpkgNameEdit();
             boolean isPriceEmpty = checkpkgPriceEdit();
-            setButtonsEdit(isNameEmpty, isPriceEmpty, errMsgEdit);
+            boolean isCommissionEmpty = checkpkgComEdit();
+            setButtonsEdit(isNameEmpty, isPriceEmpty, isCommissionEmpty, errMsgEdit);
         }
     }
 
@@ -492,7 +537,8 @@ public class PackageController
 
             boolean isNameEmpty = checkpkgNameEdit();
             boolean isPriceEmpty = checkpkgPriceEdit();
-            setButtonsEdit(isNameEmpty, isPriceEmpty, errMsgEdit);
+            boolean isCommissionEmpty = checkpkgComEdit();
+            setButtonsEdit(isNameEmpty, isPriceEmpty, isCommissionEmpty, errMsgEdit);
         }
         else
         {
@@ -501,7 +547,8 @@ public class PackageController
 
             boolean isNameEmpty = checkpkgNameEdit();
             boolean isPriceEmpty = checkpkgPriceEdit();
-            setButtonsEdit(isNameEmpty, isPriceEmpty, errMsgEdit);
+            boolean isCommissionEmpty = checkpkgComEdit();
+            setButtonsEdit(isNameEmpty, isPriceEmpty, isCommissionEmpty, errMsgEdit);
         }
     }
 
@@ -607,9 +654,11 @@ public class PackageController
         btnEditSaveEdit.setDisable(false);
 
         lbErPkgNameEdit.setVisible(false);
-        lbErPkgBPriceEdit.setVisible(false);
         lbErPkgSDatEdit.setVisible(false);
         lbErPkgEDatEdit.setVisible(false);
+        lbErPkgBPriceEdit.setVisible(false);
+        lbErPkgComEdit.setVisible(false);
+
     }
 
 
@@ -621,7 +670,8 @@ public class PackageController
     {
         boolean isNameEmpty = checkpkgNameAdd();
         boolean isPriceEmpty = checkpkgPriceAdd();
-        setButtonsAdd(isNameEmpty, isPriceEmpty, errMsgAdd);
+        boolean isCommissionEmpty = checkpkgComAdd();
+        setButtonsAdd(isNameEmpty, isPriceEmpty, isCommissionEmpty, errMsgAdd);
 
         if(isNameEmpty == false)
         {
@@ -640,7 +690,8 @@ public class PackageController
     {
         boolean isNameEmpty = checkpkgNameAdd();
         boolean isPriceEmpty = checkpkgPriceAdd();
-        setButtonsAdd(isNameEmpty, isPriceEmpty, errMsgAdd);
+        boolean isCommissionEmpty = checkpkgComAdd();
+        setButtonsAdd(isNameEmpty, isPriceEmpty, isCommissionEmpty, errMsgAdd);
 
         if (isNameEmpty == false && isPriceEmpty == false)
         {
@@ -659,6 +710,27 @@ public class PackageController
         else
         {
             lbErPkgBPriceAdd.setVisible(true);
+        }
+    }
+
+
+    // an event handler on the Package agency commission text field so after filling it, the save buttons are enabled
+    // and message beside it will disappear
+    @FXML
+    void pkgAgencyCommissionAddTyped(KeyEvent event)
+    {
+        boolean isNameEmpty = checkpkgNameAdd();
+        boolean isPriceEmpty = checkpkgPriceAdd();
+        boolean isCommissionEmpty = checkpkgComAdd();
+        setButtonsAdd(isNameEmpty, isPriceEmpty, isCommissionEmpty, errMsgAdd);
+
+        if(isCommissionEmpty == false)
+        {
+            lbErPkgComAdd.setVisible(false);
+        }
+        else
+        {
+            lbErPkgComAdd.setVisible(true);
         }
     }
 
@@ -691,9 +763,23 @@ public class PackageController
     }
 
 
+    // a method to check if the package agency commission field is empty or not
+    private boolean checkpkgComAdd()
+    {
+        boolean isEmpty = false;
+
+        if (pkgAgencyCommissionAdd.getText().equals(""))
+        {
+            isEmpty = true;
+        }
+
+        return isEmpty;
+    }
+
+
     // set the save buttons disabled or enabled based on the required fields content(empty or not)
-    private void setButtonsAdd(boolean isNameEmpty, boolean isPriceEmpty, boolean errMsg) {
-        if (isNameEmpty == false && isPriceEmpty == false && errMsg == false)
+    private void setButtonsAdd(boolean isNameEmpty, boolean isPriceEmpty, boolean isCommissionEmpty, boolean errMsg) {
+        if (isNameEmpty == false && isPriceEmpty == false && isCommissionEmpty == false && errMsg == false)
         {
             btnAddSaveBack.setDisable(false);
             btnAddSaveAdd.setDisable(false);
@@ -716,20 +802,22 @@ public class PackageController
         {
             lbErPkgSDatAdd.setText("The start date should be before the end date!");
             lbErPkgSDatAdd.setVisible(true);
-            boolean errMsg = true;
+            boolean errMsgAdd = true;
 
             boolean isNameEmpty = checkpkgNameAdd();
             boolean isPriceEmpty = checkpkgPriceAdd();
-            setButtonsAdd(isNameEmpty, isPriceEmpty, errMsgAdd);
+            boolean isCommissionEmpty = checkpkgComAdd();
+            setButtonsAdd(isNameEmpty, isPriceEmpty, isCommissionEmpty, errMsgAdd);
         }
         else
         {
             lbErPkgSDatAdd.setVisible(false);
-            boolean errMsg = false;
+            boolean errMsgAdd = false;
 
             boolean isNameEmpty = checkpkgNameAdd();
             boolean isPriceEmpty = checkpkgPriceAdd();
-            setButtonsAdd(isNameEmpty, isPriceEmpty, errMsgAdd);
+            boolean isCommissionEmpty = checkpkgComAdd();
+            setButtonsAdd(isNameEmpty, isPriceEmpty, isCommissionEmpty, errMsgAdd);
         }
     }
 
@@ -744,20 +832,22 @@ public class PackageController
         {
             lbErPkgEDatAdd.setText("The end date should be after the start date!");
             lbErPkgEDatAdd.setVisible(true);
-            boolean errMsg = true;
+            boolean errMsgAdd = true;
 
             boolean isNameEmpty = checkpkgNameAdd();
             boolean isPriceEmpty = checkpkgPriceAdd();
-            setButtonsAdd(isNameEmpty, isPriceEmpty, errMsgAdd);
+            boolean isCommissionEmpty = checkpkgComAdd();
+            setButtonsAdd(isNameEmpty, isPriceEmpty, isCommissionEmpty, errMsgAdd);
         }
         else
         {
             lbErPkgEDatAdd.setVisible(false);
-            boolean errMsg = false;
+            boolean errMsgAdd = false;
 
             boolean isNameEmpty = checkpkgNameAdd();
             boolean isPriceEmpty = checkpkgPriceAdd();
-            setButtonsAdd(isNameEmpty, isPriceEmpty, errMsgAdd);
+            boolean isCommissionEmpty = checkpkgComAdd();
+            setButtonsAdd(isNameEmpty, isPriceEmpty, isCommissionEmpty, errMsgAdd);
         }
     }
 
@@ -876,9 +966,10 @@ public class PackageController
         btnAddSaveAdd.setDisable(true);
 
         lbErPkgNameAdd.setVisible(true);
-        lbErPkgBPriceAdd.setVisible(true);
         lbErPkgSDatAdd.setVisible(false);
         lbErPkgEDatAdd.setVisible(false);
+        lbErPkgBPriceAdd.setVisible(true);
+        lbErPkgComAdd.setVisible(true);
     }
 
 
