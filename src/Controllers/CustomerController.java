@@ -149,12 +149,12 @@ public class CustomerController {
     }
 
     @FXML
-    void tfNavSearchKeyTyped(KeyEvent event) {
+    void tfNavSearchKeyReleased(KeyEvent event) {
         System.out.println("pressed");
 
         String strFilter = tfNavSearch.getText();
-
-        List<Customer> filteredList = navTableArrayList.stream()
+        System.out.println(strFilter);
+                List<Customer> filteredList = navTableArrayList.stream()
                 .filter(d -> d.toString().contains(strFilter))
                 .collect(Collectors.toList());
 
@@ -162,8 +162,10 @@ public class CustomerController {
 
         ObservableList<Customer> data = FXCollections.observableArrayList(filteredList);
         tvNavTable.setItems(data);
-
     }
+
+
+
 
 
     /****************************************************************************

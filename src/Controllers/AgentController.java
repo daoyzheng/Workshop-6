@@ -175,7 +175,7 @@ public class AgentController {
     }
 
     @FXML
-    void tfNavSearchKeyTyped(KeyEvent event) {
+    void tfNavSearchKeyReleased(KeyEvent event) {
 
         String strFilter = tfNavSearch.getText();
         List<Agent> filteredList = navTableArrayList.stream()
