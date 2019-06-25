@@ -131,7 +131,7 @@ public class AgencyController {
     }
 
     @FXML
-    void tfNavSearchKeyTyped(KeyEvent event) {
+    void tfNavSearchKeyReleased(KeyEvent event) {
         System.out.println("pressed");
 
         String strFilter = tfNavSearch.getText();
