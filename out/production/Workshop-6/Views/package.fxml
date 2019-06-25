@@ -21,7 +21,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="400.0" style="-fx-background-color: white" xmlns="http://javafx.com/javafx/8.0.201" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.PackageController">
+<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="400.0" style="-fx-background-color: white" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.PackageController">
    <children>
       <TabPane fx:id="tabPaneMain" layoutY="-26.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <tabs>
@@ -44,23 +44,23 @@
                                  </padding>
                               </HBox>
                            </children></AnchorPane>
-                        <AnchorPane layoutY="76.0" maxHeight="1.7976931348623157E308" minHeight="200.0" minWidth="600.0" prefHeight="350.0" prefWidth="600.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="50.0">
+                        <AnchorPane layoutY="76.0" maxHeight="1.7976931348623157E308" minHeight="200.0" minWidth="600.0" prefHeight="350.0" prefWidth="600.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="65.0">
                            <children>
                               <TableView fx:id="tvPackages" prefHeight="313.0" prefWidth="510.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="225.0" AnchorPane.topAnchor="0.0">
                                  <columns>
-                                    <TableColumn fx:id="PackageId" editable="false" prefWidth="66.99998474121094" text="Package Id" />
-                                    <TableColumn fx:id="pkgName" editable="false" prefWidth="88.0" text="Package Name" />
+                                    <TableColumn fx:id="PackageId" editable="false" prefWidth="70.0" text="Package Id" />
+                                    <TableColumn fx:id="pkgName" editable="false" prefWidth="150.0" text="Package Name" />
                                     <TableColumn fx:id="pkgStartDate" editable="false" prefWidth="62.0" text="Start Date" />
                                     <TableColumn fx:id="pkgEndDate" editable="false" prefWidth="55.0" text="End Date" />
-                                    <TableColumn fx:id="pkgDesc" editable="false" prefWidth="107.0" text="Description" />
-                                    <TableColumn fx:id="pkgBasePrice" editable="false" prefWidth="62.0" text="Base Price" />
-                                    <TableColumn fx:id="pkgAgencyCommission" editable="false" prefWidth="118.0" text="Agency Commission" />
-                                    <TableColumn fx:id="active" editable="false" prefWidth="41.0" text="Active" />
+                                    <TableColumn fx:id="pkgDesc" editable="false" prefWidth="200.0" text="Description" />
+                                    <TableColumn fx:id="pkgBasePrice" editable="false" prefWidth="65.0" text="Base Price" />
+                                    <TableColumn fx:id="pkgAgencyCommission" editable="false" text="Agency Commission" />
+                                    <TableColumn fx:id="active" editable="false" prefWidth="50.0" text="Active" />
                                  </columns>
                               </TableView>
                            </children>
                         </AnchorPane>
-                        <AnchorPane layoutX="611.0" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="311.0" prefWidth="222.0" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="50.0">
+                        <AnchorPane layoutX="611.0" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="311.0" prefWidth="222.0" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="65.0">
                            <children>
                               <HBox maxHeight="25.0" maxWidth="182.0" minHeight="25.0" minWidth="182.0" prefHeight="25.0" prefWidth="182.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-2.0" AnchorPane.topAnchor="1.0">
                                  <children>
