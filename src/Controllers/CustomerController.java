@@ -326,7 +326,7 @@ public class CustomerController {
             Agent currentAgent = AgentManager.getAgentById(c.getAgentId());
             SelectionModel<Agent> selectionModel = cboAgentId.getSelectionModel();
             selectionModel.selectFirst();
-            while (selectionModel.getSelectedItem().getAgencyId() != c.getAgentId()) {
+            while (selectionModel.getSelectedItem().getAgentId() != c.getAgentId()) {
                 selectionModel.selectNext();
             }
         }
