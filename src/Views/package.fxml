@@ -33,11 +33,11 @@
                            <children>
                               <HBox prefHeight="50.0" prefWidth="652.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
-                                    <Label alignment="CENTER_RIGHT" contentDisplay="TOP" prefHeight="30.0" prefWidth="100.0" text="Search by name:" textAlignment="RIGHT">
+                                    <Label alignment="CENTER_RIGHT" contentDisplay="TOP" prefHeight="30.0" prefWidth="245.0" text="Search by package name (Case sensitive):" textAlignment="RIGHT">
                                        <font>
                                           <Font name="System Bold Italic" size="12.0" />
                                        </font></Label>
-                                    <TextField fx:id="tfSearch" onKeyTyped="#tfNavSearchKeyTyped" prefHeight="30.0" prefWidth="200.0" promptText="Type here ..." />
+                                    <TextField fx:id="tfSearch" onKeyTyped="#tfSearchTyped" prefHeight="30.0" prefWidth="200.0" promptText="Type here ..." />
                                  </children>
                                  <padding>
                                     <Insets top="5.0" />
@@ -202,7 +202,7 @@
                                           <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                        </GridPane.margin>
                                     </TextField>
-                                    <TextField id="pkgAgencyCommission" fx:id="pkgAgencyCommissionEdit" styleClass="DetailInput" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                                    <TextField id="pkgAgencyCommission" fx:id="pkgAgencyCommissionEdit" onKeyTyped="#pkgAgencyCommissionEditTyped" styleClass="DetailInput" GridPane.columnIndex="1" GridPane.rowIndex="6">
                                        <GridPane.margin>
                                           <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                        </GridPane.margin>
@@ -211,23 +211,29 @@
                                        <font>
                                           <Font name="System Bold" size="12.0" />
                                        </font></Label>
-                                    <Label fx:id="lbErPkgSDatEdit" styleClass="DetailError" text="[error msg]" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-                                    <Label fx:id="lbErPkgEDatEdit" styleClass="DetailError" text="[error msg]" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                                    <Label fx:id="lbErPkgSDatEdit" styleClass="DetailError" text="error msg" textFill="#eb0808" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font></Label>
+                                    <Label fx:id="lbErPkgEDatEdit" styleClass="DetailError" text="[error msg]" textFill="#f50606" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font></Label>
                                     <Label fx:id="lbErPkgBPriceEdit" styleClass="DetailError" text="Required" textFill="#ee0909" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="5">
                                        <font>
                                           <Font name="System Bold" size="12.0" />
                                        </font></Label>
-                                    <Label text="* required field" GridPane.rowIndex="9">
-                                       <GridPane.margin>
-                                          <Insets bottom="5.0" left="20.0" right="5.0" top="5.0" />
-                                       </GridPane.margin>
+                                    <Label fx:id="lbErPkgComEdit" styleClass="DetailError" text="Required" textFill="#ee0909" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="6">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
                                     </Label>
-                                    <DatePicker id="pkgStartDate" fx:id="pkgStartDateEdit" prefHeight="25.0" prefWidth="303.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                    <DatePicker id="pkgStartDate" fx:id="pkgStartDateEdit" onMouseEntered="#pkgStartDateEditClicked" prefHeight="25.0" prefWidth="303.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                                        <GridPane.margin>
                                           <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                        </GridPane.margin>
                                     </DatePicker>
-                                    <DatePicker id="pkgEndDate" fx:id="pkgEndDateEdit" prefHeight="25.0" prefWidth="303.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                    <DatePicker id="pkgEndDate" fx:id="pkgEndDateEdit" onMouseEntered="#pkgEndDateEditClicked" prefHeight="25.0" prefWidth="303.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
                                        <opaqueInsets>
                                           <Insets />
                                        </opaqueInsets>
@@ -365,7 +371,7 @@
                                           <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                        </GridPane.margin>
                                     </TextField>
-                                    <TextField id="pkgAgencyCommission" fx:id="pkgAgencyCommissionAdd" styleClass="DetailInput" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                                    <TextField id="pkgAgencyCommission" fx:id="pkgAgencyCommissionAdd" onKeyTyped="#pkgAgencyCommissionAddTyped" styleClass="DetailInput" GridPane.columnIndex="1" GridPane.rowIndex="6">
                                        <GridPane.margin>
                                           <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                        </GridPane.margin>
@@ -374,23 +380,29 @@
                                        <font>
                                           <Font name="System Bold" size="12.0" />
                                        </font></Label>
-                                    <Label fx:id="lbErPkgSDatAdd" styleClass="DetailError" text="[error msg]" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-                                    <Label fx:id="lbErPkgEDatAdd" styleClass="DetailError" text="[error msg]" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                                    <Label fx:id="lbErPkgSDatAdd" styleClass="DetailError" text="[error msg]" textFill="#ee0707" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font></Label>
+                                    <Label fx:id="lbErPkgEDatAdd" styleClass="DetailError" text="[error msg]" textFill="#f50808" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font></Label>
                                     <Label fx:id="lbErPkgBPriceAdd" styleClass="DetailError" text="Required" textFill="#ee0808" GridPane.columnIndex="2" GridPane.rowIndex="5">
                                        <font>
                                           <Font name="System Bold" size="12.0" />
                                        </font></Label>
-                                    <Label text="* required field" GridPane.rowIndex="9">
-                                       <GridPane.margin>
-                                          <Insets bottom="5.0" left="20.0" right="5.0" top="5.0" />
-                                       </GridPane.margin>
+                                    <Label fx:id="lbErPkgComAdd" styleClass="DetailError" text="Required" textFill="#ee0808" GridPane.columnIndex="2" GridPane.rowIndex="6">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
                                     </Label>
-                                    <DatePicker id="pkgStartDate" fx:id="pkgStartDateAdd" prefHeight="25.0" prefWidth="303.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                    <DatePicker id="pkgStartDate" fx:id="pkgStartDateAdd" onMouseEntered="#pkgStartDateAddClicked" prefHeight="25.0" prefWidth="303.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                                        <GridPane.margin>
                                           <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                        </GridPane.margin>
                                     </DatePicker>
-                                    <DatePicker id="pkgEndDate" fx:id="pkgEndDateAdd" prefHeight="25.0" prefWidth="303.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                    <DatePicker id="pkgEndDate" fx:id="pkgEndDateAdd" onMouseEntered="#pkgEndDateAddClicked" prefHeight="25.0" prefWidth="303.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
                                        <opaqueInsets>
                                           <Insets />
                                        </opaqueInsets>

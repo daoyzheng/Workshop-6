@@ -130,6 +130,9 @@ public class PackageController
     private Label lbErPkgBPriceEdit;
 
     @FXML
+    private Label lbErPkgComEdit;
+
+    @FXML
     private DatePicker pkgStartDateEdit;
 
     @FXML
@@ -183,6 +186,9 @@ public class PackageController
     private Label lbErPkgBPriceAdd;
 
     @FXML
+    private Label lbErPkgComAdd;
+
+    @FXML
     private DatePicker pkgStartDateAdd;
 
     @FXML
@@ -220,6 +226,7 @@ public class PackageController
 
     //***************************************** Main Tab*********************************************
     // class-level variables:
+
     Package curntPkg = new Package(); // current (selected) package in the package scene
 
 
@@ -343,14 +350,9 @@ public class PackageController
     }
 
 
+    // search method
     @FXML
-    void tfNavSearchKeyTyped(KeyEvent event)
-    {
-
-    }
-
-    @FXML
-    void tfSearchKeyTyped(KeyEvent event)
+    void tfSearchTyped(KeyEvent event)
     {
         System.out.println("pressed");
 
@@ -371,14 +373,15 @@ public class PackageController
 
 
     //*********************************************Edit Tab**********************************************
-    // an event handler on the Package Name text field so after filling it, the save buttons are disabled
+    // an event handler on the Package Name text field so after filling it, the save buttons are enabled
     // and message beside it will disappear
     @FXML
     void pkgNameEditTyped(KeyEvent event)
     {
         boolean isNameEmpty = checkpkgNameEdit();
         boolean isPriceEmpty = checkpkgPriceEdit();
-        setButtonsEdit(isNameEmpty, isPriceEmpty);
+        boolean isCommissionEmpty = checkpkgComEdit();
+        setButtonsEdit(isNameEmpty, isPriceEmpty, isCommissionEmpty, errMsgEdit);
 
         if(isNameEmpty == false)
         {
@@ -391,14 +394,15 @@ public class PackageController
     }
 
 
-    // an event handler on the Package Base Price text field so after filling it, the save buttons are disabled
+    // an event handler on the Package Base Price text field so after filling it, the save buttons are enabled
     // and message beside it will disappear
     @FXML
     void pkgBasePriceEditTyped(KeyEvent event)
     {
         boolean isNameEmpty = checkpkgNameEdit();
         boolean isPriceEmpty = checkpkgPriceEdit();
-        setButtonsEdit(isNameEmpty, isPriceEmpty);
+        boolean isCommissionEmpty = checkpkgComEdit();
+        setButtonsEdit(isNameEmpty, isPriceEmpty, isCommissionEmpty, errMsgEdit);
 
         if(isPriceEmpty == false)
         {
@@ -411,6 +415,28 @@ public class PackageController
     }
 
 
+    // an event handler on the Package agency commission text field so after filling it, the save buttons are enabled
+    // and message beside it will disappear
+    @FXML
+    void pkgAgencyCommissionEditTyped(KeyEvent event)
+    {
+        boolean isNameEmpty = checkpkgNameEdit();
+        boolean isPriceEmpty = checkpkgPriceEdit();
+        boolean isCommissionEmpty = checkpkgComEdit();
+        setButtonsEdit(isNameEmpty, isPriceEmpty, isCommissionEmpty, errMsgEdit);
+
+        if(isCommissionEmpty == false)
+        {
+            lbErPkgComEdit.setVisible(false);
+        }
+        else
+        {
+            lbErPkgComEdit.setVisible(true);
+        }
+    }
+
+
+    // a method to check if the package name field is empty or not
     private boolean checkpkgNameEdit()
     {
         boolean isEmpty = false;
@@ -423,7 +449,7 @@ public class PackageController
         return isEmpty;
     }
 
-
+    // a method to check if the package base price field is empty or not
     private boolean checkpkgPriceEdit()
     {
         boolean isEmpty = false;
@@ -437,8 +463,23 @@ public class PackageController
     }
 
 
-    private void setButtonsEdit(boolean isNameEmpty, boolean isPriceEmpty) {
-        if (isNameEmpty == false && isPriceEmpty == false)
+    // a method to check if the package agency commission field is empty or not
+    private boolean checkpkgComEdit()
+    {
+        boolean isEmpty = false;
+
+        if (pkgAgencyCommissionEdit.getText().equals(""))
+        {
+            isEmpty = true;
+        }
+
+        return isEmpty;
+    }
+
+
+    // set the save buttons disabled or enabled based on the required fields content(empty or not)
+    private void setButtonsEdit(boolean isNameEmpty, boolean isPriceEmpty, boolean isCommissionEmpty, boolean errMsg) {
+        if (isNameEmpty == false && isPriceEmpty == false && isCommissionEmpty == false && errMsg == false)
         {
             btnEditSaveBack.setDisable(false);
             btnEditSaveEdit.setDisable(false);
@@ -448,6 +489,87 @@ public class PackageController
             btnEditSaveBack.setDisable(true);
             btnEditSaveEdit.setDisable(true);
         }
+    }
+
+
+    boolean errMsgEdit = false;
+    // an event handler on the Package start date datepicker field so after selecting a date,
+    // compare it with the end date and show proper error message
+    @FXML
+    void pkgStartDateEditClicked(MouseEvent event)
+    {
+        boolean isCorrect = pkgDatesEditCheck();
+        if (isCorrect == false)
+        {
+            lbErPkgSDatEdit.setText("The start date should be before the end date!");
+            lbErPkgSDatEdit.setVisible(true);
+            errMsgEdit = true;
+
+            boolean isNameEmpty = checkpkgNameEdit();
+            boolean isPriceEmpty = checkpkgPriceEdit();
+            boolean isCommissionEmpty = checkpkgComEdit();
+            setButtonsEdit(isNameEmpty, isPriceEmpty, isCommissionEmpty, errMsgEdit);
+        }
+        else
+        {
+            lbErPkgSDatEdit.setVisible(false);
+            errMsgEdit = false;
+
+            boolean isNameEmpty = checkpkgNameEdit();
+            boolean isPriceEmpty = checkpkgPriceEdit();
+            boolean isCommissionEmpty = checkpkgComEdit();
+            setButtonsEdit(isNameEmpty, isPriceEmpty, isCommissionEmpty, errMsgEdit);
+        }
+    }
+
+
+    // an event handler on the Package end date datepicker field so after selecting a date,
+    // compare it with the start date and show proper error message
+    @FXML
+    void pkgEndDateEditClicked(MouseEvent event)
+    {
+        boolean isCorrect = pkgDatesEditCheck();
+        if (isCorrect == false)
+        {
+            lbErPkgEDatEdit.setText("The end date should be after the start date!");
+            lbErPkgEDatEdit.setVisible(true);
+            boolean errMsg = true;
+
+            boolean isNameEmpty = checkpkgNameEdit();
+            boolean isPriceEmpty = checkpkgPriceEdit();
+            boolean isCommissionEmpty = checkpkgComEdit();
+            setButtonsEdit(isNameEmpty, isPriceEmpty, isCommissionEmpty, errMsgEdit);
+        }
+        else
+        {
+            lbErPkgEDatEdit.setVisible(false);
+            boolean errMsg = false;
+
+            boolean isNameEmpty = checkpkgNameEdit();
+            boolean isPriceEmpty = checkpkgPriceEdit();
+            boolean isCommissionEmpty = checkpkgComEdit();
+            setButtonsEdit(isNameEmpty, isPriceEmpty, isCommissionEmpty, errMsgEdit);
+        }
+    }
+
+    // a method to compare the start date and end date
+    private boolean pkgDatesEditCheck()
+    {
+        boolean isCorrect = true;
+        LocalDate strDate = null;
+        LocalDate endDate = null;
+
+        if (pkgStartDateEdit.getValue()!=null)
+            strDate = pkgStartDateEdit.getValue();
+
+        if (pkgEndDateEdit.getValue()!=null)
+            endDate = pkgEndDateEdit.getValue();
+
+        if (strDate !=null && endDate != null)
+            if(strDate.isAfter(endDate))
+                isCorrect = false;
+
+        return isCorrect;
     }
 
 
@@ -532,7 +654,11 @@ public class PackageController
         btnEditSaveEdit.setDisable(false);
 
         lbErPkgNameEdit.setVisible(false);
+        lbErPkgSDatEdit.setVisible(false);
+        lbErPkgEDatEdit.setVisible(false);
         lbErPkgBPriceEdit.setVisible(false);
+        lbErPkgComEdit.setVisible(false);
+
     }
 
 
@@ -544,7 +670,8 @@ public class PackageController
     {
         boolean isNameEmpty = checkpkgNameAdd();
         boolean isPriceEmpty = checkpkgPriceAdd();
-        setButtonsAdd(isNameEmpty, isPriceEmpty);
+        boolean isCommissionEmpty = checkpkgComAdd();
+        setButtonsAdd(isNameEmpty, isPriceEmpty, isCommissionEmpty, errMsgAdd);
 
         if(isNameEmpty == false)
         {
@@ -563,7 +690,8 @@ public class PackageController
     {
         boolean isNameEmpty = checkpkgNameAdd();
         boolean isPriceEmpty = checkpkgPriceAdd();
-        setButtonsAdd(isNameEmpty, isPriceEmpty);
+        boolean isCommissionEmpty = checkpkgComAdd();
+        setButtonsAdd(isNameEmpty, isPriceEmpty, isCommissionEmpty, errMsgAdd);
 
         if (isNameEmpty == false && isPriceEmpty == false)
         {
@@ -586,6 +714,28 @@ public class PackageController
     }
 
 
+    // an event handler on the Package agency commission text field so after filling it, the save buttons are enabled
+    // and message beside it will disappear
+    @FXML
+    void pkgAgencyCommissionAddTyped(KeyEvent event)
+    {
+        boolean isNameEmpty = checkpkgNameAdd();
+        boolean isPriceEmpty = checkpkgPriceAdd();
+        boolean isCommissionEmpty = checkpkgComAdd();
+        setButtonsAdd(isNameEmpty, isPriceEmpty, isCommissionEmpty, errMsgAdd);
+
+        if(isCommissionEmpty == false)
+        {
+            lbErPkgComAdd.setVisible(false);
+        }
+        else
+        {
+            lbErPkgComAdd.setVisible(true);
+        }
+    }
+
+
+    // a method to check if the package name field is empty or not
     private boolean checkpkgNameAdd()
     {
         boolean isEmpty = false;
@@ -599,6 +749,7 @@ public class PackageController
     }
 
 
+    // a method to check if the package base price field is empty or not
     private boolean checkpkgPriceAdd()
     {
         boolean isEmpty = false;
@@ -612,8 +763,23 @@ public class PackageController
     }
 
 
-    private void setButtonsAdd(boolean isNameEmpty, boolean isPriceEmpty) {
-        if (isNameEmpty == false && isPriceEmpty == false)
+    // a method to check if the package agency commission field is empty or not
+    private boolean checkpkgComAdd()
+    {
+        boolean isEmpty = false;
+
+        if (pkgAgencyCommissionAdd.getText().equals(""))
+        {
+            isEmpty = true;
+        }
+
+        return isEmpty;
+    }
+
+
+    // set the save buttons disabled or enabled based on the required fields content(empty or not)
+    private void setButtonsAdd(boolean isNameEmpty, boolean isPriceEmpty, boolean isCommissionEmpty, boolean errMsg) {
+        if (isNameEmpty == false && isPriceEmpty == false && isCommissionEmpty == false && errMsg == false)
         {
             btnAddSaveBack.setDisable(false);
             btnAddSaveAdd.setDisable(false);
@@ -623,6 +789,87 @@ public class PackageController
             btnAddSaveBack.setDisable(true);
             btnAddSaveAdd.setDisable(true);
         }
+    }
+
+    boolean errMsgAdd = false;
+    // an event handler on the Package start date datepicker field so after selecting a date,
+    // compare it with the end date and show proper error message
+    @FXML
+    void pkgStartDateAddClicked(MouseEvent event)
+    {
+        boolean isCorrect = pkgDatesAddCheck();
+        if (isCorrect == false)
+        {
+            lbErPkgSDatAdd.setText("The start date should be before the end date!");
+            lbErPkgSDatAdd.setVisible(true);
+            boolean errMsgAdd = true;
+
+            boolean isNameEmpty = checkpkgNameAdd();
+            boolean isPriceEmpty = checkpkgPriceAdd();
+            boolean isCommissionEmpty = checkpkgComAdd();
+            setButtonsAdd(isNameEmpty, isPriceEmpty, isCommissionEmpty, errMsgAdd);
+        }
+        else
+        {
+            lbErPkgSDatAdd.setVisible(false);
+            boolean errMsgAdd = false;
+
+            boolean isNameEmpty = checkpkgNameAdd();
+            boolean isPriceEmpty = checkpkgPriceAdd();
+            boolean isCommissionEmpty = checkpkgComAdd();
+            setButtonsAdd(isNameEmpty, isPriceEmpty, isCommissionEmpty, errMsgAdd);
+        }
+    }
+
+
+    // an event handler on the Package end date datepicker field so after selecting a date,
+    // compare it with the start date and show proper error message
+    @FXML
+    void pkgEndDateAddClicked(MouseEvent event)
+    {
+        boolean isCorrect = pkgDatesAddCheck();
+        if (isCorrect == false)
+        {
+            lbErPkgEDatAdd.setText("The end date should be after the start date!");
+            lbErPkgEDatAdd.setVisible(true);
+            boolean errMsgAdd = true;
+
+            boolean isNameEmpty = checkpkgNameAdd();
+            boolean isPriceEmpty = checkpkgPriceAdd();
+            boolean isCommissionEmpty = checkpkgComAdd();
+            setButtonsAdd(isNameEmpty, isPriceEmpty, isCommissionEmpty, errMsgAdd);
+        }
+        else
+        {
+            lbErPkgEDatAdd.setVisible(false);
+            boolean errMsgAdd = false;
+
+            boolean isNameEmpty = checkpkgNameAdd();
+            boolean isPriceEmpty = checkpkgPriceAdd();
+            boolean isCommissionEmpty = checkpkgComAdd();
+            setButtonsAdd(isNameEmpty, isPriceEmpty, isCommissionEmpty, errMsgAdd);
+        }
+    }
+
+
+    // a method to compare the start date and end date
+    private boolean pkgDatesAddCheck()
+    {
+        boolean isCorrect = true;
+        LocalDate strDate = null;
+        LocalDate endDate = null;
+
+        if (pkgStartDateAdd.getValue()!=null)
+            strDate = pkgStartDateAdd.getValue();
+
+        if (pkgEndDateAdd.getValue()!=null)
+            endDate = pkgEndDateAdd.getValue();
+
+        if (strDate !=null && endDate != null)
+            if(strDate.isAfter(endDate))
+                isCorrect = false;
+
+        return isCorrect;
     }
 
 
@@ -719,7 +966,10 @@ public class PackageController
         btnAddSaveAdd.setDisable(true);
 
         lbErPkgNameAdd.setVisible(true);
+        lbErPkgSDatAdd.setVisible(false);
+        lbErPkgEDatAdd.setVisible(false);
         lbErPkgBPriceAdd.setVisible(true);
+        lbErPkgComAdd.setVisible(true);
     }
 
 
@@ -733,6 +983,7 @@ public class PackageController
     }
 
 
+    // add a set of product-supplier
     @FXML
     void btnAddEditAddClicked(MouseEvent event)
     {
@@ -747,10 +998,10 @@ public class PackageController
     }
 
 
+    // add all sets of possible product-supplier
     @FXML
     void btnAddEditAddAllClicked(MouseEvent event)
     {
-//        setListViewOther(lvPsblPrdSpl, curntPkg);
         int pkgId = curntPkg.getPackageId();
 
         ObservableList<ProductSupplierNames> PrdSpls =
@@ -771,6 +1022,7 @@ public class PackageController
     }
 
 
+    // delete a related set of product-supplier
     @FXML
     void btnAddEditDeleteClicked(MouseEvent event)
     {
@@ -785,6 +1037,7 @@ public class PackageController
     }
 
 
+    // delete all related sets of product-supplier
     @FXML
     void btnAddEditDeleteAllClicked(MouseEvent event)
     {

@@ -25,7 +25,9 @@ public class PackageManager {
         {
             Connection conn = DbConnection.getConnection();
             Statement statement = conn.createStatement();
-            ResultSet resultSet = statement.executeQuery("SELECT * FROM packages");
+            ResultSet resultSet = statement.executeQuery(
+                    "SELECT PackageId, PkgName, PkgStartDate, PkgEndDate, PkgDesc, PkgBasePrice, " +
+                            "PkgAgencyCommission, Active FROM packages");
             while (resultSet.next())
             {
                 Package pkg = new Package();
@@ -73,7 +75,9 @@ public class PackageManager {
         {
             Connection conn = DbConnection.getConnection();
             Statement statement = conn.createStatement();
-            ResultSet resultSet = statement.executeQuery("SELECT * FROM packages WHERE packageId = " + id);
+            ResultSet resultSet = statement.executeQuery(
+                    "SELECT PackageId, PkgName, PkgStartDate, PkgEndDate, PkgDesc, PkgBasePrice, " +
+                            "PkgAgencyCommission, Active FROM packages WHERE PackageId = " + id);
             if (resultSet.next())
             {
                 pkg.setPackageId(resultSet.getInt(1));
