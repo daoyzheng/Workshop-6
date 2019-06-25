@@ -56,9 +56,9 @@
                 </Tab>
                 <Tab fx:id="tabDetail" closable="false">
                     <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0">
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="397.0" prefWidth="675.0">
                             <children>
-                        <ScrollPane prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <ScrollPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                           <content>
                             <AnchorPane minHeight="0.0" minWidth="0.0">
                                  <children>
@@ -185,6 +185,9 @@
                                                         </GridPane.margin>
                                                     </Label>
                                                 </children>
+                                       <padding>
+                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                                       </padding>
                                             </GridPane>
                                  </children>
                               </AnchorPane>
