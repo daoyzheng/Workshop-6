@@ -17,30 +17,30 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.CustomerController">
    <children>
-      <TabPane fx:id="tabpaneMain" tabClosingPolicy="UNAVAILABLE" tabMaxHeight="0.0" tabMaxWidth="0.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+      <TabPane fx:id="tabpaneMain" prefHeight="461.0" prefWidth="675.0" tabClosingPolicy="UNAVAILABLE" tabMaxHeight="0.0" tabMaxWidth="0.0">
          <tabs>
             <Tab fx:id="tabNav" closable="false">
                <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0">
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="390.0" prefWidth="623.0">
                      <children>
-                        <AnchorPane layoutX="7.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+                        <AnchorPane layoutX="7.0" prefHeight="436.0" prefWidth="675.0">
                            <children>
-                              <TableView fx:id="tvNavTable" layoutX="5.0" layoutY="66.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="80.0">
+                              <TableView fx:id="tvNavTable" layoutX="5.0" layoutY="66.0" prefHeight="364.0" prefWidth="656.0">
                                  <columns>
-                                    <TableColumn fx:id="colCustomerId" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="50.0" text="ID" />
-                                    <TableColumn fx:id="colCustFirstName" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="125.0" text="First Name" />
-                                    <TableColumn fx:id="colCustLastName" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="125.0" text="Last Name" />
-                                    <TableColumn fx:id="colCustAddress" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="125.0" text="Address" />
-                                    <TableColumn fx:id="colCustCity" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="125.0" text="City" />
-                                    <TableColumn fx:id="colCustProv" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="125.0" text="Prov" />
-                                    <TableColumn fx:id="colCustPostal" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="125.0" text="PC" />
-                                    <TableColumn fx:id="colCustCountry" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="125.0" text="Country" />
-                                    <TableColumn fx:id="colCustHomePhone" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="125.0" text="Home Phone" />
-                                    <TableColumn fx:id="colCustBusPhone" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="125.0" text="Bus. Phone" />
-                                    <TableColumn fx:id="colCustEmail" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="125.0" text="Email" />
-                                    <TableColumn fx:id="colCustUserName" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="125.0" text="Username" />
-                                    <TableColumn fx:id="colCustPassword" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="125.0" text="Password" />
-                                    <TableColumn fx:id="colAgentId" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="125.0" text="Agent ID" />
+                                    <TableColumn fx:id="colCustomerId" prefWidth="45.0" text="ID" />
+                                    <TableColumn fx:id="colCustFirstName" prefWidth="105.0" text="First Name" />
+                                    <TableColumn fx:id="colCustLastName" prefWidth="75.0" text="Last Name" />
+                                    <TableColumn fx:id="colCustAddress" prefWidth="75.0" text="Address" />
+                                    <TableColumn fx:id="colCustCity" prefWidth="67.0" text="City" />
+                                    <TableColumn fx:id="colCustProv" prefWidth="114.0" text="Prov" />
+                                    <TableColumn fx:id="colCustPostal" prefWidth="75.0" text="PC" />
+                                    <TableColumn fx:id="colCustCountry" prefWidth="48.0" text="Country" />
+                                    <TableColumn fx:id="colCustHomePhone" prefWidth="70.0" text="Home Phone" />
+                                    <TableColumn fx:id="colCustBusPhone" prefWidth="133.0" text="Bus. Phone" />
+                                    <TableColumn fx:id="colCustEmail" prefWidth="133.0" text="Email" />
+                                    <TableColumn fx:id="colCustUserName" prefWidth="133.0" text="Username" />
+                                    <TableColumn fx:id="colCustPassword" prefWidth="133.0" text="Password" />
+                                    <TableColumn fx:id="colAgentId" prefWidth="133.0" text="Agent ID" />
                                  </columns>
                               </TableView>
                               <HBox layoutX="6.0" layoutY="7.0" prefHeight="38.0" prefWidth="652.0" spacing="10.0">
@@ -64,7 +64,7 @@
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="397.0" prefWidth="675.0">
                      <children>
-                        <HBox alignment="TOP_RIGHT" layoutX="-1.0" layoutY="364.0" prefHeight="50.0" spacing="15.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+                        <HBox alignment="TOP_RIGHT" layoutX="-1.0" layoutY="364.0" prefHeight="70.0" prefWidth="380.0" spacing="15.0">
                            <padding>
                               <Insets left="20.0" top="20.0" />
                            </padding></HBox>
