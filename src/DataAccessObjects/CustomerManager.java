@@ -86,7 +86,6 @@ public class CustomerManager {
                         rs.getString(13),
                         Integer.parseInt(rs.getString(14)));
             }
-            System.out.println("closing conn");
             conn.close();
 
 
@@ -104,37 +103,6 @@ public class CustomerManager {
         }
     }
 
-
-    //retrieve a customer from database based on ID
-    public static int getCustomerMaxId() {
-        int maxId = 0;
-
-        try {
-            //create DB connection
-            Connection conn =  DbConnection.getConnection();
-            //create statement
-            Statement stmt = conn.createStatement();
-
-            //query database
-            ResultSet rs = stmt.executeQuery("SELECT MAX(CustomerId) FROM customers");
-
-            //create Array list to capture data from DB query rs
-            while (rs.next()) {
-                System.out.println(rs.getInt(1));
-            }
-            conn.close();
-
-        }
-        catch (ClassNotFoundException e) {
-            e.printStackTrace();
-            System.out.println("class not found exception");
-        }
-        catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        return maxId;
-    }
 
     //add a new Customer to the database, returns true if successful
     public static int addCustomer(Customer newCustomer) throws SQLException, ClassNotFoundException {
@@ -156,8 +124,6 @@ public class CustomerManager {
                 "AgentId" +
                 ") " +
                 "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?)";
-
-        System.out.println(sql);
 
         try {
             Connection conn = DbConnection.getConnection();
@@ -229,10 +195,9 @@ public class CustomerManager {
                 "AgentId=? " +
                 "where CustomerId=?";
 
-        System.out.println(sql);
         boolean result = false;
         try {
-            System.out.println("enter try");
+
             Connection conn = DbConnection.getConnection();
             PreparedStatement stmt = conn.prepareStatement(sql);
 
@@ -251,7 +216,6 @@ public class CustomerManager {
             stmt.setInt(13,changedCustomer.getAgentId());
             stmt.setInt(14,changedCustomer.getCustomerId());
 
-            System.out.println("execute stmt");
             int numRows = stmt.executeUpdate();
             if (numRows == 0)
             {
@@ -275,7 +239,6 @@ public class CustomerManager {
             System.out.println("class not found exception");
             e.printStackTrace();
         }
-        System.out.println("finally");
         return result;
     }
 
@@ -283,21 +246,17 @@ public class CustomerManager {
     public static int checkCustomerUsername(String username) {
         int result = 0;
 
-        System.out.println(username);
-
         try {
             //create DB connection
             Connection conn =  DbConnection.getConnection();
             //create statement
             Statement stmt = conn.createStatement();
             String sql = "SELECT COUNT(CustUserName) As rowcount FROM customers WHERE CustUserName='" + username + "'";
-            System.out.println(sql);
             //query database
             ResultSet rs = stmt.executeQuery(sql);
 
             if(rs.last()){
                 result = rs.getInt(1);
-                System.out.println(result + "");
             } else {
                 result = 0;
             }
@@ -313,6 +272,4 @@ public class CustomerManager {
         }
         return result;
     }
-
-
 }
