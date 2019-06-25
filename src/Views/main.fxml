@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="bpMain" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.201" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.MainController">
+<BorderPane fx:id="bpMain" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" stylesheets="@../Styles/LightTheme.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.MainController">
    <top>
       <MenuBar fx:id="menuBarTop" BorderPane.alignment="CENTER">
         <menus>
@@ -32,14 +32,14 @@
       </MenuBar>
    </top>
    <left>
-      <VBox fx:id="vbLeft" alignment="CENTER" prefHeight="200.0" prefWidth="100.0" styleClass="background" BorderPane.alignment="CENTER">
+      <VBox fx:id="vbLeft" alignment="TOP_CENTER" prefWidth="150.0" styleClass="side-menu-background" stylesheets="@../Styles/ListCellLight.css" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="btnExpand" alignment="CENTER" contentDisplay="CENTER" minWidth="30" mnemonicParsing="false" onAction="#btnExpandClicked" prefHeight="40.0" prefWidth="140" styleClass="button-expand" text="◀" textAlignment="CENTER" VBox.vgrow="ALWAYS">
+            <Button fx:id="btnExpand" alignment="CENTER" contentDisplay="CENTER" minWidth="30" mnemonicParsing="false" onAction="#btnExpandClicked" prefHeight="40.0" prefWidth="150.0" styleClass="button-expand" text="◀" textAlignment="CENTER" VBox.vgrow="ALWAYS">
                <font>
                   <Font size="18.0" />
                </font>
             </Button>
-            <ListView fx:id="lvNavigation" prefHeight="475.0" prefWidth="140.0" styleClass="list-cell" stylesheets="@../Styles/ListCell.css" />
+            <ListView fx:id="lvNavigation" prefHeight="475.0" prefWidth="140.0" styleClass="list-cell" stylesheets="@../Styles/ListCellLight.css" />
          </children>
       </VBox>
    </left>
