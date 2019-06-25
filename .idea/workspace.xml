@@ -265,11 +265,11 @@
               <item name="Workshop-6-GIT" type="b2602c69:ProjectViewProjectNode" />
               <item name="Workshop-6-GIT" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="DomainEntities" type="462c0819:PsiDirectoryNode" />
+              <item name="Styles" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="Workshop-6" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Workshop-6" type="462c0819:PsiDirectoryNode" />
+              <item name="Workshop-6-GIT" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Workshop-6-GIT" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="Views" type="462c0819:PsiDirectoryNode" />
             </path>
@@ -423,7 +423,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="152934000" />
+    <option name="totallyTimeSpent" value="152967000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -589,13 +589,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_201/javafx-src.zip!/com/sun/glass/ui/win/WinApplication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="113">
-          <caret line="128" column="24" selection-start-line="128" selection-start-column="24" selection-end-line="128" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_201/javafx-src.zip!/javafx/scene/control/TableView.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="113">
@@ -622,14 +615,6 @@
           <caret line="119" column="38" selection-start-line="119" selection-start-column="38" selection-end-line="119" selection-end-column="38" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Views/main.fxml">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="130">
-          <caret line="8" column="35" lean-forward="true" selection-start-line="8" selection-start-column="35" selection-end-line="8" selection-end-column="35" />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/DataAccess/DbConnection.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -762,8 +747,8 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Views/ProductSupplier.fxml">
-      <provider editor-type-id="text-editor" />
       <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
+      <provider editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Controllers/AddProductController.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -788,8 +773,8 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Views/booking.fxml">
-      <provider editor-type-id="text-editor" />
       <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
+      <provider editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/DomainEntities/Booking.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -1042,8 +1027,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Controllers/CustomerController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="30" lean-forward="true" selection-start-line="30" selection-end-line="30" />
+        <state relative-caret-position="7888">
+          <caret line="491" selection-start-line="491" selection-end-line="491" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1078,8 +1063,8 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Views/package.fxml">
-      <provider editor-type-id="text-editor" />
       <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
+      <provider editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Controllers/PackageController.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -1088,6 +1073,22 @@
           <folding>
             <element signature="e#26147#26148#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Views/agency.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="87" selection-start-line="16" selection-start-column="87" selection-end-line="16" selection-end-column="87" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Views/main.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="35" lean-forward="true" selection-start-line="8" selection-start-column="35" selection-end-line="8" selection-end-column="35" />
         </state>
       </provider>
     </entry>
