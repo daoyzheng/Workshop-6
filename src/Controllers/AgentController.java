@@ -16,7 +16,7 @@ import java.util.stream.Stream;
 
 import DataAccessObjects.AgencyManager;
 import DataAccessObjects.AgentManager;
-import DataAccessObjects.PasswordManager;
+//import DataAccessObjects.PasswordManager;
 import DomainEntities.Agency;
 import DomainEntities.Agent;
 import javafx.beans.value.ChangeListener;
@@ -346,14 +346,14 @@ public class AgentController {
     /*******************************    SAVE ITEM      ********************************/
     private void saveItem() {
 
-        try {
-            PasswordManager.testerCreateHashedSaltedPassword();
-            PasswordManager.testerPasswordValidator();
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        } catch (InvalidKeySpecException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            PasswordManager.testerCreateHashedSaltedPassword();
+//            PasswordManager.testerPasswordValidator();
+//        } catch (NoSuchAlgorithmException e) {
+//            e.printStackTrace();
+//        } catch (InvalidKeySpecException e) {
+//            e.printStackTrace();
+//        }
 
         //check if any errors messages are displayed
         int errorCount = 0;

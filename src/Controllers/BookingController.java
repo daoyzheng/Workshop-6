@@ -9,11 +9,9 @@ import java.util.Date;
 import java.util.ResourceBundle;
 
 import DataAccessObjects.*;
-import DomainEntities.Booking;
-import DomainEntities.BookingDetail;
-import DomainEntities.Customer;
+import DomainEntities.*;
+
 import DomainEntities.Package;
-import DomainEntities.TripType;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -136,8 +134,8 @@ public class BookingController {
     @FXML
     private Label lblBookIdError;
 
-    @FXML
-    private ComboBox<TripType> cmbTripType;
+//    @FXML
+//    private ComboBox<TripType> cmbTripType;
 
     @FXML
     private DatePicker pickerBookDate;
@@ -242,11 +240,11 @@ public class BookingController {
         Customer customer = CustomerManager.getCustomerById(selectedB.getCustomerId());
         tfFirstName.setText(customer.getCustFirstName());
         tfLastName.setText(customer.getCustLastName());
-        ArrayList<TripType> list = TripTypeManager.getAllTT();
-        ObservableList<TripType> TTs = FXCollections.observableArrayList(list);
-        cmbTripType.setItems(TTs);
-        String[] tripTypes = {"B", "G", "L"};
-        cmbTripType.getSelectionModel().select(Arrays.asList(tripTypes).indexOf(selectedB.getTripTypeId()));
+//        ArrayList<TripType> list = TripTypeManager.getAllTT();
+//        ObservableList<TripType> TTs = FXCollections.observableArrayList(list);
+//        cmbTripType.setItems(TTs);
+//        String[] tripTypes = {"B", "G", "L"};
+//        cmbTripType.getSelectionModel().select(Arrays.asList(tripTypes).indexOf(selectedB.getTripTypeId()));
         Package bookedPackge = PackageManager.getPackageById(selectedB.getPackageId());
         tfPackage.setText(bookedPackge==null ? "N/A" : bookedPackge.getPkgName());
 

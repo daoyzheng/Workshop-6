@@ -7,6 +7,8 @@ public class TripType {
     private SimpleStringProperty tripTypeId;
     private SimpleStringProperty tTName;
 
+    public TripType() {}
+
     // constructor
     public TripType(String tripTypeId, String tTName) {
         this.tripTypeId = new SimpleStringProperty(tripTypeId);
