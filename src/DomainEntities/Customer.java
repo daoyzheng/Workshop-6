@@ -7,11 +7,8 @@ Date: May, 2019
 
 package DomainEntities;
 
-import DataAccessObjects.AgentManager;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
-
-import java.util.Objects;
 
 
 public class Customer {
@@ -31,7 +28,6 @@ public class Customer {
     private SimpleStringProperty custUserName;
     private SimpleStringProperty custPassword;
     private SimpleIntegerProperty agentId;
-    private SimpleStringProperty agentName;
 
 
     //constructors
@@ -53,14 +49,6 @@ public class Customer {
         this.custUserName = new SimpleStringProperty(custUserName);
         this.custPassword = new SimpleStringProperty(custPassword);
         this.agentId = new SimpleIntegerProperty(agentId);
-
-        //if agentId not null, get the agent name and populate the AgentName property
-        String aName = "";
-        if (!Objects.equals(agentId, null)) {
-            Agent a = AgentManager.getAgentById(getAgentId());
-            aName = a.toString();
-        }
-        this.agentName = new SimpleStringProperty(aName);
     }
 
     public int getCustomerId() {
@@ -228,31 +216,7 @@ public class Customer {
     }
 
     public void setAgentId(int agentId) {
-
         this.agentId.set(agentId);
-        String aName = "";
-        if (!Objects.equals(agentId, null)) {
-            Agent a = AgentManager.getAgentById(getAgentId());
-            aName = a.toString();
-        }
-        this.agentName = new SimpleStringProperty(aName);
-    }
-
-    public String getAgentName() {
-        return agentName.get();
-    }
-
-    public SimpleStringProperty agentNameProperty() {
-        return agentName;
-    }
-
-    public void setAgentName(String agentName) {
-        if (Objects.equals(getAgentId(), null)) {
-            this.agentName.set("");
-        } else {
-            Agent a = AgentManager.getAgentById(getAgentId());
-            this.agentName.set(a.toString());
-        }
     }
 
     //methods
