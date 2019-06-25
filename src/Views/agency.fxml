@@ -16,24 +16,24 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@../Styles/DarkTheme.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.AgencyController">
     <children>
-        <TabPane fx:id="tabpaneMain" prefHeight="461.0" prefWidth="675.0" tabClosingPolicy="UNAVAILABLE" tabMaxHeight="0.0" tabMaxWidth="0.0">
+        <TabPane fx:id="tabpaneMain" tabClosingPolicy="UNAVAILABLE" tabMaxHeight="0.0" tabMaxWidth="0.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
             <tabs>
                 <Tab fx:id="tabNav" closable="false">
                     <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="390.0" prefWidth="623.0">
+                        <AnchorPane minHeight="0.0" minWidth="0.0">
                             <children>
-                                <AnchorPane layoutX="7.0" prefHeight="436.0" prefWidth="675.0">
+                                <AnchorPane layoutX="7.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
                                     <children>
-                                        <TableView fx:id="tvNavTable" layoutX="5.0" layoutY="66.0" prefHeight="364.0" prefWidth="656.0">
+                                        <TableView fx:id="tvNavTable" layoutX="5.0" layoutY="66.0" prefHeight="364.0" prefWidth="656.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="80.0">
                                             <columns>
-                                                <TableColumn fx:id="colAgencyId" prefWidth="45.0" text="ID" />
-                                                <TableColumn fx:id="colAgncyAddress" prefWidth="105.0" text="Address" />
-                                                <TableColumn fx:id="colAgncyCity" prefWidth="75.0" text="City" />
-                                                <TableColumn fx:id="colAgncyProv" prefWidth="75.0" text="Prov" />
-                                                <TableColumn fx:id="colAgncyPostal" prefWidth="67.0" text="Postal" />
-                                                <TableColumn fx:id="colAgncyCountry" prefWidth="114.0" text="Country" />
-                                                <TableColumn fx:id="colAgncyPhone" prefWidth="75.0" text="Phone" />
-                                                <TableColumn fx:id="colAgncyFax" prefWidth="48.0" text="Fax" />
+                                                <TableColumn fx:id="colAgencyId" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="50.0" text="ID" />
+                                                <TableColumn fx:id="colAgncyAddress" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="125.0" text="Address" />
+                                                <TableColumn fx:id="colAgncyCity" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="125.0" text="City" />
+                                                <TableColumn fx:id="colAgncyProv" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="50.0" text="Prov" />
+                                                <TableColumn fx:id="colAgncyPostal" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="70.0" text="Postal" />
+                                                <TableColumn fx:id="colAgncyCountry" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="125.0" text="Country" />
+                                                <TableColumn fx:id="colAgncyPhone" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="125.0" text="Phone" />
+                                                <TableColumn fx:id="colAgncyFax" maxWidth="1.7976931348623157E308" minWidth="-Infinity" prefWidth="125.0" text="Fax" />
                                             </columns>
                                         </TableView>
                                         <HBox layoutX="6.0" layoutY="7.0" prefHeight="38.0" prefWidth="652.0" spacing="10.0">
