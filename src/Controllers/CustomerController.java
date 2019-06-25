@@ -52,7 +52,7 @@ public class CustomerController {
     @FXML private TableColumn<Customer, String> colCustEmail;
     @FXML private TableColumn<Customer, String> colCustUserName;
     @FXML private TableColumn<Customer, String> colCustPassword;
-    @FXML private TableColumn<Customer, Integer> colAgentId;
+    @FXML private TableColumn<Customer, String> colAgentId;
     @FXML private Button btnNavAdd;
     @FXML private Button btnNavEdit;
     @FXML private TextField tfNavSearch;
@@ -190,7 +190,8 @@ public class CustomerController {
         colCustEmail.setCellValueFactory(cellData -> cellData.getValue().custEmailProperty());
         colCustUserName.setCellValueFactory(cellData -> cellData.getValue().custUserNameProperty());
         colCustPassword.setCellValueFactory(cellData -> cellData.getValue().custPasswordProperty());
-        colAgentId.setCellValueFactory(cellData -> cellData.getValue().agentIdProperty().asObject());
+//        colAgentId.setCellValueFactory(cellData -> cellData.getValue().agentIdProperty().asObject());
+        colAgentId.setCellValueFactory(cellData -> cellData.getValue().agentNameProperty());
 
         setNavigateMode();
 
@@ -218,6 +219,9 @@ public class CustomerController {
         navTableArrayList = CustomerManager.getAllCustomers();
         ObservableList<Customer> data = FXCollections.observableArrayList(navTableArrayList);
         tvNavTable.setItems(data);
+
+        SelectionModel<Customer> selectionModel = tvNavTable.getSelectionModel();
+        selectionModel.selectFirst();
     }
 
     //*******************************     EDIT MODE      ********************************//
@@ -239,6 +243,12 @@ public class CustomerController {
     private void setNewMode() {
         formMode = "New";
         tfCustomerId.setVisible(false);
+
+        //refresh the Agency Combobox data source
+        ArrayList<Agent> agents = AgentManager.getAllAgents();
+        ObservableList<Agent> obsList = FXCollections.observableArrayList(agents);
+        cboAgentId.setItems(obsList);
+
         cboAgentId.setValue(null);
         clearDetailErrorMessages();
         clearDetailForm();
