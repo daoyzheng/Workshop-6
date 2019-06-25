@@ -76,7 +76,6 @@ public class AgentManager {
                         rs.getString(9),
                         Integer.parseInt(rs.getString(10)));
             }
-            System.out.println("closing conn");
             conn.close();
 
 
@@ -94,38 +93,6 @@ public class AgentManager {
         }
     }
 
-
-    //retrieve a customer from database based on ID
-    public static int getAgentMaxId() {
-        int maxId = 0;
-
-        try {
-            //create DB connection
-            Connection conn =  DbConnection.getConnection();
-            //create statement
-            Statement stmt = conn.createStatement();
-
-            //query database
-            ResultSet rs = stmt.executeQuery("SELECT MAX(AgentId) FROM agents");
-
-            //create Array list to capture data from DB query rs
-            while (rs.next()) {
-                System.out.println(rs.getInt(1));
-            }
-            conn.close();
-
-        }
-        catch (ClassNotFoundException e) {
-            e.printStackTrace();
-            System.out.println("class not found exception");
-        }
-        catch (SQLException e) {
-            e.printStackTrace();
-        }
-
-        return maxId;
-    }
-
     //add a new Agent to the database, returns true if successful
     public static int addAgent(Agent newAgent) throws SQLException, ClassNotFoundException {
         int newAgtId = 0;
@@ -141,8 +108,6 @@ public class AgentManager {
                 "AgtPassword, " +
                 "AgencyId) " +
                 "VALUES (?,?,?,?,?,?,?,?,?)";
-
-        System.out.println(sql);
 
         try {
             Connection conn = DbConnection.getConnection();
@@ -206,7 +171,6 @@ public class AgentManager {
                 "AgencyId=? " +
                 "where AgentId=?";
 
-        System.out.println(sql);
         boolean result = false;
         try {
 
@@ -261,19 +225,17 @@ public class AgentManager {
             //create statement
             Statement stmt = conn.createStatement();
             String sql = "SELECT COUNT(AgtUserName) As rowcount FROM agents WHERE AgtUserName='" + username + "'";
-            System.out.println(sql);
-            System.out.println("username");
+
             //query database
             ResultSet rs = stmt.executeQuery(sql);
 
             if(rs.last()){
                 result = rs.getInt(1);
-                System.out.println(result + "");
             } else {
                 result = 0;
             }
 
-           conn.close();
+            conn.close();
         }
         catch (ClassNotFoundException e) {
             e.printStackTrace();

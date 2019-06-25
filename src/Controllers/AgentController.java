@@ -3,6 +3,10 @@ package Controllers;
 import java.awt.*;
 import java.io.IOException;
 import java.net.URL;
+import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
+import java.security.spec.InvalidKeySpecException;
+import java.security.spec.KeySpec;
 import java.sql.SQLException;
 import java.util.*;
 import java.util.List;
@@ -12,6 +16,7 @@ import java.util.stream.Stream;
 
 import DataAccessObjects.AgencyManager;
 import DataAccessObjects.AgentManager;
+import DataAccessObjects.PasswordManager;
 import DomainEntities.Agency;
 import DomainEntities.Agent;
 import javafx.beans.value.ChangeListener;
@@ -35,6 +40,8 @@ import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
+import javax.crypto.SecretKeyFactory;
+import javax.crypto.spec.PBEKeySpec;
 import javax.swing.*;
 
 public class AgentController {
@@ -67,7 +74,7 @@ public class AgentController {
     @FXML private TableColumn<Agent, String> colAgtPosition;
     @FXML private TableColumn<Agent, String> colAgtUsername;
     @FXML private TableColumn<Agent, String> colAgtPassword;
-    @FXML private TableColumn<Agent, Integer> colAgencyId;
+    @FXML private TableColumn<Agent, String> colAgencyId;
 
 
     //Detail tab controls
@@ -120,7 +127,7 @@ public class AgentController {
 
     @FXML
     void btnDetailSaveClicked(MouseEvent event) {
-       saveItem();
+        saveItem();
     }
 
     @FXML
@@ -139,7 +146,7 @@ public class AgentController {
     @FXML
     void btnDetailUndoClicked(MouseEvent event) {
         //refresh all input controls with "currentAgent" data
-         loadItemDetail(currentAgent);
+        loadItemDetail(currentAgent);
     }
 
     @FXML
@@ -202,7 +209,8 @@ public class AgentController {
         colAgtPosition.setCellValueFactory(cellData -> cellData.getValue().agtEmailProperty());
         colAgtUsername.setCellValueFactory(cellData -> cellData.getValue().agtUserNameProperty());
         colAgtPassword.setCellValueFactory(cellData -> cellData.getValue().agtPositionProperty());
-        colAgencyId.setCellValueFactory(cellData -> cellData.getValue().agencyIdProperty().asObject());
+//        colAgencyId.setCellValueFactory(cellData -> cellData.getValue().agencyIdProperty().asObject());
+        colAgencyId.setCellValueFactory(cellData -> cellData.getValue().agencyLocationProperty());
 
         setNavigateMode();
 
@@ -220,7 +228,7 @@ public class AgentController {
         setupFocusListenerTfAgtEmail(); //Email is valid email
         setupFocusListenerTfAgtBusPhone();  //phone is (###) ###-#### format
         setupFocusListenerTfAgtUsername();  //Username is unique
-     }
+    }
 
     //*******************************     NAVIGATE MODE      ********************************//
 
@@ -229,6 +237,8 @@ public class AgentController {
         navTableArrayList = AgentManager.getAllAgents();
         ObservableList<Agent> data = FXCollections.observableArrayList(navTableArrayList);
         tvNavTable.setItems(data);
+        SelectionModel<Agent> selectionModel = tvNavTable.getSelectionModel();
+        selectionModel.selectFirst();
     }
 
     //*******************************     EDIT MODE      ********************************//
@@ -247,6 +257,12 @@ public class AgentController {
     private void setNewMode() {
         formMode = "New";
         tfAgentId.setVisible(false);
+        //load
+
+        ArrayList<Agency> agencies = AgencyManager.getAllAgencies();
+        ObservableList<Agency> obsList = FXCollections.observableArrayList(agencies);
+        cboAgencyId.setItems(obsList);
+
         cboAgencyId.setValue(null);
         clearDetailErrorMessages();
         clearDetailForm();
@@ -297,7 +313,7 @@ public class AgentController {
 
     private void loadItemDetail(Agent a) {
 
-         //populate controls with data
+        //populate controls with data
         tfAgentId.setText(String.valueOf(a.getAgentId()));
         tfFname.setText(a.getAgtFirstName());
         tfMinitial.setText(a.getAgtMiddleInitial());
@@ -327,9 +343,17 @@ public class AgentController {
     }
 
 
-
     /*******************************    SAVE ITEM      ********************************/
     private void saveItem() {
+
+        try {
+            PasswordManager.testerCreateHashedSaltedPassword();
+            PasswordManager.testerPasswordValidator();
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        } catch (InvalidKeySpecException e) {
+            e.printStackTrace();
+        }
 
         //check if any errors messages are displayed
         int errorCount = 0;
@@ -348,7 +372,7 @@ public class AgentController {
             }
         }
 
-         //test if form is in new mode, if true set ID = 0 as temp value
+        //test if form is in new mode, if true set ID = 0 as temp value
         if (errorCount == 0) {
             if (formMode.equals("New")) {
 
