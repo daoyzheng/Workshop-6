@@ -2,12 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d54214f6-0d71-4717-81a4-e647c8cdc3be" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Workshop-6/Views/agency.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Workshop-6/Views/agency.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Styles/LightTheme.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/Styles/LightTheme.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Views/agency.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/agency.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Views/agent.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/agent.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Views/customer.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/customer.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controllers/ProductSupplierController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/ProductSupplierController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Views/ProductSupplier.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/ProductSupplier.fxml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -20,12 +16,18 @@
     <option name="isMigrated" value="true" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+    <leaf>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Styles/LightTheme.css">
+        <entry file="file://$PROJECT_DIR$/src/Views/ProductSupplier.fxml">
+          <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
+          <provider editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Controllers/ProductSupplierController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="114" column="15" lean-forward="true" selection-start-line="114" selection-start-column="15" selection-end-line="114" selection-end-column="15" />
+            <state relative-caret-position="148">
+              <caret line="111" selection-start-line="111" selection-end-line="111" />
             </state>
           </provider>
         </entry>
@@ -142,7 +144,6 @@
         <option value="$PROJECT_DIR$/src/DataAccessObjects/ProductSupplierManager.java" />
         <option value="$PROJECT_DIR$/src/Controllers/AddSupplierController.java" />
         <option value="$PROJECT_DIR$/src/Controllers/AddProductController.java" />
-        <option value="$PROJECT_DIR$/src/Controllers/ProductSupplierController.java" />
         <option value="$PROJECT_DIR$/src/DomainEntities/BookingDetail.java" />
         <option value="$PROJECT_DIR$/src/DataAccessObjects/BookingDetailManager.java" />
         <option value="$PROJECT_DIR$/src/DataAccessObjects/PackageManager.java" />
@@ -154,6 +155,8 @@
         <option value="$PROJECT_DIR$/src/Controllers/AgentController.java" />
         <option value="$PROJECT_DIR$/src/Controllers/AgencyController.java" />
         <option value="$PROJECT_DIR$/src/Styles/LightTheme.css" />
+        <option value="$PROJECT_DIR$/src/Controllers/ProductSupplierController.java" />
+        <option value="$PROJECT_DIR$/src/Views/ProductSupplier.fxml" />
       </list>
     </option>
   </component>
@@ -190,47 +193,17 @@
         <subPane>
           <expand>
             <path>
-              <item name="Workshop-6-GIT" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Workshop-6-GIT" type="462c0819:PsiDirectoryNode" />
+              <item name="Workshop-6" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Workshop-6" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="Workshop-6-GIT" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Workshop-6-GIT" type="462c0819:PsiDirectoryNode" />
+              <item name="Workshop-6" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Workshop-6" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="Workshop-6-GIT" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Workshop-6-GIT" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Controllers" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Workshop-6-GIT" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Workshop-6-GIT" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="DataAccess" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Workshop-6-GIT" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Workshop-6-GIT" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="DataAccessObjects" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Workshop-6-GIT" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Workshop-6-GIT" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="DomainEntities" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Workshop-6-GIT" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Workshop-6-GIT" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Styles" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Workshop-6-GIT" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Workshop-6-GIT" type="462c0819:PsiDirectoryNode" />
+              <item name="Workshop-6" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Workshop-6" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="Views" type="462c0819:PsiDirectoryNode" />
             </path>
@@ -385,7 +358,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="156513000" />
+    <option name="totallyTimeSpent" value="157677000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -398,8 +371,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24886535" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24886535" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -408,7 +382,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info id="Learn" order="7" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Run" order="1" sideWeight="0.49848714" weight="0.21276596" />
+      <window_info anchor="bottom" id="Run" order="1" sideWeight="0.49848714" visible="true" weight="0.47463176" />
       <window_info anchor="bottom" id="Debug" order="2" weight="0.30114567" />
       <window_info anchor="bottom" id="Cvs" order="3" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="4" weight="0.4" />
@@ -531,13 +505,13 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/DataAccessObjects/PackageManager.java</url>
-          <line>132</line>
+          <line>187</line>
           <properties />
           <option name="timeStamp" value="22" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/DataAccessObjects/PackageManager.java</url>
-          <line>137</line>
+          <line>207</line>
           <properties />
           <option name="timeStamp" value="23" />
         </line-breakpoint>
@@ -649,10 +623,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Views/ProductSupplier.fxml">
-      <provider editor-type-id="text-editor" />
-      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Controllers/AddProductController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="688">
@@ -676,8 +646,8 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Views/booking.fxml">
-      <provider editor-type-id="text-editor" />
       <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
+      <provider editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/DomainEntities/Booking.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -787,12 +757,12 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Views/customer.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="207">
           <caret line="269" column="16" selection-start-line="269" selection-start-column="16" selection-end-line="269" selection-end-column="16" />
         </state>
       </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/DataAccessObjects/PasswordManager.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -842,8 +812,8 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Views/package.fxml">
-      <provider editor-type-id="text-editor" />
       <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
+      <provider editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Controllers/PackageController.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -856,12 +826,12 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Views/main.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="6" column="40" selection-start-line="6" selection-start-column="40" selection-end-line="6" selection-end-column="40" />
         </state>
       </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Controllers/MainController.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -970,13 +940,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controllers/ProductSupplierController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="115" column="33" lean-forward="true" selection-start-line="115" selection-start-column="33" selection-end-line="115" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Controllers/AgencyController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -992,20 +955,20 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Views/agency.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-2023">
           <caret line="15" column="45" lean-forward="true" selection-start-line="15" selection-start-column="45" selection-end-line="15" selection-end-column="45" />
         </state>
       </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Views/agent.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1193">
           <caret line="142" column="74" lean-forward="true" selection-start-line="142" selection-start-column="74" selection-end-line="142" selection-end-column="74" />
         </state>
       </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Controllers/AgentController.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -1040,6 +1003,17 @@
           <caret line="114" column="15" lean-forward="true" selection-start-line="114" selection-start-column="15" selection-end-line="114" selection-end-column="15" />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controllers/ProductSupplierController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="148">
+          <caret line="111" selection-start-line="111" selection-end-line="111" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Views/ProductSupplier.fxml">
+      <provider selected="true" editor-type-id="JavaFX-Scene-Builder" />
+      <provider editor-type-id="text-editor" />
     </entry>
   </component>
   <component name="masterDetails">

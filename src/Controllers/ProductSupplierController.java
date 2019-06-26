@@ -107,7 +107,9 @@ public class ProductSupplierController {
         // Pass current list view array to addSupplierController
         controller.setSelectedSuppliers(lvSupplier.getItems());
         // Set label text
-        controller.getLabelProd().setText(selectedProd.getProdName());
+        if (selectedProd != null) {
+            controller.getLabelProd().setText(selectedProd.getProdName());
+        }
         // Pass fxmlLoader
         controller.setLvSupplier(lvSupplier);
 
