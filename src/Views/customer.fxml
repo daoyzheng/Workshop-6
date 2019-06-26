@@ -180,67 +180,67 @@
                                                 <Insets bottom="5.0" left="20.0" right="5.0" top="5.0" />
                                              </GridPane.margin>
                                           </Label>
-                                          <TextField fx:id="tfCustomerId" disable="true" editable="false" styleClass="DetailInput" GridPane.columnIndex="1">
+                                          <TextField fx:id="tfCustomerId" disable="true" editable="false" maxWidth="300.0" styleClass="DetailInput" GridPane.columnIndex="1">
                                              <GridPane.margin>
                                                 <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                              </GridPane.margin>
                                           </TextField>
-                                          <TextField fx:id="tfFname" styleClass="DetailInput" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                          <TextField fx:id="tfFname" maxWidth="300.0" styleClass="DetailInput" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                              <GridPane.margin>
                                                 <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                              </GridPane.margin>
                                           </TextField>
-                                          <TextField fx:id="tfLname" styleClass="DetailInput" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                          <TextField fx:id="tfLname" maxWidth="300.0" styleClass="DetailInput" GridPane.columnIndex="1" GridPane.rowIndex="2">
                                              <GridPane.margin>
                                                 <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                              </GridPane.margin>
                                           </TextField>
-                                          <TextField fx:id="tfAddress" styleClass="DetailInput" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                          <TextField fx:id="tfAddress" maxWidth="300.0" styleClass="DetailInput" GridPane.columnIndex="1" GridPane.rowIndex="3">
                                              <GridPane.margin>
                                                 <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                              </GridPane.margin>
                                           </TextField>
-                                          <TextField fx:id="tfCity" styleClass="DetailInput" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                          <TextField fx:id="tfCity" maxWidth="300.0" styleClass="DetailInput" GridPane.columnIndex="1" GridPane.rowIndex="4">
                                              <GridPane.margin>
                                                 <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                              </GridPane.margin>
                                           </TextField>
-                                          <TextField fx:id="tfProv" styleClass="DetailInput" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                                          <TextField fx:id="tfProv" maxWidth="300.0" styleClass="DetailInput" GridPane.columnIndex="1" GridPane.rowIndex="5">
                                              <GridPane.margin>
                                                 <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                              </GridPane.margin>
                                           </TextField>
-                                          <TextField fx:id="tfPostal" styleClass="DetailInput" GridPane.columnIndex="1" GridPane.rowIndex="6">
+                                          <TextField fx:id="tfPostal" maxWidth="300.0" styleClass="DetailInput" GridPane.columnIndex="1" GridPane.rowIndex="6">
                                              <GridPane.margin>
                                                 <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                              </GridPane.margin>
                                           </TextField>
-                                          <TextField fx:id="tfCountry" styleClass="DetailInput" GridPane.columnIndex="1" GridPane.rowIndex="7">
+                                          <TextField fx:id="tfCountry" maxWidth="300.0" styleClass="DetailInput" GridPane.columnIndex="1" GridPane.rowIndex="7">
                                              <GridPane.margin>
                                                 <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                              </GridPane.margin>
                                           </TextField>
-                                          <TextField fx:id="tfPhoneHome" styleClass="DetailInput" GridPane.columnIndex="1" GridPane.rowIndex="8">
+                                          <TextField fx:id="tfPhoneHome" maxWidth="300.0" styleClass="DetailInput" GridPane.columnIndex="1" GridPane.rowIndex="8">
                                              <GridPane.margin>
                                                 <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                              </GridPane.margin>
                                           </TextField>
-                                          <TextField fx:id="tfPhoneBus" styleClass="DetailInput" GridPane.columnIndex="1" GridPane.rowIndex="9">
+                                          <TextField fx:id="tfPhoneBus" maxWidth="300.0" styleClass="DetailInput" GridPane.columnIndex="1" GridPane.rowIndex="9">
                                              <GridPane.margin>
                                                 <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                              </GridPane.margin>
                                           </TextField>
-                                          <TextField fx:id="tfEmail" GridPane.columnIndex="1" GridPane.rowIndex="10">
+                                          <TextField fx:id="tfEmail" maxWidth="300.0" GridPane.columnIndex="1" GridPane.rowIndex="10">
                                              <GridPane.margin>
                                                 <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                              </GridPane.margin>
                                           </TextField>
-                                          <TextField fx:id="tfUsername" GridPane.columnIndex="1" GridPane.rowIndex="11">
+                                          <TextField fx:id="tfUsername" maxWidth="300.0" GridPane.columnIndex="1" GridPane.rowIndex="11">
                                              <GridPane.margin>
                                                 <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                              </GridPane.margin>
                                           </TextField>
-                                          <TextField fx:id="tfPassword" GridPane.columnIndex="1" GridPane.rowIndex="12">
+                                          <TextField fx:id="tfPassword" maxWidth="300.0" GridPane.columnIndex="1" GridPane.rowIndex="12">
                                              <GridPane.margin>
                                                 <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                              </GridPane.margin>
@@ -258,7 +258,7 @@
                                           <Label fx:id="lbErrorCustUsername" styleClass="DetailError" text="[error msg]" GridPane.columnIndex="2" GridPane.rowIndex="11" />
                                           <Label fx:id="lbErrorCustPassword" styleClass="DetailError" text="[error msg]" GridPane.columnIndex="2" GridPane.rowIndex="12" />
                                           <Label fx:id="lbErrorCustAgentId" styleClass="DetailError" text="[error msg]" GridPane.columnIndex="2" GridPane.rowIndex="13" />
-                                          <ComboBox fx:id="cboAgentId" GridPane.columnIndex="1" GridPane.rowIndex="13">
+                                          <ComboBox fx:id="cboAgentId" maxWidth="300.0" GridPane.columnIndex="1" GridPane.rowIndex="13">
                                              <GridPane.margin>
                                                 <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                              </GridPane.margin>
