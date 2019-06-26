@@ -18,7 +18,7 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.CustomerController">
    <children>
-      <TabPane fx:id="tabpaneMain" tabClosingPolicy="UNAVAILABLE" tabMaxHeight="0.0" tabMaxWidth="0.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+      <TabPane fx:id="tabpaneMain" styleClass="background" tabClosingPolicy="UNAVAILABLE" tabMaxHeight="0.0" tabMaxWidth="0.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
          <tabs>
             <Tab fx:id="tabNav" closable="false">
                <content>
@@ -61,13 +61,13 @@
                   </AnchorPane>
                </content>
             </Tab>
-            <Tab fx:id="tabDetail" closable="false">
+            <Tab fx:id="tabDetail" closable="false" styleClass="background">
                <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="397.0" prefWidth="675.0">
+                  <AnchorPane minHeight="0.0" minWidth="0.0" styleClass="background">
                      <children>
-                        <ScrollPane AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+                        <ScrollPane styleClass="background" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
                           <content>
-                            <AnchorPane minHeight="0.0" minWidth="0.0">
+                            <AnchorPane minHeight="0.0" minWidth="0.0" styleClass="background">
                                  <children>
                                     <HBox prefHeight="41.0" prefWidth="675.0" spacing="20.0">
                                        <children>
@@ -258,7 +258,7 @@
                                           <Label fx:id="lbErrorCustUsername" styleClass="DetailError" text="[error msg]" GridPane.columnIndex="2" GridPane.rowIndex="11" />
                                           <Label fx:id="lbErrorCustPassword" styleClass="DetailError" text="[error msg]" GridPane.columnIndex="2" GridPane.rowIndex="12" />
                                           <Label fx:id="lbErrorCustAgentId" styleClass="DetailError" text="[error msg]" GridPane.columnIndex="2" GridPane.rowIndex="13" />
-                                          <ComboBox fx:id="cboAgentId" prefHeight="25.0" prefWidth="249.0" GridPane.columnIndex="1" GridPane.rowIndex="13">
+                                          <ComboBox fx:id="cboAgentId" GridPane.columnIndex="1" GridPane.rowIndex="13">
                                              <GridPane.margin>
                                                 <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                              </GridPane.margin>

@@ -15,9 +15,9 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.AgencyController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #fefefe;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.AgencyController">
     <children>
-        <TabPane fx:id="tabpaneMain" tabClosingPolicy="UNAVAILABLE" tabMaxHeight="0.0" tabMaxWidth="0.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+        <TabPane fx:id="tabpaneMain" styleClass="background" tabClosingPolicy="UNAVAILABLE" tabMaxHeight="0.0" tabMaxWidth="0.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
             <tabs>
                 <Tab fx:id="tabNav" closable="false">
                     <content>
@@ -54,13 +54,13 @@
                         </AnchorPane>
                     </content>
                 </Tab>
-                <Tab fx:id="tabDetail" closable="false">
+                <Tab fx:id="tabDetail" closable="false" styleClass="background">
                     <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="397.0" prefWidth="675.0">
+                        <AnchorPane styleClass="background">
                             <children>
-                        <ScrollPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <ScrollPane fitToHeight="true" fitToWidth="true" styleClass="background" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
                           <content>
-                            <AnchorPane minHeight="0.0" minWidth="0.0">
+                            <AnchorPane minHeight="0.0" minWidth="0.0" styleClass="background">
                                  <children>
                                             <HBox prefHeight="41.0" prefWidth="675.0" spacing="20.0">
                                                 <children>

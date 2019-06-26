@@ -1,5 +1,5 @@
 .background {
-    -fx-background-color: #f2f2f6;
+    -fx-background-color: #fefefe;
 }
 
 .tab-pane {
@@ -15,6 +15,14 @@
     -fx-padding: 1 0 0 0;
 }
 
+.scroll-pane {
+    -fx-background-color: #fefefe;
+
+}
+
+.anchor-pane {
+    -fx-background-color: #fefefe;
+}
 
 
 
@@ -123,9 +131,9 @@
     -fx-font-family: "Segoe UI Semibold";
     -fx-text-fill: #525252;
     -fx-background-color: #FEFEFE;
+    -fx-border-color: rgba(207, 207, 210, 0.7);
     /*-fx-opacity: 0.6;*/
 }
-
 
 
 

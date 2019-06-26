@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d54214f6-0d71-4717-81a4-e647c8cdc3be" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/Controllers/AgencyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/AgencyController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controllers/AgentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/AgentController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controllers/CustomerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controllers/CustomerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Workshop-6/Views/agency.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Workshop-6/Views/agency.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Styles/LightTheme.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/Styles/LightTheme.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Views/agency.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/agency.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Views/agent.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/agent.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Views/customer.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/Views/customer.fxml" afterDir="false" />
@@ -22,10 +22,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Controllers/BookingController.java">
+        <entry file="file://$PROJECT_DIR$/src/Styles/LightTheme.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="12" column="30" lean-forward="true" selection-start-line="12" selection-start-column="30" selection-end-line="12" selection-end-column="30" />
+            <state relative-caret-position="102">
+              <caret line="114" column="15" lean-forward="true" selection-start-line="114" selection-start-column="15" selection-end-line="114" selection-end-column="15" />
             </state>
           </provider>
         </entry>
@@ -153,6 +153,7 @@
         <option value="$PROJECT_DIR$/src/Controllers/CustomerController.java" />
         <option value="$PROJECT_DIR$/src/Controllers/AgentController.java" />
         <option value="$PROJECT_DIR$/src/Controllers/AgencyController.java" />
+        <option value="$PROJECT_DIR$/src/Styles/LightTheme.css" />
       </list>
     </option>
   </component>
@@ -184,7 +185,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
@@ -238,6 +238,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -328,6 +329,8 @@
       <workItem from="1560192687326" duration="3861000" />
       <workItem from="1560624561698" duration="2832000" />
       <workItem from="1561475463379" duration="1675000" />
+      <workItem from="1561551877756" duration="468000" />
+      <workItem from="1561556445871" duration="1150000" />
     </task>
     <task id="LOCAL-00001" summary="Remove product, supplier and product supplier interface. Rename file from Data Access Object (DAO) to Manager">
       <created>1558154500962</created>
@@ -382,7 +385,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="154895000" />
+    <option name="totallyTimeSpent" value="156513000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -395,9 +398,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24130106" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24886535" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -406,7 +408,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info id="Learn" order="7" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Run" order="1" sideWeight="0.49848714" visible="true" weight="0.21276596" />
+      <window_info anchor="bottom" id="Run" order="1" sideWeight="0.49848714" weight="0.21276596" />
       <window_info anchor="bottom" id="Debug" order="2" weight="0.30114567" />
       <window_info anchor="bottom" id="Cvs" order="3" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="4" weight="0.4" />
@@ -548,13 +550,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/DomainEntities/PackageProductSupplier.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="14" column="44" lean-forward="true" selection-start-line="14" selection-start-column="44" selection-end-line="14" selection-end-column="44" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/DataAccessObjects/CustomerManager.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="331">
@@ -1035,7 +1030,14 @@
     <entry file="file://$PROJECT_DIR$/src/Controllers/BookingController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
-          <caret line="12" column="30" lean-forward="true" selection-start-line="12" selection-start-column="30" selection-end-line="12" selection-end-column="30" />
+          <caret line="12" column="30" selection-start-line="12" selection-start-column="30" selection-end-line="12" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Styles/LightTheme.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="114" column="15" lean-forward="true" selection-start-line="114" selection-start-column="15" selection-end-line="114" selection-end-column="15" />
         </state>
       </provider>
     </entry>
