@@ -1,3 +1,9 @@
+/*
+Purpose: To manage the agency CRUD operations
+Author: Stuart Peters
+Date: June 2019
+ */
+
 package DataAccessObjects;
 
 import DataAccess.DbConnection;

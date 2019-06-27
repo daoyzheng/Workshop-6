@@ -1,3 +1,9 @@
+/*
+Purpose: To manage the customer view and interactions with the data access objects
+Author: Stuart Peters
+Date: June 2019
+ */
+
 package Controllers;
 
 import java.net.URL;

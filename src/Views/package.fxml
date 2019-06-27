@@ -99,7 +99,7 @@
                                     <Region />
                                     <Button id="btnSaveClose" fx:id="btnEditSaveBack" mnemonicParsing="false" onMouseClicked="#btnEditSaveBackClicked" prefHeight="0.0" prefWidth="200.0" text="Save &amp; Back" />
                                     <Region />
-                                    <Button id="btnSaveEdit" fx:id="btnEditSaveEdit" mnemonicParsing="false" onMouseClicked="#btnEditSaveEditClicked" prefHeight="0.0" prefWidth="200.0" text="Save &amp; Edit Product-Supplier" />
+                                    <Button id="btnSaveEdit" fx:id="btnEditSaveEdit" mnemonicParsing="false" onMouseClicked="#btnEditSaveEditClicked" prefHeight="0.0" prefWidth="260.0" text="Save &amp; Edit Product-Supplier" />
                                     <Region />
                                     <Button id="btnUndo" fx:id="btnEditUndo" mnemonicParsing="false" onMouseClicked="#btnEditUndoClicked" prefHeight="0.0" prefWidth="200.0" text="Undo changes" />
                                  </children>
@@ -268,7 +268,7 @@
                                     <Region />
                                     <Button fx:id="btnAddSaveBack" disable="true" mnemonicParsing="false" onMouseClicked="#btnAddSaveBackClicked" prefHeight="0.0" prefWidth="200.0" text="Save &amp; Back" />
                                     <Region />
-                                    <Button fx:id="btnAddSaveAdd" disable="true" mnemonicParsing="false" onMouseClicked="#btnAddSaveAddClicked" prefHeight="0.0" prefWidth="200.0" text="Save &amp; Add Product-Supplier" />
+                                    <Button fx:id="btnAddSaveAdd" disable="true" mnemonicParsing="false" onMouseClicked="#btnAddSaveAddClicked" prefHeight="0.0" prefWidth="260.0" text="Save &amp; Add Product-Supplier" />
                                     <Region />
                                     <Button fx:id="btnAddReset" mnemonicParsing="false" onMouseClicked="#btnAddResetClicked" prefHeight="0.0" prefWidth="200.0" text="Reset" />
                                  </children>

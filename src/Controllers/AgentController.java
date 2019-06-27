@@ -1,3 +1,9 @@
+/*
+Purpose: To manage the Agent view and interactions with the data access objects
+Author: Stuart Peters
+Date: June 2019
+ */
+
 package Controllers;
 
 import java.awt.*;

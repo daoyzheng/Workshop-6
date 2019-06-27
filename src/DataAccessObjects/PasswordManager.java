@@ -1,3 +1,9 @@
+/*
+Purpose: To manage hashing of password - note: this wasn't implemented
+Author: Stuart Peters
+Date: June 2019
+ */
+
 package DataAccessObjects;
 
 import javax.crypto.SecretKeyFactory;

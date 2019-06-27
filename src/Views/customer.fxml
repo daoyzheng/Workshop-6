@@ -241,7 +241,7 @@
                                                 <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                              </GridPane.margin>
                                           </TextField>
-                                          <PasswordField fx:id="tfPassword" GridPane.columnIndex="1" GridPane.rowIndex="12">
+                                          <PasswordField fx:id="tfPassword" maxWidth="300.0" GridPane.columnIndex="1" GridPane.rowIndex="12">
                                              <GridPane.margin>
                                                 <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                              </GridPane.margin>

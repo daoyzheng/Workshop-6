@@ -1,3 +1,9 @@
+/*
+Purpose: To manage the agency CRUD operations
+Author: Stuart Peters
+Date: June 2019
+ */
+
 package DomainEntities;
 
 import javafx.beans.property.SimpleIntegerProperty;
