@@ -70,7 +70,7 @@ public class PackageManager {
     //retrieve a package from database based on ID
     public static Package getPackageById(int id)
     {
-        Package pkg = null;
+        Package pkg = new Package();
         try
         {
             Connection conn = DbConnection.getConnection();

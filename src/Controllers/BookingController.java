@@ -1,10 +1,14 @@
+/*
+Purpose: Controller for booking
+Author:  Daniel Hu
+Date: May-June, 2019
+ */
+
 package Controllers;
 
 import java.net.URL;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.ResourceBundle;
+import java.util.*;
 
 import DataAccessObjects.*;
 import DataAccessObjects.TripTypeManager;
@@ -14,22 +18,30 @@ import DomainEntities.Package;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.*;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
+import javafx.util.StringConverter;
+
+import javax.swing.*;
 
 
 public class BookingController {
 
     // ------- My Props -------
     enum Mode{
-        NAV, EDIT, ADD;
+        NAV, EDIT, ADD
     }
+
+    String[] tripTypes = {"B", "G", "L"};
 
     private Mode currentMode = Mode.NAV;
 
-    private ArrayList<Booking> bookingArrayList;
-    private Booking selectedBooking;
+    private ArrayList<Booking> bookingArrayList = new ArrayList<>();
+    private Booking selectedBooking = null;
 
     // ------- FXML Controls Starts Here -------
 
@@ -84,6 +96,12 @@ public class BookingController {
     // --------- Tab Detail Controls Starts Here -----------
 
     @FXML
+    private Button btnBackToList;
+
+    @FXML
+    private AnchorPane paneDetail;
+
+    @FXML
     private Tab tabDetail;
 
     @FXML
@@ -135,16 +153,25 @@ public class BookingController {
     private Label lblBookIdError;
 
     @FXML
+    private ComboBox<Customer> cmbCustId;
+
+    @FXML
     protected ComboBox<TripType> cmbTripType;
+
+    @FXML
+    private ComboBox<Package> cmbPackage;
 
     @FXML
     private DatePicker pickerBookDate;
 
     @FXML
-    private Button btnSaveDetail;
+    private Button btnGenerateBookNo;
 
     @FXML
-    private Button btnResetDetail;
+    private Button btnSaveBooking;
+
+    @FXML
+    private Button btnDeleteDetail;
 
     @FXML
     private TableView<BookingDetail> tvBookingDetail;
@@ -201,10 +228,15 @@ public class BookingController {
 
 
         // Load data into table
-        bookingArrayList = BookingManager.getAllBookings();
-        ObservableList<Booking> bookings = FXCollections.observableArrayList(bookingArrayList);
-        tvOverviewBooking.setItems(bookings);
+        loadBookingsIntoTable();
+
+        // Load data into TripType & Package combobox
+        loadCmbTripType();
+        loadCmbPackage();
+
     }
+
+
 
     /****************************************************************************
      *
@@ -220,6 +252,62 @@ public class BookingController {
         }
     }
 
+    public void btnAddBookingClicked(){
+        enterAddMode();
+    }
+
+    public void btnBackToListClicked() {
+        tabPaneBooking.getSelectionModel().select(tabOverview);
+        currentMode = Mode.NAV;
+    }
+
+    public void btnGenerateBookNoClicked() {
+        if (currentMode == Mode.ADD) {
+            // generate a new bookNo.
+            int newNo = bookingArrayList.stream()
+                    .max(Comparator.comparing(Booking::getBookingId))
+                    .orElseThrow(NoSuchElementException::new)
+                    .getBookingId() + 1;
+            tfBookNo.setText(String.valueOf(newNo));
+        }
+    }
+
+    public void btnSaveBookingClicked(){
+        // create Booking obj, insert
+        if (currentMode != Mode.ADD) return;
+        Booking newB = new Booking(0, pickerBookDate.getValue(), tfBookNo.getText(), Integer.parseInt(tfTravellerNo.getText()),
+                cmbCustId.getSelectionModel().getSelectedItem().getCustomerId(),
+                tripTypes[cmbTripType.getSelectionModel().getSelectedIndex()],
+                cmbPackage.getSelectionModel().getSelectedItem().getPackageId());
+        if (BookingManager.addBooking(newB)){
+            JOptionPane.showMessageDialog(null, "New booking is reserved!", "Congrats!", JOptionPane.INFORMATION_MESSAGE);
+            // refresh table
+            loadBookingsIntoTable();
+        }
+        else
+            JOptionPane.showMessageDialog(null, "Something went wrong, please try again.", "Ops", JOptionPane.ERROR_MESSAGE);
+    }
+
+    public void btnDeleteDetailClicked(){
+        // todo: delete current booking
+        selectedBooking = tvOverviewBooking.getSelectionModel().getSelectedItem();
+        if (selectedBooking != null){
+            if (BookingManager.deleteBooking(selectedBooking) > 0){
+                JOptionPane.showMessageDialog(null, "Selected booking is deleted!", "Done!", JOptionPane.INFORMATION_MESSAGE);
+                loadBookingsIntoTable();
+            } else
+                JOptionPane.showMessageDialog(null, "Something went wrong, please try again.", "Ops", JOptionPane.ERROR_MESSAGE);
+        }
+
+    }
+
+    public void cmbCustIdSelected(){
+        // output customer name to tf
+        Customer selectedCust = cmbCustId.getSelectionModel().getSelectedItem();
+        tfFirstName.setText(selectedCust.getCustFirstName());
+        tfLastName.setText(selectedCust.getCustLastName());
+    }
+
 
     /****************************************************************************
      *
@@ -228,9 +316,67 @@ public class BookingController {
      *
      * **************************************************************************/
 
+    private void loadBookingsIntoTable() {
+        bookingArrayList = BookingManager.getAllBookings();
+        ObservableList<Booking> bookings = FXCollections.observableArrayList(bookingArrayList);
+        tvOverviewBooking.setItems(bookings);
+    }
+
+
+    private void loadCmbTripType() {
+        ArrayList<TripType> list = TripTypeManager.getAllTT();
+        ObservableList<TripType> TTs = FXCollections.observableArrayList(list);
+        cmbTripType.setItems(TTs);
+    }
+
+    private void loadCmbPackage() {
+        cmbPackage.setItems(PackageManager.getAllPackages());
+        cmbPackage.setConverter(new StringConverter<Package>() {
+            @Override
+            public String toString(Package object) {
+                return object.getPkgName() + ": $" + object.getPkgBasePrice();
+            }
+
+            @Override
+            public Package fromString(String string) {
+                return null;
+            }
+        });
+    }
+
+    private void enterAddMode(){
+        currentMode = Mode.ADD;
+        tabPaneBooking.getSelectionModel().select(tabDetail);
+        clearDetailForm(grPane);
+        cmbCustId.setVisible(true);
+        ArrayList<Customer> customers = CustomerManager.getAllCustomers();
+        cmbCustId.setItems(FXCollections.observableArrayList(customers));
+    }
+
+    private void clearDetailForm(Pane pane) {
+        //get list of all controls in the grid pane
+        ObservableList<Node> nodeList = pane.getChildren();
+
+        //enumerate all controls and reset textfields
+        for (int i = 0; i < nodeList.size(); i++) {
+            Node n = nodeList.get(i);
+            //test if node is text field / picker / combobox, unset them
+            if (n instanceof TextField)
+                ((TextField) n).setText("");
+            if (n instanceof DatePicker)
+                ((DatePicker) n).setValue(null);
+            if (n instanceof ComboBox)
+                ((ComboBox) n).getSelectionModel().select(-1);
+        }
+        tvBookingDetail.setItems(null);
+        tfFirstName.clear();
+        tfBookNo.clear();
+    }
+
     private void enterEditMode(Booking selectedB) {
         currentMode = Mode.EDIT;
         tabPaneBooking.getSelectionModel().select(tabDetail);
+        cmbCustId.setVisible(false);
 
         // display details
         tfBookId.setText(String.valueOf(selectedB.getBookingId()));
@@ -240,17 +386,17 @@ public class BookingController {
         Customer customer = CustomerManager.getCustomerById(selectedB.getCustomerId());
         tfFirstName.setText(customer.getCustFirstName());
         tfLastName.setText(customer.getCustLastName());
-        ArrayList<TripType> list = TripTypeManager.getAllTT();
-        ObservableList<TripType> TTs = FXCollections.observableArrayList(list);
-        cmbTripType.setItems(TTs);
-        String[] tripTypes = {"B", "G", "L"};
         cmbTripType.getSelectionModel().select(Arrays.asList(tripTypes).indexOf(selectedB.getTripTypeId()));
         Package bookedPackge = PackageManager.getPackageById(selectedB.getPackageId());
-        tfPackage.setText(bookedPackge==null ? "N/A" : bookedPackge.getPkgName());
+//        tfPackage.setText(bookedPackge==null ? "N/A" : bookedPackge.getPkgName());
+        if (bookedPackge != null)
+            cmbPackage.getSelectionModel().select(bookedPackge);
 
         // load booking detail table
         ArrayList<BookingDetail> details = BookingDetailManager.getBookingDetailsByBookingId(selectedB.getBookingId());
         tvBookingDetail.setItems(FXCollections.observableArrayList(details));
     }
+
+
 
 }

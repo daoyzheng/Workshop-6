@@ -93,7 +93,7 @@ public class BookingManager {
             // Get db connection
             Connection conn = DbConnection.getConnection();
             // Create query string
-            String query = "INSERT INTO bookings " +
+            String query = "INSERT INTO bookings(BookingDate, BookingNo, TravelerCount, CustomerId, TripTypeId, PackageId) " +
                     "VALUES(?,?,?,?,?,?)";
             // Create prepare statement
             PreparedStatement stmt = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
@@ -162,5 +162,29 @@ public class BookingManager {
         }
 
         return isSuccess;
+    }
+
+
+    // DELETE
+    public static int deleteBooking(Booking oldB){
+        boolean isSuccess = false;
+        int rows = 0;
+        try {
+            // Get db connection
+            Connection conn = DbConnection.getConnection();
+            // Create query string
+            String query = "DELETE FROM bookings WHERE bookings.BookingId = ?";
+
+            // Create prepare statement
+            PreparedStatement stmt = conn.prepareStatement(query);
+            // Assign parameter
+            stmt.setInt(1, oldB.getBookingId());
+            // Execute query
+            rows = stmt.executeUpdate();
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        return rows;
     }
 }
