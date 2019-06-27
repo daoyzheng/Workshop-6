@@ -139,10 +139,27 @@ public class AddSupplierController {
                 SupplierManager.addSupplier(newSupplier);
 
                 // Now add to the product supplier table
-                ProductSupplierManager.addProductSupplier(new ProductSupplier(
+                int numRows = ProductSupplierManager.addProductSupplier(new ProductSupplier(
                         selectedProduct.getProductId(),
                         newSupplier.getSupplierId()
                 ));
+
+                if (numRows > 0) {
+                    // Refresh list view
+                    // Get ProductSupplierController
+                    ArrayList<Integer> updatedSuppliers = ProductSupplierManager.getSupplierIdsByProductId(selectedProduct.getProductId());
+                    // Now get a list of supplier objects using the supplierIdArrayList
+                    ObservableList<Supplier> supplierObservableList = FXCollections.observableArrayList();
+                    for(Integer supplierId: updatedSuppliers) {
+                        supplierObservableList.add(SupplierManager.getSupplierById(supplierId));
+                    }
+                    supplierListView.setItems(supplierObservableList);
+
+                    // get a handle to the stage
+                    Stage stage = (Stage) btnAddSupplier.getScene().getWindow();
+                    // Close current window
+                    stage.close();
+                }
             }
         }
     }
