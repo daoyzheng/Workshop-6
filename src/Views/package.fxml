@@ -21,7 +21,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="400.0" style="-fx-background-color: white" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.PackageController">
+<AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="400.0" style="-fx-background-color: white" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.PackageController">
    <children>
       <TabPane fx:id="tabPaneMain" layoutY="-26.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <tabs>
@@ -33,7 +33,7 @@
                            <children>
                               <HBox prefHeight="50.0" prefWidth="652.0" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
-                                    <Label alignment="CENTER_RIGHT" contentDisplay="TOP" prefHeight="30.0" prefWidth="245.0" text="Search by package name (Case sensitive):" textAlignment="RIGHT">
+                                    <Label alignment="CENTER_RIGHT" contentDisplay="TOP" prefHeight="30.0" prefWidth="400.0" text="Search by package name (Case sensitive):" textAlignment="RIGHT">
                                        <font>
                                           <Font name="System Bold Italic" size="12.0" />
                                        </font></Label>
@@ -64,12 +64,12 @@
                            <children>
                               <HBox maxHeight="25.0" maxWidth="182.0" minHeight="25.0" minWidth="182.0" prefHeight="25.0" prefWidth="182.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-2.0" AnchorPane.topAnchor="1.0">
                                  <children>
-                                    <Label prefHeight="17.0" prefWidth="120.0" text="Products/ Suppliers">
+                                    <Label prefHeight="17.0" prefWidth="175.0" text="Products/ Suppliers">
                                        <font>
                                           <Font name="System Bold" size="12.0" />
                                        </font>
                                        <HBox.margin>
-                                          <Insets left="50.0" right="30.0" />
+                                          <Insets left="5.0" right="5.0" />
                                        </HBox.margin>
                                     </Label>
                                  </children>

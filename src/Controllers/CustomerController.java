@@ -510,7 +510,7 @@ public class CustomerController {
                     {
                         //if not valid, display error msg
                         lbErrorCustEmail.setVisible(true);
-                        lbErrorCustEmail.setText("Provide valid email\n i.e name@domain.com");
+                        lbErrorCustEmail.setText("Valid email(name@domain.com) required");
                         lbErrorCustEmail.setStyle("-fx-text-fill:  red");
                     }
                 }
