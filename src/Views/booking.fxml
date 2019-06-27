@@ -73,7 +73,7 @@
                            <padding>
                               <Insets left="20.0" top="20.0" />
                            </padding></HBox>
-                         <GridPane fx:id="grPane" prefHeight="232.0" prefWidth="526.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="5.0">
+                         <GridPane fx:id="grPane" hgap="10.0" vgap="10.0" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="5.0">
                              <columnConstraints>
                                  <ColumnConstraints fx:id="gpDetails" hgrow="SOMETIMES" maxWidth="281.0" minWidth="10.0" prefWidth="146.0" />
                                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="447.0" minWidth="10.0" prefWidth="278.0" />
@@ -160,14 +160,14 @@
                                          <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                      </GridPane.margin>
                                  </TextField>
-                              <Label fx:id="lblBookNoError" text="[error msg]" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-                              <Label fx:id="lblTravellerNoError" text="[error msg]" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-                              <Label fx:id="lblFirstNameError" text="[error msg]" GridPane.columnIndex="2" GridPane.rowIndex="4" />
-                              <Label fx:id="lblLastNameError" text="[error msg]" GridPane.columnIndex="2" GridPane.rowIndex="5" />
-                              <Label fx:id="lblTripTypeError" text="[error msg]" GridPane.columnIndex="2" GridPane.rowIndex="6" />
-                              <Label fx:id="lblPackageError" text="[error msg]" GridPane.columnIndex="2" GridPane.rowIndex="7" />
-                              <Label fx:id="lblBookDateError" text="[error msg]" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                              <Label fx:id="lblBookIdError" layoutX="390.0" layoutY="63.0" text="[error msg]" GridPane.columnIndex="2" />
+                              <Label fx:id="lblBookNoError" text="[error msg]" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+                              <Label fx:id="lblTravellerNoError" text="[error msg]" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+                              <Label fx:id="lblFirstNameError" text="[error msg]" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+                              <Label fx:id="lblLastNameError" text="[error msg]" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+                              <Label fx:id="lblTripTypeError" text="[error msg]" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+                              <Label fx:id="lblPackageError" text="[error msg]" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="7" />
+                              <Label fx:id="lblBookDateError" text="[error msg]" visible="false" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                              <Label fx:id="lblBookIdError" layoutX="390.0" layoutY="63.0" text="[error msg]" visible="false" GridPane.columnIndex="2" />
                               <ComboBox fx:id="cmbTripType" prefHeight="25.0" prefWidth="264.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
                                  <GridPane.margin>
                                     <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
