@@ -286,10 +286,11 @@ public class BookingController {
         }
         else
             JOptionPane.showMessageDialog(null, "Something went wrong, please try again.", "Ops", JOptionPane.ERROR_MESSAGE);
+        btnBackToListClicked();
     }
 
     public void btnDeleteDetailClicked(){
-        // todo: delete current booking
+        // delete current selected booking
         selectedBooking = tvOverviewBooking.getSelectionModel().getSelectedItem();
         if (selectedBooking != null){
             if (BookingManager.deleteBooking(selectedBooking) > 0){
@@ -297,6 +298,7 @@ public class BookingController {
                 loadBookingsIntoTable();
             } else
                 JOptionPane.showMessageDialog(null, "Something went wrong, please try again.", "Ops", JOptionPane.ERROR_MESSAGE);
+            btnBackToListClicked();
         }
 
     }
