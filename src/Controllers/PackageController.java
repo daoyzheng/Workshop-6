@@ -390,6 +390,7 @@ public class PackageController
         else
         {
             lbErPkgNameEdit.setVisible(true);
+            lbErPkgNameEdit.setStyle("-fx-text-fill:  red");
         }
     }
 
@@ -411,6 +412,7 @@ public class PackageController
         else
         {
             lbErPkgBPriceEdit.setVisible(true);
+            lbErPkgBPriceEdit.setStyle("-fx-text-fill:  red");
         }
     }
 
@@ -432,6 +434,7 @@ public class PackageController
         else
         {
             lbErPkgComEdit.setVisible(true);
+            lbErPkgComEdit.setStyle("-fx-text-fill:  red");
         }
     }
 
@@ -503,6 +506,7 @@ public class PackageController
         {
             lbErPkgSDatEdit.setText("The start date should be before the end date!");
             lbErPkgSDatEdit.setVisible(true);
+            lbErPkgSDatEdit.setStyle("-fx-text-fill:  red");
             errMsgEdit = true;
 
             boolean isNameEmpty = checkpkgNameEdit();
@@ -533,6 +537,7 @@ public class PackageController
         {
             lbErPkgEDatEdit.setText("The end date should be after the start date!");
             lbErPkgEDatEdit.setVisible(true);
+            lbErPkgEDatEdit.setStyle("-fx-text-fill:  red");
             boolean errMsg = true;
 
             boolean isNameEmpty = checkpkgNameEdit();
@@ -680,6 +685,7 @@ public class PackageController
         else
         {
             lbErPkgNameAdd.setVisible(true);
+            lbErPkgNameAdd.setStyle("-fx-text-fill:  red");
         }
     }
 
@@ -710,6 +716,7 @@ public class PackageController
         else
         {
             lbErPkgBPriceAdd.setVisible(true);
+            lbErPkgBPriceAdd.setStyle("-fx-text-fill:  red");
         }
     }
 
@@ -731,6 +738,7 @@ public class PackageController
         else
         {
             lbErPkgComAdd.setVisible(true);
+            lbErPkgComAdd.setStyle("-fx-text-fill:  red");
         }
     }
 
@@ -802,6 +810,7 @@ public class PackageController
         {
             lbErPkgSDatAdd.setText("The start date should be before the end date!");
             lbErPkgSDatAdd.setVisible(true);
+            lbErPkgSDatAdd.setStyle("-fx-text-fill:  red");
             boolean errMsgAdd = true;
 
             boolean isNameEmpty = checkpkgNameAdd();
@@ -832,6 +841,7 @@ public class PackageController
         {
             lbErPkgEDatAdd.setText("The end date should be after the start date!");
             lbErPkgEDatAdd.setVisible(true);
+            lbErPkgEDatAdd.setStyle("-fx-text-fill:  red");
             boolean errMsgAdd = true;
 
             boolean isNameEmpty = checkpkgNameAdd();
@@ -966,10 +976,13 @@ public class PackageController
         btnAddSaveAdd.setDisable(true);
 
         lbErPkgNameAdd.setVisible(true);
+        lbErPkgNameAdd.setStyle("-fx-text-fill:  red");
         lbErPkgSDatAdd.setVisible(false);
         lbErPkgEDatAdd.setVisible(false);
         lbErPkgBPriceAdd.setVisible(true);
+        lbErPkgBPriceAdd.setStyle("-fx-text-fill:  red");
         lbErPkgComAdd.setVisible(true);
+        lbErPkgComAdd.setStyle("-fx-text-fill:  red");
     }
 
 

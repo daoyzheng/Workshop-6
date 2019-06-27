@@ -64,9 +64,9 @@
             </Tab>
             <Tab fx:id="tabDetail" closable="false" styleClass="background">
                <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" styleClass="background">
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefWidth="675.0" styleClass="background">
                      <children>
-                        <ScrollPane styleClass="background" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+                        <ScrollPane fitToWidth="true" styleClass="background" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
                           <content>
                             <AnchorPane minHeight="0.0" minWidth="0.0" styleClass="background">
                                  <children>
